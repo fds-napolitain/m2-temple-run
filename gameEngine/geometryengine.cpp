@@ -98,10 +98,7 @@ GeometryEngine::~GeometryEngine()
 //!
 
 
-void initSphereGeometry(std::vector<VertexData>& points, std::vector<GLushort>& indices){
 
-
-}
 
 
 void GeometryEngine::initCubeGeometry(int nH,int nW, int boardSizeX,int  boardSizeY, std::vector<VertexData>& points, std::vector<GLushort>& indices)
@@ -165,7 +162,7 @@ void GeometryEngine::initCubeGeometry(int nH,int nW, int boardSizeX,int  boardSi
 }
 
 //! [2]
-void GeometryEngine::drawGeometry(QOpenGLShaderProgram *program, VertexData* vertices, GLushort* indices, int vertexNumber, int indexCount)
+void GeometryEngine::drawGeometry(QOpenGLShaderProgram *program, VertexData* vertices, GLushort* indices, int vertexNumber, int indexCount, int format)
 {
 
     // Transfer vertex data to VBO 0
@@ -196,7 +193,17 @@ void GeometryEngine::drawGeometry(QOpenGLShaderProgram *program, VertexData* ver
     program->setAttributeBuffer(texcoordLocation, GL_FLOAT, offset, 2, sizeof(VertexData));
 
     // Draw cube geometry using indices from VBO 1
-    glDrawElements(GL_TRIANGLE_STRIP, indexBuf.size()/2, GL_UNSIGNED_SHORT, 0); //Careful update indicesNumber when creating new geometry
+    switch(format){
+    case GL_TRIANGLE_STRIP:
+            glDrawElements(GL_TRIANGLE_STRIP, indexBuf.size(), GL_UNSIGNED_SHORT, 0);
+        break;
+    case GL_TRIANGLES:
+            glDrawElements(GL_TRIANGLE_STRIP, indexBuf.size(), GL_UNSIGNED_SHORT, 0);
+        break;
+    default:
+        glDrawElements(GL_POINTS, indexBuf.size(), GL_UNSIGNED_SHORT, 0);
+    }
+
 }
 
 

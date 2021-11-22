@@ -7,20 +7,22 @@
 class SceneGraph : public Scene
 {
 public:
-    SceneGraph(const Entity *root) :
+    SceneGraph(Entity *root) :
         Scene(),
         m_root(root)
-    {}
+    {
+        m_entities.emplace_back(root);
+    }
 
     ~SceneGraph()
     {
         delete m_root;
     }
 
-    inline const Entity* getRoot() const {return m_root; }
+    inline Entity* getRoot()  {return m_root; }
 
 private:
-    const Entity *m_root;
+    Entity *m_root;
 };
 
 #endif // SCENEGRAPH_H

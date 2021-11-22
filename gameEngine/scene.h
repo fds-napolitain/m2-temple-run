@@ -11,8 +11,8 @@ public:
     Scene();
     virtual ~Scene();
     PhysicsEngine *m_physics;
-    std::vector<Entity> m_drawnEntities; // objects to draw
-    std::vector<Entity> m_Entities; // all sort of entities
+    std::vector<Entity*> m_drawnEntities; // objects to draw
+    std::vector<Entity*> m_entities; // all sort of entities
 
 };
 

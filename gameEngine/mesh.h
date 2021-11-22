@@ -5,6 +5,7 @@
 #include <QVector3D>
 #include <QVector2D>
 #include <BasicIO.hpp>
+#include "component.h"
 
 struct VertexData
 {
@@ -12,7 +13,7 @@ struct VertexData
     QVector2D texture;
 };
 
-class Mesh
+class Mesh : public Component
 {
 public:
     Mesh(){}
@@ -23,7 +24,11 @@ public:
      };
 
     void loadMesh(const std::string& path, int format);
+    void initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY);
 
+    inline const std::vector<VertexData> getVertices() const {return m_vertex;}
+
+    inline const std::vector<unsigned short> getIndices() const {return m_indices;}
 
 
 private:

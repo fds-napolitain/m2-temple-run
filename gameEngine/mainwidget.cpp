@@ -72,60 +72,6 @@ MainWidget::MainWidget(QWidget *parent) :
 }
 
 
-void MainWidget::initGraph(){
-
-
-
-//    Meteor = new gameObject(Transform(QQuaternion(), QVector3D(3,15,0), 1), 1, 1, 999, "meteor");
-
-//    World               =    new    gameObject(Transform(), 1, 1, 0, "world");
-//    SolarSystem         =    new    gameObject(Transform(QQuaternion(), QVector3D(0,0,0), 1),9,9, 1,   "systeme solaire");
-//    Camera              =    new    gameObject(Transform(QQuaternion(), QVector3D(0,0,0), 1),1,1, 888, "camera");
-
-//    Soleil              =    new    gameObject(Transform(QQuaternion(), QVector3D(0,0,0), 6),9,9, 2,   "soleil"); // local transform par rapport au monde
-
-//    OrbiteTerre         =    new    gameObject(Transform(QQuaternion(), QVector3D(10,0,0), 1),9,9, 3,   "orbite terrestre");
-//    Terre               =    new    gameObject(Transform(QQuaternion(), QVector3D(0,0,0), 1),1,1, 4,   "Terre"); // local transform par rapport au soleil
-
-//    OrbiteLune          =    new    gameObject(Transform(QQuaternion(), QVector3D(3,0,0), 1),1,1, 4,   "orbite lunaire");
-//    Lune                =    new    gameObject(Transform(QQuaternion(), QVector3D(0,0,0), 0.5),0,1, 6, "Lune");
-
-
-
-//    physics = new PhysicsEngine;
-//    physics->AddObject(PhysicObject(new BoundingSphere(Meteor->transform.position, 1.0), QVector3D(0.0,-0.01,0.0))); // meteor
-//    physics->AddObject(PhysicObject(new BoundingSphere(Soleil->transform.position, Soleil->transform.scale), QVector3D())); // soleil
-
-
-//    std::vector<VertexData> v;
-//    std::vector<GLushort> index;
-
-//    this->initSphereGeometry(v, index);
-//    soleilMesh = new Mesh(v, index);
-//    terreMesh = new Mesh(v, index);
-//    luneMesh = new Mesh(v, index);
-//    meteorMesh = new Mesh(v, index);
-
-//    Meteor->addComponent(meteorMesh);
-//    Meteor->setParent(World);
-
-//    Lune->setParent(OrbiteLune);
-//    Lune->addComponent(luneMesh);
-//    OrbiteLune->setParent(OrbiteTerre);
-
-//    Camera->setParent(Terre);
-
-//    Terre->setParent(OrbiteTerre); // use setParent and not addchild, store a pointer list and not object list
-//    Terre->addComponent(terreMesh);
-//    OrbiteTerre->setParent(SolarSystem);
-
-//    Soleil->addComponent(soleilMesh);
-//    Soleil->setParent(SolarSystem);
-
-//    SolarSystem->setParent(World);
-
-//    graphScene = new Graph(World);
-}
 
 void MainWidget::initSphereGeometry(std::vector<VertexData>& points, std::vector<GLushort>& indices){
 
@@ -148,7 +94,7 @@ void MainWidget::initSphereGeometry(std::vector<VertexData>& points, std::vector
         VertexData t = VertexData();
         t.position = a;
         //qDebug("%f, %f, %f hdshv", a.x(), a.y(), a.z());
-        t.texCoord = QVector2D(
+        t.texture = QVector2D(
                                 a.x() + a.y(),
                                 a.x() + a.z()
                                );
@@ -364,7 +310,15 @@ void MainWidget::resizeGL(int w, int h)
 
 void MainWidget::initScene()
 {
-    scene = new SceneGraph(new Entity("World"));
+     scene = new SceneGraph(new Entity("World"));
+
+     SceneGraph* gScene = (SceneGraph*) scene;
+
+     Mesh t = Mesh(":/sphere.off", Mesh::OFFIO);
+     std::cout << t.getVertices().size() << std::endl;
+     gScene->getRoot()->addComponent(t);
+
+//    std::cout << gScene->getRoot()->getName() << "\n";
 
 
 
@@ -399,6 +353,11 @@ void MainWidget::paintGL()
 
 
     // Use texture unit 0 which contains cube.png
+    SceneGraph* sg = (SceneGraph*) scene;
+    std::vector<Component> t =  sg->getRoot()->getComponents();
+    Mesh* g = (Mesh*)&t[0];
+  // std::cout << g->getIndices().size() << " "  << g->getVertices().size() << std::endl;
+
     program.setUniformValue("texture", 0);
     program.setUniformValue("mvp_matrix", projection * matrix);
 

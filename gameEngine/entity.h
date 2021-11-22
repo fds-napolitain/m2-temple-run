@@ -19,9 +19,15 @@ public:
         m_transform(transform)
     {}
 
-private:
+    inline const std::string getName() const {return m_name;}
+    inline const Transform   getTransform() const {return m_transform;}
+    inline std::vector<Component> getComponents() const {return m_components;}
+
+
     template<typename T>
     inline void addComponent(T& component) { m_components.push_back(component); }
+
+private:
 
     const std::string m_name;
     const Transform m_transform;

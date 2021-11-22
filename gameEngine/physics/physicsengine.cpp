@@ -22,6 +22,7 @@ void PhysicsEngine::Simulate(float delta)
 void PhysicsEngine::HandleCollisions(){
     for(unsigned int i=0; i<m_objects.size(); i++){
         for(unsigned int j=i+1; j<m_objects.size(); j++){
+
             IntersectData intersect = m_objects[i].getCollider().Intersect(m_objects[j].getCollider());
             if(intersect.IsIntersect()){
 

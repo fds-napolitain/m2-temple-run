@@ -54,6 +54,7 @@
 #include "geometryengine.h"
 
 #include "scenegraph.h"
+#include "mesh.h"
 
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions_3_1>

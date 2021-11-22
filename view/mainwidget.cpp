@@ -50,6 +50,7 @@
 
 #include "mainwidget.hpp"
 #include <QMouseEvent>
+#include <QElapsedTimer>
 
 MainWidget::MainWidget(QWidget *parent) :
     QOpenGLWidget(parent),
@@ -131,13 +132,30 @@ void MainWidget::initializeGL()
 
     // Enable back face culling
     glEnable(GL_CULL_FACE);
+
+	QSurfaceFormat format;
+	format.setProfile(QSurfaceFormat::CompatibilityProfile);
+	format.setOptions(QSurfaceFormat::DeprecatedFunctions);
+	format.setDepthBufferSize(24);
+	format.setStencilBufferSize(8);
+	format.setVersion(3, 2);
+	// if (cfg.disableDoubleBuffering()) {
+	if (false) {
+		format.setSwapBehavior(QSurfaceFormat::SingleBuffer);
+	}
+	else {
+		format.setSwapBehavior(QSurfaceFormat::DoubleBuffer);
+	}
+	format.setSwapInterval(1); // Disable vertical refresh syncing
+	QSurfaceFormat::setDefaultFormat(format);
+
+
 //! [2]
 
 	scene = new Scene();
 
     // Use QBasicTimer because its faster than QTimer
     timer.start(12, this);
-	start = clock();
 }
 
 //! [3]
@@ -198,17 +216,7 @@ void MainWidget::resizeGL(int w, int h)
 
 void MainWidget::paintGL()
 {
-	/* cap fps
-	if (fps == 60.0) {
-		end = clock();
-		if (end - start < 0.06) {
-			timer.QTimer::qt_metacall(QMetaObject::InvokeMetaMethod, 5, {});
-			update();
-		}
-	}
-	*/
-
-    // Clear color and depth buffer
+	// Clear color and depth buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     texture->bind(0);
@@ -228,5 +236,6 @@ void MainWidget::paintGL()
 
     // Draw cube geometry
 	scene->updateScene(program);
+
     update();
 }

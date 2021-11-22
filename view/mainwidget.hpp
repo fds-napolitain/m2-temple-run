@@ -59,7 +59,6 @@
 #include <QBasicTimer>
 #include <QOpenGLShaderProgram>
 #include <QOpenGLTexture>
-#include <time.h>
 #include <view/scene.hpp>
 #include <QTimer>
 
@@ -100,8 +99,6 @@ private:
     qreal angularSpeed = 0;
     QQuaternion rotation;
 	float fps = 60.0; // frames per second
-	float deltaTime = 1000/fps; // frame duration
-	clock_t start, end;
 
 };
 

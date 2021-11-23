@@ -162,16 +162,27 @@ void GeometryEngine::initCubeGeometry(int nH,int nW, int boardSizeX,int  boardSi
 }
 
 //! [2]
-void GeometryEngine::drawGeometry(QOpenGLShaderProgram *program, VertexData* vertices, GLushort* indices, int vertexNumber, int indexCount, int format)
+void GeometryEngine::drawGeometry(QOpenGLShaderProgram *program, std::vector<VertexData>& vertices, std::vector<unsigned short>& indices, int vertexNumber, int indexCount, int format)
 {
+    VertexData arrVertices[vertexNumber];
+    unsigned short arrIndices[indexCount];
+
+
+    for(unsigned int i = 0; i< vertices.size(); i++){
+        arrVertices[i] = vertices[i];
+    }
+
+    for(unsigned int i = 0; i < indices.size(); i++){
+        arrIndices[i] = indices[i];
+    }
 
     // Transfer vertex data to VBO 0
     arrayBuf.bind();
-    arrayBuf.allocate(vertices, vertexNumber * sizeof(VertexData));
+    arrayBuf.allocate(arrVertices, vertexNumber * sizeof(VertexData));
 
 //   //  Transfer index data to VBO 1
     indexBuf.bind();
-    indexBuf.allocate(indices,  indexCount* sizeof(GLushort));
+    indexBuf.allocate(arrIndices,  indexCount* sizeof(GLushort));
     // Tell OpenGL which VBOs to use
     arrayBuf.bind();
     indexBuf.bind();
@@ -198,7 +209,7 @@ void GeometryEngine::drawGeometry(QOpenGLShaderProgram *program, VertexData* ver
             glDrawElements(GL_TRIANGLE_STRIP, indexBuf.size(), GL_UNSIGNED_SHORT, 0);
         break;
     case GL_TRIANGLES:
-            glDrawElements(GL_TRIANGLE_STRIP, indexBuf.size(), GL_UNSIGNED_SHORT, 0);
+            glDrawElements(GL_TRIANGLES, indexBuf.size(), GL_UNSIGNED_SHORT, 0);
         break;
     default:
         glDrawElements(GL_POINTS, indexBuf.size(), GL_UNSIGNED_SHORT, 0);

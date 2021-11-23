@@ -150,6 +150,7 @@ DIST          = ../gameEngine/grass.png \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
+		../gameEngine/.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
@@ -270,6 +271,7 @@ Makefile: ../gameEngine/gameengine.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/lin
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
@@ -350,6 +352,7 @@ Makefile: ../gameEngine/gameengine.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/lin
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf:
@@ -462,6 +465,8 @@ moc_mainwidget.cpp: ../gameEngine/mainwidget.h \
 		../gameEngine/entity.h \
 		../gameEngine/component.h \
 		../gameEngine/transform.h \
+		../gameEngine/mesh.h \
+		../gameEngine/BasicIO.hpp \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/edgar/Documents/projet_moteur/m2-temple-run/build-gameengine-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/edgar/Documents/projet_moteur/m2-temple-run/gameEngine -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../gameEngine/mainwidget.h -o moc_mainwidget.cpp
@@ -494,7 +499,9 @@ main.o: ../gameEngine/main.cpp ../gameEngine/mainwidget.h \
 		../gameEngine/physics/physicsengine.h \
 		../gameEngine/entity.h \
 		../gameEngine/component.h \
-		../gameEngine/transform.h
+		../gameEngine/transform.h \
+		../gameEngine/mesh.h \
+		../gameEngine/BasicIO.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../gameEngine/main.cpp
 
 camera.o: ../gameEngine/camera.cpp ../gameEngine/camera.h \
@@ -512,7 +519,9 @@ entity.o: ../gameEngine/entity.cpp ../gameEngine/entity.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o entity.o ../gameEngine/entity.cpp
 
 mesh.o: ../gameEngine/mesh.cpp ../gameEngine/mesh.h \
-		../gameEngine/BasicIO.hpp
+		../gameEngine/BasicIO.hpp \
+		../gameEngine/component.h \
+		../gameEngine/geometryengine.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mesh.o ../gameEngine/mesh.cpp
 
 BoundingSphere.o: ../gameEngine/physics/BoundingSphere.cpp ../gameEngine/physics/BoundingSphere.h \
@@ -566,7 +575,10 @@ scene.o: ../gameEngine/scene.cpp ../gameEngine/scene.h \
 		../gameEngine/physics/physicsengine.h \
 		../gameEngine/entity.h \
 		../gameEngine/component.h \
-		../gameEngine/transform.h
+		../gameEngine/transform.h \
+		../gameEngine/mesh.h \
+		../gameEngine/BasicIO.hpp \
+		../gameEngine/geometryengine.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scene.o ../gameEngine/scene.cpp
 
 scenegraph.o: ../gameEngine/scenegraph.cpp ../gameEngine/scenegraph.h \
@@ -579,7 +591,10 @@ scenegraph.o: ../gameEngine/scenegraph.cpp ../gameEngine/scenegraph.h \
 		../gameEngine/physics/physicsengine.h \
 		../gameEngine/entity.h \
 		../gameEngine/component.h \
-		../gameEngine/transform.h
+		../gameEngine/transform.h \
+		../gameEngine/mesh.h \
+		../gameEngine/BasicIO.hpp \
+		../gameEngine/geometryengine.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scenegraph.o ../gameEngine/scenegraph.cpp
 
 transform.o: ../gameEngine/transform.cpp ../gameEngine/transform.h
@@ -598,6 +613,7 @@ mainwidget.o: ../gameEngine/mainwidget.cpp ../gameEngine/mainwidget.h \
 		../gameEngine/entity.h \
 		../gameEngine/component.h \
 		../gameEngine/transform.h \
+		../gameEngine/mesh.h \
 		../gameEngine/BasicIO.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwidget.o ../gameEngine/mainwidget.cpp
 

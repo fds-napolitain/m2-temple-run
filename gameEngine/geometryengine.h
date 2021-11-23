@@ -60,7 +60,11 @@
 #include <QVector2D>
 #include <QVector3D>
 
-#include "mesh.h"
+struct VertexData
+{
+    QVector3D position;
+    QVector2D texture;
+};
 
 class GeometryEngine : protected QOpenGLFunctions_3_1
 {
@@ -68,7 +72,7 @@ public:
     GeometryEngine();
     virtual ~GeometryEngine();
 
-    void drawGeometry(QOpenGLShaderProgram *program, VertexData* vertices, GLushort* indices, int vertexNumber, int indexCount, int format);
+    void drawGeometry(QOpenGLShaderProgram *program, std::vector<VertexData>& vertices, std::vector<unsigned short>& indices, int vertexNumber, int indexCount, int format);
     void drawSphereGeometry(QOpenGLShaderProgram *program);
     void static initCubeGeometry(int nH, int nW, int boardSizeX, int boardSizeY, std::vector<VertexData>& points, std::vector<GLushort>& indices);
 

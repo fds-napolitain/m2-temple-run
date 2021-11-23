@@ -278,12 +278,14 @@ void MainWidget::resizeGL(int w, int h)
 void MainWidget::initScene()
 {
      scene = new SceneGraph(new Entity("World"));
-
+     geometries = new GeometryEngine();
      SceneGraph* gScene = (SceneGraph*) scene;
 
-     Mesh t = Mesh(":/sphere.off", Mesh::OFFIO);
+     Mesh *t = new Mesh(":/sphere.off", Mesh::OFFIO);
      //std::cout << t.getVertices().size() << std::endl;
-     //gScene->getRoot()->addComponent(t);
+     gScene->getRoot()->addComponent(t);
+     gScene->m_drawnEntities.emplace_back(gScene->getRoot());
+
 
 //    std::cout << gScene->getRoot()->getName() << "\n";
 
@@ -324,7 +326,9 @@ void MainWidget::paintGL()
     //std::vector<Component> t =  sg->getRoot()->getComponents();
   //  Mesh* g = dynamic_cast<Mesh*>(&t[0]);
   // std::cout << g->getIndices().size() << " "  << g->getVertices().size() << std::endl;
+    SceneGraph* gScene = (SceneGraph*) scene;
 
+    gScene->draw(geometries, program);
     program.setUniformValue("texture", 0);
     program.setUniformValue("mvp_matrix", projection * matrix);
 

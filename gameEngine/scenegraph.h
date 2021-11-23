@@ -20,8 +20,10 @@ public:
     }
 
     inline Entity* getRoot()  {return m_root; }
+    void addEntity(Entity* parent, Entity* entity);
 
 private:
+
     Entity *m_root;
 };
 

@@ -21,17 +21,26 @@ public:
 
     inline const std::string getName() const {return m_name;}
     inline const Transform   getTransform() const {return m_transform;}
-    inline std::vector<Component> getComponents() const {return m_components;}
+    inline std::vector<Component*> getComponents() const {return m_components;}
 
 
     template<typename T>
-    inline void addComponent(T& component) { m_components.push_back(component); }
+    inline void addComponent(T* component)
+    {
+        m_components.push_back(component);
+
+    }
+    void setParent(Entity* parent);
+    void removeChild(Entity* child);
 
 private:
 
-    const std::string m_name;
-    const Transform m_transform;
-    std::vector<Component> m_components;
+
+    std::string m_name;
+    Transform m_transform;
+    Entity* m_parent;
+    std::vector<Entity> m_children;
+    std::vector<Component*> m_components;
 };
 
 #endif // ENTITY_H

@@ -19,7 +19,7 @@ void Mesh::loadMesh(const std::string &path, int format){
 
 
     m_vertex.resize(vertexs.size());
-    m_indices.resize(indices.size());
+    m_indices.resize(indices.size()*3);
     for(unsigned int i = 0; i < vertexs.size(); i++){
         m_vertex[i].position = vertexs[i];
         m_vertex[i].texture = QVector2D();
@@ -45,10 +45,6 @@ void Mesh::initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY){
 
     float xStep=(plan_xmax-plan_xmin)/(float)(nW-1);
     float yStep=(plan_ymax-plan_ymin)/(float)(nH-1);
-
-
-
-
 
 //########################################################### PLANE HEIGHT MAP #######################################""
 
@@ -87,5 +83,34 @@ void Mesh::initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY){
          }
 
 }
+
+VertexData* Mesh::VertextoArray(VertexData* arr, std::vector<VertexData> &tempV){
+
+    for(unsigned int i  =0; i<this->m_vertex.size(); i++){
+        arr[i].position = tempV[i].position;
+        arr[i].texture = tempV[i].texture;
+    }
+    return arr;
+}
+
+
+unsigned short* Mesh::IndextoArray(unsigned short* arr){
+
+    for(unsigned int i =0; i<this->m_indices.size(); i++){
+        arr[i] = this->m_indices[i];
+    }
+    return arr;
+}
+
+
+void Mesh::draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram)
+{
+    VertexData v[m_vertex.size()];
+    unsigned short arr[m_indices.size()];
+
+
+    gEngine->drawGeometry(&shaderProgram, m_vertex, m_indices, m_vertex.size(), m_indices.size(), GL_TRIANGLES);
+}
+
 
 

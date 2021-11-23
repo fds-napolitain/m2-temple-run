@@ -6,12 +6,10 @@
 #include <QVector2D>
 #include <BasicIO.hpp>
 #include "component.h"
+#include "geometryengine.h"
 
-struct VertexData
-{
-    QVector3D position;
-    QVector2D texture;
-};
+
+
 
 class Mesh : public Component
 {
@@ -29,7 +27,10 @@ public:
     inline const std::vector<VertexData> getVertices() const {return m_vertex;}
 
     inline const std::vector<unsigned short> getIndices() const {return m_indices;}
+    void draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram);
 
+   unsigned short* IndextoArray(unsigned short* arr);
+   VertexData* VertextoArray(VertexData* arr, std::vector<VertexData> &tempV);
 
 private:
     std::vector<VertexData> m_vertex;

@@ -17,7 +17,7 @@ void Scene::draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram)
         {
             Mesh* mesh = dynamic_cast<Mesh*>(component);
             if(mesh != nullptr){
-                mesh->draw(gEngine, shaderProgram);
+                mesh->draw(gEngine, shaderProgram, GL_TRIANGLE_STRIP);
             }
         }
 

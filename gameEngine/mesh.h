@@ -15,6 +15,12 @@ class Mesh : public Component
 {
 public:
     Mesh(){}
+    ~Mesh()
+    {
+        delete m_vertexArr;
+        delete m_indicesArr;
+    }
+
     Mesh(const std::string& path, int format = 0);
     enum{
         OFFIO,
@@ -27,14 +33,16 @@ public:
     inline const std::vector<VertexData> getVertices() const {return m_vertex;}
 
     inline const std::vector<unsigned short> getIndices() const {return m_indices;}
-    void draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram);
+    void draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, int format);
 
-   unsigned short* IndextoArray(unsigned short* arr);
-   VertexData* VertextoArray(VertexData* arr, std::vector<VertexData> &tempV);
+   unsigned short* IndextoArray(unsigned short* arr, std::vector<unsigned short> &indices);
+   VertexData* VertextoArray(VertexData* arr, std::vector<VertexData> &vertices);
 
 private:
     std::vector<VertexData> m_vertex;
     std::vector<unsigned short> m_indices;
+    VertexData* m_vertexArr;
+    unsigned short* m_indicesArr;
 };
 
 #endif // MESH_H

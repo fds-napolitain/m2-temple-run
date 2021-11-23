@@ -281,8 +281,10 @@ void MainWidget::initScene()
      geometries = new GeometryEngine();
      SceneGraph* gScene = (SceneGraph*) scene;
 
-     Mesh *t = new Mesh(":/sphere.off", Mesh::OFFIO);
-     //std::cout << t.getVertices().size() << std::endl;
+    // Mesh *t = new Mesh(":/sphere.off", Mesh::OFFIO);
+     Mesh *t = new Mesh();
+     t->initPlaneGeometry(16,16,10,50);
+     std::cout << t->getVertices().size() << std::endl;
      gScene->getRoot()->addComponent(t);
      gScene->m_drawnEntities.emplace_back(gScene->getRoot());
 

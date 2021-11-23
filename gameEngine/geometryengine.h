@@ -72,7 +72,7 @@ public:
     GeometryEngine();
     virtual ~GeometryEngine();
 
-    void drawGeometry(QOpenGLShaderProgram *program, std::vector<VertexData>& vertices, std::vector<unsigned short>& indices, int vertexNumber, int indexCount, int format);
+    void drawGeometry(QOpenGLShaderProgram *program, VertexData *vertices, unsigned short *indices, int vertexNumber, int indexCount, int format);
     void drawSphereGeometry(QOpenGLShaderProgram *program);
     void static initCubeGeometry(int nH, int nW, int boardSizeX, int boardSizeY, std::vector<VertexData>& points, std::vector<GLushort>& indices);
 

@@ -162,27 +162,16 @@ void GeometryEngine::initCubeGeometry(int nH,int nW, int boardSizeX,int  boardSi
 }
 
 //! [2]
-void GeometryEngine::drawGeometry(QOpenGLShaderProgram *program, std::vector<VertexData>& vertices, std::vector<unsigned short>& indices, int vertexNumber, int indexCount, int format)
+void GeometryEngine::drawGeometry(QOpenGLShaderProgram *program, VertexData* vertices, unsigned short* indices, int vertexNumber, int indexCount, int format)
 {
-    VertexData arrVertices[vertexNumber];
-    unsigned short arrIndices[indexCount];
-
-
-    for(unsigned int i = 0; i< vertices.size(); i++){
-        arrVertices[i] = vertices[i];
-    }
-
-    for(unsigned int i = 0; i < indices.size(); i++){
-        arrIndices[i] = indices[i];
-    }
 
     // Transfer vertex data to VBO 0
     arrayBuf.bind();
-    arrayBuf.allocate(arrVertices, vertexNumber * sizeof(VertexData));
+    arrayBuf.allocate(vertices, vertexNumber * sizeof(VertexData));
 
 //   //  Transfer index data to VBO 1
     indexBuf.bind();
-    indexBuf.allocate(arrIndices,  indexCount* sizeof(GLushort));
+    indexBuf.allocate(indices,  indexCount* sizeof(GLushort));
     // Tell OpenGL which VBOs to use
     arrayBuf.bind();
     indexBuf.bind();
@@ -204,16 +193,18 @@ void GeometryEngine::drawGeometry(QOpenGLShaderProgram *program, std::vector<Ver
     program->setAttributeBuffer(texcoordLocation, GL_FLOAT, offset, 2, sizeof(VertexData));
 
     // Draw cube geometry using indices from VBO 1
-    switch(format){
-    case GL_TRIANGLE_STRIP:
-            glDrawElements(GL_TRIANGLE_STRIP, indexBuf.size(), GL_UNSIGNED_SHORT, 0);
-        break;
-    case GL_TRIANGLES:
-            glDrawElements(GL_TRIANGLES, indexBuf.size(), GL_UNSIGNED_SHORT, 0);
-        break;
-    default:
-        glDrawElements(GL_POINTS, indexBuf.size(), GL_UNSIGNED_SHORT, 0);
-    }
+//    switch(format){
+//    case GL_TRIANGLE_STRIP:
+//            glDrawElements(GL_TRIANGLE_STRIP, indexBuf.size(), GL_UNSIGNED_SHORT, 0);
+//        break;
+//    case GL_TRIANGLES:
+//            glDrawElements(GL_TRIANGLES, indexBuf.size(), GL_UNSIGNED_SHORT, 0);
+//        break;
+//    default:
+//        glDrawElements(GL_POINTS, indexBuf.size(), GL_UNSIGNED_SHORT, 0);
+//    }
+
+    glDrawElements(format, indexBuf.size(), GL_UNSIGNED_SHORT, 0);
 
 }
 

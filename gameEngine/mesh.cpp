@@ -18,20 +18,29 @@ void Mesh::loadMesh(const std::string &path, int format){
     }
 
 
-    m_vertex.resize(vertexs.size());
-    m_indices.resize(indices.size()*3);
+    m_vertexArr = new VertexData[vertexs.size()];
+    m_indicesArr = new unsigned short[indices.size()*3];
+
+    m_vertex.resize(vertexs.size()); // resize set all values to 0 (use index)
+    m_indices.reserve(indices.size()*3); //reserve only allocate memory (use pushback)
     for(unsigned int i = 0; i < vertexs.size(); i++){
-        m_vertex[i].position = vertexs[i];
-        m_vertex[i].texture = QVector2D();
+        VertexData temp = {vertexs[i], QVector2D()};
+        m_vertex[i]     = temp;
+        m_vertexArr[i]  = temp;
 
     }
 
-    for(unsigned int i = 0; i < indices.size(); i+=3){
-       m_indices[i]   = indices[i][0];
-       m_indices[i+1] = indices[i+1][1];
-       m_indices[i+2] = indices[i+2][2];
-   }
-
+    unsigned int i = 0;
+    for(auto& a : indices)
+    {
+        std::cout << a[0] << " " << a[1] << " " << a[2] << std::endl;
+        m_indices.push_back(a[0]);
+        m_indices.push_back(a[1]);
+        m_indices.push_back(a[2]);
+        m_indicesArr[i++] = a[0];
+        m_indicesArr[i++] = a[1];
+        m_indicesArr[i++] = a[2];
+    }
 }
 
 
@@ -82,34 +91,35 @@ void Mesh::initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY){
              m_indices.push_back((i+1)*nH);
          }
 
+    m_vertexArr = new VertexData[vertexNumber];
+    m_indicesArr = new unsigned short[indexCount];
+
+    VertextoArray(m_vertexArr, m_vertex);
+    IndextoArray(m_indicesArr, m_indices);
 }
 
-VertexData* Mesh::VertextoArray(VertexData* arr, std::vector<VertexData> &tempV){
+VertexData* Mesh::VertextoArray(VertexData* arr, std::vector<VertexData> &vertex){
 
-    for(unsigned int i  =0; i<this->m_vertex.size(); i++){
-        arr[i].position = tempV[i].position;
-        arr[i].texture = tempV[i].texture;
+    for(unsigned int i  =0; i< vertex.size(); i++){
+        arr[i].position = vertex[i].position;
+        arr[i].texture = vertex[i].texture;
     }
     return arr;
 }
 
 
-unsigned short* Mesh::IndextoArray(unsigned short* arr){
+unsigned short* Mesh::IndextoArray(unsigned short* arr, std::vector<unsigned short>& indices){
 
-    for(unsigned int i =0; i<this->m_indices.size(); i++){
-        arr[i] = this->m_indices[i];
+    for(unsigned int i =0; i< indices.size(); i++){
+        arr[i] = indices[i];
     }
     return arr;
 }
 
 
-void Mesh::draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram)
+void Mesh::draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, int format)
 {
-    VertexData v[m_vertex.size()];
-    unsigned short arr[m_indices.size()];
-
-
-    gEngine->drawGeometry(&shaderProgram, m_vertex, m_indices, m_vertex.size(), m_indices.size(), GL_TRIANGLES);
+    gEngine->drawGeometry(&shaderProgram, m_vertexArr, m_indicesArr, m_vertex.size(), m_indices.size(), format);
 }
 
 

@@ -73,40 +73,7 @@ MainWidget::MainWidget(QWidget *parent) :
 
 
 
-void MainWidget::initSphereGeometry(std::vector<VertexData>& points, std::vector<GLushort>& indices){
 
-    std::string meshLocation = "../TP3/Qt_solar/sphere.off";
-    std::vector<QVector3D> sphere;
-    std::vector<std::vector<unsigned int>> face;
-
-    OFFIO::open(meshLocation, sphere, face);
-
-    points.reserve(sphere.size());
-    points.clear();
-    indices.reserve(face.size()*3);
-
-//    for(unsigned int i =0; i<sphere.size(); i++){
-//        points[i] = { sphere[i], QVector2D(sphere[i].x() + sphere[i].y(), sphere[i].x() + sphere[i].z()   )};
-//    }
-
-    GLushort i = 0;
-    for ( auto a : sphere ) {
-        VertexData t = VertexData();
-        t.position = a;
-        //qDebug("%f, %f, %f hdshv", a.x(), a.y(), a.z());
-        t.texture = QVector2D(
-                                a.x() + a.y(),
-                                a.x() + a.z()
-                               );
-        points.push_back(t);
-        indices.push_back(i++);
-//           indices[i]   = face[i / 3][0]; //n'affiche pas le mesh
-//           indices[i+1] = face[i / 3][1];
-//           indices[i+2] = face[i / 3][2];
-//           i+=3;
-    }
-
-}
 
 MainWidget::~MainWidget()
 {
@@ -315,8 +282,8 @@ void MainWidget::initScene()
      SceneGraph* gScene = (SceneGraph*) scene;
 
      Mesh t = Mesh(":/sphere.off", Mesh::OFFIO);
-     std::cout << t.getVertices().size() << std::endl;
-     gScene->getRoot()->addComponent(t);
+     //std::cout << t.getVertices().size() << std::endl;
+     //gScene->getRoot()->addComponent(t);
 
 //    std::cout << gScene->getRoot()->getName() << "\n";
 
@@ -353,9 +320,9 @@ void MainWidget::paintGL()
 
 
     // Use texture unit 0 which contains cube.png
-    SceneGraph* sg = (SceneGraph*) scene;
-    std::vector<Component> t =  sg->getRoot()->getComponents();
-    Mesh* g = (Mesh*)&t[0];
+   // SceneGraph* sg = (SceneGraph*) scene;
+    //std::vector<Component> t =  sg->getRoot()->getComponents();
+  //  Mesh* g = dynamic_cast<Mesh*>(&t[0]);
   // std::cout << g->getIndices().size() << " "  << g->getVertices().size() << std::endl;
 
     program.setUniformValue("texture", 0);

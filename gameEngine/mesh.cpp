@@ -28,8 +28,8 @@ void Mesh::loadMesh(const std::string &path, int format){
 
     for(unsigned int i = 0; i < indices.size(); i+=3){
        m_indices[i]   = indices[i][0];
-       m_indices[i+1] = indices[i][1];
-       m_indices[i+2] = indices[i][2];
+       m_indices[i+1] = indices[i+1][1];
+       m_indices[i+2] = indices[i+2][2];
    }
 
 }

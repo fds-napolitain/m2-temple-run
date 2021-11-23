@@ -101,7 +101,7 @@ private:
     qreal angularSpeed = 0;
     QQuaternion rotation;
 	float fps = 0; // frames per second
-	int targetFPS = 60; // -1 = maximum
+	float targetFPS = 60; // -1 = maximum
 	QElapsedTimer* lastFrame = new QElapsedTimer();
 
 private slots:

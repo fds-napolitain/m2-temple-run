@@ -50,6 +50,7 @@
 
 #include "mainwidget.hpp"
 #include <QMouseEvent>
+#include <QElapsedTimer>
 
 MainWidget::MainWidget(QWidget *parent) :
     QOpenGLWidget(parent),
@@ -111,7 +112,9 @@ void MainWidget::timerEvent(QTimerEvent *)
         rotation = QQuaternion::fromAxisAndAngle(rotationAxis, angularSpeed) * rotation;
 
         // Request an update
-        update();
+        if (targetFPS == -1) {
+			update();
+		}
     }
 }
 //! [1]
@@ -131,13 +134,23 @@ void MainWidget::initializeGL()
 
     // Enable back face culling
     glEnable(GL_CULL_FACE);
+
+	lastFrame->start();
+	fmt.setSwapInterval(1); //vsync
+	this->setFormat(fmt);
+	QSurfaceFormat::setDefaultFormat(fmt);
+
+
 //! [2]
 
 	scene = new Scene();
 
     // Use QBasicTimer because its faster than QTimer
-    timer.start(12, this);
-	start = clock();
+	if (targetFPS != -1) {
+		timer = new QTimer(this);
+		connect(timer, SIGNAL(timeout()), this, SLOT(doUpdate()));
+		timer->start(1000/targetFPS);
+	}
 }
 
 //! [3]
@@ -198,17 +211,7 @@ void MainWidget::resizeGL(int w, int h)
 
 void MainWidget::paintGL()
 {
-	/* cap fps
-	if (fps == 60.0) {
-		end = clock();
-		if (end - start < 0.06) {
-			timer.QTimer::qt_metacall(QMetaObject::InvokeMetaMethod, 5, {});
-			update();
-		}
-	}
-	*/
-
-    // Clear color and depth buffer
+	// Clear color and depth buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     texture->bind(0);
@@ -228,5 +231,25 @@ void MainWidget::paintGL()
 
     // Draw cube geometry
 	scene->updateScene(program);
-    update();
+
+	// fps timing stuff
+	if (lastFrame->elapsed() >= 1000) {
+		std::cout << "FPS: " << fps << "\n";
+		lastFrame->restart();
+		fps = 0;
+	}
+	fps++;
+
+	if (targetFPS == -1) {
+		update();
+	} else {
+		timer->start(1000/targetFPS);
+	}
+}
+
+/**
+ * slot action: update for target fps
+ */
+void MainWidget::doUpdate() {
+	update();
 }

@@ -112,7 +112,9 @@ void MainWidget::timerEvent(QTimerEvent *)
         rotation = QQuaternion::fromAxisAndAngle(rotationAxis, angularSpeed) * rotation;
 
         // Request an update
-        update();
+        if (targetFPS == -1) {
+			update();
+		}
     }
 }
 //! [1]
@@ -133,21 +135,10 @@ void MainWidget::initializeGL()
     // Enable back face culling
     glEnable(GL_CULL_FACE);
 
-	QSurfaceFormat format;
-	format.setProfile(QSurfaceFormat::CompatibilityProfile);
-	format.setOptions(QSurfaceFormat::DeprecatedFunctions);
-	format.setDepthBufferSize(24);
-	format.setStencilBufferSize(8);
-	format.setVersion(3, 2);
-	// if (cfg.disableDoubleBuffering()) {
-	if (false) {
-		format.setSwapBehavior(QSurfaceFormat::SingleBuffer);
-	}
-	else {
-		format.setSwapBehavior(QSurfaceFormat::DoubleBuffer);
-	}
-	format.setSwapInterval(1); // Disable vertical refresh syncing
-	QSurfaceFormat::setDefaultFormat(format);
+	lastFrame->start();
+	fmt.setSwapInterval(1); //vsync
+	this->setFormat(fmt);
+	QSurfaceFormat::setDefaultFormat(fmt);
 
 
 //! [2]
@@ -155,7 +146,11 @@ void MainWidget::initializeGL()
 	scene = new Scene();
 
     // Use QBasicTimer because its faster than QTimer
-    timer.start(12, this);
+	if (targetFPS != -1) {
+		timer = new QTimer(this);
+		connect(timer, SIGNAL(timeout()), this, SLOT(doUpdate()));
+		timer->start(1000/targetFPS);
+	}
 }
 
 //! [3]
@@ -237,5 +232,24 @@ void MainWidget::paintGL()
     // Draw cube geometry
 	scene->updateScene(program);
 
-    update();
+	// fps timing stuff
+	if (lastFrame->elapsed() >= 1000) {
+		std::cout << "FPS: " << fps << "\n";
+		lastFrame->restart();
+		fps = 0;
+	}
+	fps++;
+
+	if (targetFPS == -1) {
+		update();
+	} else {
+		timer->start(1000/targetFPS);
+	}
+}
+
+/**
+ * slot action: update for target fps
+ */
+void MainWidget::doUpdate() {
+	update();
 }

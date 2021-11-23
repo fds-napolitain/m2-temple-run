@@ -61,6 +61,7 @@
 #include <QOpenGLTexture>
 #include <view/scene.hpp>
 #include <QTimer>
+#include <QElapsedTimer>
 
 class GeometryEngine;
 
@@ -86,8 +87,9 @@ protected:
     void initTextures();
 
 private:
+	QSurfaceFormat fmt;
 	Scene* scene = nullptr;
-    QBasicTimer timer;
+    QTimer* timer;
     QOpenGLShaderProgram program;
 
     QOpenGLTexture *texture = nullptr;
@@ -98,7 +100,12 @@ private:
     QVector3D rotationAxis;
     qreal angularSpeed = 0;
     QQuaternion rotation;
-	float fps = 60.0; // frames per second
+	float fps = 0; // frames per second
+	int targetFPS = 60; // -1 = maximum
+	QElapsedTimer* lastFrame = new QElapsedTimer();
+
+private slots:
+	void doUpdate();
 
 };
 

@@ -40,7 +40,6 @@ QMatrix4x4 Transform::getLocalMatrix() {
 }
 
 Transform Transform::combineWith(Transform& transform) {
-	std::cout << scale * transform.scale << "\n";
 	this->rotate *= transform.rotate;
 	this->translate += transform.translate;
 	this->scale *= transform.scale;

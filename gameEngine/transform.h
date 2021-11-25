@@ -32,7 +32,7 @@ public:
     QVector3D applyToPoint(QVector3D  p);
     QVector3D applyToVector(QVector3D v);
     QVector3D applyToVersor(QVector3D v);
-    Transform combine_with(Transform &t);
+    Transform combineWith(Transform &t);
     QMatrix4x4 inverseWorld();
 
     Transform interpolate(Transform &t, float k){

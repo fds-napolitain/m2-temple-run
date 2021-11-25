@@ -2,8 +2,10 @@
 #define COLLIDER_H
 
 #include <QVector3D>
-#include "ReferenceCounter.h"
-#include "intersectdata.h"
+#include "physics/ReferenceCounter.h"
+#include "physics/intersectdata.h"
+#include "transform.h"
+
 class Collider : public ReferenceCounter
 {
 public:
@@ -23,7 +25,7 @@ public:
     inline int getType() const {return m_type;}
 
     IntersectData Intersect(const Collider& other) const;
-    virtual void Transform(const QVector3D& translation){};
+    virtual void Transform(const QVector3D& transform){};
     inline virtual QVector3D getCenter() const {return QVector3D();}
 
 private:

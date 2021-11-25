@@ -14,8 +14,9 @@ public:
     virtual ~Scene();
     PhysicsEngine *m_physics;
     std::vector<Entity*> m_drawnEntities; // objects to draw
-    std::vector<Entity*> m_entities; // all sort of entities
-    void draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram); //maybe virtual if draw depends of the type scene
+    std::vector<Entity*> m_physXentities; // physics of entities
+    virtual void draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram); //maybe virtual if draw depends of the type scene
+    virtual void update(){};
 
 };
 

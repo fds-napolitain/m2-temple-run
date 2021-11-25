@@ -12,6 +12,6 @@ IntersectData BoundingSphere::instersectBoundingSphere(const BoundingSphere& oth
 }
 
 
-void BoundingSphere::Transform(const QVector3D& translation){
-    m_center += translation;
+void BoundingSphere::Transform(const QVector3D& transform){
+    m_center += transform;
 };

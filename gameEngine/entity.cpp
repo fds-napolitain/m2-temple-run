@@ -8,16 +8,20 @@ void Entity::setParent(Entity* entity){
 
     if(entity != nullptr){
         m_parent = entity;
-        m_parent->m_children.emplace_back(*this);
+        m_parent->m_children.emplace_back(this);
     }
 }
 
 void Entity::removeChild(Entity* child){
     for(unsigned int i =0; i<this->m_children.size(); i++){
-        Entity* m_child = &m_children[i];
-        if(m_child == child){
+        if(m_children[i] == child){
             m_children.erase(m_children.begin()+i);
         }
     }
+}
+
+void Entity::setTransform(Transform& transform)
+{
+    m_transform = transform;
 }
 

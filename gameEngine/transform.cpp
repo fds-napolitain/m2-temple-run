@@ -57,13 +57,13 @@ QVector4D Transform::apply(QVector4D p){
     return QVector4D(t.x(), t.y(), t.z(), p.w());
 }
 
-Transform Transform::combine_with(Transform &t)
-{
-
-
-    Transform res = Transform( rotate * t.rotate,  position + t.position,  scale * t.scale);
-    return (res);
+Transform Transform::combineWith(Transform& transform) {
+    this->rotate *= transform.rotate;
+    this->position += transform.position;
+    this->scale *= transform.scale;
+    return *this;
 }
+
 
 
 QMatrix4x4 Transform::inverseWorld(){

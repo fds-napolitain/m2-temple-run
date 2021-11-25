@@ -2,8 +2,9 @@
 #define BOUNDINGSPHERE_H
 
 #include <QVector3D>
-#include "intersectdata.h"
-#include "collider.h"
+#include "physics/intersectdata.h"
+#include "physics/collider.h"
+
 
 class BoundingSphere : public Collider
 {

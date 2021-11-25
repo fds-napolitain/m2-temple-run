@@ -33,7 +33,7 @@ void Mesh::loadMesh(const std::string &path, int format){
     unsigned int i = 0;
     for(auto& a : indices)
     {
-        std::cout << a[0] << " " << a[1] << " " << a[2] << std::endl;
+
         m_indices.push_back(a[0]);
         m_indices.push_back(a[1]);
         m_indices.push_back(a[2]);
@@ -41,6 +41,7 @@ void Mesh::loadMesh(const std::string &path, int format){
         m_indicesArr[i++] = a[1];
         m_indicesArr[i++] = a[2];
     }
+    std::cout << "succesfully loaded mesh" << std::endl;
 }
 
 

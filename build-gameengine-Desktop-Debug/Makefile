@@ -461,10 +461,10 @@ moc_mainwidget.cpp: ../gameEngine/mainwidget.h \
 		../gameEngine/physics/intersectdata.h \
 		../gameEngine/physics/collider.h \
 		../gameEngine/physics/ReferenceCounter.h \
+		../gameEngine/transform.h \
 		../gameEngine/physics/physicsengine.h \
 		../gameEngine/entity.h \
 		../gameEngine/component.h \
-		../gameEngine/transform.h \
 		../gameEngine/mesh.h \
 		../gameEngine/BasicIO.hpp \
 		moc_predefs.h \
@@ -496,10 +496,10 @@ main.o: ../gameEngine/main.cpp ../gameEngine/mainwidget.h \
 		../gameEngine/physics/intersectdata.h \
 		../gameEngine/physics/collider.h \
 		../gameEngine/physics/ReferenceCounter.h \
+		../gameEngine/transform.h \
 		../gameEngine/physics/physicsengine.h \
 		../gameEngine/entity.h \
 		../gameEngine/component.h \
-		../gameEngine/transform.h \
 		../gameEngine/mesh.h \
 		../gameEngine/BasicIO.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../gameEngine/main.cpp
@@ -527,7 +527,8 @@ mesh.o: ../gameEngine/mesh.cpp ../gameEngine/mesh.h \
 BoundingSphere.o: ../gameEngine/physics/BoundingSphere.cpp ../gameEngine/physics/BoundingSphere.h \
 		../gameEngine/physics/intersectdata.h \
 		../gameEngine/physics/collider.h \
-		../gameEngine/physics/ReferenceCounter.h
+		../gameEngine/physics/ReferenceCounter.h \
+		../gameEngine/transform.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o BoundingSphere.o ../gameEngine/physics/BoundingSphere.cpp
 
 aabb.o: ../gameEngine/physics/aabb.cpp ../gameEngine/physics/aabb.h \
@@ -538,6 +539,7 @@ aabb.o: ../gameEngine/physics/aabb.cpp ../gameEngine/physics/aabb.h \
 collider.o: ../gameEngine/physics/collider.cpp ../gameEngine/physics/collider.h \
 		../gameEngine/physics/ReferenceCounter.h \
 		../gameEngine/physics/intersectdata.h \
+		../gameEngine/transform.h \
 		../gameEngine/physics/BoundingSphere.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o collider.o ../gameEngine/physics/collider.cpp
 
@@ -548,7 +550,8 @@ physicobject.o: ../gameEngine/physics/physicobject.cpp ../gameEngine/physics/phy
 		../gameEngine/physics/BoundingSphere.h \
 		../gameEngine/physics/intersectdata.h \
 		../gameEngine/physics/collider.h \
-		../gameEngine/physics/ReferenceCounter.h
+		../gameEngine/physics/ReferenceCounter.h \
+		../gameEngine/transform.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o physicobject.o ../gameEngine/physics/physicobject.cpp
 
 physicsengine.o: ../gameEngine/physics/physicsengine.cpp ../gameEngine/physics/physicsengine.h \
@@ -556,14 +559,16 @@ physicsengine.o: ../gameEngine/physics/physicsengine.cpp ../gameEngine/physics/p
 		../gameEngine/physics/BoundingSphere.h \
 		../gameEngine/physics/intersectdata.h \
 		../gameEngine/physics/collider.h \
-		../gameEngine/physics/ReferenceCounter.h
+		../gameEngine/physics/ReferenceCounter.h \
+		../gameEngine/transform.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o physicsengine.o ../gameEngine/physics/physicsengine.cpp
 
 plane.o: ../gameEngine/physics/plane.cpp ../gameEngine/physics/plane.h \
 		../gameEngine/physics/intersectdata.h \
 		../gameEngine/physics/BoundingSphere.h \
 		../gameEngine/physics/collider.h \
-		../gameEngine/physics/ReferenceCounter.h
+		../gameEngine/physics/ReferenceCounter.h \
+		../gameEngine/transform.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o plane.o ../gameEngine/physics/plane.cpp
 
 scene.o: ../gameEngine/scene.cpp ../gameEngine/scene.h \
@@ -572,10 +577,10 @@ scene.o: ../gameEngine/scene.cpp ../gameEngine/scene.h \
 		../gameEngine/physics/intersectdata.h \
 		../gameEngine/physics/collider.h \
 		../gameEngine/physics/ReferenceCounter.h \
+		../gameEngine/transform.h \
 		../gameEngine/physics/physicsengine.h \
 		../gameEngine/entity.h \
 		../gameEngine/component.h \
-		../gameEngine/transform.h \
 		../gameEngine/mesh.h \
 		../gameEngine/BasicIO.hpp \
 		../gameEngine/geometryengine.h
@@ -588,10 +593,10 @@ scenegraph.o: ../gameEngine/scenegraph.cpp ../gameEngine/scenegraph.h \
 		../gameEngine/physics/intersectdata.h \
 		../gameEngine/physics/collider.h \
 		../gameEngine/physics/ReferenceCounter.h \
+		../gameEngine/transform.h \
 		../gameEngine/physics/physicsengine.h \
 		../gameEngine/entity.h \
 		../gameEngine/component.h \
-		../gameEngine/transform.h \
 		../gameEngine/mesh.h \
 		../gameEngine/BasicIO.hpp \
 		../gameEngine/geometryengine.h
@@ -609,10 +614,10 @@ mainwidget.o: ../gameEngine/mainwidget.cpp ../gameEngine/mainwidget.h \
 		../gameEngine/physics/intersectdata.h \
 		../gameEngine/physics/collider.h \
 		../gameEngine/physics/ReferenceCounter.h \
+		../gameEngine/transform.h \
 		../gameEngine/physics/physicsengine.h \
 		../gameEngine/entity.h \
 		../gameEngine/component.h \
-		../gameEngine/transform.h \
 		../gameEngine/mesh.h \
 		../gameEngine/BasicIO.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwidget.o ../gameEngine/mainwidget.cpp

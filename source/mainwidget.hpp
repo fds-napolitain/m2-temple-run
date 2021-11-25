@@ -59,7 +59,7 @@
 #include <QBasicTimer>
 #include <QOpenGLShaderProgram>
 #include <QOpenGLTexture>
-#include <view/scene.hpp>
+#include <source/scene.hpp>
 #include <QTimer>
 #include <QElapsedTimer>
 

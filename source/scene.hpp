@@ -5,7 +5,7 @@
 #ifndef CUBE_SCENE_HPP
 #define CUBE_SCENE_HPP
 
-#include <model/gameobject.hpp>
+#include <source/gameobject.hpp>
 
 class Scene {
 private:

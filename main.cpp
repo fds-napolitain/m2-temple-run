@@ -53,7 +53,7 @@
 #include <QSurfaceFormat>
 
 #ifndef QT_NO_OPENGL
-#include "view/mainwidget.hpp"
+#include "source/mainwidget.hpp"
 #endif
 
 int main(int argc, char *argv[])

@@ -4,7 +4,7 @@
 #include <QVector3D>
 #include "intersectdata.h"
 #include "algorithm"
-#include "transform.h"
+#include "../transform.h"
 
 
 class AABB

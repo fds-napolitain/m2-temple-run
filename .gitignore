@@ -1,10 +1,8 @@
-/qrc_shaders.cpp
-/qrc_textures.cpp
-/Makefile
-/moc_mainwidget.cpp
-/moc_predefs.hpp
-/out/build/x64-Debug
-/.vs
+**/*qrc*.cpp
+**/Makefile
+**/*moc*.cpp
+out/
+**/.vs
 CMakeLists.txt.user
 **/.DS_Store
 cmake-build-debug/

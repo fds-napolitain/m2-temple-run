@@ -2,9 +2,9 @@
 #define COLLIDER_H
 
 #include <QVector3D>
-#include "physics/ReferenceCounter.h"
-#include "physics/intersectdata.h"
-#include "transform.h"
+#include "ReferenceCounter.h"
+#include "intersectdata.h"
+#include "../transform.h"
 
 class Collider : public ReferenceCounter
 {

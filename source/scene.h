@@ -1,8 +1,8 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-#include "../gameEngine/physics/physicobject.h"
-#include "../gameEngine/physics/physicsengine.h"
+#include "physics/physicobject.h"
+#include "physics/physicsengine.h"
 #include "entity.h"
 #include "mesh.h"
 #include "geometryengine.h"

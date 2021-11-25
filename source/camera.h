@@ -6,8 +6,7 @@
 class Camera : public Entity
 {
 public:
-    Camera(const std::string& name):
-     Entity(name)
+    Camera(const std::string& name) : Entity(name)
     {}
 };
 

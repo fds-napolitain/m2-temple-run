@@ -1,0 +1,19 @@
+#ifndef TIMESTEP_H
+#define TIMESTEP_H
+
+class TimeStep
+{
+public: 
+        TimeStep(float time =.0f)
+            : m_Time(time)
+        {}
+        
+        inline float getSeconds() const {return m_Time;}
+        inline float getMillisSeconds() const {return m_Time * 10;}
+        
+private:
+        float m_Time;
+};
+
+
+#endif // TIMESTEP_H

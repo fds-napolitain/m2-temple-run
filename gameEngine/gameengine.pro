@@ -25,6 +25,7 @@ SOURCES += \
 
 HEADERS += \
     BasicIO.hpp \
+    TimeStep.h \
     camera.h \
     component.h \
     entity.h \

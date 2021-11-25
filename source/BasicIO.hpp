@@ -43,7 +43,7 @@
 #include <QCoreApplication>
 #include <QDir>
 #include <stdio.h>  /* defines FILENAME_MAX */
-#ifdef WINDOWS
+#ifdef _WIN32
 #include <direct.h>
     #define GetCurrentDir _getcwd
 #else

@@ -21,7 +21,7 @@ find_package(Qt5 COMPONENTS Gui)
 find_package(Qt5 COMPONENTS Widgets)
 find_package(Qt5 COMPONENTS OpenGL)
 
-add_executable(TempleRun main.cpp textures/textures.qrc mesh/models.qrc shaders/shaders.qrc
+add_executable(TempleRun main.cpp textures/textures.qrc models/models.qrc shaders/shaders.qrc
         source/BasicIO.h source/BasicIO.hpp source/camera.cpp source/camera.h source/component.cpp source/component.h
         source/entity.h source/entity.cpp source/geometryengine.h source/geometryengine.cpp source/mainwidget.h source/mainwidget.cpp
         source/mesh.cpp source/mesh.h source/rien.h source/scene.cpp source/scene.h source/scenegraph.h source/scenegraph.cpp

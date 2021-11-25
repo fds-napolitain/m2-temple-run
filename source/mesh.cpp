@@ -41,7 +41,7 @@ void Mesh::loadMesh(const std::string &path, int format){
         m_indicesArr[i++] = a[1];
         m_indicesArr[i++] = a[2];
     }
-    std::cout << "succesfully loaded mesh" << std::endl;
+    std::cout << "succesfully loaded models" << std::endl;
 }
 
 

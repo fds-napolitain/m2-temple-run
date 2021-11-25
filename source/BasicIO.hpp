@@ -8,7 +8,7 @@
     This program allows to compute QMVC for a set of 3D points contained 
     in a cage made of quad and triangles, as well as other flavors of 
     space coordinates for cages (MVC, SMVC, GC, MEC). It comes also with 
-    a 3D viewer which helps deforming a mesh with a cage. 
+    a 3D viewer which helps deforming a models with a cage.
     
     Copyright (C) 2018  jean-Marc Thiery, Pooran Memari and Tamy Boubekeur
 
@@ -383,7 +383,7 @@ namespace OBJIO{
                         if( convertToTriangles )
                         {
                             //model is not triangulated, so let us do this on the fly...
-                            //to have a more uniform mesh, we add randomization
+                            //to have a more uniform models, we add randomization
                             unsigned int k=(randomize)?(rand()%vhandles.size()):0;
                             for (unsigned int i=0;i<vhandles.size()-2;++i)
                             {
@@ -472,7 +472,7 @@ namespace OBJIO{
                         if( convertToTriangles )
                         {
                             //model is not triangulated, so let us do this on the fly...
-                            //to have a more uniform mesh, we add randomization
+                            //to have a more uniform models, we add randomization
                             unsigned int k=(randomize)?(rand()%vhandles.size()):0;
                             for (unsigned int i=0;i<vhandles.size()-2;++i)
                             {

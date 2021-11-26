@@ -11,9 +11,9 @@ public:
         m_direction(direction)
     {};
 
-    inline bool IsIntersect() const {return m_isIntersect;}
-    inline float getDistance() const {return m_direction.length();}
-    inline QVector3D getDirection() const {return m_direction;}
+    [[nodiscard]] inline bool isIntersect() const {return m_isIntersect;}
+    [[nodiscard]] inline float getDistance() const {return m_direction.length();}
+    [[nodiscard]] inline QVector3D getDirection() const {return m_direction;}
 
 
 private:

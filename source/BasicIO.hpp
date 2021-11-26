@@ -42,8 +42,8 @@
 #include <QTextStream>
 #include <QCoreApplication>
 #include <QDir>
-#include <stdio.h>  /* defines FILENAME_MAX */
-#ifdef WINDOWS
+#include <cstdio>  /* defines FILENAME_MAX */
+#ifdef _WIN32
 #include <direct.h>
     #define GetCurrentDir _getcwd
 #else
@@ -359,7 +359,7 @@ namespace OBJIO{
             QRegExp reg("\\s+");
             QStringList lineElements = QTLine.split(reg);
 
-            if(  lineElements.size() > 0  )
+            if(  !lineElements.empty()  )
             {
                 QString elementType = lineElements[0];
                 // vertex
@@ -374,7 +374,7 @@ namespace OBJIO{
                     for( int i = 1 ; i < lineElements.size() ; ++i )
                     {
                         QStringList FaceElements = lineElements[i].split("/", QString::SkipEmptyParts);
-                        if( FaceElements.size() > 0 )
+                        if( !FaceElements.empty() )
                             vhandles.push_back( (int_type_t)( (abs(FaceElements[0].toInt()) - 1) ) );
                     }
 
@@ -448,7 +448,7 @@ namespace OBJIO{
             QRegExp reg("\\s+");
             QStringList lineElements = QTLine.split(reg);
 
-            if(  lineElements.size() > 0  )
+            if(  !lineElements.empty()  )
             {
                 QString elementType = lineElements[0];
                 // vertex
@@ -463,7 +463,7 @@ namespace OBJIO{
                     for( int i = 1 ; i < lineElements.size() ; ++i )
                     {
                         QStringList FaceElements = lineElements[i].split("/", QString::SkipEmptyParts);
-                        if( FaceElements.size() > 0 )
+                        if( !FaceElements.empty() )
                             vhandles.push_back( (int_type_t)( (abs(FaceElements[0].toInt()) - 1) ) );
                     }
 
@@ -492,14 +492,9 @@ namespace OBJIO{
                     }
                     else if (vhandles.size()==2)
                     {
-                        if( true )
-                        {
-                            // printf("Unexpected number of face vertices (2). Converting edge to degenerate triangle");
-                            additional_edges.push_back( std::pair<int_type_t,int_type_t>(vhandles[0],vhandles[1]) );
-                        }
-                        else
-                            printf("Unexpected number of face vertices (2). Ignoring face");
-                    }
+						// printf("Unexpected number of face vertices (2). Converting edge to degenerate triangle");
+						additional_edges.push_back(std::pair<int_type_t, int_type_t>(vhandles[0], vhandles[1]));
+					}
                 }
                 else if ( elementType == QString("l") )
                 {
@@ -507,19 +502,14 @@ namespace OBJIO{
                     for( int i = 1 ; i < lineElements.size() ; ++i )
                     {
                         QStringList FaceElements = lineElements[i].split("/", QString::SkipEmptyParts);
-                        if( FaceElements.size() > 0 )
+                        if( !FaceElements.empty() )
                             vhandles.push_back( (int_type_t)( (abs(FaceElements[0].toInt()) - 1) ) );
                     }
                     if (vhandles.size()==2)
                     {
-                        if( true )
-                        {
-                            // printf("Unexpected number of face vertices (2). Converting edge to degenerate triangle");
-                            additional_edges.push_back( std::pair<int_type_t,int_type_t>(vhandles[0],vhandles[1]) );
-                        }
-                        else
-                            printf("Unexpected number of face vertices (2). Ignoring face");
-                    }
+						// printf("Unexpected number of face vertices (2). Converting edge to degenerate triangle");
+						additional_edges.push_back(std::pair<int_type_t, int_type_t>(vhandles[0], vhandles[1]));
+					}
                 }
             }
         }
@@ -560,7 +550,7 @@ namespace OBJIO{
             //            if( lineElementsBeforeCleaning[e] != "" && lineElementsBeforeCleaning[e] != " " )
             //                lineElements.push_back( lineElementsBeforeCleaning[e] );
             //        }
-            if(  lineElements.size() > 0  )
+            if(  !lineElements.empty()  )
             {
                 QString elementType = lineElements[0];
                 // vertex

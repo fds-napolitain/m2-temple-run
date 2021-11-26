@@ -17,8 +17,8 @@ public:
 
     IntersectData IntersectAABB(const AABB& other);
 
-    inline const QVector3D getMinCorner() const {return m_minCorner;}
-    inline const QVector3D getMaxCorner() const {return m_maxCorner;}
+    [[nodiscard]] inline QVector3D getMinCorner() const {return m_minCorner;}
+    [[nodiscard]] inline QVector3D getMaxCorner() const {return m_maxCorner;}
 
 private:
     const QVector3D m_minCorner;

@@ -15,13 +15,13 @@ class Mesh : public Component
 {
 public:
     Mesh(){}
-    ~Mesh()
+    ~Mesh() override
     {
         delete m_vertexArr;
         delete m_indicesArr;
     }
 
-    Mesh(const std::string& path, int format = 0);
+    explicit Mesh(const std::string& path, int format = 0);
     enum{
         OFFIO,
         OBJIO
@@ -30,13 +30,13 @@ public:
     void loadMesh(const std::string& path, int format);
     void initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY);
 
-    inline const std::vector<VertexData> getVertices() const {return m_vertex;}
+    [[nodiscard]] inline const std::vector<VertexData> getVertices() const {return m_vertex;}
 
-    inline const std::vector<unsigned short> getIndices() const {return m_indices;}
+    [[nodiscard]] inline const std::vector<unsigned short> getIndices() const {return m_indices;}
     void draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, int format);
 
-   unsigned short* IndextoArray(unsigned short* arr, std::vector<unsigned short> &indices);
-   VertexData* VertextoArray(VertexData* arr, std::vector<VertexData> &vertices);
+   static unsigned short* indextoArray(unsigned short* arr, std::vector<unsigned short> &indices);
+   static VertexData* vertextoArray(VertexData* arr, std::vector<VertexData> &vertex);
 
 private:
     std::vector<VertexData> m_vertex;

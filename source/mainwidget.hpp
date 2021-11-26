@@ -55,7 +55,7 @@
 
 #include "scenegraph.hpp"
 #include "mesh.hpp"
-#include "TimeStep.h"
+#include "TimeStep.hpp"
 
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions_3_1>

@@ -17,16 +17,16 @@ public:
 
          TYPE_SIZE
     };
-    Collider(int type):
+    explicit Collider(int type):
         ReferenceCounter(),
         m_type(type)
     {};
 
-    inline int getType() const {return m_type;}
+    [[nodiscard]] inline int getType() const {return m_type;}
 
-    IntersectData Intersect(const Collider& other) const;
+    [[nodiscard]] IntersectData Intersect(const Collider& other) const;
     virtual void Transform(const QVector3D& transform){};
-    inline virtual QVector3D getCenter() const {return QVector3D();}
+    [[nodiscard]] inline virtual QVector3D getCenter() const {return QVector3D();}
 
 private:
     int m_type;

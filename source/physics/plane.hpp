@@ -14,15 +14,15 @@ public:
     m_distance(distance)
     {};
 
-    Plane Normalize();
+    Plane normalize();
     IntersectData intersectSphere(const BoundingSphere& sphere);
 
 
-    inline const QVector3D getNormal() const {return m_normal;}
-    inline float getDistance() const {return m_distance;}
+    [[nodiscard]] inline QVector3D getNormal() const {return m_normal;}
+    [[nodiscard]] inline float getDistance() const {return m_distance;}
 
 private:
-   const QVector3D m_normal;
+	const QVector3D m_normal;
     const float m_distance;
 };
 

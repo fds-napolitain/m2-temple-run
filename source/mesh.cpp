@@ -95,11 +95,11 @@ void Mesh::initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY){
     m_vertexArr = new VertexData[vertexNumber];
     m_indicesArr = new unsigned short[indexCount];
 
-    VertextoArray(m_vertexArr, m_vertex);
-    IndextoArray(m_indicesArr, m_indices);
+	vertextoArray(m_vertexArr, m_vertex);
+	indextoArray(m_indicesArr, m_indices);
 }
 
-VertexData* Mesh::VertextoArray(VertexData* arr, std::vector<VertexData> &vertex){
+VertexData* Mesh::vertextoArray(VertexData* arr, std::vector<VertexData> &vertex){
 
     for(unsigned int i  =0; i< vertex.size(); i++){
         arr[i].position = vertex[i].position;
@@ -109,7 +109,7 @@ VertexData* Mesh::VertextoArray(VertexData* arr, std::vector<VertexData> &vertex
 }
 
 
-unsigned short* Mesh::IndextoArray(unsigned short* arr, std::vector<unsigned short>& indices){
+unsigned short* Mesh::indextoArray(unsigned short* arr, std::vector<unsigned short>& indices){
 
     for(unsigned int i =0; i< indices.size(); i++){
         arr[i] = indices[i];

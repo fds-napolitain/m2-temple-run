@@ -20,10 +20,10 @@ public:
     virtual ~PhysicObject();
 
 
-    void Intergrate(float delta);
+    void intergrate(float delta);
 
-    inline const QVector3D getPosition() const { return m_position;}
-    inline const QVector3D getVelocity() const { return m_velocity;}
+    [[nodiscard]] inline QVector3D getPosition() const { return m_position;}
+    [[nodiscard]] inline QVector3D getVelocity() const { return m_velocity;}
 
     inline const Collider& getCollider() {
         QVector3D translation = m_position - m_oldPosition;

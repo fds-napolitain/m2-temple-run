@@ -70,7 +70,7 @@ class GeometryEngine : protected QOpenGLFunctions_3_1
 {
 public:
     GeometryEngine();
-    virtual ~GeometryEngine();
+    ~GeometryEngine() override;
 
     void drawGeometry(QOpenGLShaderProgram *program, VertexData *vertices, unsigned short *indices, int vertexNumber, int indexCount, int format);
     void drawSphereGeometry(QOpenGLShaderProgram *program);

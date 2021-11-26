@@ -16,10 +16,10 @@ public:
     {};
 
     IntersectData instersectBoundingSphere(const BoundingSphere& other );
-    virtual void Transform(const QVector3D& translation);
+    void Transform(const QVector3D& translation) override;
 
-    inline virtual QVector3D getCenter() const { return m_center;}
-    inline float             getRadius() const { return m_radius;}
+    [[nodiscard]] inline QVector3D getCenter() const override { return m_center;}
+    [[nodiscard]] inline float getRadius() const { return m_radius;}
 private:
     QVector3D m_center;
     float m_radius;

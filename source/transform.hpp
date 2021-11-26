@@ -22,18 +22,18 @@ public:
 
    //methods
     QMatrix4x4 getModelMatrix();
-    QMatrix4x4 getLocalModelMatrix();
+    QMatrix4x4 getLocalModelMatrix() const;
 
     void computeModelMatrix();
     void computeModelMatrix(const QMatrix4x4 &parentMatrix);
 
     QVector3D getWorldTranslate();
-    QVector4D apply(QVector4D p);
-    QVector3D applyToPoint(QVector3D  p);
-    QVector3D applyToVector(QVector3D v);
-    QVector3D applyToVersor(QVector3D v);
+    QVector4D apply(QVector4D p) const;
+    QVector3D applyToPoint(QVector3D  p) const;
+    QVector3D applyToVector(QVector3D v) const;
+    QVector3D applyToVersor(QVector3D v) const;
     Transform combineWith(Transform &t);
-    QMatrix4x4 inverseWorld();
+    QMatrix4x4 inverseWorld() const;
 
     Transform interpolate(Transform &t, float k){
         Transform result;

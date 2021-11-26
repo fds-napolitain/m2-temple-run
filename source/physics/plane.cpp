@@ -1,6 +1,6 @@
 #include "plane.hpp"
 
-Plane Plane::Normalize(){
+Plane Plane::normalize(){
     float magnitude = m_normal.length();
     return Plane(m_normal / magnitude,m_distance/magnitude);
 }

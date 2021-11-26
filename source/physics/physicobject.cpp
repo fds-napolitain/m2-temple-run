@@ -1,6 +1,6 @@
 #include "physicobject.hpp"
 
-void PhysicObject::Intergrate(float delta){
+void PhysicObject::intergrate(float delta){
     m_position += m_velocity * delta;
 }
 
@@ -11,11 +11,11 @@ PhysicObject::PhysicObject(const PhysicObject& other) :
     m_collider(other.m_collider)
 
 {
-        m_collider->AddReference();
+	m_collider->addReference();
 }
 
 PhysicObject::~PhysicObject(){
-   if(m_collider->RemoveReference()){
+   if(m_collider->removeReference()){
         delete m_collider;
    }
 

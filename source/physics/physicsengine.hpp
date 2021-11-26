@@ -10,10 +10,10 @@ class PhysicsEngine
 public:
     PhysicsEngine();
 
-    void AddObject(const PhysicObject& object);
-    void Simulate(float delta);
+    void addObject(const PhysicObject& object);
+    void simulate(float delta);
 
-    void HandleCollisions();
+    void handleCollisions();
 
     inline PhysicObject& getObject(unsigned int index){
         return m_objects[index];

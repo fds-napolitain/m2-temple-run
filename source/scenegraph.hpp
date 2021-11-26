@@ -7,7 +7,7 @@
 class SceneGraph : public Scene
 {
 public:
-    SceneGraph(Entity *root) :
+    explicit SceneGraph(Entity *root) :
         Scene(),
         m_root(root)
     {
@@ -28,12 +28,12 @@ public:
         //m_entities.emplace_back(root);
     }
 
-    ~SceneGraph()
+    ~SceneGraph() override
     {
         delete m_root;
     }
 
-    virtual void update(TimeStep timeStep);
+    void update(TimeStep timeStep) override;
     inline Entity* getRoot()  {return m_root; }
     void addEntity(Entity* parent, Entity* entity);
     void updateTransforms(Entity* root_node, TimeStep deltaTime);

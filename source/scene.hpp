@@ -1,11 +1,11 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-#include "physics/physicobject.h"
-#include "physics/physicsengine.h"
-#include "entity.h"
-#include "mesh.h"
-#include "geometryengine.h"
+#include "physics/physicobject.hpp"
+#include "physics/physicsengine.hpp"
+#include "entity.hpp"
+#include "mesh.hpp"
+#include "geometryengine.hpp"
 
 class Scene
 {

@@ -1,5 +1,5 @@
-#include "collider.h"
-#include "BoundingSphere.h"
+#include "collider.hpp"
+#include "BoundingSphere.hpp"
 #include <iostream>
 
 IntersectData Collider::Intersect(const Collider& other) const

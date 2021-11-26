@@ -2,8 +2,8 @@
 #define PLANE_H
 
 #include <QVector3D>
-#include "intersectdata.h"
-#include "BoundingSphere.h"
+#include "intersectdata.hpp"
+#include "BoundingSphere.hpp"
 #include "math.h"
 
 class Plane

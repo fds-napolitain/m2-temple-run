@@ -22,13 +22,13 @@ find_package(Qt5 COMPONENTS Widgets)
 find_package(Qt5 COMPONENTS OpenGL)
 
 add_executable(TempleRun main.cpp textures/textures.qrc models/models.qrc shaders/shaders.qrc
-        source/BasicIO.hpp source/camera.cpp source/camera.h source/component.cpp source/component.h
-        source/entity.h source/entity.cpp source/geometryengine.h source/geometryengine.cpp source/mainwidget.h source/mainwidget.cpp
-        source/mesh.cpp source/mesh.h source/scene.cpp source/scene.h source/scenegraph.h source/scenegraph.cpp
-        source/transform.cpp source/transform.h
-        source/physics/aabb.cpp source/physics/aabb.h source/physics/BoundingSphere.cpp source/physics/BoundingSphere.h source/physics/collider.cpp
-        source/physics/collider.h source/physics/intersectdata.cpp source/physics/intersectdata.h source/physics/physicobject.cpp source/physics/physicobject.h
-        source/physics/physicsengine.cpp source/physics/physicsengine.h source/physics/plane.cpp source/physics/plane.h source/physics/ReferenceCounter.h)
+        source/BasicIO.hpp source/camera.cpp source/camera.hpp source/component.cpp source/component.hpp
+        source/entity.hpp source/entity.cpp source/geometryengine.hpp source/geometryengine.cpp source/mainwidget.hpp source/mainwidget.cpp
+        source/mesh.cpp source/mesh.hpp source/scene.cpp source/scene.hpp source/scenegraph.hpp source/scenegraph.cpp
+        source/transform.cpp source/transform.hpp
+        source/physics/aabb.cpp source/physics/aabb.hpp source/physics/BoundingSphere.cpp source/physics/BoundingSphere.hpp source/physics/collider.cpp
+        source/physics/collider.hpp source/physics/intersectdata.cpp source/physics/intersectdata.hpp source/physics/physicobject.cpp source/physics/physicobject.hpp
+        source/physics/physicsengine.cpp source/physics/physicsengine.hpp source/physics/plane.cpp source/physics/plane.hpp source/physics/ReferenceCounter.hpp)
 
 set_target_properties(TempleRun PROPERTIES
         WIN32_EXECUTABLE TRUE

@@ -48,8 +48,8 @@
 **
 ****************************************************************************/
 
-#include "geometryengine.h"
-#include "transform.h"
+#include "geometryengine.hpp"
+#include "transform.hpp"
 
 
 #include <iostream>

@@ -1,7 +1,7 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include "entity.h"
+#include "entity.hpp"
 
 class Camera : public Entity
 {

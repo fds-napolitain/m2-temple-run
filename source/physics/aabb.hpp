@@ -2,9 +2,9 @@
 #define AABB_H
 
 #include <QVector3D>
-#include "intersectdata.h"
+#include "intersectdata.hpp"
 #include "algorithm"
-#include "../transform.h"
+#include "../transform.hpp"
 
 
 class AABB

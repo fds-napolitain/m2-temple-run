@@ -1,8 +1,8 @@
 #ifndef SCENEGRAPH_H
 #define SCENEGRAPH_H
 
-#include "scene.h"
-#include "entity.h"
+#include "scene.hpp"
+#include "entity.hpp"
 
 class SceneGraph : public Scene
 {

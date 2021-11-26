@@ -2,8 +2,8 @@
 #define BOUNDINGSPHERE_H
 
 #include <QVector3D>
-#include "intersectdata.h"
-#include "collider.h"
+#include "intersectdata.hpp"
+#include "collider.hpp"
 
 
 class BoundingSphere : public Collider

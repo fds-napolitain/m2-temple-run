@@ -1,4 +1,4 @@
-#include "physicobject.h"
+#include "physicobject.hpp"
 
 void PhysicObject::Intergrate(float delta){
     m_position += m_velocity * delta;

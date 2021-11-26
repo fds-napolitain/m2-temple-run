@@ -5,8 +5,8 @@
 #include <QVector3D>
 #include <QVector2D>
 #include "BasicIO.hpp"
-#include "component.h"
-#include "geometryengine.h"
+#include "component.hpp"
+#include "geometryengine.hpp"
 
 
 

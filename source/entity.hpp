@@ -3,8 +3,8 @@
 
 #include <string>
 #include <vector>
-#include "component.h"
-#include "transform.h"
+#include "component.hpp"
+#include "transform.hpp"
 
 class Entity
 {

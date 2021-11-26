@@ -51,10 +51,10 @@
 #ifndef MAINWIDGET_H
 #define MAINWIDGET_H
 
-#include "geometryengine.h"
+#include "geometryengine.hpp"
 
-#include "scenegraph.h"
-#include "mesh.h"
+#include "scenegraph.hpp"
+#include "mesh.hpp"
 
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions_3_1>

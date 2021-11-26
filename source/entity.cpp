@@ -1,4 +1,4 @@
-#include "entity.h"
+#include "entity.hpp"
 
 void Entity::setParent(Entity* entity){
     //si parent existe déja == changement de parent donc delete l'ancien child

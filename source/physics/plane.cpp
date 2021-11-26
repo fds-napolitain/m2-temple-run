@@ -1,4 +1,4 @@
-#include "plane.h"
+#include "plane.hpp"
 
 Plane Plane::Normalize(){
     float magnitude = m_normal.length();

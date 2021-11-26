@@ -1,7 +1,7 @@
 #ifndef PHYSICOBJECT_H
 #define PHYSICOBJECT_H
 
-#include "BoundingSphere.h"
+#include "BoundingSphere.hpp"
 #include <QVector3D>
 
 

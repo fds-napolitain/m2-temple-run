@@ -1,4 +1,4 @@
-#include "scenegraph.h"
+#include "scenegraph.hpp"
 
 void SceneGraph::addEntity(Entity *parent, Entity *entity)
 {

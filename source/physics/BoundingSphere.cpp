@@ -1,4 +1,4 @@
-#include "BoundingSphere.h"
+#include "BoundingSphere.hpp"
 
 IntersectData BoundingSphere::instersectBoundingSphere(const BoundingSphere& other){
     float radiusDistance = m_radius + other.getRadius();

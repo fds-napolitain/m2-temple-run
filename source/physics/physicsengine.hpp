@@ -1,9 +1,9 @@
 #ifndef PHYSICSENGINE_H
 #define PHYSICSENGINE_H
 
-#include "physicobject.h"
+#include "physicobject.hpp"
 #include <vector>
-#include "BoundingSphere.h"
+#include "BoundingSphere.hpp"
 
 class PhysicsEngine
 {

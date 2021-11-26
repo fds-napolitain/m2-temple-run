@@ -1,0 +1,360 @@
+{
+	"BUILD_DIR" : "/home/edgar/Documents/projet_moteur/m2-temple-run/TempleRun_autogen",
+	"CMAKE_BINARY_DIR" : "/home/edgar/Documents/projet_moteur/m2-temple-run",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/edgar/Documents/projet_moteur/m2-temple-run",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/edgar/Documents/projet_moteur/m2-temple-run",
+	"CMAKE_EXECUTABLE" : "/home/edgar/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.5457.51/bin/cmake/linux/bin/cmake",
+	"CMAKE_LIST_FILES" : 
+	[
+		"/home/edgar/Documents/projet_moteur/m2-temple-run/CMakeLists.txt",
+		"/home/edgar/Documents/projet_moteur/m2-temple-run/CMakeFiles/3.20.2/CMakeSystem.cmake",
+		"/home/edgar/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.5457.51/bin/cmake/linux/share/cmake-3.20/Modules/CMakeSystemSpecificInitialize.cmake",
+		"/home/edgar/Documents/projet_moteur/m2-temple-run/CMakeFiles/3.20.2/CMakeCXXCompiler.cmake",
+		"/home/edgar/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.5457.51/bin/cmake/linux/share/cmake-3.20/Modules/CMakeSystemSpecificInformation.cmake",
+		"/home/edgar/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.5457.51/bin/cmake/linux/share/cmake-3.20/Modules/CMakeGenericSystem.cmake",
+		"/home/edgar/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.5457.51/bin/cmake/linux/share/cmake-3.20/Modules/CMakeInitializeConfigs.cmake",
+		"/home/edgar/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.5457.51/bin/cmake/linux/share/cmake-3.20/Modules/Platform/Linux.cmake",
+		"/home/edgar/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.5457.51/bin/cmake/linux/share/cmake-3.20/Modules/Platform/UnixPaths.cmake",
+		"/home/edgar/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.5457.51/bin/cmake/linux/share/cmake-3.20/Modules/CMakeCXXInformation.cmake",
+		"/home/edgar/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.5457.51/bin/cmake/linux/share/cmake-3.20/Modules/CMakeLanguageInformation.cmake",
+		"/home/edgar/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.5457.51/bin/cmake/linux/share/cmake-3.20/Modules/Compiler/GNU-CXX.cmake",
+		"/home/edgar/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.5457.51/bin/cmake/linux/share/cmake-3.20/Modules/Compiler/GNU.cmake",
+		"/home/edgar/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.5457.51/bin/cmake/linux/share/cmake-3.20/Modules/Compiler/CMakeCommonCompilerMacros.cmake",
+		"/home/edgar/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.5457.51/bin/cmake/linux/share/cmake-3.20/Modules/Platform/Linux-GNU-CXX.cmake",
+		"/home/edgar/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.5457.51/bin/cmake/linux/share/cmake-3.20/Modules/Platform/Linux-GNU.cmake",
+		"/home/edgar/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.5457.51/bin/cmake/linux/share/cmake-3.20/Modules/CMakeCommonLanguageInclude.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5/Qt5ConfigVersion.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5/Qt5Config.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5/Qt5ModuleLocation.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Core/Qt5CoreConfigVersion.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Core/Qt5CoreConfig.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Core/Qt5CoreConfigExtras.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Core/Qt5CoreMacros.cmake",
+		"/home/edgar/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.5457.51/bin/cmake/linux/share/cmake-3.20/Modules/CMakeParseArguments.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5/Qt5ConfigVersion.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5/Qt5Config.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5/Qt5ModuleLocation.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5GuiConfig.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QComposePlatformInputContextPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEglFSEmulatorIntegrationPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEglFSIntegrationPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEglFSKmsEglDeviceIntegrationPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEglFSX11IntegrationPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEvdevKeyboardPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEvdevMousePlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEvdevTabletPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEvdevTouchScreenPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QGifPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QGtk3ThemePlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QICNSPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QIbusPlatformInputContextPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QJpegPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QLinuxFbIntegrationPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QMinimalEglIntegrationPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QMinimalIntegrationPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QOffscreenIntegrationPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QSvgIconPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QSvgPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QTgaPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QTiffPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QTuioTouchPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QVirtualKeyboardPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QVncIntegrationPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QWaylandEglPlatformIntegrationPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QWaylandIntegrationPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QWaylandXCompositeEglPlatformIntegrationPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QWaylandXCompositeGlxPlatformIntegrationPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QWbmpPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QWebGLIntegrationPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QWebpPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QXcbEglIntegrationPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QXcbGlxIntegrationPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QXcbIntegrationPlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QXdgDesktopPortalThemePlugin.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake",
+		"/home/edgar/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.5457.51/bin/cmake/linux/share/cmake-3.20/Modules/CMakeParseArguments.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5/Qt5ConfigVersion.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5/Qt5Config.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5/Qt5ModuleLocation.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5GuiConfig.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5/Qt5ConfigVersion.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5/Qt5Config.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5/Qt5ModuleLocation.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5OpenGL/Qt5OpenGLConfigVersion.cmake",
+		"/home/edgar/Qt/5.15.2/gcc_64/lib/cmake/Qt5OpenGL/Qt5OpenGLConfig.cmake",
+		"/home/edgar/Documents/projet_moteur/m2-temple-run/textures/textures.qrc",
+		"/home/edgar/Documents/projet_moteur/m2-temple-run/models/models.qrc",
+		"/home/edgar/Documents/projet_moteur/m2-temple-run/shaders/shaders.qrc"
+	],
+	"CMAKE_SOURCE_DIR" : "/home/edgar/Documents/projet_moteur/m2-temple-run",
+	"DEP_FILE" : "",
+	"DEP_FILE_RULE_NAME" : "",
+	"HEADERS" : 
+	[
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/BasicIO.hpp",
+			"MU",
+			"CAWN4ZDDTK/moc_BasicIO.cpp",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/TimeStep.h",
+			"MU",
+			"CAWN4ZDDTK/moc_TimeStep.cpp",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/camera.h",
+			"MU",
+			"CAWN4ZDDTK/moc_camera.cpp",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/component.h",
+			"MU",
+			"CAWN4ZDDTK/moc_component.cpp",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/entity.h",
+			"MU",
+			"CAWN4ZDDTK/moc_entity.cpp",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/geometryengine.h",
+			"MU",
+			"CAWN4ZDDTK/moc_geometryengine.cpp",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/mainwidget.h",
+			"MU",
+			"CAWN4ZDDTK/moc_mainwidget.cpp",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/mesh.h",
+			"MU",
+			"CAWN4ZDDTK/moc_mesh.cpp",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/physics/BoundingSphere.h",
+			"MU",
+			"HJ7BZYTC37/moc_BoundingSphere.cpp",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/physics/ReferenceCounter.h",
+			"MU",
+			"HJ7BZYTC37/moc_ReferenceCounter.cpp",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/physics/aabb.h",
+			"MU",
+			"HJ7BZYTC37/moc_aabb.cpp",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/physics/collider.h",
+			"MU",
+			"HJ7BZYTC37/moc_collider.cpp",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/physics/intersectdata.h",
+			"MU",
+			"HJ7BZYTC37/moc_intersectdata.cpp",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/physics/physicobject.h",
+			"MU",
+			"HJ7BZYTC37/moc_physicobject.cpp",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/physics/physicsengine.h",
+			"MU",
+			"HJ7BZYTC37/moc_physicsengine.cpp",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/physics/plane.h",
+			"MU",
+			"HJ7BZYTC37/moc_plane.cpp",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/scene.h",
+			"MU",
+			"CAWN4ZDDTK/moc_scene.cpp",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/scenegraph.h",
+			"MU",
+			"CAWN4ZDDTK/moc_scenegraph.cpp",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/transform.h",
+			"MU",
+			"CAWN4ZDDTK/moc_transform.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/home/edgar/Documents/projet_moteur/m2-temple-run/TempleRun_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/edgar/Documents/projet_moteur/m2-temple-run/TempleRun_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : [ "QT_CORE_LIB", "QT_GUI_LIB", "QT_OPENGL_LIB", "QT_WIDGETS_LIB" ],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/home/edgar/Documents/projet_moteur/m2-temple-run",
+		"/home/edgar/Qt/5.15.2/gcc_64/include",
+		"/home/edgar/Qt/5.15.2/gcc_64/include/QtCore",
+		"/home/edgar/Qt/5.15.2/gcc_64/mkspecs/linux-g++",
+		"/home/edgar/Qt/5.15.2/gcc_64/include/QtGui",
+		"/home/edgar/Qt/5.15.2/gcc_64/include/QtOpenGL",
+		"/home/edgar/Qt/5.15.2/gcc_64/include/QtWidgets",
+		"/usr/include",
+		"/usr/include/c++/9",
+		"/usr/include/x86_64-linux-gnu/c++/9",
+		"/usr/include/c++/9/backward",
+		"/usr/lib/gcc/x86_64-linux-gnu/9/include",
+		"/usr/local/include",
+		"/usr/include/x86_64-linux-gnu"
+	],
+	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE", "Q_NAMESPACE_EXPORT" ],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/usr/bin/c++",
+		"-dM",
+		"-E",
+		"-c",
+		"/home/edgar/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.5457.51/bin/cmake/linux/share/cmake-3.20/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/home/edgar/Documents/projet_moteur/m2-temple-run/TempleRun_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 4,
+	"PARSE_CACHE_FILE" : "/home/edgar/Documents/projet_moteur/m2-temple-run/CMakeFiles/TempleRun_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/home/edgar/Qt/5.15.2/gcc_64/bin/moc",
+	"QT_UIC_EXECUTABLE" : "/home/edgar/Qt/5.15.2/gcc_64/bin/uic",
+	"QT_VERSION_MAJOR" : 5,
+	"QT_VERSION_MINOR" : 15,
+	"SETTINGS_FILE" : "/home/edgar/Documents/projet_moteur/m2-temple-run/CMakeFiles/TempleRun_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/main.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/camera.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/component.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/entity.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/geometryengine.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/mainwidget.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/mesh.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/physics/BoundingSphere.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/physics/aabb.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/physics/collider.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/physics/intersectdata.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/physics/physicobject.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/physics/physicsengine.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/physics/plane.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/scene.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/scenegraph.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/edgar/Documents/projet_moteur/m2-temple-run/source/transform.cpp",
+			"MU",
+			null
+		]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
+	"VERBOSITY" : 0
+}

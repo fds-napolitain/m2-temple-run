@@ -128,7 +128,7 @@ void MainWidget::timerEvent(QTimerEvent *)
         angularSpeed = 0.0;
     } else {
         // Update rotation
-        rotation = QQuaternion::fromAxisAndAngle(rotationAxis, angularSpeed) * rotation;
+        rotation = QQuaternion::fromAxisAndAngle(rotationAxis, angularSpeed) * rotation ;
 
         // Request an update
         update();
@@ -148,22 +148,22 @@ void MainWidget::keyPressEvent(QKeyEvent *event)
 
     switch (event->key()) {
         case Qt::Key_Z: /* haut */
-            projection.translate(0.0, -1.0, 0.0);
+            projection.translate(QVector3D(0.0, -1.0, 0.0) * timeStep);
             break;
         case Qt::Key_Q: /* gauche */;
-            projection.translate(1.0, 0.0, 0.0);
+            projection.translate(QVector3D(1.0, 0.0, 0.0) * timeStep);
             break;
         case Qt::Key_D: /*droite */
-            projection.translate(-1.0, 0.0, 0.0);
+            projection.translate(QVector3D(-1.0, 0.0, 0.0) * timeStep);
           break;
         case Qt::Key_S: /* bas */
-            projection.translate(0.0, 1.0, 0.0);
+            projection.translate(QVector3D(0.0, 1.0, 0.0) * timeStep);
             break;
         case Qt::Key_A: /* descendre */
-            projection.translate(0.0, 0.0, 1.0);
+            projection.translate(QVector3D(0.0, 0.0, 5.0) * timeStep);;
             break;
         case Qt::Key_E: /* monter */
-            projection.translate(0.0, 0.0, -1.0);
+            projection.translate(QVector3D(0.0, 0.0, -5.0) * timeStep);
             break;
 
 
@@ -201,6 +201,7 @@ void MainWidget::initializeGL()
 
    // geometries = new GeometryEngine;
 
+    currentTime.start();
     initScene();
 
     // Use QBasicTimer because its faster than QTimer
@@ -283,6 +284,15 @@ void MainWidget::initScene()
 
 void MainWidget::paintGL()
 {
+
+
+
+
+    timeStep =  currentTime.nsecsElapsed() * 0.000000001;
+    std::cout << floor(1/ timeStep) << std::endl;
+    currentTime.restart();
+
+
     // Clear color and depth buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -314,7 +324,7 @@ void MainWidget::paintGL()
   // std::cout << g->getIndices().size() << " "  << g->getVertices().size() << std::endl;
 
     scene->draw(geometries, program);
-    scene->update();
+    scene->update(timeStep);
 
     //gScene->update()
 

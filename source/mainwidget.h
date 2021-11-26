@@ -55,6 +55,7 @@
 
 #include "scenegraph.h"
 #include "mesh.h"
+#include "TimeStep.h"
 
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions_3_1>
@@ -64,6 +65,8 @@
 #include <QBasicTimer>
 #include <QOpenGLShaderProgram>
 #include <QOpenGLTexture>
+#include <QElapsedTimer>
+
 class GeometryEngine;
 
 class MainWidget : public QOpenGLWidget, protected QOpenGLFunctions_3_1
@@ -93,7 +96,8 @@ protected:
     std::vector<VertexData> sphere;
 
 private:
-
+    QElapsedTimer currentTime;
+    TimeStep timeStep;
     QBasicTimer timer;
     QOpenGLShaderProgram program;
     GeometryEngine *geometries;

@@ -1,0 +1,23 @@
+{
+	"BUILD_DIR" : "/home/edgar/Documents/projet_moteur/m2-temple-run/TempleRun_autogen",
+	"CMAKE_BINARY_DIR" : "/home/edgar/Documents/projet_moteur/m2-temple-run",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/edgar/Documents/projet_moteur/m2-temple-run",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/edgar/Documents/projet_moteur/m2-temple-run",
+	"CMAKE_SOURCE_DIR" : "/home/edgar/Documents/projet_moteur/m2-temple-run",
+	"INCLUDE_DIR" : "/home/edgar/Documents/projet_moteur/m2-temple-run/TempleRun_autogen/include",
+	"INPUTS" : 
+	[
+		"/home/edgar/Documents/projet_moteur/m2-temple-run/shaders/vshader.glsl",
+		"/home/edgar/Documents/projet_moteur/m2-temple-run/shaders/fshader.glsl"
+	],
+	"LOCK_FILE" : "/home/edgar/Documents/projet_moteur/m2-temple-run/CMakeFiles/TempleRun_autogen.dir/AutoRcc_shaders_3QPYF6J63P_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "shaders" ],
+	"OUTPUT_CHECKSUM" : "3QPYF6J63P",
+	"OUTPUT_NAME" : "qrc_shaders.cpp",
+	"RCC_EXECUTABLE" : "/home/edgar/Qt/5.15.2/gcc_64/bin/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/home/edgar/Documents/projet_moteur/m2-temple-run/CMakeFiles/TempleRun_autogen.dir/AutoRcc_shaders_3QPYF6J63P_Used.txt",
+	"SOURCE" : "/home/edgar/Documents/projet_moteur/m2-temple-run/shaders/shaders.qrc",
+	"VERBOSITY" : 0
+}

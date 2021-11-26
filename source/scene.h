@@ -6,6 +6,7 @@
 #include "entity.h"
 #include "mesh.h"
 #include "geometryengine.h"
+#include "TimeStep.h"
 
 class Scene
 {
@@ -16,7 +17,7 @@ public:
     std::vector<Entity*> m_drawnEntities; // objects to draw
     std::vector<Entity*> m_physXentities; // physics of entities
     virtual void draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram); //maybe virtual if draw depends of the type scene
-    virtual void update(){};
+    virtual void update(TimeStep timeStep){};
 
 };
 

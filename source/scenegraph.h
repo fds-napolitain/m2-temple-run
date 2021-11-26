@@ -15,13 +15,16 @@ public:
 
         Entity* soleil = new Entity("soleil", Transform(QQuaternion(), QVector3D(), 1));
         Entity* terre = new Entity("Terre", Transform(QQuaternion(), QVector3D(2,0,0), 1));
+        Entity* lune = new Entity("lune", Transform(QQuaternion(), QVector3D(2,0,0), 0.5));
 
         soleil->addComponent(sphere);
         terre->addComponent(sphere);
+        lune->addComponent(sphere);
 
 
         addEntity(m_root, soleil);
         addEntity(soleil, terre);
+        addEntity(terre, lune);
         //m_entities.emplace_back(root);
     }
 
@@ -30,10 +33,10 @@ public:
         delete m_root;
     }
 
-    virtual void update();
+    virtual void update(TimeStep timeStep);
     inline Entity* getRoot()  {return m_root; }
     void addEntity(Entity* parent, Entity* entity);
-    void updateTransforms(Entity* root_node);
+    void updateTransforms(Entity* root_node, TimeStep deltaTime);
 
 private:
 

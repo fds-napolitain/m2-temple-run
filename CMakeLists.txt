@@ -3,6 +3,7 @@
 cmake_minimum_required(VERSION 3.16)
 project(TempleRun LANGUAGES CXX)
 
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -17,8 +18,8 @@ endif()
 set(INSTALL_EXAMPLEDIR "${INSTALL_EXAMPLESDIR}/opengl/TempleRun")
 
 find_package(Qt5 COMPONENTS Core)
-find_package(Qt5 COMPONENTS Gui)
 find_package(Qt5 COMPONENTS Widgets)
+find_package(Qt5 COMPONENTS Gui)
 find_package(Qt5 COMPONENTS OpenGL)
 
 add_executable(TempleRun main.cpp textures/textures.qrc models/models.qrc shaders/shaders.qrc
@@ -28,7 +29,7 @@ add_executable(TempleRun main.cpp textures/textures.qrc models/models.qrc shader
         source/transform.cpp source/transform.h
         source/physics/aabb.cpp source/physics/aabb.h source/physics/BoundingSphere.cpp source/physics/BoundingSphere.h source/physics/collider.cpp
         source/physics/collider.h source/physics/intersectdata.cpp source/physics/intersectdata.h source/physics/physicobject.cpp source/physics/physicobject.h
-        source/physics/physicsengine.cpp source/physics/physicsengine.h source/physics/plane.cpp source/physics/plane.h source/physics/ReferenceCounter.h)
+        source/physics/physicsengine.cpp source/physics/physicsengine.h source/physics/plane.cpp source/physics/plane.h source/physics/ReferenceCounter.h source/TimeStep.h)
 
 set_target_properties(TempleRun PROPERTIES
         WIN32_EXECUTABLE TRUE

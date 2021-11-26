@@ -1,0 +1,23 @@
+{
+	"BUILD_DIR" : "/home/edgar/Documents/projet_moteur/m2-temple-run/TempleRun_autogen",
+	"CMAKE_BINARY_DIR" : "/home/edgar/Documents/projet_moteur/m2-temple-run",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/edgar/Documents/projet_moteur/m2-temple-run",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/edgar/Documents/projet_moteur/m2-temple-run",
+	"CMAKE_SOURCE_DIR" : "/home/edgar/Documents/projet_moteur/m2-temple-run",
+	"INCLUDE_DIR" : "/home/edgar/Documents/projet_moteur/m2-temple-run/TempleRun_autogen/include",
+	"INPUTS" : 
+	[
+		"/home/edgar/Documents/projet_moteur/m2-temple-run/mesh/sphere.off",
+		"/home/edgar/Documents/projet_moteur/m2-temple-run/mesh/sphere.obj"
+	],
+	"LOCK_FILE" : "/home/edgar/Documents/projet_moteur/m2-temple-run/CMakeFiles/TempleRun_autogen.dir/AutoRcc_mesh_F62WXMJCP2_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "mesh" ],
+	"OUTPUT_CHECKSUM" : "F62WXMJCP2",
+	"OUTPUT_NAME" : "qrc_mesh.cpp",
+	"RCC_EXECUTABLE" : "/home/edgar/Qt/5.15.2/gcc_64/bin/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/home/edgar/Documents/projet_moteur/m2-temple-run/CMakeFiles/TempleRun_autogen.dir/AutoRcc_mesh_F62WXMJCP2_Used.txt",
+	"SOURCE" : "/home/edgar/Documents/projet_moteur/m2-temple-run/mesh/mesh.qrc",
+	"VERBOSITY" : 0
+}

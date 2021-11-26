@@ -34,11 +34,11 @@ public:
         }
     }
 
-    [[nodiscard]] inline const std::string getName() const {return m_name;}
+    [[nodiscard]] inline std::string getName() const {return m_name;}
     [[nodiscard]] inline const Entity* getParent() const {return m_parent;}
 
     [[nodiscard]] inline std::vector<Component*> getComponents() const {return m_components;}
-    [[nodiscard]] inline const Transform getTransform() const {return m_transform;}
+    [[nodiscard]] inline Transform getTransform() const {return m_transform;}
     [[nodiscard]] inline std::vector<Entity*> getChildren() const {return m_children;}
 
 

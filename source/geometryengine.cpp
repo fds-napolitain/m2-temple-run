@@ -162,16 +162,16 @@ void GeometryEngine::initCubeGeometry(int nH,int nW, int boardSizeX,int  boardSi
 }
 
 //! [2]
-void GeometryEngine::drawGeometry(QOpenGLShaderProgram *program, VertexData* vertices, unsigned short* indices, int vertexNumber, int indexCount, int format)
-{
+void GeometryEngine::drawGeometry(QOpenGLShaderProgram *program, VertexData* vertices, unsigned short* indices, int vertexNumber, int indexCount, int format) {
 
-    // Transfer vertex data to VBO 0
-    arrayBuf.bind();
-    arrayBuf.allocate(vertices, vertexNumber * sizeof(VertexData));
+	// Transfer vertex data to VBO 0
+	arrayBuf.bind();
+	arrayBuf.allocate(vertices, vertexNumber * sizeof(VertexData));
 
 //   //  Transfer index data to VBO 1
-    indexBuf.bind();
-    indexBuf.allocate(indices,  indexCount* sizeof(GLushort));
+	indexBuf.bind();
+	indexBuf.allocate(indices, indexCount * sizeof(GLushort));
+}
 
 void GeometryEngine::initMesh(const std::string& filename) {
 	std::vector<QVector3D> v;
@@ -210,7 +210,7 @@ void GeometryEngine::initMesh(const std::string& filename) {
 }
 
 //! [2]
-void GeometryEngine::drawGeometry(QOpenGLShaderProgram *program)
+void GeometryEngine::drawMeshGeometry(QOpenGLShaderProgram *program, VertexData *vertices, unsigned short *indices, int vertexNumber, int indexCount, int format)
 {
     // Tell OpenGL which VBOs to use
     arrayBuf.bind();

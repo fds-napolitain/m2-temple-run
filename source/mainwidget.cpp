@@ -47,7 +47,6 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#define STB_IMAGE_IMPLEMENTATION
 
 #include "mainwidget.hpp"
 #include <QMouseEvent>
@@ -324,7 +323,7 @@ void MainWidget::paintGL()
     program.setUniformValue("mvp_matrix", projection * matrix);
 
     // Draw cube geometry
-	scene->updateScene(program);
+	scene->update(timeStep);
 
 	// fps timing stuff
 	if (lastFrame->elapsed() >= 1000) {

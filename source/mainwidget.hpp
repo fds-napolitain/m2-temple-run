@@ -71,7 +71,7 @@
 
 class GeometryEngine;
 
-class MainWidget : public QOpenGLWidget, protected QOpenGLFunctions_3_1
+class MainWidget : public QOpenGLWidget, protected QOpenGLFunctions
 {
     Q_OBJECT
 
@@ -100,7 +100,7 @@ protected:
 private:
     QElapsedTimer currentTime;
     TimeStep timeStep;
-    QBasicTimer timer;
+	QTimer* timer;
 	QOpenGLShaderProgram program;
     GeometryEngine *geometries;
     Scene* scene;

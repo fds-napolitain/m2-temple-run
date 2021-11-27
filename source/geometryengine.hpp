@@ -51,7 +51,7 @@
 #ifndef GEOMETRYENGINE_H
 #define GEOMETRYENGINE_H
 
-#include <QOpenGLFunctions_3_1>
+#include <QOpenGLFunctions>
 #include <QOpenGLShaderProgram>
 #include <QOpenGLBuffer>
 
@@ -66,11 +66,11 @@ struct VertexData
     QVector2D texture;
 };
 
-class GeometryEngine : protected QOpenGLFunctions_3_1
+class GeometryEngine : protected QOpenGLFunctions
 {
 public:
     GeometryEngine();
-    ~GeometryEngine() override;
+    ~GeometryEngine();
 
     void drawGeometry(QOpenGLShaderProgram *program, VertexData *vertices, unsigned short *indices, int vertexNumber, int indexCount, int format);
     void drawMeshGeometry(QOpenGLShaderProgram *program, VertexData *vertices, unsigned short *indices, int vertexNumber, int indexCount, int format);

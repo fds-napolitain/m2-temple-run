@@ -64,8 +64,6 @@
 #include <iostream>
 #include <QOpenGLWidget>
 
-#define STB_IMAGE_IMPLEMENTATION
-
 
 //! [0]
 GeometryEngine::GeometryEngine()

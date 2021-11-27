@@ -196,21 +196,21 @@ void MainWidget::initializeGL()
 //! [3]
 void MainWidget::initShaders()
 {
-    // Compile vertex shader
-    if (!program.addShaderFromSourceFile(QOpenGLShader::Vertex, ":/vshader.glsl"))
-        close();
+	// Compile vertex shader
+	if (!program.addShaderFromSourceFile(QOpenGLShader::Vertex, ":/vshader.glsl"))
+		close();
 
-    // Compile fragment shader
-    if (!program.addShaderFromSourceFile(QOpenGLShader::Fragment, ":/fshader.glsl"))
-        close();
+	// Compile fragment shader
+	if (!program.addShaderFromSourceFile(QOpenGLShader::Fragment, ":/fshader.glsl"))
+		close();
 
-    // Link shader pipeline
-    if (!program.link())
-        close();
+	// Link shader pipeline
+	if (!program.link())
+		close();
 
-    // Bind shader pipeline for use
-    if (!program.bind())
-        close();
+	// Bind shader pipeline for use
+	if (!program.bind())
+		close();
 }
 //! [3]
 
@@ -269,10 +269,6 @@ void MainWidget::initScene()
 
 void MainWidget::paintGL()
 {
-
-
-
-
     timeStep = currentTime.nsecsElapsed() * 0.000000001;
     std::cout << floor(1/ timeStep) << std::endl;
     currentTime.restart();

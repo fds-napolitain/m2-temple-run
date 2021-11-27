@@ -76,14 +76,14 @@ class MainWidget : public QOpenGLWidget, protected QOpenGLFunctions_3_1
 public:
 
     explicit MainWidget(QWidget *parent = 0);
-    ~MainWidget();
+    ~MainWidget() override;
 
 protected:
     void mousePressEvent(QMouseEvent *e) override;
     void mouseReleaseEvent(QMouseEvent *e) override;
     void timerEvent(QTimerEvent *e) override;
 
-    void keyPressEvent(QKeyEvent *event);
+    void keyPressEvent(QKeyEvent *event) override;
 
     void initializeGL() override;
     void resizeGL(int w, int h) override;

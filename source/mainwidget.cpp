@@ -63,9 +63,16 @@ MainWidget::MainWidget(QWidget *parent) :
     angularSpeed(0)
 
 {
-
     //initSphereGeometry(this->sphere);
+}
 
+
+MainWidget::MainWidget(TargetFPS fps, QWidget *parent) :   	 QOpenGLWidget(parent),
+															 geometries(nullptr),
+															 texture(nullptr),
+															 angularSpeed(0)
+{
+	this->fps = fps;
 }
 
 MainWidget::~MainWidget()
@@ -204,7 +211,7 @@ void MainWidget::initializeGL()
     // Use QBasicTimer because its faster than QTimer
 	timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(doUpdate()));
-	timer->start(1000/60.0);
+	timer->start(fps.getTimePerFrame());
 }
 
 //! [3]
@@ -301,7 +308,7 @@ void MainWidget::initScene()
 void MainWidget::paintGL()
 {
     timeStep = currentTime.nsecsElapsed() * 0.000000001;
-    std::cout << floor(1/ timeStep) << std::endl;
+    std::cout << "fps: " << floor(1/ timeStep) << " interval: " << fps.getSwapInterval() << " ms: " << fps.getTimePerFrame() << std::endl;
     currentTime.restart();
 
 
@@ -343,7 +350,7 @@ void MainWidget::paintGL()
 
     // Draw cube geometry
 	scene->update(timeStep);
-	timer->start(1000/60.0);
+	timer->start(fps.getTimePerFrame());
 }
 
 /**

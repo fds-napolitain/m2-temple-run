@@ -56,6 +56,7 @@
 #include "scenegraph.hpp"
 #include "mesh.hpp"
 #include "TimeStep.hpp"
+#include "TargetFPS.hpp"
 
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions>
@@ -77,6 +78,7 @@ class MainWidget : public QOpenGLWidget, protected QOpenGLFunctions
 public:
     using QOpenGLWidget::QOpenGLWidget;
     explicit MainWidget(QWidget *parent = nullptr);
+    explicit MainWidget(TargetFPS fps, QWidget *parent = nullptr);
     ~MainWidget() override;
 
 protected:
@@ -96,6 +98,7 @@ protected:
     std::vector<VertexData> sphere;
 
 private:
+	TargetFPS fps = TargetFPS(60);
     QElapsedTimer currentTime;
 	QTimer* timer;
     TimeStep timeStep;

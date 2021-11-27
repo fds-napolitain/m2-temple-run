@@ -52,14 +52,14 @@
 #include <QMouseEvent>
 #include <QElapsedTimer>
 
-#include <math.h>
+#include <cmath>
 #include"BasicIO.hpp"
 
 
 MainWidget::MainWidget(QWidget *parent) :
     QOpenGLWidget(parent),
-    geometries(0),
-    texture(0),
+    geometries(nullptr),
+    texture(nullptr),
     angularSpeed(0)
 
 {
@@ -122,10 +122,7 @@ void MainWidget::timerEvent(QTimerEvent *)
         // Update rotation
         rotation = QQuaternion::fromAxisAndAngle(rotationAxis, angularSpeed) * rotation ;
 
-        // Request an update
-        if (targetFPS == -1) {
-			update();
-		}
+		update();
     }
 }
 //! [1]
@@ -194,11 +191,6 @@ void MainWidget::initializeGL()
     initScene();
 
     // Use QBasicTimer because its faster than QTimer
-	if (targetFPS != -1) {
-		timer = new QTimer(this);
-		connect(timer, SIGNAL(timeout()), this, SLOT(doUpdate()));
-		timer->start(1000/targetFPS);
-	}
 }
 
 //! [3]
@@ -324,20 +316,6 @@ void MainWidget::paintGL()
 
     // Draw cube geometry
 	scene->update(timeStep);
-
-	// fps timing stuff
-	if (lastFrame->elapsed() >= 1000) {
-		std::cout << "FPS: " << fps << "\n";
-		lastFrame->restart();
-		fps = 0;
-	}
-	fps++;
-
-	if (targetFPS == -1) {
-		update();
-	} else {
-		timer->start(1000/targetFPS);
-	}
 }
 
 /**

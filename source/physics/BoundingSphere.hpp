@@ -15,7 +15,7 @@ public:
     m_radius(radius)
     {};
 
-    IntersectData instersectBoundingSphere(const BoundingSphere& other );
+    IntersectData intersectBoundingSphere(const BoundingSphere& other );
     void Transform(const QVector3D& translation) override;
 
     [[nodiscard]] inline QVector3D getCenter() const override { return m_center;}

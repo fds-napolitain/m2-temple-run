@@ -62,11 +62,9 @@
 #include <QMatrix4x4>
 #include <QQuaternion>
 #include <QVector2D>
-#include <QBasicTimer>
 #include <QOpenGLShaderProgram>
 #include <QOpenGLTexture>
 #include <source/scene.hpp>
-#include <QTimer>
 #include <QElapsedTimer>
 
 class GeometryEngine;
@@ -93,14 +91,12 @@ protected:
 
     void initShaders();
     void initTextures();
-    void initSphereGeometry(std::vector<VertexData>& points, std::vector<GLushort>& indices);
     void initScene();
     std::vector<VertexData> sphere;
 
 private:
     QElapsedTimer currentTime;
     TimeStep timeStep;
-	QTimer* timer;
 	QOpenGLShaderProgram program;
     GeometryEngine *geometries;
     Scene* scene;
@@ -116,9 +112,6 @@ private:
     QVector3D rotationAxis;
     qreal angularSpeed;
     QQuaternion rotation;
-	float fps = 0; // frames per second
-	float targetFPS = 60; // -1 = maximum
-	QElapsedTimer* lastFrame = new QElapsedTimer();
 
 private slots:
 	void doUpdate();

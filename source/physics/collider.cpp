@@ -7,7 +7,7 @@ IntersectData Collider::Intersect(const Collider& other) const
     if(this->getType() == TYPE_SPHERE && other.getType() == TYPE_SPHERE )
     {
         BoundingSphere *self = (BoundingSphere*)this;
-        return self->instersectBoundingSphere((BoundingSphere&)other);
+        return self->intersectBoundingSphere((BoundingSphere &) other);
     }
 
     std::cout << "error";

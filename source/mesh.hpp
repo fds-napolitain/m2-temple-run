@@ -30,9 +30,9 @@ public:
     void loadMesh(const std::string& path, int format);
     void initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY);
 
-    [[nodiscard]] inline const std::vector<VertexData> getVertices() const {return m_vertex;}
+    [[nodiscard]] inline std::vector<VertexData> getVertices() const {return m_vertex;}
 
-    [[nodiscard]] inline const std::vector<unsigned short> getIndices() const {return m_indices;}
+    [[nodiscard]] inline std::vector<unsigned short> getIndices() const {return m_indices;}
     void draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, int format);
 
    static unsigned short* indextoArray(unsigned short* arr, std::vector<unsigned short> &indices);

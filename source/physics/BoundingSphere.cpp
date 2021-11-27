@@ -1,6 +1,6 @@
 #include "BoundingSphere.hpp"
 
-IntersectData BoundingSphere::instersectBoundingSphere(const BoundingSphere& other){
+IntersectData BoundingSphere::intersectBoundingSphere(const BoundingSphere& other){
     float radiusDistance = m_radius + other.getRadius();
 
     QVector3D direction = (other.getCenter()- m_center);

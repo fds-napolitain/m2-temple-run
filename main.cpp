@@ -69,9 +69,9 @@ int main(int argc, char *argv[])
     QSurfaceFormat::setDefaultFormat(format);
 
     QApplication::setApplicationName("Temple Run");
-    QApplication::setApplicationVersion("0.1");
+    QApplication::setApplicationVersion("1.0");
 #ifndef QT_NO_OPENGL
-    MainWidget widget(fps);
+    MainWidget widget;
     widget.show();
 #else
     QLabel note("OpenGL Support required");

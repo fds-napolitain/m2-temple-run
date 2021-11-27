@@ -22,7 +22,7 @@ TargetFPS::TargetFPS(int fps) {
 		this->swapInterval = 0;
 	} else {
 		this->targetFPS = fps;
-		this->swapInterval = 1/(targetFPS/60);
+		this->swapInterval = 1.0/(targetFPS/60.0);
 	}
 }
 

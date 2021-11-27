@@ -12,7 +12,10 @@ Transform::Transform( QQuaternion r, QVector3D trans, float s)
     :
         scale(s),
         rotate(r),
-        position(trans)
+        position(trans),
+        velocity(QVector3D()),
+        rotation(QQuaternion()),
+        rescale(1)
 
 {
 

@@ -11,12 +11,19 @@ public:
         Scene(),
         m_root(root)
     {
-        Mesh* sphere = new Mesh(":/sphere.off", Mesh::OFFIO);
+        Transform soleilTransform = Transform(QQuaternion(), QVector3D(), 1);
 
-        Entity* soleil = new Entity("soleil", Transform(QQuaternion(), QVector3D(), 1));
+        Entity* soleil = new Entity("soleil", soleilTransform );
         Entity* terre = new Entity("Terre", Transform(QQuaternion(), QVector3D(2,0,0), 1));
         Entity* lune = new Entity("lune", Transform(QQuaternion(), QVector3D(2,0,0), 0.5));
 
+        Mesh* sphere = new Mesh(":/sphere.off", Mesh::OFFIO);
+        PhysicObject* soleilPhysics = new PhysicObject(new BoundingSphere(soleilTransform.position, soleilTransform.scale), soleilTransform);
+
+        m_physics->addObject(*soleilPhysics);
+        m_physXentities.push_back(soleil);
+
+        soleil->addComponent(soleilPhysics);
         soleil->addComponent(sphere);
         terre->addComponent(sphere);
         lune->addComponent(sphere);
@@ -25,6 +32,8 @@ public:
         addEntity(m_root, soleil);
         addEntity(soleil, terre);
         addEntity(terre, lune);
+
+        
         //m_entities.emplace_back(root);
     }
 
@@ -37,6 +46,7 @@ public:
     inline Entity* getRoot()  {return m_root; }
     void addEntity(Entity* parent, Entity* entity);
     void updateTransforms(Entity* root_node, TimeStep deltaTime);
+    void updatePhysics();
 
 private:
 

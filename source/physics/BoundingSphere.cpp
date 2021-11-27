@@ -12,6 +12,7 @@ IntersectData BoundingSphere::instersectBoundingSphere(const BoundingSphere& oth
 }
 
 
-void BoundingSphere::Transform(const QVector3D& transform){
-    m_center += transform;
+void BoundingSphere::TransformCollider(const Transform& transform){
+    // peut etre faire plus générale avec transform.applyToPoint(m_center) et m_radius = transform.scale ;
+    m_center += transform.position;
 };

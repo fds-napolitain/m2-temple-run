@@ -373,7 +373,7 @@ namespace OBJIO{
                     std::vector< int_type_t > vhandles;
                     for( int i = 1 ; i < lineElements.size() ; ++i )
                     {
-                        QStringList FaceElements = lineElements[i].split("/", QString::SkipEmptyParts);
+                        QStringList FaceElements = lineElements[i].split("/", Qt::SkipEmptyParts);
                         if( !FaceElements.empty() )
                             vhandles.push_back( (int_type_t)( (abs(FaceElements[0].toInt()) - 1) ) );
                     }
@@ -462,7 +462,7 @@ namespace OBJIO{
                     std::vector< int_type_t > vhandles;
                     for( int i = 1 ; i < lineElements.size() ; ++i )
                     {
-                        QStringList FaceElements = lineElements[i].split("/", QString::SkipEmptyParts);
+                        QStringList FaceElements = lineElements[i].split("/", Qt::SkipEmptyParts);
                         if( !FaceElements.empty() )
                             vhandles.push_back( (int_type_t)( (abs(FaceElements[0].toInt()) - 1) ) );
                     }
@@ -501,7 +501,7 @@ namespace OBJIO{
                     std::vector< int_type_t > vhandles;
                     for( int i = 1 ; i < lineElements.size() ; ++i )
                     {
-                        QStringList FaceElements = lineElements[i].split("/", QString::SkipEmptyParts);
+                        QStringList FaceElements = lineElements[i].split("/", Qt::SkipEmptyParts);
                         if( !FaceElements.empty() )
                             vhandles.push_back( (int_type_t)( (abs(FaceElements[0].toInt()) - 1) ) );
                     }
@@ -543,7 +543,7 @@ namespace OBJIO{
             QString QTLine = QString::fromStdString( line );
             QRegExp reg("\\s+");
             QStringList lineElements = QTLine.split(reg);
-            //        QStringList lineElementsBeforeCleaning = QTLine.split(" ", QString::SkipEmptyParts);
+            //        QStringList lineElementsBeforeCleaning = QTLine.split(" ", Qt::SkipEmptyParts);
             //        QStringList lineElements;
             //        for( int e = 0 ; e < lineElementsBeforeCleaning.size() ; ++e )
             //        {

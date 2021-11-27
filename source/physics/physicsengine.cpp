@@ -1,6 +1,8 @@
 #include "physicsengine.hpp"
 #include "stdio.h"
 
+// ##################################################" CLASS WILL BE DELETED
+
 PhysicsEngine::PhysicsEngine()
 {
 
@@ -12,10 +14,10 @@ void PhysicsEngine::addObject(const PhysicObject& object)
     m_objects.push_back(object);
 }
 
-void PhysicsEngine::simulate(float delta)
+void PhysicsEngine::updateColliders(Transform& transform)
 {
     for(unsigned int i=0; i<m_objects.size(); i++){
-		m_objects[i].intergrate(delta);
+		m_objects[i].integrate(transform);
     }
 }
 

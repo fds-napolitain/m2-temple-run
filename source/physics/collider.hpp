@@ -25,7 +25,7 @@ public:
     [[nodiscard]] inline int getType() const {return m_type;}
 
     [[nodiscard]] IntersectData Intersect(const Collider& other) const;
-    virtual void Transform(const QVector3D& transform){};
+    virtual void TransformCollider(const Transform& transform){};
     [[nodiscard]] inline virtual QVector3D getCenter() const {return QVector3D();}
 
 private:

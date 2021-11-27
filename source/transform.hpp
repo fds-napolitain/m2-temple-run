@@ -16,9 +16,17 @@ public:
     QMatrix4x4  matrix;
 
     //local transform
+    //TODO: change float to qvec3d to handle non uniform scales
     float       scale;  //uniform scale
     QQuaternion rotate;
     QVector3D   position;
+
+    QVector3D   velocity;
+    QQuaternion rotation;
+    float       rescale;
+
+
+    
 
    //methods
     QMatrix4x4 getModelMatrix();

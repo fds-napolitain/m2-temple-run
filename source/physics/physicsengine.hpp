@@ -4,14 +4,17 @@
 #include "physicobject.hpp"
 #include <vector>
 #include "BoundingSphere.hpp"
+#include "../TimeStep.hpp"
 
+
+// ##################################################" CLASS WILL BE DELETED
 class PhysicsEngine
 {
 public:
     PhysicsEngine();
 
     void addObject(const PhysicObject& object);
-    void simulate(float delta);
+    void updateColliders(Transform& transform);
 
     void handleCollisions();
 

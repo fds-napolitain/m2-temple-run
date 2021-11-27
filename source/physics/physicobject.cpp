@@ -1,13 +1,17 @@
 #include "physicobject.hpp"
 
-void PhysicObject::intergrate(float delta){
-    m_position += m_velocity * delta;
+
+// ##################################################" CLASS WILL BE DELETED
+
+void PhysicObject::integrate(Transform& transform){
+    m_transform.combineWith(transform);
+    m_collider->TransformCollider(m_transform);
+    
 }
 
 PhysicObject::PhysicObject(const PhysicObject& other) :
-    m_position(other.m_position),
+    m_transform(other.m_transform),
     m_oldPosition(other.m_oldPosition),
-    m_velocity(other.m_velocity),
     m_collider(other.m_collider)
 
 {

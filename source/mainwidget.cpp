@@ -289,6 +289,7 @@ void MainWidget::paintGL()
 
 
     timeStep =  currentTime.nsecsElapsed() * 0.000000001;
+    
     std::cout << floor(1/ timeStep) << std::endl;
     currentTime.restart();
 

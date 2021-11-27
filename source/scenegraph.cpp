@@ -13,7 +13,18 @@ void SceneGraph::update(TimeStep deltaTime)
 {
 
     updateTransforms(m_root, deltaTime);
-    //updateCollisons();
+    updatePhysics();
+}
+
+
+void SceneGraph::updatePhysics()
+{
+    for(auto& ent : m_physXentities)
+    {
+        Transform updatedTransform = ent->getTransform();
+        m_physics->updateColliders(updatedTransform);
+    }
+        m_physics->handleCollisions();
 }
 
 void SceneGraph::updateTransforms(Entity* current, TimeStep deltaTime)

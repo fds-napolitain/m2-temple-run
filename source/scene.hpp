@@ -1,20 +1,24 @@
-//
-// Created by Maxime Boucher on 06/11/2021.
-//
+#ifndef SCENE_H
+#define SCENE_H
 
-#ifndef CUBE_SCENE_HPP
-#define CUBE_SCENE_HPP
+#include "physics/physicobject.hpp"
+#include "physics/physicsengine.hpp"
+#include "entity.hpp"
+#include "mesh.hpp"
+#include "geometryengine.hpp"
+#include "TimeStep.hpp"
 
-#include <source/gameobject.hpp>
-
-class Scene {
-private:
-    GameObject* world;
+class Scene
+{
 public:
-	Scene();
-	~Scene();
-	void updateScene(QOpenGLShaderProgram& program);
+    Scene();
+    virtual ~Scene();
+    PhysicsEngine *m_physics{};
+    std::vector<Entity*> m_drawnEntities; // objects to draw
+    std::vector<Entity*> m_physXentities; // physics of entities
+    virtual void draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram); //maybe virtual if draw depends of the type scene
+    virtual void update(TimeStep timeStep){};
+
 };
 
-
-#endif //CUBE_SCENE_HPP
+#endif // SCENE_H

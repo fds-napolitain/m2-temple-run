@@ -1,59 +1,80 @@
 #include "transform.hpp"
 
-Transform::Transform() = default;
-
-Transform::Transform(QQuaternion r, QVector3D t, float s) {
-	translate = t;
-	rotate = r;
-	scale = s;
+Transform::Transform()
+{
+    matrix = QMatrix4x4();
+    rotate = QQuaternion();
+    scale = 1;
+    position = QVector3D();
 }
 
-Transform::~Transform() = default;
+Transform::Transform( QQuaternion r, QVector3D trans, float s)
+    :
+        scale(s),
+        rotate(r),
+        position(trans)
 
-QVector4D Transform::apply(QVector4D p) const {
-    // verifier que this.scale est uniforme
-    // verifie que this.matrix n'est pas une normal (matrice de transformation normal)
+{
+
+}
+
+QMatrix4x4 Transform::getLocalModelMatrix() const{
+
+    QMatrix4x4 modelMatrix = QMatrix4x4(rotate.toRotationMatrix() * scale);
+    modelMatrix(0,3) = position.x();
+    modelMatrix(1,3) = position.y();
+    modelMatrix(2,3) = position.z();
+    modelMatrix(3,3) = 1;
+
+    return modelMatrix;
+
+}
+
+
+
+
+
+QVector3D Transform::applyToPoint(QVector3D p) const
+{
+    return ( rotate.rotatedVector(p) * scale) + position   ;
+}
+
+QVector3D Transform::applyToVector(QVector3D v) const
+{
+    return ( rotate.rotatedVector(v) * scale );
+}
+
+QVector3D Transform::applyToVersor(QVector3D v) const
+{
+    return ( rotate.rotatedVector(v) );
+}
+
+QVector4D Transform::apply(QVector4D p) const{
+
     QVector3D t = QVector3D(p.x(), p.y(), p.z());
-    t = (rotate.rotatedVector(t) + translate) * scale;
+    t = (rotate.rotatedVector(t) + position )* scale;
+
     return QVector4D(t.x(), t.y(), t.z(), p.w());
 }
 
-QVector3D Transform::applyToPoint(QVector3D p) const {
-    return (rotate.rotatedVector(p) + translate) * scale;
-}
-
-QVector3D Transform::applyToVector(QVector3D v) const {
-    return (rotate.rotatedVector(v)) * scale;
-}
-
-QVector3D Transform::applyToVersor(QVector3D v) const {
-    return rotate.rotatedVector(v);
-}
-
-QMatrix4x4 Transform::getLocalMatrix() {
-	matrix = (QMatrix4x4(rotate.toRotationMatrix()) * scale);
-	matrix(0, 3) = translate.x();
-	matrix(1, 3) = translate.y();
-	matrix(2, 3) = translate.z();
-	matrix(3, 3) = 1;
-	return matrix;
-}
-
 Transform Transform::combineWith(Transform& transform) {
-	this->rotate *= transform.rotate;
-	this->translate += transform.translate;
-	this->scale *= transform.scale;
-	return *this;
+    this->rotate *= transform.rotate;
+    this->position += transform.position;
+    this->scale *= transform.scale;
+    return *this;
 }
 
-Transform Transform::inverse() const {
-    return Transform(rotate.inverted(), -translate, 1/scale);
+
+
+QMatrix4x4 Transform::inverseWorld() const{
+    return matrix.inverted();
+
 }
 
-Transform Transform::interpolateWith(Transform& transform, float k) const {
-    Transform t;
-    t.scale = scale*k + transform.scale*(1-k);
-    QQuaternion::slerp(rotate, transform.rotate, k);
-    t.translate = translate*k + transform.translate*(1-k);
-    return t;
+QVector3D Transform::getWorldTranslate(){
+    return QVector3D(this->matrix(0,3), this->matrix(1,3), this->matrix(2,3));
+
+
 }
+
+

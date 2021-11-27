@@ -1,30 +1,73 @@
 #ifndef TRANSFORM_H
 #define TRANSFORM_H
-
 #include <QVector3D>
-#include <QVector4D>
 #include <QMatrix4x4>
-#include "component.hpp"
 
-class Transform : public Component {
+class Transform
+{
 public:
-    float scale = 1;
-    QQuaternion rotate;
-    QVector3D translate;
-    QMatrix4x4 matrix;
-
     Transform();
-    Transform(QQuaternion rotate, QVector3D translate = QVector3D(0.0, 0.0, 0.0), float s = 1);
-    ~Transform() override;
-    [[nodiscard]] QVector4D apply(QVector4D p) const;
-    [[nodiscard]] QVector3D applyToPoint(QVector3D p) const;
-    [[nodiscard]] QVector3D applyToVector(QVector3D v) const;
-    [[nodiscard]] QVector3D applyToVersor(QVector3D v) const;
-    Transform combineWith(Transform& transform);
-    [[nodiscard]] Transform inverse() const;
-    Transform interpolateWith(Transform& transform, float k) const;
-	QMatrix4x4 getLocalMatrix();
+
+
+    Transform(QQuaternion rotate, QVector3D trans, float s);
+
+   //fields
+    // world transform
+    QMatrix4x4  matrix;
+
+    //local transform
+    float       scale;  //uniform scale
+    QQuaternion rotate;
+    QVector3D   position;
+
+   //methods
+    QMatrix4x4 getModelMatrix();
+    QMatrix4x4 getLocalModelMatrix() const;
+
+    void computeModelMatrix();
+    void computeModelMatrix(const QMatrix4x4 &parentMatrix);
+
+    QVector3D getWorldTranslate();
+    QVector4D apply(QVector4D p) const;
+    QVector3D applyToPoint(QVector3D  p) const;
+    QVector3D applyToVector(QVector3D v) const;
+    QVector3D applyToVersor(QVector3D v) const;
+    Transform combineWith(Transform &t);
+    QMatrix4x4 inverseWorld() const;
+
+    Transform interpolate(Transform &t, float k){
+        Transform result;
+        result.scale = this->scale * k +t.scale *(1-k);                 // scale interpolation
+        rotate.slerp(this->rotate, t.rotate, k);                        // spherical linear interpolation for quaternion
+        result.position = this->position * k+t.position * (1-k);     // translation interpolation
+        return result;
+    }
+
+
+    Transform operator*(Transform& local)
+    {
+        Transform res = Transform(this->rotate * local.rotate, this->position + local.position, this->scale * local.scale);
+        return res;
+    }
+
+
+    inline static QVector3D VecMax(const QVector3D& v1,const QVector3D& v2 ){
+        QVector3D res;
+        for (unsigned int i =0; i<3 ; i++ ) {
+            res[i] = v1[i] > v2[i] ? v1[i] : v2[i];
+        }return res;
+    }
+
+    inline static float VecMaxValue(const QVector3D& v){
+        float res = v[0];
+        for (unsigned int i =1; i<3 ; i++ ) {
+            if(v[i] > res){
+                res = v[i];
+            }
+        }
+        return res;
+    }
 };
 
-#endif
 
+#endif // TRANSFORM_H

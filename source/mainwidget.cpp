@@ -47,18 +47,26 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
+#define STB_IMAGE_IMPLEMENTATION
 
 #include "mainwidget.hpp"
 #include <QMouseEvent>
 #include <QElapsedTimer>
 
+#include <math.h>
+#include"BasicIO.hpp"
+
+
 MainWidget::MainWidget(QWidget *parent) :
     QOpenGLWidget(parent),
-    //geometries(0),
+    geometries(0),
     texture(0),
     angularSpeed(0)
 
 {
+
+    //initSphereGeometry(this->sphere);
+
 }
 
 MainWidget::~MainWidget()
@@ -67,7 +75,11 @@ MainWidget::~MainWidget()
     // and the buffers.
     makeCurrent();
     delete texture;
-	delete scene;
+    delete heightmap;
+    delete snow;
+    delete rock;
+    delete geometries;
+    delete scene;
     doneCurrent();
 }
 
@@ -109,7 +121,7 @@ void MainWidget::timerEvent(QTimerEvent *)
         angularSpeed = 0.0;
     } else {
         // Update rotation
-        rotation = QQuaternion::fromAxisAndAngle(rotationAxis, angularSpeed) * rotation;
+        rotation = QQuaternion::fromAxisAndAngle(rotationAxis, angularSpeed) * rotation ;
 
         // Request an update
         if (targetFPS == -1) {
@@ -118,6 +130,44 @@ void MainWidget::timerEvent(QTimerEvent *)
     }
 }
 //! [1]
+
+void MainWidget::keyPressEvent(QKeyEvent *event)
+{
+
+
+
+    switch (event->key()) {
+        case Qt::Key_Z: /* haut */
+            projection.translate(QVector3D(0.0, -1.0, 0.0) * timeStep);
+            break;
+        case Qt::Key_Q: /* gauche */;
+            projection.translate(QVector3D(1.0, 0.0, 0.0) * timeStep);
+            break;
+        case Qt::Key_D: /*droite */
+            projection.translate(QVector3D(-1.0, 0.0, 0.0) * timeStep);
+          break;
+        case Qt::Key_S: /* bas */
+            projection.translate(QVector3D(0.0, 1.0, 0.0) * timeStep);
+            break;
+        case Qt::Key_A: /* descendre */
+            projection.translate(QVector3D(0.0, 0.0, 5.0) * timeStep);;
+            break;
+        case Qt::Key_E: /* monter */
+            projection.translate(QVector3D(0.0, 0.0, -5.0) * timeStep);
+            break;
+
+
+
+
+
+    }
+
+    //projection.translate(0.0, 0.0, -1.0) ;
+      update();
+
+    // Save mouse press position
+  //  mousePressPosition = QVector2D(e->localPos());
+}
 
 void MainWidget::initializeGL()
 {
@@ -134,16 +184,15 @@ void MainWidget::initializeGL()
 
     // Enable back face culling
     glEnable(GL_CULL_FACE);
-
-	lastFrame->start();
-	fmt.setSwapInterval(1); //vsync
-	this->setFormat(fmt);
-	QSurfaceFormat::setDefaultFormat(fmt);
-
-
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_POLYGON);
 //! [2]
 
-	scene = new Scene();
+
+
+   // geometries = new GeometryEngine;
+
+    currentTime.start();
+    initScene();
 
     // Use QBasicTimer because its faster than QTimer
 	if (targetFPS != -1) {
@@ -178,17 +227,29 @@ void MainWidget::initShaders()
 void MainWidget::initTextures()
 {
     // Load cube.png image
-    texture = new QOpenGLTexture(QImage(":/cube.png").mirrored());
+    texture = new QOpenGLTexture(QImage(":/grass.png").mirrored());
+    rock = new QOpenGLTexture(QImage(":/rock.png").mirrored());
+    snow = new QOpenGLTexture(QImage(":/snowrocks.png").mirrored());
+    heightmap = new QOpenGLTexture(QImage(":/Heightmap_Rocky.png").mirrored());
 
     // Set nearest filtering mode for texture minification
     texture->setMinificationFilter(QOpenGLTexture::Nearest);
+    rock->setMinificationFilter(QOpenGLTexture::Nearest);
+    snow->setMinificationFilter(QOpenGLTexture::Nearest);
+    //heightmap->setMinificationFilter(QOpenGLTexture::Nearest);
 
     // Set bilinear filtering mode for texture magnification
     texture->setMagnificationFilter(QOpenGLTexture::Linear);
+    rock->setMagnificationFilter(QOpenGLTexture::Linear);
+    snow->setMagnificationFilter(QOpenGLTexture::Linear);
+   // heightmap->setMagnificationFilter(QOpenGLTexture::Linear);
 
     // Wrap texture coordinates by repeating
     // f.ex. texture coordinate (1.1, 1.2) is same as (0.1, 0.2)
     texture->setWrapMode(QOpenGLTexture::Repeat);
+    rock->setWrapMode(QOpenGLTexture::Repeat);
+    snow->setWrapMode(QOpenGLTexture::Repeat);
+    heightmap->setWrapMode(QOpenGLTexture::Repeat);
 }
 //! [4]
 
@@ -199,7 +260,7 @@ void MainWidget::resizeGL(int w, int h)
     qreal aspect = qreal(w) / qreal(h ? h : 1);
 
     // Set near plane to 3.0, far plane to 7.0, field of view 45 degrees
-    const qreal zNear = 3.0, zFar = 20.0, fov = 45.0;
+    const qreal zNear = 1.0, zFar = 500.0, fov = 45.0;
 
     // Reset projection
     projection.setToIdentity();
@@ -209,25 +270,58 @@ void MainWidget::resizeGL(int w, int h)
 }
 //! [5]
 
+void MainWidget::initScene()
+{
+     scene = new SceneGraph(new Entity("World"));
+     geometries = new GeometryEngine();
+}
+
 void MainWidget::paintGL()
 {
-	// Clear color and depth buffer
+
+
+
+
+    timeStep = currentTime.nsecsElapsed() * 0.000000001;
+    std::cout << floor(1/ timeStep) << std::endl;
+    currentTime.restart();
+
+
+    // Clear color and depth buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     texture->bind(0);
+    heightmap->bind(1);
+    rock->bind(2);
+    snow->bind(3);
 
 //! [6]
     // Calculate model view transformation
     QMatrix4x4 matrix;
-    matrix.translate(0.0, 0.0, -5.0);
-	matrix.rotate(rotation);
+    matrix.translate(0.0, 0.0, -10.0);
+    matrix.rotate(rotation);
 
     // Set modelview-projection matrix
-    program.setUniformValue("mvp_matrix", projection * matrix);
 //! [6]
+//!
+//!
+//! ../TP3/Qt_solar/sphere.obj
+
 
     // Use texture unit 0 which contains cube.png
+   // SceneGraph* sg = (SceneGraph*) scene;
+    //std::vector<Component> t =  sg->getRoot()->getComponents();
+  //  Mesh* g = dynamic_cast<Mesh*>(&t[0]);
+  // std::cout << g->getIndices().size() << " "  << g->getVertices().size() << std::endl;
+
+    scene->draw(geometries, program);
+    scene->update(timeStep);
+
+    //gScene->update()
+
+
     program.setUniformValue("texture", 0);
+    program.setUniformValue("mvp_matrix", projection * matrix);
 
     // Draw cube geometry
 	scene->updateScene(program);

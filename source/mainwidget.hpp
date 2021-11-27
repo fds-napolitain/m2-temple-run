@@ -51,6 +51,12 @@
 #ifndef MAINWIDGET_H
 #define MAINWIDGET_H
 
+#include "geometryengine.hpp"
+
+#include "scenegraph.hpp"
+#include "mesh.hpp"
+#include "TimeStep.hpp"
+
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions>
 #include <QMatrix4x4>
@@ -65,19 +71,21 @@
 
 class GeometryEngine;
 
-class MainWidget : public QOpenGLWidget, protected QOpenGLFunctions
+class MainWidget : public QOpenGLWidget, protected QOpenGLFunctions_3_1
 {
     Q_OBJECT
 
 public:
     using QOpenGLWidget::QOpenGLWidget;
     explicit MainWidget(QWidget *parent = 0);
-    ~MainWidget();
+    ~MainWidget() override;
 
 protected:
     void mousePressEvent(QMouseEvent *e) override;
     void mouseReleaseEvent(QMouseEvent *e) override;
-	void timerEvent(QTimerEvent *e) override;
+    void timerEvent(QTimerEvent *e) override;
+
+    void keyPressEvent(QKeyEvent *event) override;
 
     void initializeGL() override;
     void resizeGL(int w, int h) override;
@@ -85,20 +93,28 @@ protected:
 
     void initShaders();
     void initTextures();
+    void initSphereGeometry(std::vector<VertexData>& points, std::vector<GLushort>& indices);
+    void initScene();
+    std::vector<VertexData> sphere;
 
 private:
-	QSurfaceFormat fmt;
-	Scene* scene = nullptr;
-    QTimer* timer;
-    QOpenGLShaderProgram program;
+    QElapsedTimer currentTime;
+    TimeStep timeStep;
+    QBasicTimer timer;
+	QOpenGLShaderProgram program;
+    GeometryEngine *geometries;
+    Scene* scene;
 
-    QOpenGLTexture *texture = nullptr;
+    QOpenGLTexture *texture;
+    QOpenGLTexture *rock;
+    QOpenGLTexture *snow;
+    QOpenGLTexture *heightmap;
 
     QMatrix4x4 projection;
 
     QVector2D mousePressPosition;
     QVector3D rotationAxis;
-    qreal angularSpeed = 0;
+    qreal angularSpeed;
     QQuaternion rotation;
 	float fps = 0; // frames per second
 	float targetFPS = 60; // -1 = maximum

@@ -112,10 +112,6 @@ private:
     QVector3D rotationAxis;
     qreal angularSpeed;
     QQuaternion rotation;
-
-private slots:
-	void doUpdate();
-
 };
 
 #endif // MAINWIDGET_H

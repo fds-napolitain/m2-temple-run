@@ -10,10 +10,10 @@ void Mesh::loadMesh(const std::string &path, int format){
     std::vector<std::vector<unsigned int>> indices;
     switch(format){
         case OFFIO:
-            OFFIO::open(path, vertexs, indices);
+            offio::open(path, vertexs, indices);
             break;
         case OBJIO:
-            OBJIO::open(path, vertexs, indices);
+            objio::open(path, vertexs, indices);
             break;
     }
 

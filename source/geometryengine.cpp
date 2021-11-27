@@ -194,7 +194,7 @@ void GeometryEngine::initMesh(const std::string& filename) {
 	std::vector<QVector3D> v;
 	std::vector<std::vector<unsigned int>> f;
 
-	OFFIO::open(filename, v, f, true);
+	offio::open(filename, v, f, true);
 
 	unsigned int vertexNumber = v.size();
 	VertexData vertices[vertexNumber];

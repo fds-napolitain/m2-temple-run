@@ -322,7 +322,4 @@ void MainWidget::paintGL()
 /**
  * slot action: update for target fps
  */
-void MainWidget::doUpdate() {
-	update();
-}
 

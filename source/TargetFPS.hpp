@@ -9,9 +9,10 @@
 class TargetFPS {
 
 private:
-	float targetFPS;
+	int targetFPS;
 	int swapInterval;
 public:
+	TargetFPS();
 	explicit TargetFPS(int fps);
 	[[nodiscard]] float getTimePerFrame() const;
 	[[nodiscard]] int getSwapInterval() const;

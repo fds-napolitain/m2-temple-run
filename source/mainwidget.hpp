@@ -98,7 +98,7 @@ protected:
     std::vector<VertexData> sphere;
 
 private:
-	TargetFPS fps = TargetFPS(60);
+	TargetFPS fps;
     QElapsedTimer currentTime;
 	QTimer* timer;
     TimeStep timeStep;

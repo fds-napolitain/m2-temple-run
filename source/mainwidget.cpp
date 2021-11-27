@@ -83,12 +83,20 @@ MainWidget::~MainWidget()
 }
 
 //! [0]
+/**
+ * Appuis souris
+ * @param e
+ */
 void MainWidget::mousePressEvent(QMouseEvent *e)
 {
     // Save mouse press position
     mousePressPosition = QVector2D(e->localPos());
 }
 
+/**
+ * Relachement de souris
+ * @param e
+ */
 void MainWidget::mouseReleaseEvent(QMouseEvent *e)
 {
     // Mouse release position - mouse press position
@@ -165,6 +173,9 @@ void MainWidget::keyPressEvent(QKeyEvent *event)
   //  mousePressPosition = QVector2D(e->localPos());
 }
 
+/**
+ * Initialiation des fonctions OpenGL
+ */
 void MainWidget::initializeGL()
 {
     initializeOpenGLFunctions();
@@ -197,6 +208,9 @@ void MainWidget::initializeGL()
 }
 
 //! [3]
+/**
+ * Initialisations des shaders (*.glsl)
+ */
 void MainWidget::initShaders()
 {
 	// Compile vertex shader
@@ -218,6 +232,9 @@ void MainWidget::initShaders()
 //! [3]
 
 //! [4]
+/**
+ * Initialisations des textures (*.png)
+ */
 void MainWidget::initTextures()
 {
     // Load cube.png image
@@ -248,6 +265,11 @@ void MainWidget::initTextures()
 //! [4]
 
 //! [5]
+/**
+ * Fenetre opengl
+ * @param w
+ * @param h
+ */
 void MainWidget::resizeGL(int w, int h)
 {
     // Calculate aspect ratio
@@ -264,12 +286,18 @@ void MainWidget::resizeGL(int w, int h)
 }
 //! [5]
 
+/**
+ * Initialisation scene
+ */
 void MainWidget::initScene()
 {
      scene = new SceneGraph(new Entity("World"));
      geometries = new GeometryEngine();
 }
 
+/**
+ * Boucle d'affichage OpenGL
+ */
 void MainWidget::paintGL()
 {
     timeStep = currentTime.nsecsElapsed() * 0.000000001;
@@ -319,7 +347,7 @@ void MainWidget::paintGL()
 }
 
 /**
- * slot action: update for target fps
+ * slot action: update tous les 60 FPS
  */
 void MainWidget::doUpdate() {
 	update();

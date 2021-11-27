@@ -76,7 +76,7 @@ class MainWidget : public QOpenGLWidget, protected QOpenGLFunctions
 
 public:
     using QOpenGLWidget::QOpenGLWidget;
-    explicit MainWidget(QWidget *parent = 0);
+    explicit MainWidget(QWidget *parent = nullptr);
     ~MainWidget() override;
 
 protected:

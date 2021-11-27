@@ -56,13 +56,38 @@
 #include "source/mainwidget.hpp"
 #endif
 
+class TargetFPS {
+private:
+	float targetFPS;
+	int swapInterval;
+public:
+	explicit TargetFPS(int fps) {
+		switch (fps) {
+			case 30:
+				targetFPS = 30.0;
+				swapInterval = 2;
+			case 60:
+				targetFPS = 60.0;
+				swapInterval = 1;
+				break;
+			default:
+				targetFPS = -1.0;
+				swapInterval = 0;
+		}
+	}
+	[[nodiscard]] float getTargetFPS() const {return targetFPS;}
+	[[nodiscard]] int getSwapInterval() const {return swapInterval;}
+};
+
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
+	TargetFPS fps = TargetFPS(60);
+
     QSurfaceFormat format;
     format.setDepthBufferSize(24);
-    format.setSwapInterval(1.0); //            1 = vsynch       0 = uncap         2.5 = 30 fps     3 = 20fps
+    format.setSwapInterval(fps.getSwapInterval()); //            1 = vsynch       0 = uncap         2.5 = 30 fps     3 = 20fps
     QSurfaceFormat::setDefaultFormat(format);
 
     QApplication::setApplicationName("Temple Run");

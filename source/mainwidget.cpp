@@ -314,6 +314,15 @@ void MainWidget::paintGL()
     program.setUniformValue("texture", 0);
     program.setUniformValue("mvp_matrix", projection * matrix);
 
+    // Draw cube geometry
+	scene->update(timeStep);
+    update();
+}
+
+/**
+ * slot action: update for target fps
+ */
+void MainWidget::doUpdate() {
 	update();
 }
 

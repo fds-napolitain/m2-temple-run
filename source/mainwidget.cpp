@@ -122,7 +122,7 @@ void MainWidget::timerEvent(QTimerEvent *)
         // Update rotation
         rotation = QQuaternion::fromAxisAndAngle(rotationAxis, angularSpeed) * rotation ;
 
-		update();
+		//update();
     }
 }
 //! [1]
@@ -159,7 +159,7 @@ void MainWidget::keyPressEvent(QKeyEvent *event)
     }
 
     //projection.translate(0.0, 0.0, -1.0) ;
-      update();
+      //update();
 
     // Save mouse press position
   //  mousePressPosition = QVector2D(e->localPos());
@@ -191,6 +191,9 @@ void MainWidget::initializeGL()
     initScene();
 
     // Use QBasicTimer because its faster than QTimer
+	timer = new QTimer(this);
+	connect(timer, SIGNAL(timeout()), this, SLOT(doUpdate()));
+	timer->start(1000/60.0);
 }
 
 //! [3]
@@ -312,10 +315,12 @@ void MainWidget::paintGL()
 
     // Draw cube geometry
 	scene->update(timeStep);
-    update();
+	timer->start(1000/60.0);
 }
 
 /**
  * slot action: update for target fps
  */
-
+void MainWidget::doUpdate() {
+	update();
+}

@@ -66,6 +66,7 @@
 #include <QOpenGLTexture>
 #include <source/scene.hpp>
 #include <QElapsedTimer>
+#include <QTimer>
 
 class GeometryEngine;
 
@@ -96,6 +97,7 @@ protected:
 
 private:
     QElapsedTimer currentTime;
+	QTimer* timer;
     TimeStep timeStep;
 	QOpenGLShaderProgram program;
     GeometryEngine *geometries;
@@ -112,6 +114,9 @@ private:
     QVector3D rotationAxis;
     qreal angularSpeed;
     QQuaternion rotation;
+
+private slots:
+	void doUpdate();
 };
 
 #endif // MAINWIDGET_H

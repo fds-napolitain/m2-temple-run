@@ -65,8 +65,8 @@ int main(int argc, char *argv[])
     format.setSwapInterval(1.0); //            1 = vsynch       0 = uncap         2.5 = 30 fps     3 = 20fps
     QSurfaceFormat::setDefaultFormat(format);
 
-    app.setApplicationName("Temple Run");
-    app.setApplicationVersion("0.1");
+    QApplication::setApplicationName("Temple Run");
+    QApplication::setApplicationVersion("0.1");
 #ifndef QT_NO_OPENGL
     MainWidget widget;
     widget.show();
@@ -74,5 +74,5 @@ int main(int argc, char *argv[])
     QLabel note("OpenGL Support required");
     note.show();
 #endif
-    return app.exec();
+    return QApplication::exec();
 }

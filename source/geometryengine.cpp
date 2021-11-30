@@ -196,10 +196,10 @@ void GeometryEngine::initMesh(const std::string& filename) {
 
 	offio::open(filename, v, f, true);
 
-	unsigned int vertexNumber = v.size();
-	VertexData vertices[vertexNumber];
-	unsigned int indexCount = f.size() * 3;
-	GLushort indices[indexCount];
+	const unsigned int vertexNumber = v.size();
+    std::vector<VertexData> vertices(vertexNumber);
+	const unsigned int indexCount = f.size() * 3;
+    std::vector<GLushort> indices(indexCount);
 
 	for (int i = 0; i < vertexNumber; i++) {
 		vertices[i] = {

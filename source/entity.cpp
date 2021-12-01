@@ -13,7 +13,6 @@ Entity::Entity(std::string name, Transform *transform) :
 {}
 
 Entity::~Entity() {
-	delete m_parent;
 	delete m_transform;
 	for(Entity* child : m_children){
 		delete child;

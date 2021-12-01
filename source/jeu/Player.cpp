@@ -4,7 +4,9 @@
 
 #include "Player.hpp"
 
-Player::Player(std::string name) : Entity(name) {
+#include <utility>
+
+Player::Player(std::string name) : Entity(std::move(name)) {
 	this->setTransform(new Transform(QQuaternion(), QVector3D(0, 0, 0), 1));
 	Transform* playerBaseTransform = new Transform(QQuaternion(), QVector3D(0, 0, 0), 1);
 	Transform* playerMidTransform = new Transform(QQuaternion(), QVector3D(0, 1.3, 0), 0.8);

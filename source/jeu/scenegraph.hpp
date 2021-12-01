@@ -18,6 +18,7 @@ public:
 
 private:
     Entity *m_root;
+	Entity *mainDecor;
 
 };
 

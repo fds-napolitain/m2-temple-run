@@ -51,7 +51,7 @@
 #include <QApplication>
 #include <QLabel>
 #include <QSurfaceFormat>
-#include "source/TargetFPS.hpp"
+#include "source/engine/TargetFPS.hpp"
 #ifndef QT_NO_OPENGL
 #include "source/mainwidget.hpp"
 #endif
@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
 
     QSurfaceFormat format;
     format.setDepthBufferSize(24);
-    format.setSwapInterval(fps.getSwapInterval()); //            1 = vsynch       0 = uncap         2 = 30 fps     3 = 20fps
+    format.setSwapInterval(fps.getSwapInterval()); //            1 = vsync       0 = uncap         2 = 30 fps     3 = 20fps
     QSurfaceFormat::setDefaultFormat(format);
 
     QApplication::setApplicationName("Temple Run");

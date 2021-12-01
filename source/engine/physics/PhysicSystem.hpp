@@ -6,7 +6,7 @@
 #define TEMPLERUN_PHYSICSYSTEM_HPP
 #include "RigidBody.hpp"
 #include "collider.hpp"
-#include "../entity.hpp"
+#include "source/engine/rendering/entity.hpp"
 #include <vector>
 #include <iostream>
 

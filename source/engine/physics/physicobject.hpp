@@ -2,10 +2,10 @@
 #define PHYSICOBJECT_H
 
 #include "BoundingSphere.hpp"
-#include "../transform.hpp"
+#include "source/engine/rendering/transform.hpp"
 #include <QVector3D>
-#include "../TimeStep.hpp"
-#include "../component.hpp"
+#include "source/engine/rendering/TimeStep.hpp"
+#include "source/engine/rendering/component.hpp"
 
 
 // ##################################################" CLASS WILL BE DELETED

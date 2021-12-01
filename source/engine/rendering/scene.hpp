@@ -6,9 +6,9 @@
 #include "geometryengine.hpp"
 #include "TimeStep.hpp"
 
-#include "physics/RigidBody.hpp"
-#include "physics/physicsengine.hpp"
-#include "physics/PhysicSystem.hpp"
+#include "source/engine/physics/RigidBody.hpp"
+#include "source/engine/physics/physicsengine.hpp"
+#include "source/engine/physics/PhysicSystem.hpp"
 
 class Scene
 {

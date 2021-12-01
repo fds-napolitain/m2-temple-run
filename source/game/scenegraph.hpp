@@ -1,7 +1,7 @@
 #ifndef SCENEGRAPH_H
 #define SCENEGRAPH_H
 
-#include "source/scene.hpp"
+#include "source/engine/rendering/scene.hpp"
 #include "Player.hpp"
 #include <QTime>
 

@@ -5,10 +5,10 @@
 #ifndef TEMPLERUN_PLAYER_HPP
 #define TEMPLERUN_PLAYER_HPP
 
-#include "source/transform.hpp"
-#include "source/entity.hpp"
-#include "source/physics/BoundingSphere.hpp"
-#include "source/mesh.hpp"
+#include "source/engine/rendering/transform.hpp"
+#include "source/engine/rendering/entity.hpp"
+#include "source/engine/physics/BoundingSphere.hpp"
+#include "source/engine/rendering/mesh.hpp"
 
 class Player : public Entity {
 

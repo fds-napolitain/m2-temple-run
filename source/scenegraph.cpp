@@ -2,6 +2,7 @@
 #include <QTime>
 
 
+
 void SceneGraph::addEntity(Entity *parent, Entity *entity)
 {
     entity->setParent(parent);
@@ -13,26 +14,33 @@ void SceneGraph::update(TimeStep deltaTime)
 {
 
     updateTransforms(m_root, deltaTime);
-    //updateCollisons();
+//    updatePhysics();
+     m_physics->update(deltaTime);
 }
+
+
+
 
 void SceneGraph::updateTransforms(Entity* current, TimeStep deltaTime)
 {
-    Transform curTransform = current->getTransform();
+    Transform* curTransform = current->getTransform();
 
     if(current->getParent() != nullptr)
     {
-        Transform parentTransform = current->getParent()->getTransform();
-        curTransform.matrix = (parentTransform.matrix * curTransform.getLocalModelMatrix());
+        Transform* parentTransform = current->getParent()->getTransform();
+        curTransform->matrix = (parentTransform->matrix * curTransform->getLocalModelMatrix());
     }
     else
     {
 
-        curTransform.matrix = curTransform.getLocalModelMatrix();
+        curTransform->matrix = curTransform->getLocalModelMatrix();
     }
 
     QQuaternion a = QQuaternion::fromAxisAndAngle(QVector3D(0,1,0), 5 * deltaTime);
-    curTransform.rotate *= a;
+    //curTransform.rotate *= a;
+    //Transform meteorTransform = meteor->getTransform();
+   // meteorTransform.position += QVector3D(0,-0.5,0) * deltaTime;
+    //meteor->setTransform(meteorTransform);
 //    curTransform.matrix *= deltaTime;
 
 

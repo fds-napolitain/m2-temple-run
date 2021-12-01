@@ -1,6 +1,6 @@
 #include "mesh.hpp"
 
-Mesh::Mesh(const std::string& path, int format)
+Mesh::Mesh(const std::string& path, int format, int primitive) : m_primitive(primitive)
 {
     this->loadMesh(path, format);
 }
@@ -63,9 +63,9 @@ void Mesh::initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY){
     for(int i=0; i<nH; i++){
          for(int j=0;j<nW; j++){
              m_vertex.push_back( {QVector3D(
-                                    plan_xmin + xStep * i,
                                     plan_ymin + yStep * j,
-                                    0.0),
+                                    0.0,
+                                    plan_xmin + xStep * i),
                              QVector2D(
                                     (tex_xStep*i)/2,
                                     (tex_yStep*j)/2

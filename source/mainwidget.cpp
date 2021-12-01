@@ -339,17 +339,16 @@ void MainWidget::paintGL()
   //  Mesh* g = dynamic_cast<Mesh*>(&t[0]);
   // std::cout << g->getIndices().size() << " "  << g->getVertices().size() << std::endl;
 
-    scene->draw(geometries, program);
-    scene->update(timeStep);
+   //gScene->update()
 
-    //gScene->update()
+	scene->draw(geometries, program);
+	scene->update(timeStep);
 
 
     program.setUniformValue("texture", 0);
     program.setUniformValue("mvp_matrix", projection * matrix);
 
     // Draw cube geometry
-	scene->update(timeStep);
 	timer->start(fps.getTimePerFrame());
 }
 

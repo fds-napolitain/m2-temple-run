@@ -2,17 +2,20 @@
 #define PHYSICOBJECT_H
 
 #include "BoundingSphere.hpp"
+#include "../transform.hpp"
 #include <QVector3D>
+#include "../TimeStep.hpp"
+#include "../component.hpp"
 
 
+// ##################################################" CLASS WILL BE DELETED
 
-class PhysicObject
+class PhysicObject : public Component
 {
 public:
-    PhysicObject(Collider* collider,  const QVector3D& velocity) :
-     m_position(collider->getCenter()),
+    PhysicObject(Collider* collider,  const Transform& transform) :
+     m_transform(transform),
      m_oldPosition(collider->getCenter()),
-     m_velocity(velocity),
      m_collider(collider)
     {};
 
@@ -20,25 +23,27 @@ public:
     virtual ~PhysicObject();
 
 
-    void intergrate(float delta);
+    void integrate(Transform& transform);
 
-    [[nodiscard]] inline QVector3D getPosition() const { return m_position;}
-    [[nodiscard]] inline QVector3D getVelocity() const { return m_velocity;}
+    [[nodiscard]] inline QVector3D getPosition() const { return m_transform.position;}
+    [[nodiscard]] inline QVector3D getVelocity() const { return m_transform.velocity;}
 
     inline const Collider& getCollider() {
-        QVector3D translation = m_position - m_oldPosition;
-        m_oldPosition = m_position;
-        m_collider->Transform(translation);
+        Transform translation = Transform();
+        translation.position = m_transform.position - m_oldPosition;
+        m_oldPosition = m_transform.position;
+        m_collider->TransformCollider(translation);
 
         return *m_collider;
     }
     inline void setVelocity(QVector3D vel){
-        m_velocity = vel;
+        m_transform.velocity = vel;
     }
 private:
-    QVector3D m_position;
+
+    Transform m_transform;
+
     QVector3D m_oldPosition;
-    QVector3D m_velocity;
     Collider* m_collider;
 };
 

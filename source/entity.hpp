@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "transform.hpp"
-#include "physics/RigidBody.h"
+#include "physics/RigidBody.hpp"
 class Entity
 {
 public:

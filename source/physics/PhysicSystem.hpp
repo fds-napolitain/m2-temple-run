@@ -4,7 +4,7 @@
 
 #ifndef TEMPLERUN_PHYSICSYSTEM_HPP
 #define TEMPLERUN_PHYSICSYSTEM_HPP
-#include "RigidBody.h"
+#include "RigidBody.hpp"
 #include "collider.hpp"
 #include "../entity.hpp"
 #include <vector>
@@ -12,7 +12,7 @@
 
 class PhysicSystem {
 public:
-    PhysicSystem(){}
+    PhysicSystem() = default;
 
 
     void update(TimeStep delta);

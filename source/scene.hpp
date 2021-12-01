@@ -6,7 +6,7 @@
 #include "geometryengine.hpp"
 #include "TimeStep.hpp"
 
-#include "physics/RigidBody.h"
+#include "physics/RigidBody.hpp"
 #include "physics/physicsengine.hpp"
 #include "physics/PhysicSystem.hpp"
 

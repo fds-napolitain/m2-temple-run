@@ -16,7 +16,7 @@ public:
     {};
 
     IntersectData intersectBoundingSphere(const BoundingSphere& other );
-    void Transform(const QVector3D& translation) override;
+    void TransformCollider(const Transform& transform) override;
 
     [[nodiscard]] inline QVector3D getCenter() const override { return m_center;}
     [[nodiscard]] inline float getRadius() const { return m_radius;}

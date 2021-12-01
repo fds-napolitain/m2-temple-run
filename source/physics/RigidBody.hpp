@@ -2,8 +2,8 @@
 // Created by edgar on 27/11/2021.
 //
 
-#ifndef TEMPLERUN_RIGIDBODY_H
-#define TEMPLERUN_RIGIDBODY_H
+#ifndef TEMPLERUN_RIGIDBODY_HPP
+#define TEMPLERUN_RIGIDBODY_HPP
 #include "../TimeStep.hpp"
 #include "../component.hpp"
 #include "intersectdata.hpp"
@@ -70,4 +70,4 @@ public:
 };
 
 
-#endif //TEMPLERUN_RIGIDBODY_H
+#endif //TEMPLERUN_RIGIDBODY_HPP

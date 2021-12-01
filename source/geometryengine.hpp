@@ -71,22 +71,11 @@ class GeometryEngine : protected QOpenGLFunctions
 public:
     GeometryEngine();
     ~GeometryEngine();
-
     void drawGeometry(QOpenGLShaderProgram *program, VertexData *vertices, unsigned short *indices, int vertexNumber, int indexCount, int format);
-    void drawMeshGeometry(QOpenGLShaderProgram *program, VertexData *vertices, unsigned short *indices, int vertexNumber, int indexCount, int format);
-    void drawSphereGeometry(QOpenGLShaderProgram *program);
-    void static initCubeGeometry(int nH, int nW, int boardSizeX, int boardSizeY, std::vector<VertexData>& points, std::vector<GLushort>& indices);
-
-
 
 private:
-
-    void initSphereGeometry();
-
     QOpenGLBuffer arrayBuf;
     QOpenGLBuffer indexBuf;
-
-	void initMesh(const std::string &filename);
 };
 
 #endif // GEOMETRYENGINE_H

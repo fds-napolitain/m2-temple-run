@@ -1,6 +1,15 @@
 #include "aabb.hpp"
 
 
+AABB::AABB(const QVector3D &mincorner, const QVector3D &maxcorner) :
+		m_minCorner(mincorner),
+		m_maxCorner(maxcorner)
+{}
+
+QVector3D AABB::getMinCorner() const {return m_minCorner;}
+
+QVector3D AABB::getMaxCorner() const {return m_maxCorner;}
+
 IntersectData AABB::IntersectAABB(const AABB& other){
     QVector3D distances1 = other.getMinCorner() - m_maxCorner;
     QVector3D distances2 = m_minCorner - other.getMaxCorner();

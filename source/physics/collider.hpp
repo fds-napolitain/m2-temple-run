@@ -8,33 +8,26 @@
 
 
 
-class Collider : public ReferenceCounter
-{
+class Collider : public ReferenceCounter {
 public:
     enum
     {
          TYPE_SPHERE,
          TYPE_AABB,
          TYPE_PLANE,
-
-         TYPE_SIZE
+         TYPE_SIZE,
     };
-    explicit Collider(int type):
-        ReferenceCounter(),
-        m_type(type)
-    {};
-
-    [[nodiscard]] inline int getType() const {return m_type;}
-
-    [[nodiscard]] IntersectData Intersect(const Collider& other) const;
-    virtual void TransformCollider(const Transform& transform){};
-    [[nodiscard]] inline virtual QVector3D getCenter() const {return QVector3D();}
+    explicit Collider(int type);
+    [[nodiscard]] int getType() const;
+    [[nodiscard]] IntersectData intersect(const Collider& other) const;
+    virtual void transformCollider(const Transform& transform);
+    [[nodiscard]] virtual QVector3D getCenter() const;
 
 
-    float Mass = 0.0;
-    float Friction = 0.5f;
-    float Restitution = 0.0f;
-    float RestistuionMax = 0.5f; // prevent jittering
+    float mass = 0.0;
+    float friction = 0.5f;
+    float restitution = 0.0f;
+    float restitutionMax = 0.5f; // prevent jittering
 
 
 private:

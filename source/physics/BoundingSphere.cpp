@@ -1,5 +1,11 @@
 #include "BoundingSphere.hpp"
 
+BoundingSphere::BoundingSphere(const QVector3D &center, float radius) :
+		Collider(Collider::TYPE_SPHERE),
+		m_center(center),
+		m_radius(radius)
+{}
+
 IntersectData BoundingSphere::intersectBoundingSphere(const BoundingSphere& other){
     float radiusDistance = m_radius + other.getRadius();
 
@@ -12,7 +18,11 @@ IntersectData BoundingSphere::intersectBoundingSphere(const BoundingSphere& othe
 }
 
 
-void BoundingSphere::TransformCollider(const Transform& transform){
+void BoundingSphere::transformCollider(const Transform& transform){
     // peut etre faire plus générale avec transform.applyToPoint(m_center) et m_radius = transform.scale ;
     m_center = transform.position; //m
-};
+}
+
+QVector3D BoundingSphere::getCenter() const { return m_center;}
+
+float BoundingSphere::getRadius() const { return m_radius;}

@@ -14,31 +14,22 @@
 class Mesh : public Component
 {
 public:
+	enum {
+		OFFIO,
+		OBJIO
+	};
 
-    Mesh(int primitive = 0) : m_primitive(primitive){}
-    ~Mesh() override
-    {
-        delete m_vertexArr;
-        delete m_indicesArr;
-    }
-
+    Mesh(int primitive = 0);
+    ~Mesh() override;
     explicit Mesh(const std::string& path, int format = 0, int primitive = 0);
-    enum{
-        OFFIO,
-        OBJIO
-     };
-
     void loadMesh(const std::string& path, int format);
     void initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY);
-
-    [[nodiscard]] inline std::vector<VertexData> getVertices() const {return m_vertex;}
-
-    [[nodiscard]] inline std::vector<unsigned short> getIndices() const {return m_indices;}
+    [[nodiscard]] std::vector<VertexData> getVertices() const {return m_vertex;}
+    [[nodiscard]] std::vector<unsigned short> getIndices() const {return m_indices;}
     void draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, int format);
-    inline int getPrimitive() const {return m_primitive;}
-
-   static unsigned short* indextoArray(unsigned short* arr, std::vector<unsigned short> &indices);
-   static VertexData* vertextoArray(VertexData* arr, std::vector<VertexData> &vertex);
+	int getPrimitive() const {return m_primitive;}
+    static unsigned short* indextoArray(unsigned short* arr, std::vector<unsigned short> &indices);
+    static VertexData* vertextoArray(VertexData* arr, std::vector<VertexData> &vertex);
 
 private:
     int m_primitive;

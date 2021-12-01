@@ -1,14 +1,21 @@
 #include "mesh.hpp"
 
+Mesh::Mesh(int primitive) : m_primitive(primitive){}
+
 Mesh::Mesh(const std::string& path, int format, int primitive) : m_primitive(primitive)
 {
     this->loadMesh(path, format);
 }
 
+Mesh::~Mesh() {
+	delete m_vertexArr;
+	delete m_indicesArr;
+}
+
 void Mesh::loadMesh(const std::string &path, int format){
     std::vector<QVector3D> vertexs;
     std::vector<std::vector<unsigned int>> indices;
-    switch(format){
+    switch (format){
         case OFFIO:
             offio::open(path, vertexs, indices);
             break;
@@ -122,6 +129,8 @@ void Mesh::draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, in
 {
     gEngine->drawGeometry(&shaderProgram, m_vertexArr, m_indicesArr, m_vertex.size(), m_indices.size(), format);
 }
+
+
 
 
 

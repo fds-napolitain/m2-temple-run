@@ -11,16 +11,14 @@
 #include <iostream>
 
 class PhysicSystem {
+
 public:
     PhysicSystem() = default;
-
-
-    void update(TimeStep delta);
+	void update(TimeStep delta);
     void clearRigidBodies();
     void clearColliders();
     void addRigidBody(RigidBody* body);
     void addCollider(Collider* collider);
-
 
 protected:
     std::vector<RigidBody*> m_rigidBodies;

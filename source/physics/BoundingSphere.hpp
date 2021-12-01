@@ -6,20 +6,14 @@
 #include "collider.hpp"
 
 
-class BoundingSphere : public Collider
-{
+class BoundingSphere : public Collider {
+
 public:
-    BoundingSphere(const QVector3D& center, float radius) :
-    Collider(Collider::TYPE_SPHERE),
-    m_center(center),
-    m_radius(radius)
-    {};
-
-    IntersectData intersectBoundingSphere(const BoundingSphere& other );
-    void TransformCollider(const Transform& transform) override;
-
-    [[nodiscard]] inline QVector3D getCenter() const override { return m_center;}
-    [[nodiscard]] inline float getRadius() const { return m_radius;}
+    BoundingSphere(const QVector3D& center, float radius);
+    IntersectData intersectBoundingSphere(const BoundingSphere& other);
+    void transformCollider(const Transform& transform) override;
+    [[nodiscard]] QVector3D getCenter() const override;
+    [[nodiscard]] float getRadius() const;
 private:
     QVector3D m_center;
     float m_radius;

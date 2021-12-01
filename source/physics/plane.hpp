@@ -6,20 +6,16 @@
 #include "BoundingSphere.hpp"
 #include "math.h"
 
-class Plane
-{
+class Plane {
 public:
-    Plane(const QVector3D& normal, const float distance) :
-    m_normal(normal),
-    m_distance(distance)
-    {};
+    Plane(const QVector3D& normal, float distance);;
 
     Plane normalize();
     IntersectData intersectSphere(const BoundingSphere& sphere);
 
 
-    [[nodiscard]] inline QVector3D getNormal() const {return m_normal;}
-    [[nodiscard]] inline float getDistance() const {return m_distance;}
+    [[nodiscard]] QVector3D getNormal() const;
+    [[nodiscard]] float getDistance() const;
 
 private:
 	const QVector3D m_normal;

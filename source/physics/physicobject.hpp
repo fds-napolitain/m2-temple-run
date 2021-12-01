@@ -10,41 +10,23 @@
 
 // ##################################################" CLASS WILL BE DELETED
 
-class PhysicObject : public Component
-{
+class PhysicObject : public Component {
+
 public:
-    PhysicObject(Collider* collider,  const Transform& transform) :
-     m_transform(transform),
-     m_oldPosition(collider->getCenter()),
-     m_collider(collider)
-    {};
-
+    PhysicObject(Collider* collider,  const Transform& transform);;
     PhysicObject(const PhysicObject& other);
-    virtual ~PhysicObject();
-
-
+    ~PhysicObject() override;
     void integrate(Transform& transform);
+    [[nodiscard]] QVector3D getPosition() const;
+    [[nodiscard]] QVector3D getVelocity() const;
+	const Collider& getCollider();
+	void setVelocity(QVector3D vel);
 
-    [[nodiscard]] inline QVector3D getPosition() const { return m_transform.position;}
-    [[nodiscard]] inline QVector3D getVelocity() const { return m_transform.velocity;}
-
-    inline const Collider& getCollider() {
-        Transform translation = Transform();
-        translation.position = m_transform.position - m_oldPosition;
-        m_oldPosition = m_transform.position;
-        m_collider->TransformCollider(translation);
-
-        return *m_collider;
-    }
-    inline void setVelocity(QVector3D vel){
-        m_transform.velocity = vel;
-    }
 private:
-
     Transform m_transform;
-
     QVector3D m_oldPosition;
     Collider* m_collider;
+
 };
 
 #endif // PHYSICOBJECT_H

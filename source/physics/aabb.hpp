@@ -7,22 +7,18 @@
 #include "../transform.hpp"
 
 
-class AABB
-{
+class AABB {
+
 public:
-    AABB(const QVector3D& mincorner, const QVector3D& maxcorner) :
-     m_minCorner(mincorner),
-     m_maxCorner(maxcorner)
-    {};
-
+    AABB(const QVector3D& mincorner, const QVector3D& maxcorner);
     IntersectData IntersectAABB(const AABB& other);
-
-    [[nodiscard]] inline QVector3D getMinCorner() const {return m_minCorner;}
-    [[nodiscard]] inline QVector3D getMaxCorner() const {return m_maxCorner;}
+    [[nodiscard]] QVector3D getMinCorner() const;
+    [[nodiscard]] QVector3D getMaxCorner() const;
 
 private:
     const QVector3D m_minCorner;
     const QVector3D m_maxCorner;
+
 };
 
 #endif // AABB_H

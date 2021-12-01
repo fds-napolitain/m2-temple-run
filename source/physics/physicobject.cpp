@@ -3,9 +3,15 @@
 
 // ##################################################" CLASS WILL BE DELETED
 
+PhysicObject::PhysicObject(Collider *collider, const Transform &transform) :
+		m_transform(transform),
+		m_oldPosition(collider->getCenter()),
+		m_collider(collider)
+{}
+
 void PhysicObject::integrate(Transform& transform){
    // m_transform.combineWith(transform);
-    m_collider->TransformCollider(m_transform);
+	m_collider->transformCollider(m_transform);
     
 }
 
@@ -24,3 +30,20 @@ PhysicObject::~PhysicObject(){
    }
 
 }
+
+const Collider &PhysicObject::getCollider() {
+	Transform translation = Transform();
+	translation.position = m_transform.position - m_oldPosition;
+	m_oldPosition = m_transform.position;
+	m_collider->transformCollider(translation);
+
+	return *m_collider;
+}
+
+void PhysicObject::setVelocity(QVector3D vel) {
+	m_transform.velocity = vel;
+}
+
+QVector3D PhysicObject::getPosition() const { return m_transform.position;}
+
+QVector3D PhysicObject::getVelocity() const { return m_transform.velocity;}

@@ -5,7 +5,7 @@
 #ifndef TEMPLERUN_PLAYER_HPP
 #define TEMPLERUN_PLAYER_HPP
 
-#include "source/engine/rendering/transform.hpp"
+#include "source/engine/transform.hpp"
 #include "source/engine/rendering/entity.hpp"
 #include "source/engine/physics/BoundingSphere.hpp"
 #include "source/engine/rendering/mesh.hpp"

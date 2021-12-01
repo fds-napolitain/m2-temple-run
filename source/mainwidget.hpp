@@ -55,7 +55,7 @@
 
 #include "source/game/scenegraph.hpp"
 #include "source/engine/rendering/mesh.hpp"
-#include "source/engine/rendering/TimeStep.hpp"
+#include "source/engine/TimeStep.hpp"
 #include "source/engine/TargetFPS.hpp"
 
 #include <QOpenGLWidget>

@@ -2,9 +2,9 @@
 #define PHYSICOBJECT_H
 
 #include "BoundingSphere.hpp"
-#include "source/engine/rendering/transform.hpp"
+#include "source/engine/transform.hpp"
 #include <QVector3D>
-#include "source/engine/rendering/TimeStep.hpp"
+#include "source/engine/TimeStep.hpp"
 #include "source/engine/rendering/component.hpp"
 
 

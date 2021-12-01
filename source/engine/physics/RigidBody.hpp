@@ -4,7 +4,7 @@
 
 #ifndef TEMPLERUN_RIGIDBODY_HPP
 #define TEMPLERUN_RIGIDBODY_HPP
-#include "source/engine/rendering/TimeStep.hpp"
+#include "source/engine/TimeStep.hpp"
 #include "source/engine/rendering/component.hpp"
 #include "intersectdata.hpp"
 #include "collider.hpp"

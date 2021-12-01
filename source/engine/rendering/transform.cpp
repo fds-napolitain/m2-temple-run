@@ -80,4 +80,34 @@ QVector3D Transform::getWorldTranslate(){
 
 }
 
+QVector3D Transform::VecMax(const QVector3D &v1, const QVector3D &v2) {
+	QVector3D res;
+	for (unsigned int i =0; i<3 ; i++ ) {
+		res[i] = v1[i] > v2[i] ? v1[i] : v2[i];
+	}return res;
+}
+
+float Transform::VecMaxValue(const QVector3D &v) {
+	float res = v[0];
+	for (unsigned int i =1; i<3 ; i++ ) {
+		if(v[i] > res){
+			res = v[i];
+		}
+	}
+	return res;
+}
+
+Transform Transform::operator*(Transform &local) {
+	Transform res = Transform(this->rotate * local.rotate, this->position + local.position, this->scale * local.scale);
+	return res;
+}
+
+Transform Transform::interpolate(Transform &t, float k) {
+	Transform result;
+	result.scale = this->scale * k +t.scale *(1-k);                 // scale interpolation
+	QQuaternion::slerp(this->rotate, t.rotate, k);                        // spherical linear interpolation for quaternion
+	result.position = this->position * k+t.position * (1-k);     // translation interpolation
+	return result;
+}
+
 

@@ -14,7 +14,7 @@ public:
     PhysicsEngine();
 
     void addObject(const PhysicObject& object);
-    void updateColliders(Transform& transform);
+    void updateCollider(Transform& transform, int index);
 
     void handleCollisions();
 

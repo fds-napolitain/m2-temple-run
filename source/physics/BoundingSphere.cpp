@@ -5,7 +5,7 @@ IntersectData BoundingSphere::instersectBoundingSphere(const BoundingSphere& oth
 
     QVector3D direction = (other.getCenter()- m_center);
     float centerDistance = direction.length();
-    direction /= centerDistance; // normalize direction
+    direction /= centerDistance ; // normalize direction
 
     float distance = centerDistance - radiusDistance;
     return IntersectData(centerDistance < radiusDistance, direction * distance );
@@ -14,5 +14,5 @@ IntersectData BoundingSphere::instersectBoundingSphere(const BoundingSphere& oth
 
 void BoundingSphere::TransformCollider(const Transform& transform){
     // peut etre faire plus générale avec transform.applyToPoint(m_center) et m_radius = transform.scale ;
-    m_center += transform.position;
+    m_center = transform.position;
 };

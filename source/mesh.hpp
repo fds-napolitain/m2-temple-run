@@ -14,14 +14,15 @@
 class Mesh : public Component
 {
 public:
-    Mesh(){}
+
+    Mesh(int primitive = 0) : m_primitive(primitive){}
     ~Mesh() override
     {
         delete m_vertexArr;
         delete m_indicesArr;
     }
 
-    explicit Mesh(const std::string& path, int format = 0);
+    explicit Mesh(const std::string& path, int format = 0, int primitive = 0);
     enum{
         OFFIO,
         OBJIO
@@ -34,11 +35,13 @@ public:
 
     [[nodiscard]] inline const std::vector<unsigned short> getIndices() const {return m_indices;}
     void draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, int format);
+    inline int getPrimitive() const {return m_primitive;}
 
    static unsigned short* indextoArray(unsigned short* arr, std::vector<unsigned short> &indices);
    static VertexData* vertextoArray(VertexData* arr, std::vector<VertexData> &vertex);
 
 private:
+    int m_primitive;
     std::vector<VertexData> m_vertex;
     std::vector<unsigned short> m_indices;
     VertexData* m_vertexArr;

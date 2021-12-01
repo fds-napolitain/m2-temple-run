@@ -4,7 +4,7 @@
 // ##################################################" CLASS WILL BE DELETED
 
 void PhysicObject::integrate(Transform& transform){
-    m_transform.combineWith(transform);
+   // m_transform.combineWith(transform);
     m_collider->TransformCollider(m_transform);
     
 }

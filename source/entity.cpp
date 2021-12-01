@@ -20,7 +20,7 @@ void Entity::removeChild(Entity* child){
     }
 }
 
-void Entity::setTransform(Transform& transform)
+void Entity::setTransform(Transform* transform)
 {
     m_transform = transform;
 }

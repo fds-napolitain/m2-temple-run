@@ -6,6 +6,8 @@
 #include "intersectdata.hpp"
 #include "../transform.hpp"
 
+
+
 class Collider : public ReferenceCounter
 {
 public:
@@ -27,6 +29,13 @@ public:
     [[nodiscard]] IntersectData Intersect(const Collider& other) const;
     virtual void TransformCollider(const Transform& transform){};
     [[nodiscard]] inline virtual QVector3D getCenter() const {return QVector3D();}
+
+
+    float Mass = 0.0;
+    float Friction = 0.5f;
+    float Restitution = 0.0f;
+    float RestistuionMax = 0.5f; // prevent jittering
+
 
 private:
     int m_type;

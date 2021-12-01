@@ -203,8 +203,10 @@ void GeometryEngine::drawGeometry(QOpenGLShaderProgram *program, VertexData* ver
 //    default:
 //        glDrawElements(GL_POINTS, indexBuf.size(), GL_UNSIGNED_SHORT, 0);
 //    }
-
-    glDrawElements(format, indexBuf.size(), GL_UNSIGNED_SHORT, 0);
+    int size = indexBuf.size();
+    if(format == GL_TRIANGLE_STRIP)
+        size /= 2;
+    glDrawElements(format, size, GL_UNSIGNED_SHORT, 0);
 
 }
 

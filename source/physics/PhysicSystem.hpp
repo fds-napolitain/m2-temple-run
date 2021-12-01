@@ -6,7 +6,9 @@
 #define TEMPLERUN_PHYSICSYSTEM_HPP
 #include "RigidBody.h"
 #include "collider.hpp"
+#include "../entity.hpp"
 #include <vector>
+#include <iostream>
 
 class PhysicSystem {
 public:
@@ -22,7 +24,7 @@ public:
 
 protected:
     std::vector<RigidBody*> m_rigidBodies;
-    std::vector<Collider*> m_Colliders;
+    std::vector<Collider*> m_Colliders ;
 
 
 };

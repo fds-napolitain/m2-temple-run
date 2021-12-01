@@ -5,10 +5,10 @@
     jean-Marc Thiery, Pooran Memari and Tamy Boubekeur
     SIGGRAPH Asia 2018
     
-    This program allows to compute QMVC for a set of 3D points contained 
-    in a cage made of quad and triangles, as well as other flavors of 
+    This program allows to compute QMVC for collider set of 3D points contained
+    in collider cage made of quad and triangles, as well as other flavors of
     space coordinates for cages (MVC, SMVC, GC, MEC). It comes also with 
-    a 3D viewer which helps deforming a mesh with a cage. 
+    collider 3D viewer which helps deforming collider mesh with collider cage.
     
     Copyright (C) 2018  jean-Marc Thiery, Pooran Memari and Tamy Boubekeur
 
@@ -22,7 +22,7 @@
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
+    You should have received collider copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 #ifndef TEMPLERUN_BASICIO_HPP
@@ -385,7 +385,7 @@ namespace objio{
                         if( convertToTriangles )
                         {
                             //model is not triangulated, so let us do this on the fly...
-                            //to have a more uniform models, we add randomization
+                            //to have collider more uniform models, we add randomization
                             unsigned int k=(randomize)?(rand()%vhandles.size()):0;
                             for (unsigned int i=0;i<vhandles.size()-2;++i)
                             {
@@ -475,7 +475,7 @@ namespace objio{
                         if( convertToTriangles )
                         {
                             //model is not triangulated, so let us do this on the fly...
-                            //to have a more uniform models, we add randomization
+                            //to have collider more uniform models, we add randomization
                             unsigned int k=(randomize)?(rand()%vhandles.size()):0;
                             for (unsigned int i=0;i<vhandles.size()-2;++i)
                             {

@@ -23,13 +23,13 @@ find_package(Qt5 COMPONENTS OpenGL)
 add_executable(TempleRun main.cpp textures/textures.qrc models/models.qrc shaders/shaders.qrc
         source/BasicIO.hpp source/camera.cpp source/camera.hpp source/component.cpp source/component.hpp
         source/entity.hpp source/entity.cpp source/geometryengine.hpp source/geometryengine.cpp source/mainwidget.hpp source/mainwidget.cpp
-        source/mesh.cpp source/mesh.hpp source/scene.cpp source/scene.hpp source/scenegraph.hpp source/scenegraph.cpp
+        source/mesh.cpp source/mesh.hpp source/scene.cpp source/scene.hpp source/jeu/scenegraph.hpp source/jeu/scenegraph.cpp
         source/transform.cpp source/transform.hpp
         source/physics/aabb.cpp source/physics/aabb.hpp source/physics/BoundingSphere.cpp source/physics/BoundingSphere.hpp source/physics/collider.cpp
         source/physics/collider.hpp source/physics/intersectdata.cpp source/physics/intersectdata.hpp source/physics/physicobject.cpp source/physics/physicobject.hpp
         source/physics/physicsengine.cpp source/physics/physicsengine.hpp source/physics/plane.cpp source/physics/plane.hpp source/physics/ReferenceCounter.hpp
         source/TimeStep.hpp source/TargetFPS.cpp source/TargetFPS.hpp
-        source/physics/RigidBody.cpp source/physics/RigidBody.hpp source/physics/PhysicSystem.cpp source/physics/PhysicSystem.hpp)
+        source/physics/RigidBody.cpp source/physics/RigidBody.hpp source/physics/PhysicSystem.cpp source/physics/PhysicSystem.hpp source/jeu/Player.cpp source/jeu/Player.hpp)
 
 set_target_properties(TempleRun PROPERTIES
         WIN32_EXECUTABLE TRUE

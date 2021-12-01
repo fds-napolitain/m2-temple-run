@@ -27,7 +27,7 @@ public:
     [[nodiscard]] std::vector<VertexData> getVertices() const {return m_vertex;}
     [[nodiscard]] std::vector<unsigned short> getIndices() const {return m_indices;}
     void draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, int format);
-	int getPrimitive() const {return m_primitive;}
+	[[nodiscard]] int getPrimitive() const {return m_primitive;}
     static unsigned short* indextoArray(unsigned short* arr, std::vector<unsigned short> &indices);
     static VertexData* vertextoArray(VertexData* arr, std::vector<VertexData> &vertex);
 

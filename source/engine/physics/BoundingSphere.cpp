@@ -1,3 +1,4 @@
+#include <cmath>
 #include "BoundingSphere.hpp"
 
 BoundingSphere::BoundingSphere(const QVector3D &center, float radius) :
@@ -24,5 +25,21 @@ void BoundingSphere::transformCollider(const Transform& transform){
 }
 
 QVector3D BoundingSphere::getCenter() const { return m_center;}
-
 float BoundingSphere::getRadius() const { return m_radius;}
+
+IntersectData BoundingSphere::intersectAABB(const AABB &other) {
+    QVector3D aabbMax = other.getMaxCorner();
+    QVector3D aabbMin = other.getMinCorner();
+    //find closest point of the sphere on the aabb (clamping)
+    QVector3D closestPoint =
+            {
+                std::fmax(aabbMin[0], std::fmin(m_center[0], aabbMax[0])),
+                std::fmax(aabbMin[1], std::fmin(m_center[1], aabbMax[1])),
+                std::fmax(aabbMin[2], std::fmin(m_center[2], aabbMax[2]))
+            };
+    QVector3D direction = (m_center - closestPoint);
+    float distanceSq = direction.lengthSquared();
+    float radiusSq = m_radius * m_radius;
+
+    return IntersectData( distanceSq < radiusSq, direction.normalized());
+}

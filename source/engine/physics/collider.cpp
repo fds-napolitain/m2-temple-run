@@ -1,5 +1,6 @@
 #include "collider.hpp"
 #include "BoundingSphere.hpp"
+#include "aabb.hpp"
 #include <iostream>
 
 IntersectData Collider::intersect(const Collider& other) const
@@ -8,6 +9,12 @@ IntersectData Collider::intersect(const Collider& other) const
     {
         BoundingSphere *self = (BoundingSphere*)this;
         return self->intersectBoundingSphere((BoundingSphere &) other);
+    }
+
+    if(this->getType() == TYPE_SPHERE && other.getType() == TYPE_AABB )
+    {
+        BoundingSphere *self = (BoundingSphere*)this;
+        return self->intersectAABB((AABB &) other);
     }
 
     std::cout << "error";

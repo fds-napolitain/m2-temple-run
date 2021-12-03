@@ -35,11 +35,11 @@ SceneGraph::SceneGraph(Entity *root) :
 	left->addComponent(leftMesh);
 	sphere->addComponent(sphereMesh);
 
-	addEntity(m_root, sol);
-	addEntity(m_root, right);
-	addEntity(m_root, left);
 	addEntity(m_root, mainDecor);
 	addEntity(mainDecor, sphere);
+	addEntity(mainDecor, sol);
+	addEntity(mainDecor, right);
+	addEntity(mainDecor, left);
 	addEntity(m_root, player);
 	addEntity(player, player->getEntities()[0]);
 	addEntity(player, player->getEntities()[1]);
@@ -63,6 +63,11 @@ void SceneGraph::update(TimeStep deltaTime)
     updateTransforms(m_root, deltaTime);
 	Transform* transform = mainDecor->getTransform();
 	transform->position += QVector3D(0.0, 0.0, 8.0*deltaTime);
+
+	if (transform->position.z() >= 50) {
+		transform->position = QVector3D(transform->position.x(), transform->position.y(), -100);
+	}
+
 	mainDecor->setTransform(transform);
 
 //    updatePhysics();

@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
 	// frame par seconde
-	TargetFPS fps = TargetFPS(20);
+	TargetFPS fps = TargetFPS(60);
 
     QSurfaceFormat format;
     format.setDepthBufferSize(24);

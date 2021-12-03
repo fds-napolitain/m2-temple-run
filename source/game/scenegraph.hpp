@@ -15,10 +15,10 @@ public:
     Entity* getRoot();
     void addEntity(Entity* parent, Entity* entity);
     void updateTransforms(Entity* root_node, TimeStep deltaTime);
+	Entity *mainDecor;
 
 private:
     Entity *m_root;
-	Entity *mainDecor;
 
 };
 

@@ -1,10 +1,16 @@
 #include "mesh.hpp"
 
-Mesh::Mesh(int primitive) : m_primitive(primitive){}
+Mesh::Mesh(int primitive) : m_primitive(primitive) {
+}
 
 Mesh::Mesh(const std::string& path, int format, int primitive) : m_primitive(primitive)
 {
     this->loadMesh(path, format);
+}
+
+Mesh::Mesh(const std::string &path, const QString &texturePath, int format, int primitive) {
+	this->loadMesh(path, format);
+	loadTexture(texturePath);
 }
 
 Mesh::~Mesh() {
@@ -125,12 +131,16 @@ unsigned short* Mesh::indextoArray(unsigned short* arr, std::vector<unsigned sho
 }
 
 
-void Mesh::draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, int format)
-{
-    gEngine->drawGeometry(&shaderProgram, m_vertexArr, m_indicesArr, m_vertex.size(), m_indices.size(), format);
+void Mesh::draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, int format) {
+	if (m_texture != nullptr) {
+		m_texture->bind(3);
+	}
+	gEngine->drawGeometry(&shaderProgram, m_vertexArr, m_indicesArr, m_vertex.size(), m_indices.size(), format);
 }
 
-
-
-
-
+void Mesh::loadTexture(const QString& texturePath) {
+	m_texture = new QOpenGLTexture(QImage(texturePath).mirrored());
+	m_texture->setMinificationFilter(QOpenGLTexture::Nearest);
+	m_texture->setMagnificationFilter(QOpenGLTexture::Linear);
+	m_texture->setWrapMode(QOpenGLTexture::Repeat);
+}

@@ -239,10 +239,11 @@ void MainWidget::initShaders()
  */
 void MainWidget::initTextures()
 {
+	/*
     // Load cube.png image
-    grass = new QOpenGLTexture(QImage(":/neige.png").mirrored());
+    grass = new QOpenGLTexture(QImage(":/grass.png").mirrored());
     rock = new QOpenGLTexture(QImage(":/rock.png").mirrored());
-    snow = new QOpenGLTexture(QImage(":/snowrocks.png").mirrored());
+    snow = new QOpenGLTexture(QImage(":/neige.png").mirrored());
     heightmap = new QOpenGLTexture(QImage(":/Heightmap_Rocky.png").mirrored());
 
     // Set nearest filtering mode for grass minification
@@ -263,6 +264,7 @@ void MainWidget::initTextures()
     rock->setWrapMode(QOpenGLTexture::Repeat);
     snow->setWrapMode(QOpenGLTexture::Repeat);
     heightmap->setWrapMode(QOpenGLTexture::Repeat);
+    */
 }
 //! [4]
 
@@ -310,10 +312,11 @@ void MainWidget::paintGL()
     // Clear color and depth buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	/*
     grass->bind(0);
     heightmap->bind(1);
     rock->bind(2);
-    snow->bind(3);
+    snow->bind(3);*/
 
 //! [6]
     // Calculate model view transformation
@@ -340,7 +343,7 @@ void MainWidget::paintGL()
 	scene->update(timeStep);
 
 
-    program.setUniformValue("grass", 0);
+    program.setUniformValue("texture", 3);
     program.setUniformValue("mvp_matrix", projection * matrix);
 
     // Draw cube geometry

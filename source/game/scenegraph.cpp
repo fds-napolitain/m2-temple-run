@@ -17,7 +17,9 @@ SceneGraph::SceneGraph(Entity *root) :
 	Entity* sphere = new Entity("test");
 
 	Mesh* solMesh = new Mesh(GL_TRIANGLE_STRIP);
+	solMesh->loadTexture(":/neige.png");
 	Mesh* rightMesh = new Mesh(GL_TRIANGLE_STRIP);
+	rightMesh->loadTexture(":/rock.png");
 	Mesh* leftMesh = new Mesh(GL_TRIANGLE_STRIP);
 	Mesh* sphereMesh = new Mesh(":/sphere.off", Mesh::OFFIO, GL_TRIANGLES);
 	solMesh->initPlaneGeometry(16,16,100,100);

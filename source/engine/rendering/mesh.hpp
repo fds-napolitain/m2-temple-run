@@ -4,6 +4,7 @@
 #include <vector>
 #include <QVector3D>
 #include <QVector2D>
+#include <QOpenGLTexture>
 #include "BasicIO.hpp"
 #include "component.hpp"
 #include "geometryengine.hpp"
@@ -22,7 +23,9 @@ public:
     Mesh(int primitive = 0);
     ~Mesh() override;
     explicit Mesh(const std::string& path, int format = 0, int primitive = 0);
+    Mesh(const std::string& path, const QString& texturePath, int format = 0, int primitive = 0);
     void loadMesh(const std::string& path, int format);
+	void loadTexture(const QString& texturePath);
     void initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY);
     [[nodiscard]] std::vector<VertexData> getVertices() const {return m_vertex;}
     [[nodiscard]] std::vector<unsigned short> getIndices() const {return m_indices;}
@@ -37,6 +40,7 @@ private:
     std::vector<unsigned short> m_indices;
     VertexData* m_vertexArr;
     unsigned short* m_indicesArr;
+	QOpenGLTexture* m_texture = nullptr;
 };
 
 #endif // MESH_H

@@ -5,9 +5,6 @@ precision mediump float;
 #endif
 
 uniform sampler2D texture;
-uniform sampler2D heightmap;
-uniform sampler2D rock;
-uniform sampler2D snow;
 varying vec2 v_texcoord;
 varying vec3 v_position;
 

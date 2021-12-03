@@ -23,7 +23,7 @@ Player::Player(std::string name) : Entity(std::move(name)) {
 
 	collider = new BoundingSphere(playerBaseTransform->position, playerBaseTransform->scale);
 
-	Mesh* sphere = new Mesh(":/sphere.off", Mesh::OFFIO, GL_POINTS);
+	Mesh* sphere = new Mesh(":/sphere.off", Mesh::OFFIO, GL_TRIANGLES);
 
 	playerBase->addComponent(sphere);
 	playerMid->addComponent(sphere);

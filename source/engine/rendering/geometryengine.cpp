@@ -105,10 +105,10 @@ void GeometryEngine::drawGeometry(QOpenGLShaderProgram *program, VertexData* ver
     program->enableAttributeArray(vertexLocation);
     program->setAttributeBuffer(vertexLocation, GL_FLOAT, offset, 3, sizeof(VertexData));
 
-    // Offset for texture coordinate
+    // Offset for grass coordinate
     offset += sizeof(QVector3D);
 
-    // Tell OpenGL programmable pipeline how to locate vertex texture coordinate data
+    // Tell OpenGL programmable pipeline how to locate vertex grass coordinate data
     int texcoordLocation = program->attributeLocation("a_texcoord");
     program->enableAttributeArray(texcoordLocation);
     program->setAttributeBuffer(texcoordLocation, GL_FLOAT, offset, 2, sizeof(VertexData));

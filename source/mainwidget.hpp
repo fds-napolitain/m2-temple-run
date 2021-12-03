@@ -52,12 +52,10 @@
 #define MAINWIDGET_H
 
 #include "source/engine/rendering/geometryengine.hpp"
-
 #include "source/game/scenegraph.hpp"
 #include "source/engine/rendering/mesh.hpp"
 #include "source/engine/TimeStep.hpp"
 #include "source/engine/TargetFPS.hpp"
-
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions>
 #include <QMatrix4x4>
@@ -68,6 +66,10 @@
 #include "source/engine/rendering/scene.hpp"
 #include <QElapsedTimer>
 #include <QTimer>
+#include <QMouseEvent>
+#include <QElapsedTimer>
+#include <cmath>
+#include"source/engine/rendering/BasicIO.hpp"
 
 class GeometryEngine;
 
@@ -106,7 +108,7 @@ private:
     GeometryEngine *geometries;
     Scene* scene;
 
-    QOpenGLTexture *texture;
+    QOpenGLTexture *grass;
     QOpenGLTexture *rock;
     QOpenGLTexture *snow;
     QOpenGLTexture *heightmap;

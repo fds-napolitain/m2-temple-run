@@ -49,38 +49,33 @@
 ****************************************************************************/
 
 #include "mainwidget.hpp"
-#include <QMouseEvent>
-#include <QElapsedTimer>
-
-#include <cmath>
-#include"source/engine/rendering/BasicIO.hpp"
 
 
 MainWidget::MainWidget(QWidget *parent) :
-    QOpenGLWidget(parent),
-    geometries(nullptr),
-    texture(nullptr),
-    angularSpeed(0)
+		QOpenGLWidget(parent),
+		geometries(nullptr),
+		grass(nullptr),
+		angularSpeed(0)
 
 {
     //initSphereGeometry(this->sphere);
 }
 
 
-MainWidget::MainWidget(TargetFPS fps, QWidget *parent) :   	 QOpenGLWidget(parent),
-															 geometries(nullptr),
-															 texture(nullptr),
-															 angularSpeed(0)
+MainWidget::MainWidget(TargetFPS fps, QWidget *parent) : QOpenGLWidget(parent),
+														 geometries(nullptr),
+														 grass(nullptr),
+														 angularSpeed(0)
 {
 	this->fps = fps;
 }
 
 MainWidget::~MainWidget()
 {
-    // Make sure the context is current when deleting the texture
+    // Make sure the context is current when deleting the grass
     // and the buffers.
     makeCurrent();
-    delete texture;
+    delete grass;
     delete heightmap;
     delete snow;
     delete rock;
@@ -245,26 +240,26 @@ void MainWidget::initShaders()
 void MainWidget::initTextures()
 {
     // Load cube.png image
-    texture = new QOpenGLTexture(QImage(":/grass.png").mirrored());
+    grass = new QOpenGLTexture(QImage(":/neige.png").mirrored());
     rock = new QOpenGLTexture(QImage(":/rock.png").mirrored());
     snow = new QOpenGLTexture(QImage(":/snowrocks.png").mirrored());
     heightmap = new QOpenGLTexture(QImage(":/Heightmap_Rocky.png").mirrored());
 
-    // Set nearest filtering mode for texture minification
-    texture->setMinificationFilter(QOpenGLTexture::Nearest);
+    // Set nearest filtering mode for grass minification
+    grass->setMinificationFilter(QOpenGLTexture::Nearest);
     rock->setMinificationFilter(QOpenGLTexture::Nearest);
     snow->setMinificationFilter(QOpenGLTexture::Nearest);
     //heightmap->setMinificationFilter(QOpenGLTexture::Nearest);
 
-    // Set bilinear filtering mode for texture magnification
-    texture->setMagnificationFilter(QOpenGLTexture::Linear);
+    // Set bilinear filtering mode for grass magnification
+    grass->setMagnificationFilter(QOpenGLTexture::Linear);
     rock->setMagnificationFilter(QOpenGLTexture::Linear);
     snow->setMagnificationFilter(QOpenGLTexture::Linear);
    // heightmap->setMagnificationFilter(QOpenGLTexture::Linear);
 
-    // Wrap texture coordinates by repeating
-    // f.ex. texture coordinate (1.1, 1.2) is same as (0.1, 0.2)
-    texture->setWrapMode(QOpenGLTexture::Repeat);
+    // Wrap grass coordinates by repeating
+    // f.ex. grass coordinate (1.1, 1.2) is same as (0.1, 0.2)
+    grass->setWrapMode(QOpenGLTexture::Repeat);
     rock->setWrapMode(QOpenGLTexture::Repeat);
     snow->setWrapMode(QOpenGLTexture::Repeat);
     heightmap->setWrapMode(QOpenGLTexture::Repeat);
@@ -315,7 +310,7 @@ void MainWidget::paintGL()
     // Clear color and depth buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    texture->bind(0);
+    grass->bind(0);
     heightmap->bind(1);
     rock->bind(2);
     snow->bind(3);
@@ -333,7 +328,7 @@ void MainWidget::paintGL()
 //! ../TP3/Qt_solar/sphere.obj
 
 
-    // Use texture unit 0 which contains cube.png
+    // Use grass unit 0 which contains cube.png
    // SceneGraph* sg = (SceneGraph*) scene;
     //std::vector<Component> t =  sg->getRoot()->getComponents();
   //  Mesh* g = dynamic_cast<Mesh*>(&t[0]);
@@ -345,7 +340,7 @@ void MainWidget::paintGL()
 	scene->update(timeStep);
 
 
-    program.setUniformValue("texture", 0);
+    program.setUniformValue("grass", 0);
     program.setUniformValue("mvp_matrix", projection * matrix);
 
     // Draw cube geometry

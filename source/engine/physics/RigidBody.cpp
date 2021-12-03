@@ -16,12 +16,19 @@ void RigidBody::update(TimeStep delta) {
 	m_transform.position +=  ( oldVelocity + m_transform.velocity) * 0.5f  * delta;
 	m_Collider->transformCollider(m_transform);
 	entityTransform->position =  m_transform.position;
-	std::cout << m_transform.velocity[0] << "," << m_transform.velocity[1] << "," << m_transform.velocity[2] <<std::endl;
+	//std::cout << m_transform.velocity[0] << "," << m_transform.velocity[1] << "," << m_transform.velocity[2] <<std::endl;
 
 }
 
 void RigidBody::applyForces() {
-	forces = mass * gravity;
+    if(m_type != BodyType::STATIC)
+    {
+        forces = mass * gravity;
+    }
+    else
+    {
+        forces = QVector3D();
+    }
 }
 
 void RigidBody::handleCollisons(std::vector<Collider *> &colliders, TimeStep delta) {

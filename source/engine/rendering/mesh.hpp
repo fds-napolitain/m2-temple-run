@@ -27,7 +27,8 @@ public:
     void loadMesh(const std::string& path, int format);
 	void loadTexture(const QString& texturePath);
     void initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY);
-    [[nodiscard]] std::vector<VertexData> getVertices() const {return m_vertex;}
+	void initCubeGeometry();
+	[[nodiscard]] std::vector<VertexData> getVertices() const {return m_vertex;}
     [[nodiscard]] std::vector<unsigned short> getIndices() const {return m_indices;}
     void draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, int format);
 	[[nodiscard]] int getPrimitive() const {return m_primitive;}
@@ -38,9 +39,11 @@ private:
     int m_primitive;
     std::vector<VertexData> m_vertex;
     std::vector<unsigned short> m_indices;
+	std::vector<QVector3D> m_normals;
     VertexData* m_vertexArr;
     unsigned short* m_indicesArr;
 	QOpenGLTexture* m_texture = nullptr;
+
 };
 
 #endif // MESH_H

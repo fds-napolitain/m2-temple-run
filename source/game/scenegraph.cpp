@@ -9,22 +9,35 @@ SceneGraph::SceneGraph(Entity *root) :
 	Transform* rightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 1.0, 90), QVector3D(7, -2.0, 0), 1);
 	Transform* leftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-7, -2.0, 0), 1);
 	Transform* mainDecorTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 0.0,  0), QVector3D(0, 0.0, -100), 1);
+	Transform* backgroundTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(0, 0.0, -105), 1);
+	Transform* obstacleTransform = new Transform(QQuaternion(), QVector3D(), 2);
 
 	Entity* sol = new Entity("sol", solTransform);
 	Entity* right = new Entity("right", rightTransform);
 	Entity* left = new Entity("left", leftTransform);
 	mainDecor = new Entity("mainDecor", mainDecorTransform);
-	Entity* sphere = new Entity("test");
+	Entity* obstacle = new Entity("obstacle", obstacleTransform);
+	Entity* background = new Entity("fond", backgroundTransform);
 
 	Mesh* solMesh = new Mesh(GL_TRIANGLE_STRIP);
 	solMesh->loadTexture(":/neige.png");
+
 	Mesh* rightMesh = new Mesh(GL_TRIANGLE_STRIP);
 	rightMesh->loadTexture(":/rock.png");
+
 	Mesh* leftMesh = new Mesh(GL_TRIANGLE_STRIP);
-	Mesh* sphereMesh = new Mesh(":/sphere.off", Mesh::OFFIO, GL_TRIANGLES);
+
+	Mesh* backgroundMesh = new Mesh(GL_TRIANGLE_STRIP);
+
+	Mesh* obstacleMesh = new Mesh(GL_TRIANGLE_STRIP);
+	obstacleMesh->initCubeGeometry();
+	obstacleMesh->loadTexture(":/grass.png");
+
 	solMesh->initPlaneGeometry(16,16,100,100);
 	rightMesh->initPlaneGeometry(16,16,100,100);
 	leftMesh->initPlaneGeometry(16,16,100,100);
+	backgroundMesh->initPlaneGeometry(16, 16, 100, 100);
+	backgroundMesh->loadTexture(":/ciel.jpg");
 
 	BoundingSphere* b = new BoundingSphere(solTransform->position, solTransform->scale);
 
@@ -33,10 +46,11 @@ SceneGraph::SceneGraph(Entity *root) :
 	sol->addComponent(solMesh);
 	right->addComponent(rightMesh);
 	left->addComponent(leftMesh);
-	sphere->addComponent(sphereMesh);
+	obstacle->addComponent(obstacleMesh);
+	background->addComponent(backgroundMesh);
 
 	addEntity(m_root, mainDecor);
-	addEntity(mainDecor, sphere);
+	addEntity(mainDecor, obstacle);
 	addEntity(mainDecor, sol);
 	addEntity(mainDecor, right);
 	addEntity(mainDecor, left);
@@ -44,6 +58,7 @@ SceneGraph::SceneGraph(Entity *root) :
 	addEntity(player, player->getEntities()[0]);
 	addEntity(player, player->getEntities()[1]);
 	addEntity(player, player->getEntities()[2]);
+	addEntity(m_root, background);
 }
 
 SceneGraph::~SceneGraph() {

@@ -7,10 +7,10 @@
 #include <utility>
 
 Player::Player(std::string name) : Entity(std::move(name)) {
-	this->setTransform(new Transform(QQuaternion(), QVector3D(0, 0, 0), 1));
-	Transform* playerBaseTransform = new Transform(QQuaternion(), QVector3D(0, 0, 0), 1);
-	Transform* playerMidTransform = new Transform(QQuaternion(), QVector3D(0, 1.3, 0), 0.8);
-	Transform* playerTopTransform = new Transform(QQuaternion(), QVector3D(0, 2.6, 0), 0.6);
+	this->setTransform(new Transform(QQuaternion(), QVector3D(0, -3, 0), 1));
+	Transform* playerBaseTransform = new Transform(QQuaternion::fromAxisAndAngle(0.4, -0.2, 0.2, 14), QVector3D(0, 0, 0), 1);
+	Transform* playerMidTransform = new Transform(QQuaternion::fromAxisAndAngle(0.1, 0.2, -0.2, 14), QVector3D(0, 1.3, 0), 0.8);
+	Transform* playerTopTransform = new Transform(QQuaternion::fromAxisAndAngle(-0.2, 0.4, -0.2, 14), QVector3D(0, 2.3, 0), 0.6);
 
 	Entity* playerBase = new Entity("playerBase", playerBaseTransform);
 	entities.push_back(playerBase);
@@ -24,6 +24,7 @@ Player::Player(std::string name) : Entity(std::move(name)) {
 	collider = new BoundingSphere(playerBaseTransform->position, playerBaseTransform->scale);
 
 	Mesh* sphere = new Mesh(":/sphere.off", Mesh::OFFIO, GL_TRIANGLES);
+	sphere->loadTexture(":/neige.png");
 
 	playerBase->addComponent(sphere);
 	playerMid->addComponent(sphere);
@@ -48,8 +49,11 @@ Player::~Player() {
 void Player::updateTransforms(TimeStep deltaTime) {
 	Transform* animationBase = entities[0]->getTransform();
 	Transform* animationMid = entities[1]->getTransform();
-	animationBase->rotate *= QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90 * deltaTime);
-	animationMid->rotate *= QQuaternion::fromAxisAndAngle(-1.0, 0.0, 0.0, 90 * deltaTime);
+	Transform* animationTop = entities[2]->getTransform();
+	animationBase->rotate *= QQuaternion::fromAxisAndAngle(-1.0, 0.0, 0.0, 90 * deltaTime);
+	animationMid->rotate *= QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90 * deltaTime);
+	animationTop->rotate *= QQuaternion::fromAxisAndAngle(-1.0, 0.0, 0.0, 45 * deltaTime);
 	entities[0]->setTransform(animationBase);
 	entities[1]->setTransform(animationMid);
+	entities[2]->setTransform(animationTop);
 }

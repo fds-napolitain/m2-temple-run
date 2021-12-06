@@ -5,10 +5,10 @@
 #include "ReferenceCounter.hpp"
 #include "intersectdata.hpp"
 #include "source/engine/transform.hpp"
+#include "source/engine/rendering/component.hpp"
 
 
-
-class Collider : public ReferenceCounter {
+class Collider : public ReferenceCounter, public Component {
 public:
     enum
     {
@@ -23,12 +23,10 @@ public:
     virtual void transformCollider(const Transform& transform);
     [[nodiscard]] virtual QVector3D getCenter() const;
 
-
     float mass = 0.0;
     float friction = 0.5f;
     float restitution = 0.0f;
     float restitutionMax = 0.5f; // prevent jittering
-
 
 private:
     int m_type;

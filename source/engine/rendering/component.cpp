@@ -1,4 +1,3 @@
 #include "component.hpp"
 
-Component::Component()
-= default;
+Component::Component() = default;

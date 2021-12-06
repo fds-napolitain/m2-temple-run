@@ -22,7 +22,7 @@ void PhysicSystem::update(TimeStep delta)
     // SOLVE COLLISON AND UPDATE TRANSFORMS IF NECESSARY
     for(auto& body : m_rigidBodies)
     {
-        body->handleCollisons(m_Colliders, delta);
+		body->handleCollisions(m_Colliders, delta);
 
 
     }

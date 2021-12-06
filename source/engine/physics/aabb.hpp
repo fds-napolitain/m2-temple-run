@@ -5,13 +5,14 @@
 #include "intersectdata.hpp"
 #include "algorithm"
 #include "source/engine/transform.hpp"
+#include "collider.hpp"
 
 
-class AABB {
+class AABB : public Collider {
 
 public:
-    AABB(const QVector3D& mincorner, const QVector3D& maxcorner);
-    IntersectData IntersectAABB(const AABB& other);
+    AABB(int type, const QVector3D &mincorner, const QVector3D &maxcorner);
+    IntersectData intersectAABB(const AABB& other);
     [[nodiscard]] QVector3D getMinCorner() const;
     [[nodiscard]] QVector3D getMaxCorner() const;
 

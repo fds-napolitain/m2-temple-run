@@ -10,7 +10,7 @@ SceneGraph::SceneGraph(Entity *root) :
 	Transform* leftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-7, -2.0, 0), 1);
 	Transform* mainDecorTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 0.0,  0), QVector3D(0, 0.0, -100), 1);
 	Transform* backgroundTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(0, 0.0, -105), 1);
-	Transform* obstacleTransform = new Transform(QQuaternion(), QVector3D(), 2);
+	Transform* obstacleTransform = new Transform(QQuaternion(), QVector3D(), 3);
 
 	Entity* sol = new Entity("sol", solTransform);
 	Entity* right = new Entity("right", rightTransform);
@@ -39,10 +39,15 @@ SceneGraph::SceneGraph(Entity *root) :
 	backgroundMesh->initPlaneGeometry(16, 16, 100, 100);
 	backgroundMesh->loadTexture(":/ciel.jpg");
 
-	BoundingSphere* b = new BoundingSphere(solTransform->position, solTransform->scale);
+	// collisions
+	AABB* boundingCube = new AABB(0, obstacleTransform->applyToPoint(QVector3D(-1, -1, -1)),
+								  obstacleTransform->applyToPoint(QVector3D(1, 1, 1)));
+	m_physics->addCollider(boundingCube);
+	m_physics->addCollider(player->getCollider());
+	RigidBody* playerRigidBody = new RigidBody(player->getCollider());
+	player->addComponent(playerRigidBody);
+	m_physics->addRigidBody(playerRigidBody);
 
-	//m_physics->addCollider(player->getCollider());
-	m_physics->addCollider(b);
 	sol->addComponent(solMesh);
 	right->addComponent(rightMesh);
 	left->addComponent(leftMesh);

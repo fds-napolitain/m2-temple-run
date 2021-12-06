@@ -31,7 +31,7 @@ void RigidBody::applyForces() {
     }
 }
 
-void RigidBody::handleCollisons(std::vector<Collider *> &colliders, TimeStep delta) {
+void RigidBody::handleCollisions(std::vector<Collider *> &colliders, TimeStep delta) {
 	for(auto* collider : colliders) {
 		if(collider != m_Collider) {
 			IntersectData intersect = m_Collider->intersect(*collider);
@@ -39,12 +39,11 @@ void RigidBody::handleCollisons(std::vector<Collider *> &colliders, TimeStep del
 
 				QVector3D direction = intersect.getDirection().normalized();
 				QVector3D velocity1 = this->m_transform.velocity;
+				std::cout << "collision\n";
 
 				QVector3D reflection = velocity1 - (direction * (QVector3D::dotProduct(velocity1, direction) * 2));
 				this->m_transform.velocity = reflection;
 				m_Collider->transformCollider(m_transform);
-
-
 			}
 		}
 	}

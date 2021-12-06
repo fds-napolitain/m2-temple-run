@@ -18,7 +18,7 @@ public:
     ~RigidBody() override;
     virtual void update(TimeStep delta);
     virtual  void applyForces();
-    virtual void handleCollisons(std::vector<Collider*>& colliders,TimeStep delta);;
+    virtual void handleCollisions(std::vector<Collider*>& colliders, TimeStep delta);;
     enum class BodyType {
 		STATIC = 0,
 		DYNAMIC

@@ -24,8 +24,13 @@ void BoundingSphere::transformCollider(const Transform& transform){
     m_center = transform.position; //m
 }
 
-QVector3D BoundingSphere::getCenter() const { return m_center;}
-float BoundingSphere::getRadius() const { return m_radius;}
+QVector3D BoundingSphere::getCenter() const {
+	return m_center;
+}
+
+float BoundingSphere::getRadius() const {
+	return m_radius;
+}
 
 IntersectData BoundingSphere::intersectAABB(const AABB &other) {
     QVector3D aabbMax = other.getMaxCorner();

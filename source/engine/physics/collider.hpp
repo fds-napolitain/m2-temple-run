@@ -8,8 +8,6 @@
 #include "../rendering/component.hpp"
 
 
-
-
 class Collider : public ReferenceCounter, public Component {
 public:
     enum

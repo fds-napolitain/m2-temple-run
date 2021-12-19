@@ -85,6 +85,7 @@ void SceneGraph::update(TimeStep deltaTime)
 	if (transform->position.z() >= 50) {
 		transform->position = QVector3D(transform->position.x(), transform->position.y(), -100);
 	}
+
 	mainDecor->setTransform(transform);
 
 //   updatePhysics(); <-- fait tout dans le scenegraph

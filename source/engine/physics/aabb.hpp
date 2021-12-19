@@ -13,7 +13,7 @@
 class AABB : public Collider {
 
 public:
-    AABB(int type, const QVector3D &mincorner, const QVector3D &maxcorner);
+    AABB(const QVector3D &mincorner, const QVector3D &maxcorner);
     IntersectData intersectAABB(const AABB& other);
     [[nodiscard]] QVector3D getMinCorner() const;
     [[nodiscard]] QVector3D getMaxCorner() const;

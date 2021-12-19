@@ -3,8 +3,8 @@
 #include "aabb.hpp"
 
 
-AABB::AABB(int type, const QVector3D &mincorner, const QVector3D &maxcorner) :
-		Collider(type), m_minCorner(mincorner), m_maxCorner(maxcorner)
+AABB::AABB( const QVector3D &mincorner, const QVector3D &maxcorner) :
+		Collider(Collider::TYPE_AABB), m_minCorner(mincorner), m_maxCorner(maxcorner)
 {
 
 }

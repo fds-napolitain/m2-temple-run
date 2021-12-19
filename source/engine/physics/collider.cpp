@@ -17,6 +17,12 @@ IntersectData Collider::intersect(const Collider& other) const
         return self->intersectAABB((AABB &) other);
     }
 
+//    if(this->getType() == TYPE_AABB && other.getType() == TYPE_SPHERE   ){
+//        std::cout << "AABB AVEC SPHERE\n";
+//        AABB *self = (AABB*)this;
+//        return self->intersectBoundingSphere((BoundingSphere &) other);
+//    }
+
     std::cout << "error";
     exit(1);
     return IntersectData(false, QVector3D());

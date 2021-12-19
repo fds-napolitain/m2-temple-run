@@ -4,9 +4,10 @@
 
 #ifndef TEMPLERUN_PHYSICSYSTEM_HPP
 #define TEMPLERUN_PHYSICSYSTEM_HPP
-#include "RigidBody.hpp"
 #include "collider.hpp"
+#include "../TimeStep.hpp"
 #include "source/engine/rendering/entity.hpp"
+#include "source/game/Player.hpp"
 #include <vector>
 #include <iostream>
 
@@ -14,14 +15,12 @@ class PhysicSystem {
 
 public:
     PhysicSystem() = default;
-	void update(TimeStep delta);
+	void update(TimeStep delta, std::vector<Entity*> entities, Player* player);
     void clearRigidBodies();
     void clearColliders();
-    void addRigidBody(RigidBody* body);
     void addCollider(Collider* collider);
 
 protected:
-    std::vector<RigidBody*> m_rigidBodies;
     std::vector<Collider*> m_Colliders ;
 
 

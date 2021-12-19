@@ -36,6 +36,9 @@ public:
     Transform operator*(Transform& local);
 	static QVector3D VecMax(const QVector3D& v1,const QVector3D& v2 );
 	static float VecMaxValue(const QVector3D& v);
+	static void printV3D(const QVector3D& v);
+	static void printMatrix4x4(const QMatrix4x4& m);
+
 };
 
 

@@ -6,8 +6,6 @@
 #include "geometryengine.hpp"
 #include "source/engine/TimeStep.hpp"
 
-#include "source/engine/physics/RigidBody.hpp"
-#include "source/engine/physics/physicsengine.hpp"
 #include "source/engine/physics/PhysicSystem.hpp"
 
 class Scene

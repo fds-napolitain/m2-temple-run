@@ -1,4 +1,6 @@
+#include <iostream>
 #include "entity.hpp"
+#include "source/engine/physics/collider.hpp"
 
 Entity::Entity(std::string name) :
 		m_name(std::move(name)),
@@ -48,12 +50,9 @@ void Entity::setTransform(Transform* transform)
 }
 
 void Entity::addComponent(Component *component) {
+
 	m_components.push_back(component);
-	RigidBody* rb = dynamic_cast<RigidBody*>(component);
-	if(rb != nullptr){
-		rb->m_transform = *m_transform;
-		rb->entityTransform = m_transform;
-	}
+
 
 }
 
@@ -78,7 +77,12 @@ std::vector<Entity *> Entity::getChildren() const {
 }
 
 void Entity::updateTransforms(TimeStep deltaTime) {
-
+    for(auto component : this->m_components){
+        Collider* collider = dynamic_cast<Collider*>(component);
+        if(collider != nullptr){
+            collider->transformCollider( *m_transform);
+        }
+    }
 }
 
 

@@ -5,28 +5,27 @@
 #include "PhysicSystem.hpp"
 
 
-void PhysicSystem::update(TimeStep delta)
+
+void PhysicSystem::update(TimeStep delta, std::vector<Entity*> entities, Player* player)
 {
-    // SUM ALL FORCES
-    for(auto& body : m_rigidBodies)
+    for(auto entity : entities)
     {
-        body->applyForces();
+        for(auto component : entity->getComponents())
+        {
+            Collider* collider = dynamic_cast<Collider*>(component);
+
+            if(collider != nullptr){
+                //collider->transformCollider(*entity->getTransform());
+                IntersectData isIntersectingPlayer = player->collider->intersect(*collider);
+
+
+                if(isIntersectingPlayer.isIntersect()){
+
+                    std::cout << " je collide ! " << isIntersectingPlayer.getDirection().x() << " " << isIntersectingPlayer.getDirection().y() << " " << isIntersectingPlayer.getDirection().z() << " " << " \n";
+                }
+            }
+        }
     }
-
-    // UPDATE POSITIONS
-    for(auto& body : m_rigidBodies)
-    {
-        body->update(delta);
-    }
-
-    // SOLVE COLLISON AND UPDATE TRANSFORMS IF NECESSARY
-    for(auto& body : m_rigidBodies)
-    {
-        body->handleCollisons(m_Colliders, delta);
-
-
-    }
-
 
 }
 
@@ -38,12 +37,3 @@ void PhysicSystem::addCollider(Collider *collider) {
     m_Colliders.push_back(collider);
 }
 
-void PhysicSystem::clearRigidBodies()
-{
-    m_rigidBodies.clear();
-}
-
-void PhysicSystem::addRigidBody(RigidBody *body)
-{
-    m_rigidBodies.push_back(body);
-}

@@ -26,6 +26,7 @@ Player::Player(std::string name) : Entity(std::move(name)) {
 	Mesh* sphere = new Mesh(":/sphere.off", Mesh::OFFIO, GL_TRIANGLES);
 	sphere->loadTexture(":/neige.png");
 
+//    playerBase->addComponent(collider);
 	playerBase->addComponent(sphere);
 	playerMid->addComponent(sphere);
 	playerTop->addComponent(sphere);

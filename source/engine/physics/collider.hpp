@@ -5,10 +5,12 @@
 #include "ReferenceCounter.hpp"
 #include "intersectdata.hpp"
 #include "source/engine/transform.hpp"
+#include "../rendering/component.hpp"
 
 
 
-class Collider : public ReferenceCounter {
+
+class Collider : public ReferenceCounter, public Component {
 public:
     enum
     {
@@ -28,8 +30,7 @@ public:
     float friction = 0.5f;
     float restitution = 0.0f;
     float restitutionMax = 0.5f; // prevent jittering
-
-
+    QVector3D oldPosition;
 private:
     int m_type;
 };

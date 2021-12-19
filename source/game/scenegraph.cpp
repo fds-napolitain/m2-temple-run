@@ -1,16 +1,17 @@
 #include "scenegraph.hpp"
+#include "source/engine/physics/aabb.hpp"
 
 SceneGraph::SceneGraph(Entity *root) :
 		Scene(),
 		m_root(root)
 {
-	Player* player = new Player("player");
+    player = new Player("player");
 	Transform* solTransform = new Transform(QQuaternion(), QVector3D(0, -4.0, 0), 1);
 	Transform* rightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 1.0, 90), QVector3D(7, -2.0, 0), 1);
 	Transform* leftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-7, -2.0, 0), 1);
 	Transform* mainDecorTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 0.0,  0), QVector3D(0, 0.0, -100), 1);
 	Transform* backgroundTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(0, 0.0, -105), 1);
-	Transform* obstacleTransform = new Transform(QQuaternion(), QVector3D(), 2);
+	Transform* obstacleTransform = new Transform(QQuaternion(), QVector3D(0,-1,0), 2);
 
 	Entity* sol = new Entity("sol", solTransform);
 	Entity* right = new Entity("right", rightTransform);
@@ -37,12 +38,14 @@ SceneGraph::SceneGraph(Entity *root) :
 	rightMesh->initPlaneGeometry(16,16,100,100);
 	leftMesh->initPlaneGeometry(16,16,100,100);
 	backgroundMesh->initPlaneGeometry(16, 16, 100, 100);
-	backgroundMesh->loadTexture(":/ciel.jpg");
+	backgroundMesh->loadTexture(":/grass.png");
 
-	BoundingSphere* b = new BoundingSphere(solTransform->position, solTransform->scale);
+	AABB* b = new AABB(QVector3D(-1,-1,-100), QVector3D(1,1,-100));
 
-	//m_physics->addCollider(player->getCollider());
+	m_physics->addCollider(player->getCollider());
 	m_physics->addCollider(b);
+
+    obstacle->addComponent(b);
 	sol->addComponent(solMesh);
 	right->addComponent(rightMesh);
 	left->addComponent(leftMesh);
@@ -82,11 +85,10 @@ void SceneGraph::update(TimeStep deltaTime)
 	if (transform->position.z() >= 50) {
 		transform->position = QVector3D(transform->position.x(), transform->position.y(), -100);
 	}
-
 	mainDecor->setTransform(transform);
 
-//    updatePhysics();
-     m_physics->update(deltaTime);
+//   updatePhysics(); <-- fait tout dans le scenegraph
+     m_physics->update(deltaTime, m_drawnEntities, player );
 }
 
 void SceneGraph::updateTransforms(Entity* current, TimeStep deltaTime)

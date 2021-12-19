@@ -12,12 +12,14 @@ public:
     SceneGraph(Entity *root);
     ~SceneGraph() override;
     void update(TimeStep timeStep) override;
+
     Entity* getRoot();
     void addEntity(Entity* parent, Entity* entity);
     void updateTransforms(Entity* root_node, TimeStep deltaTime);
 	Entity *mainDecor;
 
 private:
+    Player *player;
     Entity *m_root;
 
 };

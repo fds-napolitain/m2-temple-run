@@ -309,7 +309,7 @@ void MainWidget::initScene()
 void MainWidget::paintGL()
 {
     timeStep = currentTime.nsecsElapsed() * 0.000000001;
-    std::cout << "fps: " << floor(1/ timeStep) << " interval: " << fps.getSwapInterval() << " ms: " << fps.getTimePerFrame() << std::endl;
+  //  std::cout << "fps: " << floor(1/ timeStep) << " interval: " << fps.getSwapInterval() << " ms: " << fps.getTimePerFrame() << std::endl;
     currentTime.restart();
 
 

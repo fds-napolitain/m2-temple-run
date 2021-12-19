@@ -5,7 +5,8 @@
 #include <utility>
 #include <vector>
 #include "source/engine/transform.hpp"
-#include "source/engine/physics/RigidBody.hpp"
+#include "../rendering/component.hpp"
+#include "../TimeStep.hpp"
 
 class Entity {
 

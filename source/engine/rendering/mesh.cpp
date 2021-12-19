@@ -121,7 +121,7 @@ void Mesh::initCubeGeometry() {
 	// For cube we would need only 8 vertices but we have to
 	// duplicate vertex for each face because texture coordinate
 	// is different.
-	m_vertexArr = new VertexData[] {
+	m_vertexArr = new VertexData[24] {
 			// Vertex data for face 0
 			{QVector3D(-1.0f, -1.0f,  1.0f), QVector2D(0.0f, 0.0f)},  // v0
 			{QVector3D( 1.0f, -1.0f,  1.0f), QVector2D(0.33f, 0.0f)}, // v1
@@ -166,7 +166,7 @@ void Mesh::initCubeGeometry() {
 	// index of the second strip needs to be duplicated. If
 	// connecting strips have same vertex order then only last
 	// index of the first strip needs to be duplicated.
-	m_indicesArr = new unsigned short[] {
+	m_indicesArr = new unsigned short[34] {
 			0,  1,  2,  3,  3,     // Face 0 - triangle strip ( v0,  v1,  v2,  v3)
 			4,  4,  5,  6,  7,  7, // Face 1 - triangle strip ( v4,  v5,  v6,  v7)
 			8,  8,  9, 10, 11, 11, // Face 2 - triangle strip ( v8,  v9, v10, v11)

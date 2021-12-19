@@ -1,3 +1,4 @@
+#include <iostream>
 #include "transform.hpp"
 
 Transform::Transform()
@@ -97,6 +98,12 @@ float Transform::VecMaxValue(const QVector3D &v) {
 	return res;
 }
 
+void Transform::printV3D(const QVector3D &v) {
+
+    std::cout << "(" << v.x() << ", " << v.y() << ", "<< v.z() <<" )\n";
+
+}
+
 Transform Transform::operator*(Transform &local) {
 	Transform res = Transform(this->rotate * local.rotate, this->position + local.position, this->scale * local.scale);
 	return res;
@@ -110,4 +117,10 @@ Transform Transform::interpolate(Transform &t, float k) {
 	return result;
 }
 
+void Transform::printMatrix4x4(const QMatrix4x4 &m) {
+    std::cout << " ( " << m(0,0) << " " << m(0,1) << " " << m(0,2) << " "  << m(0,3) << " ) " <<  "\n"
+              << " ( " << m(1,0) << " " << m(1,1) << " " << m(1,2) << " "  << m(1,3) << " ) " <<  "\n"
+              << " ( " << m(2,0) << " " << m(2,1) << " " << m(2,2) << " "  << m(2,3) << " ) " <<  "\n"
+              << " ( " << m(3,0) << " " << m(3,1) << " " << m(3,2) << " "  << m(3,3) << " ) " <<  "\n";
+}
 

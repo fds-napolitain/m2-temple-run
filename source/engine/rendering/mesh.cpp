@@ -207,7 +207,8 @@ void Mesh::draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, in
 
 void Mesh::loadTexture(const QString& texturePath) {
 	m_texture = new QOpenGLTexture(QImage(texturePath).mirrored());
-	m_texture->setMinificationFilter(QOpenGLTexture::Nearest);
+//    m_texture->generateMipMaps();
+	m_texture->setMinificationFilter(QOpenGLTexture::LinearMipMapLinear);
 	m_texture->setMagnificationFilter(QOpenGLTexture::Linear);
 	m_texture->setWrapMode(QOpenGLTexture::Repeat);
 }

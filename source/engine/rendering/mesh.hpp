@@ -25,7 +25,13 @@ public:
     explicit Mesh(const std::string& path, int format = 0, int primitive = 0);
     Mesh(const std::string& path, const QString& texturePath, int format = 0, int primitive = 0);
     void loadMesh(const std::string& path, int format);
-	void loadTexture(const QString& texturePath);
+
+	void loadTexture(const  QString& texturePath,
+                            QOpenGLTexture::Filter minFilter = QOpenGLTexture::Linear,
+                            QOpenGLTexture::Filter maxFilter = QOpenGLTexture::Linear,
+                            QOpenGLTexture::WrapMode warp = QOpenGLTexture::Repeat
+                    );
+
     void initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY);
 	void initCubeGeometry();
 	[[nodiscard]] std::vector<VertexData> getVertices() const {return m_vertex;}

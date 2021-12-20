@@ -205,10 +205,10 @@ void Mesh::draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, in
 	gEngine->drawGeometry(&shaderProgram, m_vertexArr, m_indicesArr, m_vertex.size(), m_indices.size(), format);
 }
 
-void Mesh::loadTexture(const QString& texturePath) {
+void Mesh::loadTexture(const QString& texturePath, QOpenGLTexture::Filter minFilter, QOpenGLTexture::Filter maxFilter, QOpenGLTexture::WrapMode warp ) {
 	m_texture = new QOpenGLTexture(QImage(texturePath).mirrored());
 //    m_texture->generateMipMaps();
-	m_texture->setMinificationFilter(QOpenGLTexture::LinearMipMapLinear);
-	m_texture->setMagnificationFilter(QOpenGLTexture::Linear);
-	m_texture->setWrapMode(QOpenGLTexture::Repeat);
+	m_texture->setMinificationFilter(minFilter);
+	m_texture->setMagnificationFilter(maxFilter);
+	m_texture->setWrapMode(warp);
 }

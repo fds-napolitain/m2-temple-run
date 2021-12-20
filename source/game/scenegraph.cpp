@@ -24,7 +24,7 @@ SceneGraph::SceneGraph(Entity *root) :
 	solMesh->loadTexture(":/neige.png");
 
 	Mesh* rightMesh = new Mesh(GL_TRIANGLE_STRIP);
-	rightMesh->loadTexture(":/rock.png");
+	rightMesh->loadTexture(":/rock.png", QOpenGLTexture::LinearMipMapLinear);
 
 	Mesh* leftMesh = new Mesh(GL_TRIANGLE_STRIP);
 

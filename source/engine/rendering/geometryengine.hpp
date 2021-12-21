@@ -71,7 +71,7 @@ class GeometryEngine : protected QOpenGLFunctions
 public:
     GeometryEngine();
     ~GeometryEngine();
-    void drawGeometry(QOpenGLShaderProgram *program, VertexData *vertices, unsigned short *indices, int vertexNumber, int indexCount, int format);
+    void drawGeometry(QOpenGLShaderProgram *program, VertexData *vertices, unsigned short *indices, int vertexNumber, int indexCount, int format, QVector3D color);
 
 private:
     QOpenGLBuffer arrayBuf;

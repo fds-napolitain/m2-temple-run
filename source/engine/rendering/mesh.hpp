@@ -20,10 +20,10 @@ public:
 		OBJIO
 	};
 
-    Mesh(int primitive = 0);
+    Mesh(int primitive = 0, QVector3D color =  QVector3D(1.0,1.0,1.0));
     ~Mesh() override;
-    explicit Mesh(const std::string& path, int format = 0, int primitive = 0);
-    Mesh(const std::string& path, const QString& texturePath, int format = 0, int primitive = 0);
+    explicit Mesh(const std::string& path, int format = 0, int primitive = 0, QVector3D color =  QVector3D(1.0,1.0,1.0));
+    Mesh(const std::string& path, const QString& texturePath, int format = 0, int primitive = 0, QVector3D color =  QVector3D(1.0,1.0,1.0));
     void loadMesh(const std::string& path, int format);
 
 	void loadTexture(const  QString& texturePath,
@@ -48,6 +48,7 @@ private:
 	std::vector<QVector3D> m_normals;
     VertexData* m_vertexArr;
     unsigned short* m_indicesArr;
+    QVector3D m_color;
 	QOpenGLTexture* m_texture = nullptr;
 
 };

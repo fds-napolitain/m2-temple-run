@@ -26,7 +26,7 @@ SceneGraph::SceneGraph(Entity *root) :
 	Mesh* rightMesh = new Mesh(GL_TRIANGLE_STRIP);
 	rightMesh->loadTexture(":/rock.png", QOpenGLTexture::LinearMipMapLinear);
 
-	Mesh* leftMesh = new Mesh(GL_TRIANGLE_STRIP);
+	Mesh* leftMesh = new Mesh(GL_TRIANGLE_STRIP, QVector3D(1.0,0,0));
 
 	Mesh* backgroundMesh = new Mesh(GL_TRIANGLE_STRIP);
 

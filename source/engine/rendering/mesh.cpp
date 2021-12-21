@@ -1,14 +1,17 @@
 #include "mesh.hpp"
 
-Mesh::Mesh(int primitive) : m_primitive(primitive) {
+Mesh::Mesh(int primitive, QVector3D color) : m_primitive(primitive), m_color(color) {
 }
 
-Mesh::Mesh(const std::string& path, int format, int primitive) : m_primitive(primitive)
+Mesh::Mesh(const std::string& path, int format, int primitive, QVector3D color) : m_primitive(primitive), m_color(color)
 {
     this->loadMesh(path, format);
 }
 
-Mesh::Mesh(const std::string &path, const QString &texturePath, int format, int primitive) {
+Mesh::Mesh(const std::string &path, const QString &texturePath, int format, int primitive, QVector3D color) :
+    m_primitive(primitive),
+    m_color(color)
+{
 	this->loadMesh(path, format);
 	loadTexture(texturePath);
 }
@@ -202,7 +205,7 @@ void Mesh::draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, in
 	if (m_texture != nullptr) {
 		m_texture->bind(3);
 	}
-	gEngine->drawGeometry(&shaderProgram, m_vertexArr, m_indicesArr, m_vertex.size(), m_indices.size(), format);
+	gEngine->drawGeometry(&shaderProgram, m_vertexArr, m_indicesArr, m_vertex.size(), m_indices.size(), format, m_color);
 }
 
 void Mesh::loadTexture(const QString& texturePath, QOpenGLTexture::Filter minFilter, QOpenGLTexture::Filter maxFilter, QOpenGLTexture::WrapMode warp ) {

@@ -2,6 +2,7 @@
 #define SCENEGRAPH_H
 
 #include "source/engine/rendering/scene.hpp"
+#include "source/engine/rendering/Light.hpp"
 #include "Player.hpp"
 #include <QTime>
 

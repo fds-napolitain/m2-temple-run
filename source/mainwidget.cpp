@@ -234,6 +234,24 @@ void MainWidget::initShaders()
 	// Bind shader pipeline for use
 	if (!program.bind())
 		close();
+
+
+
+    // Compile vertex shader
+    if (!lightProgram.addShaderFromSourceFile(QOpenGLShader::Vertex, ":/vlight.glsl"))
+        close();
+
+    // Compile fragment shader
+    if (!lightProgram.addShaderFromSourceFile(QOpenGLShader::Fragment, ":/flight.glsl"))
+        close();
+
+    // Link shader pipeline
+    if (!lightProgram.link())
+        close();
+
+
+
+
 }
 //! [3]
 
@@ -343,12 +361,14 @@ void MainWidget::paintGL()
 
    //gScene->update()
 
-	scene->draw(geometries, program);
+	scene->draw(geometries, program, lightProgram);
 	scene->update(timeStep);
 
 
     program.setUniformValue("texture", 3);
     program.setUniformValue("mvp_matrix", projection * matrix);
+    lightProgram.bind();
+    lightProgram.setUniformValue("mvp_matrix", projection * matrix);
 
     // Draw cube geometry
 	timer->start(fps.getTimePerFrame());

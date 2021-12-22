@@ -17,7 +17,7 @@ SceneGraph::SceneGraph(Entity *root) :
 	Entity* right = new Entity("right", rightTransform);
 	Entity* left = new Entity("left", leftTransform);
 	mainDecor = new Entity("mainDecor", mainDecorTransform);
-	Entity* obstacle = new Entity("obstacle", obstacleTransform);
+	Light* obstacle = new Light("obstacle", obstacleTransform, QVector3D());
 	Entity* background = new Entity("fond", backgroundTransform);
 
 	Mesh* solMesh = new Mesh(GL_TRIANGLE_STRIP);
@@ -28,10 +28,11 @@ SceneGraph::SceneGraph(Entity *root) :
 
 	Mesh* leftMesh = new Mesh(GL_TRIANGLE_STRIP, QVector3D(1.0,0,0));
 
-	Mesh* backgroundMesh = new Mesh(GL_TRIANGLE_STRIP);
+    Mesh* backgroundMesh = new Mesh(GL_TRIANGLE_STRIP);
 
-	Mesh* obstacleMesh = new Mesh(GL_TRIANGLE_STRIP);
-	obstacleMesh->initCubeGeometry();
+    Mesh* obstacleMesh = new Mesh(GL_TRIANGLE_STRIP);
+    obstacleMesh->setType(Mesh::Type::LIGHT);
+    obstacleMesh->initCubeGeometry();
 	obstacleMesh->loadTexture(":/grass.png");
 
 	solMesh->initPlaneGeometry(16,16,100,100);

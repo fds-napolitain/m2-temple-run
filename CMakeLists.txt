@@ -29,7 +29,7 @@ add_executable(TempleRun main.cpp textures/textures.qrc models/models.qrc shader
         source/engine/physics/collider.hpp source/engine/physics/intersectdata.cpp source/engine/physics/intersectdata.hpp
         source/engine/physics/plane.cpp source/engine/physics/plane.hpp source/engine/physics/ReferenceCounter.hpp
         source/engine/TimeStep.hpp source/engine/TargetFPS.cpp source/engine/TargetFPS.hpp
-         source/engine/physics/PhysicSystem.cpp source/engine/physics/PhysicSystem.hpp source/game/Player.cpp source/game/Player.hpp)
+         source/engine/physics/PhysicSystem.cpp source/engine/physics/PhysicSystem.hpp source/game/Player.cpp source/game/Player.hpp source/engine/rendering/Light.cpp source/engine/rendering/Light.hpp)
 
 set_target_properties(TempleRun PROPERTIES
         WIN32_EXECUTABLE TRUE

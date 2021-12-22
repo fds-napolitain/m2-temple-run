@@ -105,6 +105,7 @@ private:
 	QTimer* timer;
     TimeStep timeStep;
 	QOpenGLShaderProgram program;
+	QOpenGLShaderProgram lightProgram;
     GeometryEngine *geometries;
     Scene* scene;
 

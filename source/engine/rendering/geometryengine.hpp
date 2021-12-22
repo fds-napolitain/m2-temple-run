@@ -64,6 +64,7 @@ struct VertexData
 {
     QVector3D position;
     QVector2D texture;
+    QVector3D normal;
 };
 
 class GeometryEngine : protected QOpenGLFunctions

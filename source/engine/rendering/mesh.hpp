@@ -47,6 +47,7 @@ public:
     void setType(Type type) {m_type = type;}
     static unsigned short* indextoArray(unsigned short* arr, std::vector<unsigned short> &indices);
     static VertexData* vertextoArray(VertexData* arr, std::vector<VertexData> &vertex);
+    void computeNormals(bool stripe);
 
 private:
     int m_primitive;

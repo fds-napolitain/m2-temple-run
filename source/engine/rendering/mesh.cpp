@@ -169,7 +169,8 @@ void Mesh::initCubeGeometry() {
 	// index of the second strip needs to be duplicated. If
 	// connecting strips have same vertex order then only last
 	// index of the first strip needs to be duplicated.
-	m_indicesArr = new unsigned short[34] {
+    int indexCount = 34;
+	m_indicesArr = new unsigned short[indexCount] {
 			0,  1,  2,  3,  3,     // Face 0 - triangle strip ( v0,  v1,  v2,  v3)
 			4,  4,  5,  6,  7,  7, // Face 1 - triangle strip ( v4,  v5,  v6,  v7)
 			8,  8,  9, 10, 11, 11, // Face 2 - triangle strip ( v8,  v9, v10, v11)
@@ -178,7 +179,11 @@ void Mesh::initCubeGeometry() {
 			20, 20, 21, 22, 23      // Face 5 - triangle strip (v20, v21, v22, v23)
 	};
 	m_vertex.resize(24);
-	m_indices.resize(24);
+	m_indices.resize(indexCount);
+    for(unsigned int i =0; i<indexCount; i++){
+        m_indices[i] = m_indicesArr[i];
+    }
+    computeNormals(true);
 //! [1]
 }
 
@@ -214,4 +219,20 @@ void Mesh::loadTexture(const QString& texturePath, QOpenGLTexture::Filter minFil
 	m_texture->setMinificationFilter(minFilter);
 	m_texture->setMagnificationFilter(maxFilter);
 	m_texture->setWrapMode(warp);
+}
+
+void Mesh::computeNormals(bool stripe) {
+    if(stripe){
+        for(unsigned int i = 0; i < m_indices.size(); i+=6){
+            QVector3D n0 = QVector3D::crossProduct(m_vertex[m_indices[i+1]].position - m_vertex[m_indices[i]].position, m_vertex[m_indices[i+2]].position - m_vertex[m_indices[i]].position );
+            QVector3D n1 = QVector3D::crossProduct(m_vertex[m_indices[i]].position - m_vertex[m_indices[i+1]].position, m_vertex[m_indices[i+2]].position - m_vertex[m_indices[i+1]].position );
+            QVector3D n2 = QVector3D::crossProduct(m_vertex[m_indices[i]].position - m_vertex[m_indices[i+2]].position, m_vertex[m_indices[i+1]].position - m_vertex[m_indices[i+2]].position );
+            QVector3D n3 = QVector3D::crossProduct(m_vertex[m_indices[i+1]].position - m_vertex[m_indices[i+3]].position, m_vertex[m_indices[i+2]].position - m_vertex[m_indices[i+3]].position );
+            m_vertex[m_indices[i]].normal = n0;
+            m_vertex[m_indices[i+1]].normal = n1;
+            m_vertex[m_indices[i+2]].normal = n2;
+            m_vertex[m_indices[i+3]].normal = n3;
+        }
+    }
+
 }

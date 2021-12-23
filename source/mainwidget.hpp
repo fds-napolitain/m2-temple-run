@@ -95,7 +95,6 @@ protected:
     void paintGL() override;
 
     void initShaders();
-    void initTextures();
     void initScene();
     std::vector<VertexData> sphere;
 

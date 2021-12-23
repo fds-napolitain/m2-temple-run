@@ -75,10 +75,6 @@ MainWidget::~MainWidget()
     // Make sure the context is current when deleting the grass
     // and the buffers.
     makeCurrent();
-    delete grass;
-    delete heightmap;
-    delete snow;
-    delete rock;
     delete geometries;
     delete scene;
     doneCurrent();
@@ -189,7 +185,7 @@ void MainWidget::initializeGL()
     glClearColor(0, 0, 0, 1);
 
     initShaders();
-    initTextures();
+
 
 //! [2]
     // Enable depth buffer
@@ -236,41 +232,6 @@ void MainWidget::initShaders()
 		close();
 }
 //! [3]
-
-//! [4]
-/**
- * Initialisations des textures (*.png)
- */
-void MainWidget::initTextures()
-{
-	/*
-    // Load cube.png image
-    grass = new QOpenGLTexture(QImage(":/grass.png").mirrored());
-    rock = new QOpenGLTexture(QImage(":/rock.png").mirrored());
-    snow = new QOpenGLTexture(QImage(":/neige.png").mirrored());
-    heightmap = new QOpenGLTexture(QImage(":/Heightmap_Rocky.png").mirrored());
-
-    // Set nearest filtering mode for grass minification
-    grass->setMinificationFilter(QOpenGLTexture::Nearest);
-    rock->setMinificationFilter(QOpenGLTexture::Nearest);
-    snow->setMinificationFilter(QOpenGLTexture::Nearest);
-    //heightmap->setMinificationFilter(QOpenGLTexture::Nearest);
-
-    // Set bilinear filtering mode for grass magnification
-    grass->setMagnificationFilter(QOpenGLTexture::Linear);
-    rock->setMagnificationFilter(QOpenGLTexture::Linear);
-    snow->setMagnificationFilter(QOpenGLTexture::Linear);
-   // heightmap->setMagnificationFilter(QOpenGLTexture::Linear);
-
-    // Wrap grass coordinates by repeating
-    // f.ex. grass coordinate (1.1, 1.2) is same as (0.1, 0.2)
-    grass->setWrapMode(QOpenGLTexture::Repeat);
-    rock->setWrapMode(QOpenGLTexture::Repeat);
-    snow->setWrapMode(QOpenGLTexture::Repeat);
-    heightmap->setWrapMode(QOpenGLTexture::Repeat);
-    */
-}
-//! [4]
 
 //! [5]
 /**

@@ -48,6 +48,7 @@
 **
 ****************************************************************************/
 
+#include <QPainter>
 #include "mainwidget.hpp"
 
 
@@ -267,19 +268,17 @@ void MainWidget::initScene()
  */
 void MainWidget::paintGL()
 {
+	QPainter painter(this);
+	painter.setPen(Qt::white);
+	painter.drawText(20, 40, "toto");
+
     timeStep = currentTime.nsecsElapsed() * 0.000000001;
-  //  std::cout << "fps: " << floor(1/ timeStep) << " interval: " << fps.getSwapInterval() << " ms: " << fps.getTimePerFrame() << std::endl;
+    std::cout << "fps: " << floor(1/ timeStep) << " interval: " << fps.getSwapInterval() << " ms: " << fps.getTimePerFrame() << std::endl;
     currentTime.restart();
 
 
     // Clear color and depth buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	/*
-    grass->bind(0);
-    heightmap->bind(1);
-    rock->bind(2);
-    snow->bind(3);*/
 
 //! [6]
     // Calculate model view transformation

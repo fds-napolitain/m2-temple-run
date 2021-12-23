@@ -345,6 +345,8 @@ void MainWidget::paintGL()
     QMatrix4x4 matrix;
     matrix.translate(0.0, 0.0, -10.0);
     matrix.rotate(rotation);
+    lightProgram.bind();
+    lightProgram.setUniformValue("cam_pos", QVector3D(matrix(0,3), matrix(1,3), matrix(2,3)));
 
     // Set modelview-projection matrix
 //! [6]
@@ -361,15 +363,15 @@ void MainWidget::paintGL()
 
    //gScene->update()
 
-	scene->draw(geometries, program, lightProgram);
-	scene->update(timeStep);
 
-
+    program.bind();
     program.setUniformValue("texture", 3);
     program.setUniformValue("mvp_matrix", projection * matrix);
     lightProgram.bind();
     lightProgram.setUniformValue("mvp_matrix", projection * matrix);
 
+    scene->draw(geometries, program, lightProgram);
+    scene->update(timeStep);
     // Draw cube geometry
 	timer->start(fps.getTimePerFrame());
 }

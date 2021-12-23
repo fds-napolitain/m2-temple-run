@@ -27,7 +27,8 @@ void main()
     gl_Position = mvp_matrix * vec4(curPos, 1.0);
     v_texcoord = a_texcoord;
     v_color = a_color;
-    v_normal = vec3(transform * vec4(a_normal, 1.0));
+    //v_normal = vec3(transform * vec4(a_normal, 1.0));
+    v_normal = a_normal;
 
 }
 //! [0]

@@ -17,7 +17,7 @@ SceneGraph::SceneGraph(Entity *root) :
 	Entity* right = new Entity("right", rightTransform);
 	Entity* left = new Entity("left", leftTransform);
 	mainDecor = new Entity("mainDecor", mainDecorTransform);
-	Light* obstacle = new Light("obstacle", obstacleTransform, QVector3D());
+	Light* obstacle = new Light("obstacle", obstacleTransform, QVector4D(1.0,1.0,1.0,1.0));
 	Entity* background = new Entity("fond", backgroundTransform);
 
 	Mesh* solMesh = new Mesh(GL_TRIANGLE_STRIP);

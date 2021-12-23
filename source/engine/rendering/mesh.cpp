@@ -112,7 +112,7 @@ void Mesh::initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY){
              m_indices.push_back((i+1)*nH+nH-1);
              m_indices.push_back((i+1)*nH);
          }
-
+    computeNormals(true);
     m_vertexArr = new VertexData[vertexNumber];
     m_indicesArr = new unsigned short[indexCount];
 
@@ -183,7 +183,7 @@ void Mesh::initCubeGeometry() {
     for(unsigned int i =0; i<indexCount; i++){
         m_indices[i] = m_indicesArr[i];
     }
-    computeNormals(true);
+computeNormals(true);
 //! [1]
 }
 

@@ -7,11 +7,11 @@
 
 
 #include "entity.hpp"
-#include <QVector3D>
+#include <QVector4D>
 
 class Light : public Entity{
 public:
-    Light(std::string name, Transform* transformation, QVector3D color);
+    Light(std::string name, Transform* transformation, QVector4D color);
 
 private:
     QVector3D m_color;

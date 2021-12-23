@@ -97,6 +97,8 @@ void GeometryEngine::drawGeometry(QOpenGLShaderProgram *program, VertexData* ver
 	indexBuf.bind();
 	indexBuf.allocate(indices, indexCount * sizeof(GLushort));
 
+
+
     // Offset for position
     quintptr offset = 0;
 
@@ -114,10 +116,14 @@ void GeometryEngine::drawGeometry(QOpenGLShaderProgram *program, VertexData* ver
     program->enableAttributeArray(texcoordLocation);
     program->setAttributeBuffer(texcoordLocation, GL_FLOAT, offset, 2, sizeof(VertexData));
 
-    //int colorLocation = program->attributeLocation("a_color");
-   // program->enableAttributeArray(colorLocation);
+    // Offset for grass coordinate
+    offset += sizeof(QVector2D);
 
-    //program->setAttributeValue(colorLocation, color);
+    // Tell OpenGL programmable pipeline how to locate vertex grass coordinate data
+    int normalLocation = program->attributeLocation("a_normal");
+    program->enableAttributeArray(normalLocation);
+    program->setAttributeBuffer(normalLocation, GL_FLOAT, offset, 3, sizeof(VertexData));
+
     program->setUniformValue("a_color", color);
 
     // Draw cube geometry using indices from VBO 1

@@ -29,6 +29,7 @@ void Scene::draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, Q
 
                     shaderProgram.bind();
                     shaderProgram.setUniformValue("light_color", lightEntity->getColor());
+                    shaderProgram.setUniformValue("light_position", lightEntity->getTransform()->getWorldTranslate());
                 }
             }
         }

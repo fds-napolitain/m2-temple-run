@@ -43,7 +43,8 @@ void Mesh::loadMesh(const std::string &path, int format){
 		VertexData temp;
 		if (path == ":/sphere.off") {
 			m_normals.push_back(vertices[i] - QVector3D());
-			temp = {vertices[i], QVector2D(asin(m_normals[i].x()) / 3.1415 + 0.5, asin(m_normals[i].y()) / 3.1415 + 0.5)};
+            Transform::printV3D(m_normals[i]);
+			temp = {vertices[i], QVector2D(asin(m_normals[i].x()) / 3.1415 + 0.5, asin(m_normals[i].y()) / 3.1415 + 0.5), QVector3D(vertices[i] - QVector3D())};
 		} else {
 			temp = {vertices[i], QVector2D()};
 		}
@@ -112,12 +113,12 @@ void Mesh::initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY){
              m_indices.push_back((i+1)*nH+nH-1);
              m_indices.push_back((i+1)*nH);
          }
-    computeNormals(true);
     m_vertexArr = new VertexData[vertexNumber];
     m_indicesArr = new unsigned short[indexCount];
 
-	vertextoArray(m_vertexArr, m_vertex);
-	indextoArray(m_indicesArr, m_indices);
+    vertextoArray(m_vertexArr, m_vertex);
+    indextoArray(m_indicesArr, m_indices);
+    computeNormals(true);
 }
 
 void Mesh::initCubeGeometry() {
@@ -223,15 +224,17 @@ void Mesh::loadTexture(const QString& texturePath, QOpenGLTexture::Filter minFil
 
 void Mesh::computeNormals(bool stripe) {
     if(stripe){
+
         for(unsigned int i = 0; i < m_indices.size(); i+=6){
-            QVector3D n0 = QVector3D::crossProduct(m_vertex[m_indices[i+1]].position - m_vertex[m_indices[i]].position, m_vertex[m_indices[i+2]].position - m_vertex[m_indices[i]].position );
-            QVector3D n1 = QVector3D::crossProduct(m_vertex[m_indices[i]].position - m_vertex[m_indices[i+1]].position, m_vertex[m_indices[i+2]].position - m_vertex[m_indices[i+1]].position );
-            QVector3D n2 = QVector3D::crossProduct(m_vertex[m_indices[i]].position - m_vertex[m_indices[i+2]].position, m_vertex[m_indices[i+1]].position - m_vertex[m_indices[i+2]].position );
-            QVector3D n3 = QVector3D::crossProduct(m_vertex[m_indices[i+1]].position - m_vertex[m_indices[i+3]].position, m_vertex[m_indices[i+2]].position - m_vertex[m_indices[i+3]].position );
-            m_vertex[m_indices[i]].normal = n0;
-            m_vertex[m_indices[i+1]].normal = n1;
-            m_vertex[m_indices[i+2]].normal = n2;
-            m_vertex[m_indices[i+3]].normal = n3;
+
+            QVector3D n0 = QVector3D::crossProduct(m_vertexArr[m_indices[i+1]].position - m_vertexArr[m_indices[i]].position, m_vertexArr[m_indices[i+2]].position - m_vertexArr[m_indices[i]].position );
+            QVector3D n1 = QVector3D::crossProduct(m_vertexArr[m_indices[i]].position - m_vertexArr[m_indices[i+1]].position, m_vertexArr[m_indices[i+2]].position - m_vertexArr[m_indices[i+1]].position );
+            QVector3D n2 = QVector3D::crossProduct(m_vertexArr[m_indices[i]].position - m_vertexArr[m_indices[i+2]].position, m_vertexArr[m_indices[i+1]].position - m_vertexArr[m_indices[i+2]].position );
+            QVector3D n3 = QVector3D::crossProduct(m_vertexArr[m_indices[i+1]].position - m_vertexArr[m_indices[i+3]].position, m_vertexArr[m_indices[i+2]].position - m_vertexArr[m_indices[i+3]].position );
+            m_vertexArr[m_indices[i]].normal = n0;
+            m_vertexArr[m_indices[i+1]].normal = n1;
+            m_vertexArr[m_indices[i+2]].normal = n2;
+            m_vertexArr[m_indices[i+3]].normal = n3;
         }
     }
 

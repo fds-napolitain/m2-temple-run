@@ -4,13 +4,13 @@ precision mediump int;
 precision mediump float;
 #endif
 
-
+uniform vec4 light_color;
 
 
 void main()
 {
     // Set fragment color from texture
-    gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+    gl_FragColor = light_color;
 }
 //! [0]
 

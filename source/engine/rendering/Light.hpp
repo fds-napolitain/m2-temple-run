@@ -13,8 +13,10 @@ class Light : public Entity{
 public:
     Light(std::string name, Transform* transformation, QVector4D color);
 
+    const QVector4D &getColor() const;
+
 private:
-    QVector3D m_color;
+    QVector4D m_color;
 
 };
 

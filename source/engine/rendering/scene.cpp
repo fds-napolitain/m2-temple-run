@@ -24,7 +24,11 @@ void Scene::draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, Q
                 if(mesh != nullptr){
                     lightProgram.bind();
                     lightProgram.setUniformValue("transform", entity->getTransform()->matrix);
+                    lightProgram.setUniformValue("light_color", lightEntity->getColor());
                     mesh->draw(gEngine, lightProgram, mesh->getPrimitive());
+
+                    shaderProgram.bind();
+                    shaderProgram.setUniformValue("light_color", lightEntity->getColor());
                 }
             }
         }

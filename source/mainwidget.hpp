@@ -107,11 +107,6 @@ private:
     GeometryEngine *geometries;
     Scene* scene;
 
-    QOpenGLTexture *grass;
-    QOpenGLTexture *rock;
-    QOpenGLTexture *snow;
-    QOpenGLTexture *heightmap;
-
     QMatrix4x4 projection;
 
     QVector2D mousePressPosition;

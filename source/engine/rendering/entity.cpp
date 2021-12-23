@@ -16,12 +16,6 @@ Entity::Entity(std::string name, Transform *transform) :
 
 Entity::~Entity() {
 	delete m_transform;
-	for(Entity* child : m_children){
-		delete child;
-	}
-	for(Component* component : m_components){
-		delete component;
-	}
 }
 
 void Entity::setParent(Entity* entity){

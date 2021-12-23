@@ -54,7 +54,6 @@
 MainWidget::MainWidget(QWidget *parent) :
 		QOpenGLWidget(parent),
 		geometries(nullptr),
-		grass(nullptr),
 		angularSpeed(0)
 
 {
@@ -64,7 +63,6 @@ MainWidget::MainWidget(QWidget *parent) :
 
 MainWidget::MainWidget(TargetFPS fps, QWidget *parent) : QOpenGLWidget(parent),
 														 geometries(nullptr),
-														 grass(nullptr),
 														 angularSpeed(0)
 {
 	this->fps = fps;

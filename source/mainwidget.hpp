@@ -95,7 +95,6 @@ protected:
     void paintGL() override;
 
     void initShaders();
-    void initTextures();
     void initScene();
     std::vector<VertexData> sphere;
 
@@ -108,11 +107,6 @@ private:
 	QOpenGLShaderProgram lightProgram;
     GeometryEngine *geometries;
     Scene* scene;
-
-    QOpenGLTexture *grass;
-    QOpenGLTexture *rock;
-    QOpenGLTexture *snow;
-    QOpenGLTexture *heightmap;
 
     QMatrix4x4 projection;
 

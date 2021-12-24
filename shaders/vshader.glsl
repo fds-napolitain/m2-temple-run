@@ -6,6 +6,7 @@ precision mediump float;
 
 uniform mat4 mvp_matrix;
 uniform mat4 transform;
+uniform mat3 normals_rotation;
 
 attribute vec4 a_position;
 attribute vec2 a_texcoord;
@@ -27,7 +28,7 @@ void main()
     gl_Position = mvp_matrix * vec4(curPos, 1.0);
     v_texcoord = a_texcoord;
     v_color = a_color;
-    //v_normal = vec3(transform * vec4(a_normal, 1.0));
+    //v_normal = vec3(mvp_matrix * transform * vec4(a_normal,1.0));
     v_normal = a_normal;
 
 }

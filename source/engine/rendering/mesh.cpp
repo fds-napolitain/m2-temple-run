@@ -66,7 +66,6 @@ void Mesh::loadMesh(const std::string &path, int format){
     std::cout << "succesfully loaded models" << std::endl;
 }
 
-
 void Mesh::initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY){
     float plan_xmax = boardSizeX;
     float plan_xmin = -boardSizeX;
@@ -120,6 +119,7 @@ void Mesh::initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY){
     indextoArray(m_indicesArr, m_indices);
     computeNormals(true);
 }
+
 
 void Mesh::initCubeGeometry() {
 	// For cube we would need only 8 vertices but we have to
@@ -197,7 +197,6 @@ VertexData* Mesh::vertextoArray(VertexData* arr, std::vector<VertexData> &vertex
     return arr;
 }
 
-
 unsigned short* Mesh::indextoArray(unsigned short* arr, std::vector<unsigned short>& indices){
 
     for(unsigned int i =0; i< indices.size(); i++){
@@ -213,6 +212,7 @@ void Mesh::draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, in
 	}
 	gEngine->drawGeometry(&shaderProgram, m_vertexArr, m_indicesArr, m_vertex.size(), m_indices.size(), format, m_color);
 }
+
 
 void Mesh::loadTexture(const QString& texturePath, QOpenGLTexture::Filter minFilter, QOpenGLTexture::Filter maxFilter, QOpenGLTexture::WrapMode warp ) {
 	m_texture = new QOpenGLTexture(QImage(texturePath).mirrored());
@@ -239,3 +239,5 @@ void Mesh::computeNormals(bool stripe) {
     }
 
 }
+
+

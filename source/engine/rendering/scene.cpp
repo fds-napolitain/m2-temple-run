@@ -42,6 +42,7 @@ void Scene::draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, Q
                 if(mesh != nullptr){
                     shaderProgram.bind();
                     shaderProgram.setUniformValue("transform", entity->getTransform()->matrix);
+                    shaderProgram.setUniformValue("normals_rotation", entity->getTransform()->rotate.toRotationMatrix());
                     mesh->draw(gEngine, shaderProgram, mesh->getPrimitive());
                 }
             }

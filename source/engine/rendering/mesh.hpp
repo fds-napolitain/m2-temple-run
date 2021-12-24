@@ -22,7 +22,7 @@ public:
 
     enum Type{
         DEFAULT,
-        LIGHT
+        LIGHT,
     };
 
     Mesh(int primitive = 0, QVector3D color =  QVector3D(1.0,1.0,1.0));
@@ -48,6 +48,7 @@ public:
     static unsigned short* indextoArray(unsigned short* arr, std::vector<unsigned short> &indices);
     static VertexData* vertextoArray(VertexData* arr, std::vector<VertexData> &vertex);
     void computeNormals(bool stripe);
+
 
 private:
     int m_primitive;

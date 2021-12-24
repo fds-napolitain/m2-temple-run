@@ -271,6 +271,7 @@ void MainWidget::paintGL()
 	QPainter painter(this);
 	painter.setPen(Qt::white);
 	painter.drawText(20, 40, "toto");
+	painter.end();
 
     timeStep = currentTime.nsecsElapsed() * 0.000000001;
     std::cout << "fps: " << floor(1/ timeStep) << " interval: " << fps.getSwapInterval() << " ms: " << fps.getTimePerFrame() << std::endl;
@@ -301,12 +302,14 @@ void MainWidget::paintGL()
 
    //gScene->update()
 
+	program.bind();
 	scene->draw(geometries, program);
 	scene->update(timeStep);
 
 
     program.setUniformValue("texture", 3);
     program.setUniformValue("mvp_matrix", projection * matrix);
+	program.release();
 
     // Draw cube geometry
 	timer->start(fps.getTimePerFrame());

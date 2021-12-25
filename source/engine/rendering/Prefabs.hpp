@@ -10,6 +10,12 @@
 
 class Prefabs : public Entity {
 
+private:
+	std::vector<Entity> entities;
+
+public:
+	Prefabs();
+
 };
 
 

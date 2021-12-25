@@ -75,7 +75,7 @@ Transform Transform::combineWith(Transform transform) {
  * @return
  */
 Transform Transform::combineWith(TimeStep deltaTime) const {
-	return Transform(this->rotate * deltaTime, this->position * deltaTime, this->scale);
+	return Transform(this->rotate, this->position * deltaTime, this->scale);
 }
 
 QMatrix4x4 Transform::inverseWorld() const{

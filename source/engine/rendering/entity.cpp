@@ -108,7 +108,7 @@ const Entity *Entity::getParent() const {
  *
  * @return
  */
-std::vector<Component *> Entity::getComponents() const {
+std::vector<Component*> Entity::getComponents() const {
 	return m_components;
 }
 

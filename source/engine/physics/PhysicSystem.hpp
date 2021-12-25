@@ -7,7 +7,7 @@
 #include "collider.hpp"
 #include "../TimeStep.hpp"
 #include "source/engine/rendering/entity.hpp"
-#include "source/game/Player.hpp"
+#include "source/game/prefabs/Player.hpp"
 #include <vector>
 #include <iostream>
 

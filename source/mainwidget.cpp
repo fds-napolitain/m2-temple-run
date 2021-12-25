@@ -260,6 +260,7 @@ void MainWidget::resizeGL(int w, int h)
 void MainWidget::initScene()
 {
      scene = new SceneGraph(new Entity("World"));
+	 dynamic_cast<SceneGraph*>(scene)->initGame();
      geometries = new GeometryEngine();
 }
 

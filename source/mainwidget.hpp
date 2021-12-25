@@ -52,7 +52,7 @@
 #define MAINWIDGET_H
 
 #include "source/engine/rendering/geometryengine.hpp"
-#include "source/game/scenegraph.hpp"
+#include "source/engine/rendering/scenegraph.hpp"
 #include "source/engine/rendering/mesh.hpp"
 #include "source/engine/TimeStep.hpp"
 #include "source/engine/TargetFPS.hpp"

@@ -1,11 +1,11 @@
-#include "scenegraph.hpp"
-#include "source/engine/physics/aabb.hpp"
+//
+// Created by Maxime Boucher on 25/12/2021.
+//
 
-SceneGraph::SceneGraph(Entity *root) :
-		Scene(),
-		m_root(root)
-{
-    player = new Player("player");
+#include "source/engine/rendering/scenegraph.hpp"
+
+void SceneGraph::initGame() {
+	player = new Player("player");
 	Transform* solTransform = new Transform(QQuaternion(), QVector3D(0, -4.0, 0), 1);
 	Transform* rightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 1.0, 90), QVector3D(7, -2.0, 0), 1);
 	Transform* leftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-7, -2.0, 0), 1);
@@ -45,7 +45,7 @@ SceneGraph::SceneGraph(Entity *root) :
 	m_physics->addCollider(player->getCollider());
 	m_physics->addCollider(b);
 
-    obstacle->addComponent(b);
+	obstacle->addComponent(b);
 	sol->addComponent(solMesh);
 	right->addComponent(rightMesh);
 	left->addComponent(leftMesh);
@@ -71,52 +71,3 @@ SceneGraph::SceneGraph(Entity *root) :
 	addEntity(m_root, background);
 	addEntity(m_root, score);
 }
-
-SceneGraph::~SceneGraph() {
-	delete m_root;
-}
-
-void SceneGraph::addEntity(Entity *parent, Entity *entity)
-{
-    entity->setParent(parent);
-    m_drawnEntities.emplace_back(entity);
-}
-
-
-void SceneGraph::update(TimeStep deltaTime)
-{
-
-    updateTransforms(m_root, deltaTime);
-	Transform* transform = mainDecor->getTransform();
-	transform->position += QVector3D(0.0, 0.0, 8.0*deltaTime);
-
-	if (transform->position.z() >= 50) {
-		transform->position = QVector3D(transform->position.x(), transform->position.y(), -100);
-	}
-
-	mainDecor->setTransform(transform);
-
-//   updatePhysics(); <-- fait tout dans le scenegraph
-     m_physics->update(deltaTime, m_drawnEntities, player );
-}
-
-void SceneGraph::updateTransforms(Entity* current, TimeStep deltaTime)
-{
-    Transform* curTransform = current->getTransform();
-
-    if (current->getParent() != nullptr) {
-        Transform* parentTransform = current->getParent()->getTransform();
-        curTransform->matrix = (parentTransform->matrix * curTransform->getLocalModelMatrix());
-    } else {
-
-        curTransform->matrix = curTransform->getLocalModelMatrix();
-    }
-
-	current->updateTransforms(deltaTime);
-
-	for(Entity * child : current->getChildren()) {
-        updateTransforms(child, deltaTime);
-    }
-}
-
-Entity *SceneGraph::getRoot() {return m_root; }

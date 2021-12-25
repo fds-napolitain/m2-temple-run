@@ -5,12 +5,13 @@
 #ifndef TEMPLERUN_TIMESTEP_HPP
 #define TEMPLERUN_TIMESTEP_HPP
 
-class TimeStep{
+class TimeStep {
+
 public:
-    TimeStep(float time = 0.0f) : m_time(time) {}
-    [[nodiscard]] float getTMilliSeconds() const { return m_time * 1000.0f;}
-    [[nodiscard]] float getSeconds() const { return m_time ;}
-    operator float() const {return m_time;}
+    TimeStep(float time = 0.0f);
+    [[nodiscard]] float getTMilliSeconds() const;
+    [[nodiscard]] float getSeconds() const;
+    operator float() const;
 private:
     float m_time;
 

@@ -14,12 +14,12 @@ public:
     QMatrix4x4  matrix;
     //local transform
     //TODO: change float to vector3d to handle non uniform scales
-    float       scale = 1.0;  //uniform scale
+    float       scale;
     QQuaternion rotate;
     QVector3D   position;
 	QVector3D   velocity;
     QQuaternion rotation;
-    float       rescale = 1.0;
+    float       rescale;
 
    //methods
     QMatrix4x4 getModelMatrix();

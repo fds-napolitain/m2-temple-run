@@ -30,8 +30,8 @@ public:
 
 private:
     std::string m_name;
-    Transform* m_transform;
-	Transform* m_animation;
+    Transform* m_transform = nullptr;
+	Transform* m_animation = nullptr;
     Entity* m_parent;
     std::vector<Entity*> m_children;
     std::vector<Component*> m_components;

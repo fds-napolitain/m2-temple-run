@@ -34,10 +34,6 @@ QMatrix4x4 Transform::getLocalModelMatrix() const{
 
 }
 
-
-
-
-
 QVector3D Transform::applyToPoint(QVector3D p) const
 {
     return ( rotate.rotatedVector(p) * scale) + position   ;
@@ -116,12 +112,12 @@ void Transform::printV3D(const QVector3D &v) {
 
 }
 
-Transform Transform::operator*(Transform &local) {
+Transform Transform::operator*(Transform &local) const {
 	Transform res = Transform(this->rotate * local.rotate, this->position + local.position, this->scale * local.scale);
 	return res;
 }
 
-Transform Transform::interpolate(Transform &t, float k) {
+Transform Transform::interpolate(Transform &t, float k) const {
 	Transform result;
 	result.scale = this->scale * k +t.scale *(1-k);                 // scale interpolation
 	QQuaternion::slerp(this->rotate, t.rotate, k);                        // spherical linear interpolation for quaternion

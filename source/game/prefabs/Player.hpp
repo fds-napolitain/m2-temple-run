@@ -21,7 +21,6 @@ public:
 	~Player() override;
 	[[nodiscard]] std::vector<Entity*> getEntities() const;
 	[[nodiscard]] Collider* getCollider() const;
-	void updateTransforms(TimeStep deltaTime) override;
 
 };
 

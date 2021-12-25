@@ -2,6 +2,7 @@
 #define TRANSFORM_H
 #include <QVector3D>
 #include <QMatrix4x4>
+#include "TimeStep.hpp"
 
 class Transform {
 public:
@@ -30,7 +31,8 @@ public:
     [[nodiscard]] QVector3D applyToPoint(QVector3D  p) const;
     [[nodiscard]] QVector3D applyToVector(QVector3D v) const;
     [[nodiscard]] QVector3D applyToVersor(QVector3D v) const;
-    Transform combineWith(Transform &t);
+    Transform combineWith(Transform t);
+	[[nodiscard]] Transform combineWith(TimeStep deltaTime) const;
     [[nodiscard]] QMatrix4x4 inverseWorld() const;
     Transform interpolate(Transform &t, float k);
     Transform operator*(Transform& local);

@@ -5,7 +5,7 @@
 #include "source/engine/rendering/scenegraph.hpp"
 
 void SceneGraph::initGame() {
-	player = new Player("player");
+	Player* player = new Player("player");
 	Transform* solTransform = new Transform(QQuaternion(), QVector3D(0, -4.0, 0), 1);
 	Transform* rightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 1.0, 90), QVector3D(7, -2.0, 0), 1);
 	Transform* leftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-7, -2.0, 0), 1);
@@ -16,7 +16,7 @@ void SceneGraph::initGame() {
 	Entity* sol = new Entity("sol", solTransform);
 	Entity* right = new Entity("right", rightTransform);
 	Entity* left = new Entity("left", leftTransform);
-	mainDecor = new Entity("mainDecor", mainDecorTransform);
+	Entity* mainDecor = new Entity("mainDecor", mainDecorTransform);
 	Entity* obstacle = new Entity("obstacle", obstacleTransform);
 	Entity* background = new Entity("fond", backgroundTransform);
 

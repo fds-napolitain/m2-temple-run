@@ -61,14 +61,26 @@ QVector4D Transform::apply(QVector4D p) const{
     return QVector4D(t.x(), t.y(), t.z(), p.w());
 }
 
-Transform Transform::combineWith(Transform& transform) {
+/**
+ * Transform * animation
+ * @param transform
+ * @return
+ */
+Transform Transform::combineWith(Transform transform) {
     this->rotate *= transform.rotate;
     this->position += transform.position;
     this->scale *= transform.scale;
     return *this;
 }
 
-
+/**
+ * Animation * deltatime
+ * @param deltaTime
+ * @return
+ */
+Transform Transform::combineWith(TimeStep deltaTime) const {
+	return Transform(this->rotate * deltaTime, this->position * deltaTime, this->scale * deltaTime);
+}
 
 QMatrix4x4 Transform::inverseWorld() const{
     return matrix.inverted();
@@ -123,4 +135,3 @@ void Transform::printMatrix4x4(const QMatrix4x4 &m) {
               << " ( " << m(2,0) << " " << m(2,1) << " " << m(2,2) << " "  << m(2,3) << " ) " <<  "\n"
               << " ( " << m(3,0) << " " << m(3,1) << " " << m(3,2) << " "  << m(3,3) << " ) " <<  "\n";
 }
-

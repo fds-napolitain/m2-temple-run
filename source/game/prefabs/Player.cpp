@@ -12,13 +12,17 @@ Player::Player(std::string name) : Entity(std::move(name)) {
 	Transform* playerMidTransform = new Transform(QQuaternion::fromAxisAndAngle(0.1, 0.2, -0.2, 14), QVector3D(0, 1.3, 0), 0.8);
 	Transform* playerTopTransform = new Transform(QQuaternion::fromAxisAndAngle(-0.2, 0.4, -0.2, 14), QVector3D(0, 2.3, 0), 0.6);
 
-	Entity* playerBase = new Entity("playerBase", playerBaseTransform);
+	Transform* playerBaseAnimation = new Transform(QQuaternion::fromAxisAndAngle(-1.0, 0.0, 0.0, 90), QVector3D(), 1);
+	Transform* playerMidAnimation = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(), 1);
+	Transform* playerTopAnimation = new Transform(QQuaternion::fromAxisAndAngle(-1.0, 0.0, 0.0, 45), QVector3D(), 1);
+
+	Entity* playerBase = new Entity("playerBase", playerBaseTransform, playerBaseAnimation);
 	entities.push_back(playerBase);
 
-	Entity* playerMid = new Entity("playerMid", playerMidTransform);
+	Entity* playerMid = new Entity("playerMid", playerMidTransform, playerMidAnimation);
 	entities.push_back(playerMid);
 
-	Entity* playerTop = new Entity("playerTop", playerTopTransform);
+	Entity* playerTop = new Entity("playerTop", playerTopTransform, playerTopAnimation);
 	entities.push_back(playerTop);
 
 	collider = new BoundingSphere(playerBaseTransform->position, playerBaseTransform->scale);
@@ -45,16 +49,4 @@ Player::~Player() {
 		delete entity;
 	}
 	delete collider;
-}
-
-void Player::updateTransforms(TimeStep deltaTime) {
-	Transform* animationBase = entities[0]->getTransform();
-	Transform* animationMid = entities[1]->getTransform();
-	Transform* animationTop = entities[2]->getTransform();
-	animationBase->rotate *= QQuaternion::fromAxisAndAngle(-1.0, 0.0, 0.0, 90 * deltaTime);
-	animationMid->rotate *= QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90 * deltaTime);
-	animationTop->rotate *= QQuaternion::fromAxisAndAngle(-1.0, 0.0, 0.0, 45 * deltaTime);
-	entities[0]->setTransform(animationBase);
-	entities[1]->setTransform(animationMid);
-	entities[2]->setTransform(animationTop);
 }

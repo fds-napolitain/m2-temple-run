@@ -52,6 +52,13 @@ SceneGraph::SceneGraph(Entity *root) :
 	obstacle->addComponent(obstacleMesh);
 	background->addComponent(backgroundMesh);
 
+
+	Transform* scoreTransform = new Transform(QQuaternion(), QVector3D(3,3,0), 0.2);
+	Entity* score = new Entity("score", scoreTransform);
+	Mesh* scoreMesh = new Mesh(":/0.off", Mesh::OFFIO, GL_TRIANGLES);
+	scoreMesh->loadTexture(":/neige.png");
+	score->addComponent(scoreMesh);
+
 	addEntity(m_root, mainDecor);
 	addEntity(mainDecor, obstacle);
 	addEntity(mainDecor, sol);
@@ -62,6 +69,7 @@ SceneGraph::SceneGraph(Entity *root) :
 	addEntity(player, player->getEntities()[1]);
 	addEntity(player, player->getEntities()[2]);
 	addEntity(m_root, background);
+	addEntity(m_root, score);
 }
 
 SceneGraph::~SceneGraph() {

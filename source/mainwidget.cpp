@@ -268,11 +268,6 @@ void MainWidget::initScene()
  */
 void MainWidget::paintGL()
 {
-	QPainter painter(this);
-	painter.setPen(Qt::white);
-	painter.drawText(20, 40, "toto");
-	painter.end();
-
     timeStep = currentTime.nsecsElapsed() * 0.000000001;
     std::cout << "fps: " << floor(1/ timeStep) << " interval: " << fps.getSwapInterval() << " ms: " << fps.getTimePerFrame() << std::endl;
     currentTime.restart();

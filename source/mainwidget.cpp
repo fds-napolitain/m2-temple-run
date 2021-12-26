@@ -48,7 +48,6 @@
 **
 ****************************************************************************/
 
-#include <QPainter>
 #include "mainwidget.hpp"
 #include "source/game/scenes/SceneGame.hpp"
 
@@ -160,7 +159,7 @@ void MainWidget::keyPressEvent(QKeyEvent *event)
 
 
 
-    //projection.translate(0.0, 0.0, -8.0*timeStep) ;
+    //projection.translate(0.0, 0.0, -1.0) ;
       //update();
 
     // Save mouse press position
@@ -222,6 +221,24 @@ void MainWidget::initShaders()
 	// Bind shader pipeline for use
 	if (!program.bind())
 		close();
+
+
+
+    // Compile vertex shader
+    if (!lightProgram.addShaderFromSourceFile(QOpenGLShader::Vertex, ":/vlight.glsl"))
+        close();
+
+    // Compile fragment shader
+    if (!lightProgram.addShaderFromSourceFile(QOpenGLShader::Fragment, ":/flight.glsl"))
+        close();
+
+    // Link shader pipeline
+    if (!lightProgram.link())
+        close();
+
+
+
+
 }
 //! [3]
 
@@ -274,6 +291,8 @@ void MainWidget::paintGL()
     QMatrix4x4 matrix;
     matrix.translate(0.0, 0.0, -10.0);
     matrix.rotate(rotation);
+    lightProgram.bind();
+    lightProgram.setUniformValue("cam_pos", QVector3D(matrix(0,3), matrix(1,3), matrix(2,3)));
 
     // Set modelview-projection matrix
 //! [6]
@@ -291,13 +310,14 @@ void MainWidget::paintGL()
    //gScene->update()
 
 	program.bind();
-	scene->draw(geometries, program);
-	scene->update(timeStep);
 
+	program.setUniformValue("texture", 3);
+	program.setUniformValue("mvp_matrix", projection * matrix);
+	lightProgram.bind();
+	lightProgram.setUniformValue("mvp_matrix", projection * matrix);
 
-    program.setUniformValue("texture", 3);
-    program.setUniformValue("mvp_matrix", projection * matrix);
-	program.release();
+    scene->draw(geometries, program, lightProgram);
+    scene->update(timeStep);
 
     // Draw cube geometry
 	timer->start(fps.getTimePerFrame());

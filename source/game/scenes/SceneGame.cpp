@@ -3,6 +3,7 @@
 //
 
 #include "SceneGame.hpp"
+#include "source/engine/rendering/Light.hpp"
 
 SceneGame::SceneGame() : SceneGraph() {
 	player = new Player("player");
@@ -33,7 +34,7 @@ SceneGame::SceneGame() : SceneGraph() {
 	addEntity(mainDecor, left);
 
 	Transform* obstacleTransform = new Transform(QQuaternion(), QVector3D(0,-1,0), 2);
-	Entity* obstacle = new Entity("obstacle", obstacleTransform);
+	Light* obstacle = new Light("obstacle", obstacleTransform, QVector4D(1.0,1.0,1.0,1.0));
 	addEntity(mainDecor, obstacle);
 
 	Mesh* solMesh = new Mesh(GL_TRIANGLE_STRIP);
@@ -42,12 +43,13 @@ SceneGame::SceneGame() : SceneGraph() {
 	Mesh* rightMesh = new Mesh(GL_TRIANGLE_STRIP);
 	rightMesh->loadTexture(":/rock.png", QOpenGLTexture::LinearMipMapLinear);
 
-	Mesh* leftMesh = new Mesh(GL_TRIANGLE_STRIP);
+	Mesh* leftMesh = new Mesh(GL_TRIANGLE_STRIP, QVector3D(1.0,0,0));
 
-	Mesh* backgroundMesh = new Mesh(GL_TRIANGLE_STRIP);
+    Mesh* backgroundMesh = new Mesh(GL_TRIANGLE_STRIP);
 
-	Mesh* obstacleMesh = new Mesh(GL_TRIANGLE_STRIP);
-	obstacleMesh->initCubeGeometry();
+    Mesh* obstacleMesh = new Mesh(GL_TRIANGLE_STRIP);
+    obstacleMesh->setType(Mesh::Type::LIGHT);
+    obstacleMesh->initCubeGeometry();
 	obstacleMesh->loadTexture(":/grass.png");
 
 	solMesh->initPlaneGeometry(16,16,100,100);
@@ -90,4 +92,9 @@ void SceneGame::keyPressEvent(QKeyEvent *event, TimeStep step) {
 			player->setTransform(transform);
 			break;
 	}
+}
+
+void SceneGame::update(TimeStep timeStep) {
+	SceneGraph::update(timeStep);
+	m_physics->update(timeStep, m_drawnEntities, player);
 }

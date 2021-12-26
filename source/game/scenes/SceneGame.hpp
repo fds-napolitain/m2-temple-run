@@ -15,6 +15,7 @@ private:
 public:
 	SceneGame();
 	void keyPressEvent(QKeyEvent *event, TimeStep step) override;
+	void update(TimeStep timeStep) override;
 
 };
 

@@ -43,17 +43,9 @@ void SceneGraph::addEntity(Entity *parent, Entity *entity)
 void SceneGraph::update(TimeStep deltaTime)
 {
     updateTransforms(m_root, deltaTime);/*
-	Transform* transform = mainDecor->getTransform();
-	transform->position += QVector3D(0.0, 0.0, 8.0*deltaTime);
-
 	if (transform->position.z() >= 50) {
 		transform->position = QVector3D(transform->position.x(), transform->position.y(), -100);
-	}
-
-//	mainDecor->setTransform(transform);
-
-//   updatePhysics(); <-- fait tout dans le scenegraph
-     m_physics->update(deltaTime, m_drawnEntities, player );*/
+	}*/
 }
 
 /**

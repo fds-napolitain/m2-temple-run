@@ -16,7 +16,7 @@ public:
     PhysicSystem *m_physics = new PhysicSystem;
     std::vector<Entity*> m_drawnEntities; // objects to draw
     std::vector<Entity*> m_physXentities; // physics of entities
-    virtual void draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram); //maybe virtual if draw depends of the type scene
+    virtual void draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, QOpenGLShaderProgram& lightProgram); //maybe virtual if draw depends of the type scene
     virtual void update(TimeStep timeStep){};
 
 };

@@ -1,14 +1,17 @@
 #include "mesh.hpp"
 
-Mesh::Mesh(int primitive) : m_primitive(primitive) {
+Mesh::Mesh(int primitive, QVector3D color) : m_primitive(primitive), m_color(color) {
 }
 
-Mesh::Mesh(const std::string& path, int format, int primitive) : m_primitive(primitive)
+Mesh::Mesh(const std::string& path, int format, int primitive, QVector3D color) : m_primitive(primitive), m_color(color)
 {
     this->loadMesh(path, format);
 }
 
-Mesh::Mesh(const std::string &path, const QString &texturePath, int format, int primitive) {
+Mesh::Mesh(const std::string &path, const QString &texturePath, int format, int primitive, QVector3D color) :
+    m_primitive(primitive),
+    m_color(color)
+{
 	this->loadMesh(path, format);
 	loadTexture(texturePath);
 }
@@ -40,7 +43,8 @@ void Mesh::loadMesh(const std::string &path, int format){
 		VertexData temp;
 		if (path == ":/sphere.off") {
 			m_normals.push_back(vertices[i] - QVector3D());
-			temp = {vertices[i], QVector2D(asin(m_normals[i].x()) / 3.1415 + 0.5, asin(m_normals[i].y()) / 3.1415 + 0.5)};
+            Transform::printV3D(m_normals[i]);
+			temp = {vertices[i], QVector2D(asin(m_normals[i].x()) / 3.1415 + 0.5, asin(m_normals[i].y()) / 3.1415 + 0.5), QVector3D(vertices[i] - QVector3D())};
 		} else {
 			temp = {vertices[i], QVector2D()};
 		}
@@ -61,7 +65,6 @@ void Mesh::loadMesh(const std::string &path, int format){
     }
     std::cout << "succesfully loaded models" << std::endl;
 }
-
 
 void Mesh::initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY){
     float plan_xmax = boardSizeX;
@@ -109,13 +112,14 @@ void Mesh::initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY){
              m_indices.push_back((i+1)*nH+nH-1);
              m_indices.push_back((i+1)*nH);
          }
-
     m_vertexArr = new VertexData[vertexNumber];
     m_indicesArr = new unsigned short[indexCount];
 
-	vertextoArray(m_vertexArr, m_vertex);
-	indextoArray(m_indicesArr, m_indices);
+    vertextoArray(m_vertexArr, m_vertex);
+    indextoArray(m_indicesArr, m_indices);
+    computeNormals(true);
 }
+
 
 void Mesh::initCubeGeometry() {
 	// For cube we would need only 8 vertices but we have to
@@ -166,7 +170,8 @@ void Mesh::initCubeGeometry() {
 	// index of the second strip needs to be duplicated. If
 	// connecting strips have same vertex order then only last
 	// index of the first strip needs to be duplicated.
-	m_indicesArr = new unsigned short[34] {
+    int indexCount = 34;
+	m_indicesArr = new unsigned short[indexCount] {
 			0,  1,  2,  3,  3,     // Face 0 - triangle strip ( v0,  v1,  v2,  v3)
 			4,  4,  5,  6,  7,  7, // Face 1 - triangle strip ( v4,  v5,  v6,  v7)
 			8,  8,  9, 10, 11, 11, // Face 2 - triangle strip ( v8,  v9, v10, v11)
@@ -175,7 +180,11 @@ void Mesh::initCubeGeometry() {
 			20, 20, 21, 22, 23      // Face 5 - triangle strip (v20, v21, v22, v23)
 	};
 	m_vertex.resize(24);
-	m_indices.resize(24);
+	m_indices.resize(indexCount);
+    for(unsigned int i =0; i<indexCount; i++){
+        m_indices[i] = m_indicesArr[i];
+    }
+	computeNormals(true);
 //! [1]
 }
 
@@ -187,7 +196,6 @@ VertexData* Mesh::vertextoArray(VertexData* arr, std::vector<VertexData> &vertex
     }
     return arr;
 }
-
 
 unsigned short* Mesh::indextoArray(unsigned short* arr, std::vector<unsigned short>& indices){
 
@@ -202,8 +210,9 @@ void Mesh::draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, in
 	if (m_texture != nullptr) {
 		m_texture->bind(3);
 	}
-	gEngine->drawGeometry(&shaderProgram, m_vertexArr, m_indicesArr, m_vertex.size(), m_indices.size(), format);
+	gEngine->drawGeometry(&shaderProgram, m_vertexArr, m_indicesArr, m_vertex.size(), m_indices.size(), format, m_color);
 }
+
 
 void Mesh::loadTexture(const QString& texturePath, QOpenGLTexture::Filter minFilter, QOpenGLTexture::Filter maxFilter, QOpenGLTexture::WrapMode warp ) {
 	m_texture = new QOpenGLTexture(QImage(texturePath).mirrored());
@@ -211,6 +220,24 @@ void Mesh::loadTexture(const QString& texturePath, QOpenGLTexture::Filter minFil
 	m_texture->setMinificationFilter(minFilter);
 	m_texture->setMagnificationFilter(maxFilter);
 	m_texture->setWrapMode(warp);
+}
+
+void Mesh::computeNormals(bool stripe) {
+    if(stripe){
+
+        for(unsigned int i = 0; i < m_indices.size(); i+=6){
+
+            QVector3D n0 = QVector3D::crossProduct(m_vertexArr[m_indices[i+1]].position - m_vertexArr[m_indices[i]].position, m_vertexArr[m_indices[i+2]].position - m_vertexArr[m_indices[i]].position );
+            QVector3D n1 = QVector3D::crossProduct(m_vertexArr[m_indices[i]].position - m_vertexArr[m_indices[i+1]].position, m_vertexArr[m_indices[i+2]].position - m_vertexArr[m_indices[i+1]].position );
+            QVector3D n2 = QVector3D::crossProduct(m_vertexArr[m_indices[i]].position - m_vertexArr[m_indices[i+2]].position, m_vertexArr[m_indices[i+1]].position - m_vertexArr[m_indices[i+2]].position );
+            QVector3D n3 = QVector3D::crossProduct(m_vertexArr[m_indices[i+1]].position - m_vertexArr[m_indices[i+3]].position, m_vertexArr[m_indices[i+2]].position - m_vertexArr[m_indices[i+3]].position );
+            m_vertexArr[m_indices[i]].normal = n0;
+            m_vertexArr[m_indices[i+1]].normal = n1;
+            m_vertexArr[m_indices[i+2]].normal = n2;
+            m_vertexArr[m_indices[i+3]].normal = n3;
+        }
+    }
+
 }
 
 int Mesh::getType() {

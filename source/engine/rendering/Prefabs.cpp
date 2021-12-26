@@ -4,6 +4,6 @@
 
 #include "Prefabs.hpp"
 
-std::vector<Entity *> Prefabs::getEntities() const {
+std::vector<Entity*> Prefabs::getEntities() const {
 	return entities;
 }

@@ -14,6 +14,7 @@
 
 class Mesh : public Component
 {
+
 public:
 	enum {
 		OFFIO,
@@ -25,10 +26,16 @@ public:
         LIGHT,
     };
 
-    Mesh(int primitive = 0, QVector3D color =  QVector3D(1.0,1.0,1.0));
-    ~Mesh() override;
+	static void setEngine(GeometryEngine* engine, QOpenGLShaderProgram* program);
+	static GeometryEngine* m_engine;
+	static QOpenGLShaderProgram* m_program;
+
+    explicit Mesh(int primitive = 0, QVector3D color =  QVector3D(1.0,1.0,1.0));
     explicit Mesh(const std::string& path, int format = 0, int primitive = 0, QVector3D color =  QVector3D(1.0,1.0,1.0));
-    Mesh(const std::string& path, const QString& texturePath, int format = 0, int primitive = 0, QVector3D color =  QVector3D(1.0,1.0,1.0));
+	Mesh(const std::string& path, const QString& texturePath, int format = 0, int primitive = 0, QVector3D color =  QVector3D(1.0,1.0,1.0));
+	~Mesh() override;
+	int getType() override;
+
     void loadMesh(const std::string& path, int format);
 
 	void loadTexture(const  QString& texturePath,
@@ -36,22 +43,21 @@ public:
                             QOpenGLTexture::Filter maxFilter = QOpenGLTexture::Linear,
                             QOpenGLTexture::WrapMode warp = QOpenGLTexture::Repeat
                     );
-
-    void initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY);
+	void initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY);
 	void initCubeGeometry();
-	[[nodiscard]] std::vector<VertexData> getVertices() const {return m_vertex;}
-    [[nodiscard]] std::vector<unsigned short> getIndices() const {return m_indices;}
-    void draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, int format);
-	[[nodiscard]] int getPrimitive() const {return m_primitive;}
-	[[nodiscard]] Kind getKind() const {return m_kind;}
-    void setKind(Kind type) {m_kind = type;}
-    static unsigned short* indextoArray(unsigned short* arr, std::vector<unsigned short> &indices);
-    static VertexData* vertextoArray(VertexData* arr, std::vector<VertexData> &vertex);
-	int getType() override;
+	[[nodiscard]] std::vector<VertexData> getVertices() const;
+	[[nodiscard]] std::vector<unsigned short> getIndices() const;
+	void draw();
+	[[nodiscard]] int getPrimitive() const;
+	[[nodiscard]] Kind getKind() const;
+	void setKind(Kind type);
+	static unsigned short* indextoArray(unsigned short* arr, std::vector<unsigned short> &indices);
+	static VertexData* vertextoArray(VertexData* arr, std::vector<VertexData> &vertex);
     void computeNormals(bool stripe);
 
 
 private:
+	int m_format;
     int m_primitive;
     std::vector<VertexData> m_vertex;
     std::vector<unsigned short> m_indices;

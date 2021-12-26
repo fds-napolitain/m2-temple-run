@@ -1,6 +1,7 @@
 #include <iostream>
 #include "entity.hpp"
 #include "source/engine/components/physics/collider.hpp"
+#include "source/engine/components/rendering/mesh.hpp"
 
 /**
  *
@@ -149,6 +150,8 @@ void Entity::update(TimeStep deltaTime) {
 				break;
 			}
 			case Component::Type::MESH: {
+				Mesh* mesh = dynamic_cast<Mesh*>(component);
+				mesh->draw();
 				break;
 			}
 			case Component::Type::ANIMATION: {

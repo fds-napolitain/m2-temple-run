@@ -127,5 +127,5 @@ void GeometryEngine::drawGeometry(QOpenGLShaderProgram *program, VertexData* ver
     program->setUniformValue("a_color", color);
 
     // Draw cube geometry using indices from VBO 1
-    glDrawElements(format, indexBuf.size(), GL_UNSIGNED_SHORT, 0); //Careful update indicesNumber when creating new geometry
+    glDrawElements(format, indexBuf.size(), GL_UNSIGNED_SHORT, nullptr); //Careful update indicesNumber when creating new geometry
 }

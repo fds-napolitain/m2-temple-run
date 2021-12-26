@@ -1,16 +1,17 @@
 #include "mesh.hpp"
 
-Mesh::Mesh(int primitive, QVector3D color) : m_primitive(primitive), m_color(color) {
+Mesh::Mesh(int primitive, QVector3D color) :
+m_primitive(primitive), m_color(color) {
 }
 
-Mesh::Mesh(const std::string& path, int format, int primitive, QVector3D color) : m_primitive(primitive), m_color(color)
+Mesh::Mesh(const std::string& path, int format, int primitive, QVector3D color) :
+m_primitive(primitive), m_color(color)
 {
     this->loadMesh(path, format);
 }
 
 Mesh::Mesh(const std::string &path, const QString &texturePath, int format, int primitive, QVector3D color) :
-    m_primitive(primitive),
-    m_color(color)
+m_primitive(primitive), m_color(color)
 {
 	this->loadMesh(path, format);
 	loadTexture(texturePath);
@@ -21,7 +22,8 @@ Mesh::~Mesh() {
 	delete m_indicesArr;
 }
 
-void Mesh::loadMesh(const std::string &path, int format){
+void Mesh::loadMesh(const std::string &path, int format) {
+	this->m_format = format;
     std::vector<QVector3D> vertices;
     std::vector<std::vector<unsigned int>> indices;
     switch (format){
@@ -205,14 +207,15 @@ unsigned short* Mesh::indextoArray(unsigned short* arr, std::vector<unsigned sho
     return arr;
 }
 
-
-void Mesh::draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, int format) {
+/**
+ * Dessine l'objet
+ */
+void Mesh::draw() {
 	if (m_texture != nullptr) {
 		m_texture->bind(3);
 	}
-	gEngine->drawGeometry(&shaderProgram, m_vertexArr, m_indicesArr, m_vertex.size(), m_indices.size(), format, m_color);
+	m_engine->drawGeometry(m_program, m_vertexArr, m_indicesArr, m_vertex.size(), m_indices.size(), m_format, m_color);
 }
-
 
 void Mesh::loadTexture(const QString& texturePath, QOpenGLTexture::Filter minFilter, QOpenGLTexture::Filter maxFilter, QOpenGLTexture::WrapMode warp ) {
 	m_texture = new QOpenGLTexture(QImage(texturePath).mirrored());
@@ -223,10 +226,8 @@ void Mesh::loadTexture(const QString& texturePath, QOpenGLTexture::Filter minFil
 }
 
 void Mesh::computeNormals(bool stripe) {
-    if(stripe){
-
-        for(unsigned int i = 0; i < m_indices.size(); i+=6){
-
+    if (stripe){
+        for(unsigned int i = 0; i < m_indices.size(); i += 6){
             QVector3D n0 = QVector3D::crossProduct(m_vertexArr[m_indices[i+1]].position - m_vertexArr[m_indices[i]].position, m_vertexArr[m_indices[i+2]].position - m_vertexArr[m_indices[i]].position );
             QVector3D n1 = QVector3D::crossProduct(m_vertexArr[m_indices[i]].position - m_vertexArr[m_indices[i+1]].position, m_vertexArr[m_indices[i+2]].position - m_vertexArr[m_indices[i+1]].position );
             QVector3D n2 = QVector3D::crossProduct(m_vertexArr[m_indices[i]].position - m_vertexArr[m_indices[i+2]].position, m_vertexArr[m_indices[i+1]].position - m_vertexArr[m_indices[i+2]].position );
@@ -237,9 +238,42 @@ void Mesh::computeNormals(bool stripe) {
             m_vertexArr[m_indices[i+3]].normal = n3;
         }
     }
-
 }
 
+/**
+ * Renvoit component type == Mesh
+ * @return
+ */
 int Mesh::getType() {
 	return Type::MESH;
+}
+
+void Mesh::setKind(Mesh::Kind type) {
+	m_kind = type;
+}
+
+Mesh::Kind Mesh::getKind() const {
+	return m_kind;
+}
+
+int Mesh::getPrimitive() const {
+	return m_primitive;
+}
+
+std::vector<unsigned short> Mesh::getIndices() const {
+	return m_indices;
+}
+
+std::vector<VertexData> Mesh::getVertices() const {
+	return m_vertex;
+}
+
+/**
+ * Initialise geometry engine et QOpenGLShaderProgram à tous les mesh
+ * @param engine
+ * @param program
+ */
+void Mesh::setEngine(GeometryEngine *engine, QOpenGLShaderProgram *program) {
+	Mesh::m_engine = engine;
+	Mesh::m_program = program;
 }

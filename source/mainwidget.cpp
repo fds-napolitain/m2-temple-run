@@ -269,8 +269,9 @@ void MainWidget::resizeGL(int w, int h)
  */
 void MainWidget::initScene()
 {
-     scene = new SceneGame();
-     geometries = new GeometryEngine();
+	geometries = new GeometryEngine();
+	Mesh::setEngine(geometries, &program);
+	scene = new SceneGame();
 }
 
 /**
@@ -299,15 +300,6 @@ void MainWidget::paintGL()
 //!
 //!
 //! ../TP3/Qt_solar/sphere.obj
-
-
-    // Use grass unit 0 which contains cube.png
-   // SceneGraph* sg = (SceneGraph*) scene;
-    //std::vector<Component> t =  sg->getRoot()->getComponents();
-  //  Mesh* g = dynamic_cast<Mesh*>(&t[0]);
-  // std::cout << g->getIndices().size() << " "  << g->getVertices().size() << std::endl;
-
-   //gScene->update()
 
 	program.bind();
 

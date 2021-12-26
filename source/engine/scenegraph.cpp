@@ -37,25 +37,29 @@ void SceneGraph::addEntity(Entity *parent, Entity *entity)
 }
 
 /**
- *
- * @param deltaTime
+ * Update d'entrée
+ * @param timeStep
  */
-void SceneGraph::update(TimeStep deltaTime, Entity* current)
-{
-	if (current == nullptr) {
-		update(deltaTime, m_root);
+void SceneGraph::update(TimeStep timeStep) {
+	update(timeStep, m_root);
+}
+
+/**
+ * Update récursif
+ * @param deltaTime
+ * @param current
+ */
+void SceneGraph::update(TimeStep deltaTime, Entity* current) {
+	Transform* curTransform = current->getTransform();
+	if (current->getParent() != nullptr) {
+		Transform* parentTransform = current->getParent()->getTransform();
+		curTransform->matrix = (parentTransform->matrix * curTransform->getLocalModelMatrix());
 	} else {
-		Transform* curTransform = current->getTransform();
-		if (current->getParent() != nullptr) {
-			Transform* parentTransform = current->getParent()->getTransform();
-			curTransform->matrix = (parentTransform->matrix * curTransform->getLocalModelMatrix());
-		} else {
-			curTransform->matrix = curTransform->getLocalModelMatrix();
-		}
-		current->update(deltaTime);
-		for(Entity* child : current->getChildren()) {
-			update(deltaTime, child);
-		}
+		curTransform->matrix = curTransform->getLocalModelMatrix();
+	}
+	current->update(deltaTime);
+	for(Entity* child : current->getChildren()) {
+		update(deltaTime, child);
 	}
 }
 

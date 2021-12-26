@@ -7,8 +7,7 @@
 #include <QKeyEvent>
 
 
-class SceneGraph : public Scene
-{
+class SceneGraph : public Scene {
 
 protected:
 	// ATTRIBUTES
@@ -20,7 +19,8 @@ public:
     ~SceneGraph() override;
     Entity* getRoot();
 	void addEntity(Entity* parent, Entity* entity);
-	virtual void update(TimeStep timeStep, Entity* current = nullptr);
+	void update(TimeStep timeStep) override;
+	virtual void update(TimeStep timeStep, Entity* current);
 	virtual void keyPressEvent(QKeyEvent *event, TimeStep step) = 0;
 
 };

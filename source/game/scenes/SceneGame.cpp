@@ -101,6 +101,6 @@ void SceneGame::keyPressEvent(QKeyEvent *event, TimeStep step) {
 }
 
 void SceneGame::update(TimeStep timeStep, Entity* current) {
-	SceneGraph::update(timeStep);
+	SceneGraph::update(timeStep, current);
 	m_physics->update(timeStep, m_drawnEntities, player);
 }

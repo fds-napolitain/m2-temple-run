@@ -6,21 +6,35 @@
 
 SceneGame::SceneGame() : SceneGraph() {
 	player = new Player("player");
-	Transform* solTransform = new Transform(QQuaternion(), QVector3D(0, -4.0, 0), 1);
-	Transform* rightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 1.0, 90), QVector3D(7, -2.0, 0), 1);
-	Transform* leftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-7, -2.0, 0), 1);
-	Transform* mainDecorTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 0.0,  0), QVector3D(0, 0.0, -100), 1);
+	addEntity(m_root, player);
+	addEntity(player, player->getEntities()[0]);
+	addEntity(player, player->getEntities()[1]);
+	addEntity(player, player->getEntities()[2]);
+
 	Transform* backgroundTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(0, 0.0, -105), 1);
-	Transform* obstacleTransform = new Transform(QQuaternion(), QVector3D(0,-1,0), 2);
-
-	Transform* mainDecorAnimation = new Transform(QQuaternion(), QVector3D(0.0, 0.0, 8.0));
-
-	Entity* sol = new Entity("sol", solTransform);
-	Entity* right = new Entity("right", rightTransform);
-	Entity* left = new Entity("left", leftTransform);
-	Entity* mainDecor = new Entity("mainDecor", mainDecorTransform, mainDecorAnimation);
-	Entity* obstacle = new Entity("obstacle", obstacleTransform);
 	Entity* background = new Entity("fond", backgroundTransform);
+	addEntity(m_root, background);
+
+	Transform* mainDecorTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 0.0,  0), QVector3D(0, 0.0, -100), 1);
+	Transform* mainDecorAnimation = new Transform(QQuaternion(), QVector3D(0.0, 0.0, 8.0));
+	Entity* mainDecor = new Entity("mainDecor", mainDecorTransform, mainDecorAnimation);
+	addEntity(m_root, mainDecor);
+
+	Transform* solTransform = new Transform(QQuaternion(), QVector3D(0, -4.0, 0), 1);
+	Entity* sol = new Entity("sol", solTransform);
+	addEntity(mainDecor, sol);
+
+	Transform* rightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 1.0, 90), QVector3D(7, -2.0, 0), 1);
+	Entity* right = new Entity("right", rightTransform);
+	addEntity(mainDecor, right);
+
+	Transform* leftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-7, -2.0, 0), 1);
+	Entity* left = new Entity("left", leftTransform);
+	addEntity(mainDecor, left);
+
+	Transform* obstacleTransform = new Transform(QQuaternion(), QVector3D(0,-1,0), 2);
+	Entity* obstacle = new Entity("obstacle", obstacleTransform);
+	addEntity(mainDecor, obstacle);
 
 	Mesh* solMesh = new Mesh(GL_TRIANGLE_STRIP);
 	solMesh->loadTexture(":/neige.png");
@@ -61,16 +75,6 @@ SceneGame::SceneGame() : SceneGraph() {
 	scoreMesh->loadTexture(":/neige.png");
 	score->addComponent(scoreMesh);
 
-	addEntity(m_root, mainDecor);
-	addEntity(mainDecor, obstacle);
-	addEntity(mainDecor, sol);
-	addEntity(mainDecor, right);
-	addEntity(mainDecor, left);
-	addEntity(m_root, player);
-	addEntity(player, player->getEntities()[0]);
-	addEntity(player, player->getEntities()[1]);
-	addEntity(player, player->getEntities()[2]);
-	addEntity(m_root, background);
 	addEntity(m_root, score);
 }
 

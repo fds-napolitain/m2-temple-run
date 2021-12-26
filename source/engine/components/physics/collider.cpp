@@ -1,6 +1,6 @@
 #include "collider.hpp"
-#include "source/engine/physics/BoundingSphere.hpp"
-#include "source/engine/physics/aabb.hpp"
+#include "source/engine/components/physics/collider/BoundingSphere.hpp"
+#include "source/engine/components/physics/collider/aabb.hpp"
 #include <iostream>
 
 IntersectData Collider::intersect(const Collider& other) const

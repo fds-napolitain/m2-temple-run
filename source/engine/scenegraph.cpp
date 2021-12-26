@@ -1,5 +1,5 @@
 #include "scenegraph.hpp"
-#include "source/engine/physics/aabb.hpp"
+#include "source/engine/components/physics/collider/aabb.hpp"
 
 /**
  * Constructeur par défaut
@@ -40,36 +40,23 @@ void SceneGraph::addEntity(Entity *parent, Entity *entity)
  *
  * @param deltaTime
  */
-void SceneGraph::update(TimeStep deltaTime)
+void SceneGraph::update(TimeStep deltaTime, Entity* current)
 {
-    updateTransforms(m_root, deltaTime);/*
-	if (transform->position.z() >= 50) {
-		transform->position = QVector3D(transform->position.x(), transform->position.y(), -100);
-	}*/
-}
-
-/**
- *
- * @param current
- * @param deltaTime
- */
-void SceneGraph::updateTransforms(Entity* current, TimeStep deltaTime)
-{
-    Transform* curTransform = current->getTransform();
-
-    if (current->getParent() != nullptr) {
-        Transform* parentTransform = current->getParent()->getTransform();
-        curTransform->matrix = (parentTransform->matrix * curTransform->getLocalModelMatrix());
-    } else {
-
-        curTransform->matrix = curTransform->getLocalModelMatrix();
-    }
-
-	current->updateTransforms(deltaTime);
-
-	for(Entity * child : current->getChildren()) {
-        updateTransforms(child, deltaTime);
-    }
+	if (current == nullptr) {
+		update(deltaTime, m_root);
+	} else {
+		Transform* curTransform = current->getTransform();
+		if (current->getParent() != nullptr) {
+			Transform* parentTransform = current->getParent()->getTransform();
+			curTransform->matrix = (parentTransform->matrix * curTransform->getLocalModelMatrix());
+		} else {
+			curTransform->matrix = curTransform->getLocalModelMatrix();
+		}
+		current->update(deltaTime);
+		for(Entity* child : current->getChildren()) {
+			update(deltaTime, child);
+		}
+	}
 }
 
 /**

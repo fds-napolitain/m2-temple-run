@@ -129,20 +129,32 @@ std::vector<Entity *> Entity::getChildren() const {
 }
 
 /**
- * Update
+ * Update avec itérations des components
  * @param deltaTime
  */
-void Entity::updateTransforms(TimeStep deltaTime) {
+void Entity::update(TimeStep deltaTime) {
 	// animations
 	if (m_animation != nullptr) {
 		m_transform->combineWith(m_animation->combineWith(deltaTime));
 	}
-	// collisions
+	// components iterations
     for(auto component : this->m_components){
-        Collider* collider = dynamic_cast<Collider*>(component);
-        if(collider != nullptr){
-            collider->transformCollider( *m_transform);
-        }
+		switch (component->getType()) {
+			case Component::Type::COLLIDER: {
+				Collider* collider = dynamic_cast<Collider*>(component);
+				collider->transformCollider(*m_transform);
+				break;
+			}
+			case Component::Type::KEYBOARD_EVENTS: {
+				break;
+			}
+			case Component::Type::MESH: {
+				break;
+			}
+			case Component::Type::ANIMATION: {
+				break;
+			}
+		}
     }
 }
 

@@ -11,7 +11,7 @@
 class Entity {
 
 public:
-    Entity(std::string name);
+    explicit Entity(std::string name);
     Entity(std::string name, Transform* transform);
     Entity(std::string name, Transform* transform, Transform* animation);
     virtual ~Entity();
@@ -26,7 +26,7 @@ public:
     void setTransform(Transform* transform);
 	void setAnimation(Transform* animation);
     void removeChild(Entity* child);
-	virtual void updateTransforms(TimeStep deltaTime);
+	virtual void update(TimeStep deltaTime);
 
 private:
     std::string m_name;

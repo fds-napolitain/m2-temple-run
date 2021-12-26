@@ -9,14 +9,14 @@
 #include "entity.hpp"
 #include <QVector4D>
 
-class Light : public Entity{
-public:
-    Light(std::string name, Transform* transformation, QVector4D color);
-
-    const QVector4D &getColor() const;
+class Light : public Entity {
 
 private:
-    QVector4D m_color;
+	QVector4D m_color;
+
+public:
+	Light(std::string name, Transform* transformation, QVector4D color);
+	[[nodiscard]] const QVector4D &getColor() const;
 
 };
 

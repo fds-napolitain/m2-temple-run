@@ -3,7 +3,7 @@
 
 #include <QVector3D>
 #include "intersectdata.hpp"
-#include "BoundingSphere.hpp"
+#include "source/engine/components/physics/collider/BoundingSphere.hpp"
 #include "math.h"
 
 class Plane {

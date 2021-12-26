@@ -18,10 +18,9 @@ public:
 	SceneGraph();
     explicit SceneGraph(Entity *root);
     ~SceneGraph() override;
-    void update(TimeStep timeStep) override;
     Entity* getRoot();
 	void addEntity(Entity* parent, Entity* entity);
-    void updateTransforms(Entity* root_node, TimeStep deltaTime);
+	virtual void update(TimeStep timeStep, Entity* current = nullptr);
 	virtual void keyPressEvent(QKeyEvent *event, TimeStep step) = 0;
 
 };

@@ -5,7 +5,7 @@ Transform::Transform()
 {
     matrix = QMatrix4x4();
     rotate = QQuaternion();
-    scale = 1;
+    scale = 1.0;
     position = QVector3D();
 }
 

@@ -5,6 +5,12 @@
 #include "SceneGame.hpp"
 #include "source/engine/rendering/Light.hpp"
 
+
+/*
+if (transform->position.z() >= 50) {
+	transform->position = QVector3D(transform->position.x(), transform->position.y(), -100);
+}*/
+
 SceneGame::SceneGame() : SceneGraph() {
 	player = new Player("player");
 	addEntity(m_root, player);
@@ -94,7 +100,7 @@ void SceneGame::keyPressEvent(QKeyEvent *event, TimeStep step) {
 	}
 }
 
-void SceneGame::update(TimeStep timeStep) {
+void SceneGame::update(TimeStep timeStep, Entity* current) {
 	SceneGraph::update(timeStep);
 	m_physics->update(timeStep, m_drawnEntities, player);
 }

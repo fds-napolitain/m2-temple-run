@@ -25,7 +25,7 @@ add_executable(TempleRun main.cpp textures/textures.qrc models/models.qrc shader
         source/engine/rendering/entity.hpp source/engine/rendering/entity.cpp source/engine/rendering/geometryengine.hpp source/engine/rendering/geometryengine.cpp source/mainwidget.hpp source/mainwidget.cpp
         source/engine/components/rendering/mesh.cpp source/engine/components/rendering/mesh.hpp source/engine/scene.cpp source/engine/scene.hpp source/engine/scenegraph.hpp source/engine/scenegraph.cpp
         source/engine/transform.cpp source/engine/transform.hpp
-        source/engine/physics/aabb.cpp source/engine/physics/aabb.hpp source/engine/physics/BoundingSphere.cpp source/engine/physics/BoundingSphere.hpp source/engine/components/physics/collider.cpp
+        source/engine/components/physics/collider/aabb.cpp source/engine/components/physics/collider/aabb.hpp source/engine/components/physics/collider/BoundingSphere.cpp source/engine/components/physics/collider/BoundingSphere.hpp source/engine/components/physics/collider.cpp
         source/engine/components/physics/collider.hpp source/engine/physics/intersectdata.cpp source/engine/physics/intersectdata.hpp
         source/engine/physics/plane.cpp source/engine/physics/plane.hpp source/engine/physics/ReferenceCounter.hpp
         source/engine/TimeStep.hpp source/engine/TargetFPS.cpp source/engine/TargetFPS.hpp

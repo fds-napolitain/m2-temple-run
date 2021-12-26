@@ -135,7 +135,7 @@ namespace offio{
 
         for(int v = 0 ; v < nVertices ; ++v )
         {
-            float x , y , z;
+            float x = 0, y = 0, z = 0;
 
             //typename point_t::type_t x , y , z;
 

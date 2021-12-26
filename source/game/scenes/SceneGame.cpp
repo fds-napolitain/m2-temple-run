@@ -35,6 +35,9 @@ SceneGame::SceneGame() : SceneGraph() {
 	Transform* obstacleTransform = new Transform(QQuaternion(), QVector3D(0,-1,0), 2);
 	Entity* obstacle = new Entity("obstacle", obstacleTransform);
 	addEntity(mainDecor, obstacle);
+	mainDecor = new Entity("mainDecor", mainDecorTransform);
+	Light* obstacle = new Light("obstacle", obstacleTransform, QVector4D(1.0,1.0,1.0,1.0));
+	Entity* background = new Entity("fond", backgroundTransform);
 
 	Mesh* solMesh = new Mesh(GL_TRIANGLE_STRIP);
 	solMesh->loadTexture(":/neige.png");
@@ -42,12 +45,13 @@ SceneGame::SceneGame() : SceneGraph() {
 	Mesh* rightMesh = new Mesh(GL_TRIANGLE_STRIP);
 	rightMesh->loadTexture(":/rock.png", QOpenGLTexture::LinearMipMapLinear);
 
-	Mesh* leftMesh = new Mesh(GL_TRIANGLE_STRIP);
+	Mesh* leftMesh = new Mesh(GL_TRIANGLE_STRIP, QVector3D(1.0,0,0));
 
-	Mesh* backgroundMesh = new Mesh(GL_TRIANGLE_STRIP);
+    Mesh* backgroundMesh = new Mesh(GL_TRIANGLE_STRIP);
 
-	Mesh* obstacleMesh = new Mesh(GL_TRIANGLE_STRIP);
-	obstacleMesh->initCubeGeometry();
+    Mesh* obstacleMesh = new Mesh(GL_TRIANGLE_STRIP);
+    obstacleMesh->setType(Mesh::Type::LIGHT);
+    obstacleMesh->initCubeGeometry();
 	obstacleMesh->loadTexture(":/grass.png");
 
 	solMesh->initPlaneGeometry(16,16,100,100);

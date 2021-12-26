@@ -30,7 +30,8 @@ add_executable(TempleRun main.cpp textures/textures.qrc models/models.qrc shader
         source/engine/physics/plane.cpp source/engine/physics/plane.hpp source/engine/physics/ReferenceCounter.hpp
         source/engine/TimeStep.hpp source/engine/TargetFPS.cpp source/engine/TargetFPS.hpp
         source/engine/physics/PhysicSystem.cpp source/engine/physics/PhysicSystem.hpp source/game/prefabs/Player.cpp source/game/prefabs/Player.hpp
-        source/game/prefabs/Score.cpp source/game/prefabs/Score.hpp source/engine/rendering/Prefabs.cpp source/engine/rendering/Prefabs.hpp source/engine/TimeStep.cpp source/game/scenes/SceneGame.cpp source/game/scenes/SceneGame.hpp)
+        source/game/prefabs/Score.cpp source/game/prefabs/Score.hpp source/engine/rendering/Prefabs.cpp source/engine/rendering/Prefabs.hpp source/engine/TimeStep.cpp source/game/scenes/SceneGame.cpp source/game/scenes/SceneGame.hpp
+        source/engine/rendering/Light.cpp source/engine/rendering/Light.hpp)
 
 set_target_properties(TempleRun PROPERTIES
         WIN32_EXECUTABLE TRUE

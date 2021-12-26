@@ -48,7 +48,7 @@ SceneGame::SceneGame() : SceneGraph() {
     Mesh* backgroundMesh = new Mesh(GL_TRIANGLE_STRIP);
 
     Mesh* obstacleMesh = new Mesh(GL_TRIANGLE_STRIP);
-    obstacleMesh->setType(Mesh::Type::LIGHT);
+    obstacleMesh->setKind(Mesh::Kind::LIGHT);
     obstacleMesh->initCubeGeometry();
 	obstacleMesh->loadTexture(":/grass.png");
 

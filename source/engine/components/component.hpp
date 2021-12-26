@@ -14,7 +14,7 @@ public:
 	};
 
     Component();
-    virtual ~Component()= default;
+    virtual ~Component() = default;
 	virtual int getType();
 
 };

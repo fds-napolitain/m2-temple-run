@@ -23,7 +23,7 @@ find_package(Qt5 COMPONENTS OpenGL)
 add_executable(TempleRun main.cpp textures/textures.qrc models/models.qrc shaders/shaders.qrc
         source/engine/rendering/BasicIO.hpp source/engine/rendering/camera.cpp source/engine/rendering/camera.hpp source/engine/rendering/component.cpp source/engine/rendering/component.hpp
         source/engine/rendering/entity.hpp source/engine/rendering/entity.cpp source/engine/rendering/geometryengine.hpp source/engine/rendering/geometryengine.cpp source/mainwidget.hpp source/mainwidget.cpp
-        source/engine/rendering/mesh.cpp source/engine/rendering/mesh.hpp source/engine/rendering/scene.cpp source/engine/rendering/scene.hpp source/engine/rendering/scenegraph.hpp source/engine/rendering/scenegraph.cpp
+        source/engine/rendering/mesh.cpp source/engine/rendering/mesh.hpp source/engine/scene.cpp source/engine/scene.hpp source/engine/scenegraph.hpp source/engine/scenegraph.cpp
         source/engine/transform.cpp source/engine/transform.hpp
         source/engine/physics/aabb.cpp source/engine/physics/aabb.hpp source/engine/physics/BoundingSphere.cpp source/engine/physics/BoundingSphere.hpp source/engine/physics/collider.cpp
         source/engine/physics/collider.hpp source/engine/physics/intersectdata.cpp source/engine/physics/intersectdata.hpp
@@ -37,10 +37,10 @@ set_target_properties(TempleRun PROPERTIES
         MACOSX_BUNDLE FALSE
         )
 target_link_libraries(TempleRun PUBLIC
-        Qt::Core
-        Qt::Gui
-        Qt::OpenGL
-        Qt::Widgets
+        Qt5::Core
+        Qt5::Gui
+        Qt5::OpenGL
+        Qt5::Widgets
         )
 
 install(TARGETS TempleRun

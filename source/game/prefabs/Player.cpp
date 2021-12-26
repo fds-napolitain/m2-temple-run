@@ -39,17 +39,17 @@ Player::Player(std::string name) : Entity(std::move(name)) {
 	playerTop->addComponent(sphere);
 }
 
+Player::~Player() {
+	for (const auto &entity: entities) {
+		delete entity;
+	}
+	delete collider;
+}
+
 std::vector<Entity*> Player::getEntities() const {
 	return entities;
 }
 
 Collider *Player::getCollider() const {
 	return collider;
-}
-
-Player::~Player() {
-	for (const auto &entity: entities) {
-		delete entity;
-	}
-	delete collider;
 }

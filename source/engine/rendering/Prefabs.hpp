@@ -11,10 +11,11 @@
 class Prefabs : public Entity {
 
 private:
-	std::vector<Entity> entities;
+	std::vector<Entity*> entities;
 
 public:
 	Prefabs();
+	[[nodiscard]] std::vector<Entity*> getEntities() const;
 
 };
 

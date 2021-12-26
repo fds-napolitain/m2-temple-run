@@ -6,7 +6,7 @@
 #define TEMPLERUN_SCENEGAME_HPP
 
 
-#include "source/engine/rendering/scenegraph.hpp"
+#include "source/engine/scenegraph.hpp"
 
 class SceneGame : public SceneGraph {
 

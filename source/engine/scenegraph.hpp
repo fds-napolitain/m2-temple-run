@@ -1,7 +1,7 @@
 #ifndef SCENEGRAPH_H
 #define SCENEGRAPH_H
 
-#include "source/engine/rendering/scene.hpp"
+#include "scene.hpp"
 #include "source/game/prefabs/Player.hpp"
 #include <QTime>
 #include <QKeyEvent>

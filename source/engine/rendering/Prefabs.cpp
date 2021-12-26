@@ -3,3 +3,7 @@
 //
 
 #include "Prefabs.hpp"
+
+std::vector<Entity *> Prefabs::getEntities() const {
+	return entities;
+}

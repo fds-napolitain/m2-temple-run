@@ -1,9 +1,9 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-#include "entity.hpp"
-#include "mesh.hpp"
-#include "geometryengine.hpp"
+#include "source/engine/rendering/entity.hpp"
+#include "source/engine/rendering/mesh.hpp"
+#include "source/engine/rendering/geometryengine.hpp"
 #include "source/engine/TimeStep.hpp"
 
 #include "source/engine/physics/PhysicSystem.hpp"

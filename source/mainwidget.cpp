@@ -50,6 +50,7 @@
 
 #include <QPainter>
 #include "mainwidget.hpp"
+#include "source/game/scenes/SceneGame.hpp"
 
 
 MainWidget::MainWidget(QWidget *parent) :
@@ -135,7 +136,6 @@ void MainWidget::timerEvent(QTimerEvent *)
 void MainWidget::keyPressEvent(QKeyEvent *event)
 {
 	SceneGraph* sceneGraph = (SceneGraph*) scene;
-	//Transform* transform = sceneGraph->mainDecor->getTransform();
 	switch (event->key()) {
         case Qt::Key_Z: /* haut */
             projection.translate(QVector3D(0.0, -1.0, 0.0) * timeStep);
@@ -155,15 +155,8 @@ void MainWidget::keyPressEvent(QKeyEvent *event)
         case Qt::Key_E: /* monter */
             projection.translate(QVector3D(0.0, 0.0, -5.0) * timeStep);
             break;
-		case Qt::Key_Left:
-			//transform->position += QVector3D(1.0, 0.0, 0.0) * timeStep;
-			//sceneGraph->mainDecor->setTransform(transform);
-			break;
-		case Qt::Key_Right:
-			//transform->position += QVector3D(-1.0, 0.0, 0.0) * timeStep;
-			//sceneGraph->mainDecor->setTransform(transform);
-			break;
     }
+	sceneGraph->keyPressEvent(event, timeStep);
 
 
 
@@ -259,8 +252,7 @@ void MainWidget::resizeGL(int w, int h)
  */
 void MainWidget::initScene()
 {
-     scene = new SceneGraph();
-	 dynamic_cast<SceneGraph*>(scene)->initGame();
+     scene = new SceneGame();
      geometries = new GeometryEngine();
 }
 

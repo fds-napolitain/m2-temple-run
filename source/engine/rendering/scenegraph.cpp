@@ -42,7 +42,6 @@ void SceneGraph::addEntity(Entity *parent, Entity *entity)
  */
 void SceneGraph::update(TimeStep deltaTime)
 {
-
     updateTransforms(m_root, deltaTime);/*
 	Transform* transform = mainDecor->getTransform();
 	transform->position += QVector3D(0.0, 0.0, 8.0*deltaTime);

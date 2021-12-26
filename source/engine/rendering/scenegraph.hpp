@@ -4,10 +4,15 @@
 #include "source/engine/rendering/scene.hpp"
 #include "source/game/prefabs/Player.hpp"
 #include <QTime>
+#include <QKeyEvent>
 
 
 class SceneGraph : public Scene
 {
+
+protected:
+	// ATTRIBUTES
+	Entity *m_root;
 public:
 	// METHODS
 	SceneGraph();
@@ -17,16 +22,7 @@ public:
     Entity* getRoot();
 	void addEntity(Entity* parent, Entity* entity);
     void updateTransforms(Entity* root_node, TimeStep deltaTime);
-
-	// SCENES
-	void initMenu();
-	void initGame();
-	//Entity* mainDecor;
-
-private:
-	// ATTRIBUTES
-    Entity *m_root;
-	//Entity* player;
+	virtual void keyPressEvent(QKeyEvent *event, TimeStep step) = 0;
 
 };
 

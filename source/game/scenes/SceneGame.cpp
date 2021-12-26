@@ -1,11 +1,11 @@
 //
-// Created by Maxime Boucher on 25/12/2021.
+// Created by Maxime Boucher on 26/12/2021.
 //
 
-#include "source/engine/rendering/scenegraph.hpp"
+#include "SceneGame.hpp"
 
-void SceneGraph::initGame() {
-	Player* player = new Player("player");
+SceneGame::SceneGame() : SceneGraph() {
+	player = new Player("player");
 	Transform* solTransform = new Transform(QQuaternion(), QVector3D(0, -4.0, 0), 1);
 	Transform* rightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 1.0, 90), QVector3D(7, -2.0, 0), 1);
 	Transform* leftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-7, -2.0, 0), 1);
@@ -70,4 +70,18 @@ void SceneGraph::initGame() {
 	addEntity(player, player->getEntities()[2]);
 	addEntity(m_root, background);
 	addEntity(m_root, score);
+}
+
+void SceneGame::keyPressEvent(QKeyEvent *event, TimeStep step) {
+	Transform* transform = player->getTransform();
+	switch (event->key()) {
+		case Qt::Key_Left:
+			transform->position += QVector3D(-1.0, 0.0, 0.0) * step;
+			player->setTransform(transform);
+			break;
+		case Qt::Key_Right:
+			transform->position += QVector3D(1.0, 0.0, 0.0) * step;
+			player->setTransform(transform);
+			break;
+	}
 }

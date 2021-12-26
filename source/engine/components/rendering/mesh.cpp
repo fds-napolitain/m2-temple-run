@@ -212,3 +212,7 @@ void Mesh::loadTexture(const QString& texturePath, QOpenGLTexture::Filter minFil
 	m_texture->setMagnificationFilter(maxFilter);
 	m_texture->setWrapMode(warp);
 }
+
+int Mesh::getType() {
+	return Type::MESH;
+}

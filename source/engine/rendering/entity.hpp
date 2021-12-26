@@ -5,7 +5,7 @@
 #include <utility>
 #include <vector>
 #include "source/engine/transform.hpp"
-#include "../rendering/component.hpp"
+#include "source/engine/components/component.hpp"
 #include "../TimeStep.hpp"
 
 class Entity {

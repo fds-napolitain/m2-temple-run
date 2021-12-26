@@ -6,9 +6,11 @@ class Component {
 
 public:
 	enum Type {
-		NONE,
-		MESH,
-		KEYBOARD_EVENTS,
+		NONE, // NONE
+		MESH, // RENDERING
+		ANIMATION,
+		COLLIDER, // PHYSICS
+		KEYBOARD_EVENTS, // EVENTS
 	};
 
     Component();

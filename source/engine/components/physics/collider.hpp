@@ -2,13 +2,17 @@
 #define COLLIDER_H
 
 #include <QVector3D>
-#include "ReferenceCounter.hpp"
-#include "intersectdata.hpp"
+#include "source/engine/physics/ReferenceCounter.hpp"
+#include "source/engine/physics/intersectdata.hpp"
 #include "source/engine/transform.hpp"
-#include "../rendering/component.hpp"
+#include "source/engine/components/component.hpp"
 
 
-class Collider : public ReferenceCounter, public Component {
+class Collider : public Component {
+
+private:
+	int m_type;
+
 public:
     enum
     {
@@ -29,8 +33,8 @@ public:
     float restitution = 0.0f;
     float restitutionMax = 0.5f; // prevent jittering
     QVector3D oldPosition;
-private:
-    int m_type;
+	int getType() override;
+
 };
 
 #endif // COLLIDER_H

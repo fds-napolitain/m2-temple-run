@@ -53,7 +53,7 @@
 
 #include "source/engine/rendering/geometryengine.hpp"
 #include "source/engine/scenegraph.hpp"
-#include "source/engine/rendering/mesh.hpp"
+#include "source/engine/components/rendering/mesh.hpp"
 #include "source/engine/TimeStep.hpp"
 #include "source/engine/TargetFPS.hpp"
 #include <QOpenGLWidget>

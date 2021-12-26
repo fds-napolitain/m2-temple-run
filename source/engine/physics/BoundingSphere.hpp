@@ -3,7 +3,7 @@
 
 #include <QVector3D>
 #include "intersectdata.hpp"
-#include "collider.hpp"
+#include "source/engine/components/physics/collider.hpp"
 #include "aabb.hpp"
 
 

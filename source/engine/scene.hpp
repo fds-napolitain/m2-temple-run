@@ -2,7 +2,7 @@
 #define SCENE_H
 
 #include "source/engine/rendering/entity.hpp"
-#include "source/engine/rendering/mesh.hpp"
+#include "source/engine/components/rendering/mesh.hpp"
 #include "source/engine/rendering/geometryengine.hpp"
 #include "source/engine/TimeStep.hpp"
 

@@ -1,6 +1,6 @@
 #include <iostream>
 #include "entity.hpp"
-#include "source/engine/physics/collider.hpp"
+#include "source/engine/components/physics/collider.hpp"
 
 /**
  *
@@ -129,7 +129,7 @@ std::vector<Entity *> Entity::getChildren() const {
 }
 
 /**
- * Ca c'est pour les animations
+ * Update
  * @param deltaTime
  */
 void Entity::updateTransforms(TimeStep deltaTime) {

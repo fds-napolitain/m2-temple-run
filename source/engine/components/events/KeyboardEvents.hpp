@@ -6,10 +6,11 @@
 #define TEMPLERUN_KEYBOARDEVENTS_HPP
 
 
-#include "source/engine/rendering/component.hpp"
+#include "source/engine/components/component.hpp"
 
 class KeyboardEvents : public Component {
-
+public:
+	int getType() override;
 };
 
 

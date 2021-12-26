@@ -3,3 +3,7 @@
 //
 
 #include "KeyboardEvents.hpp"
+
+int KeyboardEvents::getType() {
+	return Type::KEYBOARD_EVENTS;
+}

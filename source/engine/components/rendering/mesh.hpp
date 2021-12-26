@@ -5,9 +5,9 @@
 #include <QVector3D>
 #include <QVector2D>
 #include <QOpenGLTexture>
-#include "BasicIO.hpp"
-#include "component.hpp"
-#include "geometryengine.hpp"
+#include "source/engine/rendering/BasicIO.hpp"
+#include "source/engine/components/component.hpp"
+#include "source/engine/rendering/geometryengine.hpp"
 
 
 
@@ -40,6 +40,7 @@ public:
 	[[nodiscard]] int getPrimitive() const {return m_primitive;}
     static unsigned short* indextoArray(unsigned short* arr, std::vector<unsigned short> &indices);
     static VertexData* vertextoArray(VertexData* arr, std::vector<VertexData> &vertex);
+	int getType() override;
 
 private:
     int m_primitive;

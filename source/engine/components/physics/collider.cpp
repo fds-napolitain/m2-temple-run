@@ -1,6 +1,6 @@
 #include "collider.hpp"
-#include "BoundingSphere.hpp"
-#include "aabb.hpp"
+#include "source/engine/physics/BoundingSphere.hpp"
+#include "source/engine/physics/aabb.hpp"
 #include <iostream>
 
 IntersectData Collider::intersect(const Collider& other) const
@@ -29,7 +29,6 @@ IntersectData Collider::intersect(const Collider& other) const
 }
 
 Collider::Collider(int type) :
-		ReferenceCounter(),
 		m_type(type)
 {}
 
@@ -43,6 +42,10 @@ void Collider::transformCollider(const Transform &transform) {
 
 QVector3D Collider::getCenter() const {
 	return QVector3D();
+}
+
+int Collider::getType() {
+	return Type::COLLIDER;
 }
 
 

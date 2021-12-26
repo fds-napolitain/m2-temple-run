@@ -3,6 +3,7 @@
 //
 
 #include "SceneGame.hpp"
+#include "source/engine/rendering/Light.hpp"
 
 SceneGame::SceneGame() : SceneGraph() {
 	player = new Player("player");
@@ -33,11 +34,8 @@ SceneGame::SceneGame() : SceneGraph() {
 	addEntity(mainDecor, left);
 
 	Transform* obstacleTransform = new Transform(QQuaternion(), QVector3D(0,-1,0), 2);
-	Entity* obstacle = new Entity("obstacle", obstacleTransform);
-	addEntity(mainDecor, obstacle);
-	mainDecor = new Entity("mainDecor", mainDecorTransform);
 	Light* obstacle = new Light("obstacle", obstacleTransform, QVector4D(1.0,1.0,1.0,1.0));
-	Entity* background = new Entity("fond", backgroundTransform);
+	addEntity(mainDecor, obstacle);
 
 	Mesh* solMesh = new Mesh(GL_TRIANGLE_STRIP);
 	solMesh->loadTexture(":/neige.png");

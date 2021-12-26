@@ -1,5 +1,5 @@
 #include "scene.hpp"
-#include "Light.hpp"
+#include "source/engine/rendering/Light.hpp"
 
 Scene::Scene()
 {

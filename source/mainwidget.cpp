@@ -310,16 +310,15 @@ void MainWidget::paintGL()
    //gScene->update()
 
 	program.bind();
-	scene->draw(geometries, program);
-	scene->update(timeStep);
 
-    program.setUniformValue("texture", 3);
-    program.setUniformValue("mvp_matrix", projection * matrix);
-    lightProgram.bind();
-    lightProgram.setUniformValue("mvp_matrix", projection * matrix);
+	program.setUniformValue("texture", 3);
+	program.setUniformValue("mvp_matrix", projection * matrix);
+	lightProgram.bind();
+	lightProgram.setUniformValue("mvp_matrix", projection * matrix);
 
     scene->draw(geometries, program, lightProgram);
     scene->update(timeStep);
+
     // Draw cube geometry
 	timer->start(fps.getTimePerFrame());
 }

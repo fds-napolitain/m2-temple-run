@@ -160,7 +160,7 @@ void MainWidget::keyPressEvent(QKeyEvent *event)
 
 
 
-    //projection.translate(0.0, 0.0, -1.0) ;
+    //projection.translate(0.0, 0.0, -8.0*timeStep) ;
       //update();
 
     // Save mouse press position

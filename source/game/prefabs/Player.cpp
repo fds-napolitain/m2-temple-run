@@ -7,7 +7,10 @@
 #include <utility>
 
 Player::Player(std::string name) : Entity(std::move(name)) {
+	// PLAYER
 	this->setTransform(new Transform(QQuaternion(), QVector3D(0, -3, 0), 1));
+
+	// PLAYER PARTS
 	Transform* playerBaseTransform = new Transform(QQuaternion::fromAxisAndAngle(0.4, -0.2, 0.2, 14), QVector3D(0, 0, 0), 1.0);
 	Transform* playerMidTransform = new Transform(QQuaternion::fromAxisAndAngle(0.1, 0.2, -0.2, 14), QVector3D(0, 1.3, 0), 0.8);
 	Transform* playerTopTransform = new Transform(QQuaternion::fromAxisAndAngle(-0.2, 0.4, -0.2, 14), QVector3D(0, 2.3, 0), 0.6);

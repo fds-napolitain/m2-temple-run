@@ -13,10 +13,12 @@ SceneGame::SceneGame() : SceneGraph() {
 	Transform* backgroundTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(0, 0.0, -105), 1);
 	Transform* obstacleTransform = new Transform(QQuaternion(), QVector3D(0,-1,0), 2);
 
+	Transform* mainDecorAnimation = new Transform(QQuaternion(), QVector3D(0.0, 0.0, 8.0));
+
 	Entity* sol = new Entity("sol", solTransform);
 	Entity* right = new Entity("right", rightTransform);
 	Entity* left = new Entity("left", leftTransform);
-	Entity* mainDecor = new Entity("mainDecor", mainDecorTransform);
+	Entity* mainDecor = new Entity("mainDecor", mainDecorTransform, mainDecorAnimation);
 	Entity* obstacle = new Entity("obstacle", obstacleTransform);
 	Entity* background = new Entity("fond", backgroundTransform);
 

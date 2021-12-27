@@ -214,7 +214,7 @@ void Mesh::draw() {
 	if (m_texture != nullptr) {
 		m_texture->bind(3);
 	}
-	m_engine->drawGeometry(m_program, m_vertexArr, m_indicesArr, m_vertex.size(), m_indices.size(), m_format, m_color);
+	m_engine->drawGeometry(m_shaderProgram, m_vertexArr, m_indicesArr, m_vertex.size(), m_indices.size(), m_format, m_color);
 }
 
 void Mesh::loadTexture(const QString& texturePath, QOpenGLTexture::Filter minFilter, QOpenGLTexture::Filter maxFilter, QOpenGLTexture::WrapMode warp ) {
@@ -271,9 +271,11 @@ std::vector<VertexData> Mesh::getVertices() const {
 /**
  * Initialise geometry engine et QOpenGLShaderProgram à tous les mesh
  * @param engine
- * @param program
+ * @param shaderProgram
+ * @param lightProgram
  */
-void Mesh::setEngine(GeometryEngine *engine, QOpenGLShaderProgram *program) {
+void Mesh::setEngine(GeometryEngine *engine, QOpenGLShaderProgram *shaderProgram, QOpenGLShaderProgram* lightProgram) {
 	Mesh::m_engine = engine;
-	Mesh::m_program = program;
+	Mesh::m_shaderProgram = shaderProgram;
+	Mesh::m_lightProgram = lightProgram;
 }

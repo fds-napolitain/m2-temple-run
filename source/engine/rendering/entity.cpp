@@ -151,6 +151,9 @@ void Entity::update(TimeStep deltaTime) {
 			}
 			case Component::Type::MESH: {
 				Mesh* mesh = dynamic_cast<Mesh*>(component);
+				Mesh::m_shaderProgram->bind();
+				Mesh::m_shaderProgram->setUniformValue("transform", getTransform()->matrix);
+				Mesh::m_shaderProgram->setUniformValue("normals_rotation", getTransform()->rotate.toRotationMatrix());
 				mesh->draw();
 				break;
 			}

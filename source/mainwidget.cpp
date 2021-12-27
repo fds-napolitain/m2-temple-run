@@ -270,7 +270,7 @@ void MainWidget::resizeGL(int w, int h)
 void MainWidget::initScene()
 {
 	geometries = new GeometryEngine();
-	Mesh::setEngine(geometries, &program);
+	Mesh::setEngine(geometries, &program, &lightProgram);
 	scene = new SceneGame();
 }
 

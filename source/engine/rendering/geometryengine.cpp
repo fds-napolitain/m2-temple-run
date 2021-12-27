@@ -49,19 +49,10 @@
 ****************************************************************************/
 
 #include "geometryengine.hpp"
-#include "source/engine/transform.hpp"
-
-
 #include <iostream>
 #include"BasicIO.hpp"
 #include <QVector2D>
 #include <QVector3D>
-#include <cstdlib>
-#include <ctime>
-#include<QImage>
-#include <vector>
-#include <string>
-#include <iostream>
 #include <QOpenGLWidget>
 
 

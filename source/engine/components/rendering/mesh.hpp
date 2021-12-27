@@ -7,10 +7,8 @@
 #include <QOpenGLTexture>
 #include "source/engine/rendering/BasicIO.hpp"
 #include "source/engine/components/component.hpp"
-#include "source/engine/rendering/geometryengine.hpp"
 #include "source/engine/transform.hpp"
-
-
+#include "source/engine/rendering/geometryengine.hpp"
 
 class Mesh : public Component
 {
@@ -26,9 +24,11 @@ public:
         LIGHT,
     };
 
-	static void setEngine(GeometryEngine* engine, QOpenGLShaderProgram* program);
+	// au propre faudrait que tout soit attribut je pense
+	static void setEngine(GeometryEngine* engine, QOpenGLShaderProgram* shaderProgram, QOpenGLShaderProgram* lightProgram);
 	static GeometryEngine* m_engine;
-	static QOpenGLShaderProgram* m_program;
+	static QOpenGLShaderProgram* m_shaderProgram;
+	static QOpenGLShaderProgram* m_lightProgram;
 
     explicit Mesh(int primitive = 0, QVector3D color =  QVector3D(1.0,1.0,1.0));
     explicit Mesh(const std::string& path, int format = 0, int primitive = 0, QVector3D color =  QVector3D(1.0,1.0,1.0));

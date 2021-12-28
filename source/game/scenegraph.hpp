@@ -31,14 +31,23 @@ public:
     float distanceWhenMoving = 5.0f;
     float timeWhenMoving = 0.5f;
 
+    //variable du saut
+    bool isJumping = false;
+    bool hasJumped = false;
+
+    float tailleJump = 5.0f;
+    float tempsJump = 0.5f;
+
 
     Entity* getRoot();
     void addEntity(Entity* parent, Entity* entity);
     void updateTransforms(Entity* root_node, TimeStep deltaTime);
 	Entity *mainDecor;
+    
+    Player *player;
 
 private:
-    Player *player;
+    
     Entity *m_root;
 
 };

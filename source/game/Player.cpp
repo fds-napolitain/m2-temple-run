@@ -85,6 +85,11 @@ void Player::updateTransforms(TimeStep deltaTime) {
 		animationTop->rotate *= QQuaternion::fromAxisAndAngle(0.0, 1.0, 0.0, 120 * deltaTime);
 		
 	}
+
+	if (isJumping)
+	{
+
+	}
 	
 
 	entities[0]->setTransform(animationBase);

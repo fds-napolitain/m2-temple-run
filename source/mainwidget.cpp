@@ -136,7 +136,7 @@ void MainWidget::keyPressEvent(QKeyEvent *event)
 	SceneGraph* sceneGraph = (SceneGraph*) scene;
 	Transform* transform = sceneGraph->mainDecor->getTransform();
 
-    if (!sceneGraph->isMovingLeft && !sceneGraph->isMovingRight) //si le joueur ne se déplace pas, regarde sur quelle touche il appuie.
+    if (!sceneGraph->isMovingLeft && !sceneGraph->isMovingRight && !sceneGraph->player->isJumping && !sceneGraph->player->hasJumped) //si le joueur ne se déplace pas, regarde sur quelle touche il appuie.
     {
         switch (event->key()) {
                 case Qt::Key_Z: /* haut */
@@ -173,6 +173,10 @@ void MainWidget::keyPressEvent(QKeyEvent *event)
                     }
 
 			        break;
+                case Qt::Key_Space:
+                    sceneGraph->player->isJumping = true;
+                    sceneGraph->isJumping = true;
+
         }
 	
     }

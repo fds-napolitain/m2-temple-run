@@ -11,13 +11,15 @@ SceneGraph::SceneGraph(Entity *root) :
 	Transform* leftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-7, -2.0, 0), 1);
 	Transform* mainDecorTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 0.0,  0), QVector3D(0, 0.0, -100), 1);
 	Transform* backgroundTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(0, 0.0, -105), 1);
-	Transform* obstacleTransform = new Transform(QQuaternion(), QVector3D(0,-1,0), 2);
+	Transform* obstacleTransform = new Transform(QQuaternion(), QVector3D(-5,-1,0), 2);
+	Transform* obstacleTransform2 = new Transform(QQuaternion(), QVector3D(0,-1,0), 2);
 
 	Entity* sol = new Entity("sol", solTransform);
 	Entity* right = new Entity("right", rightTransform);
 	Entity* left = new Entity("left", leftTransform);
 	mainDecor = new Entity("mainDecor", mainDecorTransform);
 	Light* obstacle = new Light("obstacle", obstacleTransform, QVector4D(1.0,1.0,1.0,1.0));
+	Light* obstacle2 = new Light("obstacle", obstacleTransform, QVector4D(1.0,1.0,1.0,1.0));
 	Entity* background = new Entity("fond", backgroundTransform);
 
 	Mesh* solMesh = new Mesh(GL_TRIANGLE_STRIP);
@@ -31,9 +33,13 @@ SceneGraph::SceneGraph(Entity *root) :
     Mesh* backgroundMesh = new Mesh(GL_TRIANGLE_STRIP);
 
     Mesh* obstacleMesh = new Mesh(GL_TRIANGLE_STRIP);
+    Mesh* obstacleMesh2 = new Mesh(GL_TRIANGLE_STRIP);
     obstacleMesh->setType(Mesh::Type::LIGHT);
+    obstacleMesh2->setType(Mesh::Type::LIGHT);
     obstacleMesh->initCubeGeometry();
+    obstacleMesh2->initCubeGeometry();
 	obstacleMesh->loadTexture(":/grass.png");
+	obstacleMesh2->loadTexture(":/grass.png");
 
 	solMesh->initPlaneGeometry(16,16,100,100);
 	rightMesh->initPlaneGeometry(16,16,100,100);
@@ -47,14 +53,17 @@ SceneGraph::SceneGraph(Entity *root) :
 	m_physics->addCollider(b);
 
     obstacle->addComponent(b);
+    obstacle2->addComponent(b);
 	sol->addComponent(solMesh);
 	right->addComponent(rightMesh);
 	left->addComponent(leftMesh);
 	obstacle->addComponent(obstacleMesh);
+	obstacle2->addComponent(obstacleMesh2);
 	background->addComponent(backgroundMesh);
 
 	addEntity(m_root, mainDecor);
 	addEntity(mainDecor, obstacle);
+	addEntity(mainDecor, obstacle2);
 	addEntity(mainDecor, sol);
 	addEntity(mainDecor, right);
 	addEntity(mainDecor, left);
@@ -154,8 +163,42 @@ void SceneGraph::update(TimeStep deltaTime)
 		distMoved = 0.0f;
 	}
 
+	//On fait le saut:
+
+	if (isJumping)
+	{
+		if (transform->position.y() > -tailleJump)
+		{
+			transform->position += QVector3D(0.0f, (-tailleJump / tempsJump) * deltaTime, 0.0f);
+		}
+		else
+		{
+			transform->position.setY(-tailleJump);
+			isJumping = false;
+			player->isJumping = false;
+			hasJumped = true;
+			player->hasJumped = true;
+		}
+	}
+	if (hasJumped)
+	{
+		if (transform->position.y() < 0.0f)
+		{
+			transform->position += QVector3D(0.0f, (tailleJump / tempsJump) * deltaTime, 0.0f);
+		}
+		else
+		{
+			transform->position.setY(0.0f);
+			isJumping = false;
+			player->isJumping = false;
+			hasJumped = false;
+			player->hasJumped = false;
+		}
+	}
 
 
+
+	//On fait le scrolling:
 	transform->position += QVector3D(0.0, 0.0, 8.0*deltaTime);
 
 	if (transform->position.z() >= 50) {

@@ -81,6 +81,81 @@ void SceneGraph::update(TimeStep deltaTime)
 
     updateTransforms(m_root, deltaTime);
 	Transform* transform = mainDecor->getTransform();
+	// On fait  ce qui concerne le joueur
+
+	
+
+	// on regarde sur quel rail est le joueur s'il n'est pas entrain de bouger.
+	if (!isMovingRight && !isMovingLeft)
+	{
+		if (transform->position.x() < 4.0f && transform->position.x()> -4.0f)
+			{
+				joueur_rl = false;
+				joueur_rm = true;
+				joueur_rr = false;		
+			}
+			if (transform->position.x() >= 4.0f)
+			{
+				joueur_rl = true;
+				joueur_rm = false;
+				joueur_rr = false;
+			}
+			if (transform->position.x() <= -4.0f) {
+				joueur_rl = false;
+				joueur_rm = false;
+				joueur_rr = true;
+			}
+
+			
+			if (joueur_rl) transform->position.setX(distanceWhenMoving);
+			if (joueur_rm) transform->position.setX(0.0f);
+			if (joueur_rr) transform->position.setX(-distanceWhenMoving);
+
+			
+	}
+
+	
+	
+	// on déplace le joueur selon son rail et son mouvement
+	float deplacement = (distanceWhenMoving / timeWhenMoving)*deltaTime;
+
+	
+	if (isMovingLeft && !isMovingRight)
+	{
+		distMoved += deplacement;
+		std::cout << "moving left";
+		transform->position += QVector3D(deplacement, 0.0, 0.0);
+		
+		player->isMovingLeft = true;
+		player->isMovingRight = false;
+		
+
+	}	
+	if (isMovingRight && !isMovingLeft)
+	{
+		distMoved += deplacement;
+		std::cout << "moving right";
+		transform->position += QVector3D(-deplacement, 0.0, 0.0);
+
+		player->isMovingLeft = false;
+		player->isMovingRight = true;
+
+	}
+
+	
+
+	if (distMoved >= distanceWhenMoving)
+	{
+		isMovingLeft = false;
+		isMovingRight = false;
+
+		player->isMovingLeft = false;
+		player->isMovingRight = false;
+		distMoved = 0.0f;
+	}
+
+
+
 	transform->position += QVector3D(0.0, 0.0, 8.0*deltaTime);
 
 	if (transform->position.z() >= 50) {

@@ -14,6 +14,24 @@ public:
     ~SceneGraph() override;
     void update(TimeStep timeStep) override;
 
+    // position du joueur sur les rails
+    bool joueur_rl = false;  
+    bool joueur_rm = false;
+    bool joueur_rr = false;
+
+    //mouvement du joueur:
+    bool isMovingLeft = false;
+    bool isMovingRight = false;
+
+    //compteur de mouvement
+    float distMoved = 0.0f;
+
+
+    //variables sur le déplacement
+    float distanceWhenMoving = 5.0f;
+    float timeWhenMoving = 0.5f;
+
+
     Entity* getRoot();
     void addEntity(Entity* parent, Entity* entity);
     void updateTransforms(Entity* root_node, TimeStep deltaTime);

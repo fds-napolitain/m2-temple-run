@@ -51,9 +51,42 @@ void Player::updateTransforms(TimeStep deltaTime) {
 	Transform* animationBase = entities[0]->getTransform();
 	Transform* animationMid = entities[1]->getTransform();
 	Transform* animationTop = entities[2]->getTransform();
-	animationBase->rotate *= QQuaternion::fromAxisAndAngle(-1.0, 0.0, 0.0, 90 * deltaTime);
-	animationMid->rotate *= QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90 * deltaTime);
-	animationTop->rotate *= QQuaternion::fromAxisAndAngle(-1.0, 0.0, 0.0, 45 * deltaTime);
+
+	if (!isMovingLeft && !isMovingRight)
+	{
+
+		animationBase->rotate *= QQuaternion::fromAxisAndAngle(-1.0, 0.0, 0.0, 90 * deltaTime);
+		animationMid->rotate *= QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90 * deltaTime);
+		animationTop->rotate *= QQuaternion::fromAxisAndAngle(-1.0, 0.0, 0.0, 45 * deltaTime);
+
+	}
+
+	if (isMovingLeft)
+	{
+		
+		animationBase->rotate *= QQuaternion::fromAxisAndAngle(-1.0, 0.0, 0.0, 90 * deltaTime);
+		animationMid->rotate *= QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90 * deltaTime);
+		animationTop->rotate *= QQuaternion::fromAxisAndAngle(-1.0, 0.0, 0.0, 45 * deltaTime);
+
+		animationBase->rotate *= QQuaternion::fromAxisAndAngle(0.0, -1.0, 0.0, 160 * deltaTime);
+		animationMid->rotate *= QQuaternion::fromAxisAndAngle(0.0, -1.0, 0.0, 160 * deltaTime);
+		animationTop->rotate *= QQuaternion::fromAxisAndAngle(0.0, -1.0, 0.0, 120 * deltaTime);
+		
+	}
+
+	if (isMovingRight)
+	{
+		animationBase->rotate *= QQuaternion::fromAxisAndAngle(-1.0, 0.0, 0.0, 90 * deltaTime);
+		animationMid->rotate *= QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90 * deltaTime);
+		animationTop->rotate *= QQuaternion::fromAxisAndAngle(-1.0, 0.0, 0.0, 45 * deltaTime);
+
+		animationBase->rotate *= QQuaternion::fromAxisAndAngle(0.0, 1.0, 0.0, 160 * deltaTime);
+		animationMid->rotate *= QQuaternion::fromAxisAndAngle(0.0, 1.0, 0.0, 160 * deltaTime);
+		animationTop->rotate *= QQuaternion::fromAxisAndAngle(0.0, 1.0, 0.0, 120 * deltaTime);
+		
+	}
+	
+
 	entities[0]->setTransform(animationBase);
 	entities[1]->setTransform(animationMid);
 	entities[2]->setTransform(animationTop);

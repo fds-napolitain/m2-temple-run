@@ -135,37 +135,47 @@ void MainWidget::keyPressEvent(QKeyEvent *event)
 {
 	SceneGraph* sceneGraph = (SceneGraph*) scene;
 	Transform* transform = sceneGraph->mainDecor->getTransform();
-	switch (event->key()) {
-        case Qt::Key_Z: /* haut */
-            projection.translate(QVector3D(0.0, -1.0, 0.0) * timeStep);
-            break;
-        case Qt::Key_Q: /* gauche */;
-            projection.translate(QVector3D(1.0, 0.0, 0.0) * timeStep);
-            break;
-        case Qt::Key_D: /*droite */
-            projection.translate(QVector3D(-1.0, 0.0, 0.0) * timeStep);
-          break;
-        case Qt::Key_S: /* bas */
-            projection.translate(QVector3D(0.0, 1.0, 0.0) * timeStep);
-            break;
-        case Qt::Key_A: /* descendre */
-            projection.translate(QVector3D(0.0, 0.0, 5.0) * timeStep);;
-            break;
-        case Qt::Key_E: /* monter */
-            projection.translate(QVector3D(0.0, 0.0, -5.0) * timeStep);
-            break;
-		case Qt::Key_Left:
-			transform->position += QVector3D(1.0, 0.0, 0.0) * timeStep;
-			sceneGraph->mainDecor->setTransform(transform);
-			break;
-		case Qt::Key_Right:
-			transform->position += QVector3D(-1.0, 0.0, 0.0) * timeStep;
-			sceneGraph->mainDecor->setTransform(transform);
-			break;
+
+    if (!sceneGraph->isMovingLeft && !sceneGraph->isMovingRight) //si le joueur ne se déplace pas, regarde sur quelle touche il appuie.
+    {
+        switch (event->key()) {
+                case Qt::Key_Z: /* haut */
+                    projection.translate(QVector3D(0.0, -1.0, 0.0) * timeStep);
+                    break;
+                case Qt::Key_Q: /* gauche */;
+                    projection.translate(QVector3D(-1.0, 0.0, 0.0) * timeStep);
+                    break;
+                case Qt::Key_D: /*droite */
+                    projection.translate(QVector3D(1.0, 0.0, 0.0) * timeStep);
+                  break;
+                case Qt::Key_S: /* bas */
+                    projection.translate(QVector3D(0.0, 1.0, 0.0) * timeStep);
+                    break;
+                case Qt::Key_A: /* descendre */
+                    projection.translate(QVector3D(0.0, 0.0, 5.0) * timeStep);;
+                    break;
+                case Qt::Key_E: /* monter */
+                    projection.translate(QVector3D(0.0, 0.0, -5.0) * timeStep);
+                    break;
+		        case Qt::Key_Left:
+                    if (!sceneGraph->joueur_rl)
+                    {
+                        sceneGraph->isMovingLeft = true;
+                        sceneGraph->isMovingRight = false;
+                    }
+			        break;
+		        case Qt::Key_Right:
+
+                    if (!sceneGraph->joueur_rr)
+                    {
+                        sceneGraph->isMovingLeft = false;
+                        sceneGraph->isMovingRight = true;
+                    }
+
+			        break;
+        }
+	
     }
-
-
-
     //projection.translate(0.0, 0.0, -1.0) ;
       //update();
 

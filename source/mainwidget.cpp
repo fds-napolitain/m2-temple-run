@@ -174,8 +174,14 @@ void MainWidget::keyPressEvent(QKeyEvent *event)
 
 			        break;
                 case Qt::Key_Space:
+
                     sceneGraph->player->isJumping = true;
                     sceneGraph->isJumping = true;
+                    break;
+                case Qt::Key_Up:
+                    sceneGraph->player->isJumping = true;
+                    sceneGraph->isJumping = true;
+                    break;
 
         }
 	

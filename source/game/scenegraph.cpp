@@ -94,52 +94,97 @@ void SceneGraph::update(TimeStep deltaTime)
 
 	
 
+	
+	mouvement(transform,deltaTime);
+	Jump(transform, deltaTime);
+	scrolling(transform, deltaTime);
+
+	
+
+	mainDecor->setTransform(transform);
+
+//   updatePhysics(); <-- fait tout dans le scenegraph
+     m_physics->update(deltaTime, m_drawnEntities, player );
+}
+
+void SceneGraph::updateTransforms(Entity* current, TimeStep deltaTime)
+{
+    Transform* curTransform = current->getTransform();
+
+    if (current->getParent() != nullptr) {
+        Transform* parentTransform = current->getParent()->getTransform();
+        curTransform->matrix = (parentTransform->matrix * curTransform->getLocalModelMatrix());
+    } else {
+
+        curTransform->matrix = curTransform->getLocalModelMatrix();
+    }
+
+	current->updateTransforms(deltaTime);
+
+	for(Entity * child : current->getChildren()) {
+        updateTransforms(child, deltaTime);
+    }
+}
+
+Entity *SceneGraph::getRoot() {return m_root; }
+
+void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime)
+{
+	//On fait le scrolling:
+	transform->position += QVector3D(0.0, 0.0, 8.0 * deltaTime);
+
+	if (transform->position.z() >= 50) {
+		transform->position = QVector3D(transform->position.x(), transform->position.y(), -100);
+	}
+}
+void SceneGraph::mouvement(Transform* transform, TimeStep deltaTime)
+{
 	// on regarde sur quel rail est le joueur s'il n'est pas entrain de bouger.
 	if (!isMovingRight && !isMovingLeft)
 	{
-		if (transform->position.x() < 4.0f && transform->position.x()> -4.0f)
-			{
-				joueur_rl = false;
-				joueur_rm = true;
-				joueur_rr = false;		
-			}
-			if (transform->position.x() >= 4.0f)
-			{
-				joueur_rl = true;
-				joueur_rm = false;
-				joueur_rr = false;
-			}
-			if (transform->position.x() <= -4.0f) {
-				joueur_rl = false;
-				joueur_rm = false;
-				joueur_rr = true;
-			}
+		if (transform->position.x() < 4.0f && transform->position.x() > -4.0f)
+		{
+			joueur_rl = false;
+			joueur_rm = true;
+			joueur_rr = false;
+		}
+		if (transform->position.x() >= 4.0f)
+		{
+			joueur_rl = true;
+			joueur_rm = false;
+			joueur_rr = false;
+		}
+		if (transform->position.x() <= -4.0f) {
+			joueur_rl = false;
+			joueur_rm = false;
+			joueur_rr = true;
+		}
 
-			
-			if (joueur_rl) transform->position.setX(distanceWhenMoving);
-			if (joueur_rm) transform->position.setX(0.0f);
-			if (joueur_rr) transform->position.setX(-distanceWhenMoving);
 
-			
+		if (joueur_rl) transform->position.setX(distanceWhenMoving);
+		if (joueur_rm) transform->position.setX(0.0f);
+		if (joueur_rr) transform->position.setX(-distanceWhenMoving);
+
+
 	}
 
-	
-	
-	// on déplace le joueur selon son rail et son mouvement
-	float deplacement = (distanceWhenMoving / timeWhenMoving)*deltaTime;
 
-	
+
+	// on déplace le joueur selon son rail et son mouvement
+	float deplacement = (distanceWhenMoving / timeWhenMoving) * deltaTime;
+
+
 	if (isMovingLeft && !isMovingRight)
 	{
 		distMoved += deplacement;
 		std::cout << "moving left";
 		transform->position += QVector3D(deplacement, 0.0, 0.0);
-		
+
 		player->isMovingLeft = true;
 		player->isMovingRight = false;
-		
 
-	}	
+
+	}
 	if (isMovingRight && !isMovingLeft)
 	{
 		distMoved += deplacement;
@@ -151,7 +196,7 @@ void SceneGraph::update(TimeStep deltaTime)
 
 	}
 
-	
+
 
 	if (distMoved >= distanceWhenMoving)
 	{
@@ -163,6 +208,9 @@ void SceneGraph::update(TimeStep deltaTime)
 		distMoved = 0.0f;
 	}
 
+}
+void SceneGraph::Jump(Transform *transform, TimeStep deltaTime)
+{
 	//On fait le saut:
 
 	if (isJumping)
@@ -196,38 +244,4 @@ void SceneGraph::update(TimeStep deltaTime)
 		}
 	}
 
-
-
-	//On fait le scrolling:
-	transform->position += QVector3D(0.0, 0.0, 8.0*deltaTime);
-
-	if (transform->position.z() >= 50) {
-		transform->position = QVector3D(transform->position.x(), transform->position.y(), -100);
-	}
-
-	mainDecor->setTransform(transform);
-
-//   updatePhysics(); <-- fait tout dans le scenegraph
-     m_physics->update(deltaTime, m_drawnEntities, player );
 }
-
-void SceneGraph::updateTransforms(Entity* current, TimeStep deltaTime)
-{
-    Transform* curTransform = current->getTransform();
-
-    if (current->getParent() != nullptr) {
-        Transform* parentTransform = current->getParent()->getTransform();
-        curTransform->matrix = (parentTransform->matrix * curTransform->getLocalModelMatrix());
-    } else {
-
-        curTransform->matrix = curTransform->getLocalModelMatrix();
-    }
-
-	current->updateTransforms(deltaTime);
-
-	for(Entity * child : current->getChildren()) {
-        updateTransforms(child, deltaTime);
-    }
-}
-
-Entity *SceneGraph::getRoot() {return m_root; }

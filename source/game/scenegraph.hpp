@@ -40,6 +40,9 @@ public:
 
 
     Entity* getRoot();
+    void scrolling(Transform* transform, TimeStep deltaTime);
+    void mouvement(Transform* transform, TimeStep deltaTime);
+    void Jump(Transform* transform, TimeStep deltaTime);
     void addEntity(Entity* parent, Entity* entity);
     void updateTransforms(Entity* root_node, TimeStep deltaTime);
 	Entity *mainDecor;

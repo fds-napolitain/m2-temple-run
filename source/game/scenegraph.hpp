@@ -33,10 +33,12 @@ public:
 
     //variable du saut
     bool isJumping = false;
-    bool hasJumped = false;
+    bool isFalling = false;
 
-    float tailleJump = 5.0f;
-    float tempsJump = 0.5f;
+    float tailleJump = 10.0f;
+    float timeJumping = 0.25f;
+    float timeFalling = 2*timeJumping;
+
 
 
     Entity* getRoot();

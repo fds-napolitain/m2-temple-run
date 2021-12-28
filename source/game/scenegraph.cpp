@@ -139,6 +139,18 @@ void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime)
 }
 void SceneGraph::mouvement(Transform* transform, TimeStep deltaTime)
 {
+
+
+	if (distMoved >= distanceWhenMoving)
+	{
+		isMovingLeft = false;
+		isMovingRight = false;
+
+		player->isMovingLeft = false;
+		player->isMovingRight = false;
+		distMoved = 0.0f;
+	}
+
 	// on regarde sur quel rail est le joueur s'il n'est pas entrain de bouger.
 	if (!isMovingRight && !isMovingLeft)
 	{
@@ -174,7 +186,7 @@ void SceneGraph::mouvement(Transform* transform, TimeStep deltaTime)
 	float deplacement = (distanceWhenMoving / timeWhenMoving) * deltaTime;
 
 
-	if (isMovingLeft && !isMovingRight)
+	if (isMovingLeft && !isMovingRight && !joueur_rl)
 	{
 		distMoved += deplacement;
 		std::cout << "moving left";
@@ -185,7 +197,7 @@ void SceneGraph::mouvement(Transform* transform, TimeStep deltaTime)
 
 
 	}
-	if (isMovingRight && !isMovingLeft)
+	if (isMovingRight && !isMovingLeft && !joueur_rr)
 	{
 		distMoved += deplacement;
 		std::cout << "moving right";
@@ -198,15 +210,7 @@ void SceneGraph::mouvement(Transform* transform, TimeStep deltaTime)
 
 
 
-	if (distMoved >= distanceWhenMoving)
-	{
-		isMovingLeft = false;
-		isMovingRight = false;
-
-		player->isMovingLeft = false;
-		player->isMovingRight = false;
-		distMoved = 0.0f;
-	}
+	
 
 }
 void SceneGraph::Jump(Transform *transform, TimeStep deltaTime)
@@ -217,29 +221,29 @@ void SceneGraph::Jump(Transform *transform, TimeStep deltaTime)
 	{
 		if (transform->position.y() > -tailleJump)
 		{
-			transform->position += QVector3D(0.0f, (-tailleJump / tempsJump) * deltaTime, 0.0f);
+			transform->position += QVector3D(0.0f, (-tailleJump / timeJumping) * deltaTime, 0.0f);
 		}
 		else
 		{
 			transform->position.setY(-tailleJump);
 			isJumping = false;
 			player->isJumping = false;
-			hasJumped = true;
+			isFalling = true;
 			player->hasJumped = true;
 		}
 	}
-	if (hasJumped)
+	if (isFalling)
 	{
 		if (transform->position.y() < 0.0f)
 		{
-			transform->position += QVector3D(0.0f, (tailleJump / tempsJump) * deltaTime, 0.0f);
+			transform->position += QVector3D(0.0f, (tailleJump / timeFalling) * deltaTime, 0.0f);
 		}
 		else
 		{
 			transform->position.setY(0.0f);
 			isJumping = false;
 			player->isJumping = false;
-			hasJumped = false;
+			isFalling = false;
 			player->hasJumped = false;
 		}
 	}

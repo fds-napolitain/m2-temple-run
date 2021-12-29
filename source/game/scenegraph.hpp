@@ -30,7 +30,10 @@ public:
     //variables sur le déplacement
     float distanceWhenMoving = 5.0f;
     float timeWhenMoving = 0.5f;
-    float scrollingSpeed = 8.0f;
+    float initScrollingSpeed = 14.0f;
+    float scrollingSpeed = initScrollingSpeed;
+    float acceleration = 1.0f;
+    float maxSpeed = 24.0f;
 
     //variable du saut
     bool isJumping = false;
@@ -49,10 +52,10 @@ public:
     float obstacle5X = distanceWhenMoving;
 
     float obstacle1Z = 0.0f;
-    float obstacle2Z = -2 * scrollingSpeed;
-    float obstacle3Z = -4 * scrollingSpeed;
-    float obstacle4Z = -6 * scrollingSpeed;
-    float obstacle5Z = -8 * scrollingSpeed;
+    float obstacle2Z = -1 * initScrollingSpeed;
+    float obstacle3Z = -2 * initScrollingSpeed;
+    float obstacle4Z = -3 * initScrollingSpeed;
+    float obstacle5Z = -4 * initScrollingSpeed;
 
 
 

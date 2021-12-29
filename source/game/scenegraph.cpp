@@ -59,6 +59,7 @@ SceneGraph::SceneGraph(Entity *root) :
 	addEntity(m_root, background);
 
 
+
 	//Obstacles:
 
 	//1:
@@ -186,7 +187,8 @@ void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime)
 	//On fait le scrolling:
 	transform->position += QVector3D(0.0, 0.0, scrollingSpeed * deltaTime);
 
-	if (transform->position.z() >= 50) {
+	if (transform->position.z() >= 100)
+		{
 		
 		Transform* transform1 = obstacle1->getTransform();
 		Transform* transform2 = obstacle2->getTransform();
@@ -202,6 +204,10 @@ void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime)
 		transform5->position.setZ((rand() % 3 - 1) * distanceWhenMoving);
 
 		transform->position = QVector3D(transform->position.x(), transform->position.y(), -100);
+		if (scrollingSpeed < maxSpeed)
+		{
+			scrollingSpeed += acceleration;
+		}
 	}
 
 }

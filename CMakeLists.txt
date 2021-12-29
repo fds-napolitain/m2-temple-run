@@ -3,7 +3,6 @@
 cmake_minimum_required(VERSION 3.16)
 project(TempleRun LANGUAGES CXX)
 
-set(CMAKE_PREFIX_PATH "C:\\Qt\\5.15.2\\msvc2019_64\\lib\\cmake\\Qt5")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -38,10 +37,10 @@ set_target_properties(TempleRun PROPERTIES
         MACOSX_BUNDLE FALSE
         )
 target_link_libraries(TempleRun PUBLIC
-        Qt::Core
-        Qt::Gui
-        Qt::OpenGL
-        Qt::Widgets
+        Qt5::Core
+        Qt5::Gui
+        Qt5::OpenGL
+        Qt5::Widgets
         )
 
 install(TARGETS TempleRun

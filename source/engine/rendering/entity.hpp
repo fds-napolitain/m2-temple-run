@@ -24,6 +24,7 @@ public:
     void setTransform(Transform* transform);
     void removeChild(Entity* child);
 	virtual void updateTransforms(TimeStep deltaTime);
+    
 
 private:
     std::string m_name;

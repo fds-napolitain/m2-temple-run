@@ -22,8 +22,20 @@ public:
 	[[nodiscard]] std::vector<Entity*> getEntities() const;
 	[[nodiscard]] Collider* getCollider() const;
 	void updateTransforms(TimeStep deltaTime) override;
+
+	//variable de déplacement
 	bool isMovingLeft = false;
 	bool isMovingRight = false;
+
+	//variable du saut
+	bool isJumping = false;
+	bool hasJumped = false;
+
+
+
+
+
+
 
 };
 

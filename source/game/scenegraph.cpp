@@ -321,7 +321,7 @@ void SceneGraph::Jump(Transform *transform, TimeStep deltaTime)
 void SceneGraph::MakeAnObstacle(float z) //c'est pas une vrai fonction c'est pour faire des copier coller
 { // Il faut aussi ajouter Entity* obstacleX dans le hpp 
 	Transform* obstacle4Transform = new Transform(QQuaternion(), QVector3D(obstacle4X, -1, obstacle4Z), 2);
-	Light* obstacle4 = new Light("obstacle4", obstacle4Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
+	obstacle4 = new Light("obstacle4", obstacle4Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
 	Mesh* obstacle4Mesh = new Mesh(GL_TRIANGLE_STRIP);
 	obstacle4Mesh->setType(Mesh::Type::LIGHT);
 	obstacle4Mesh->initCubeGeometry();

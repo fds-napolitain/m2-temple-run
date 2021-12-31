@@ -51,7 +51,7 @@ public:
     float obstacle4X = 0.0f;
     float obstacle5X = distanceWhenMoving;
 
-    float obstacle1Z = 0.0f;
+    float obstacle1Z = initScrollingSpeed;;
     float obstacle2Z = -1 * initScrollingSpeed;
     float obstacle3Z = -2 * initScrollingSpeed;
     float obstacle4Z = -3 * initScrollingSpeed;

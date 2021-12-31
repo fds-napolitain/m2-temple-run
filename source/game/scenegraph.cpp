@@ -9,7 +9,7 @@ SceneGraph::SceneGraph(Entity *root) :
 	Transform* solTransform = new Transform(QQuaternion(), QVector3D(0, -4.0, 0), 1);
 	Transform* rightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 1.0, 90), QVector3D(7, -2.0, 0), 1);
 	Transform* leftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-7, -2.0, 0), 1);
-	Transform* mainDecorTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 0.0,  0), QVector3D(0, 0.0, -100), 1);
+	Transform* mainDecorTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 0.0, 0), QVector3D(0, 0, -100), 1);
 	Transform* backgroundTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(0, 0.0, -105), 1);
 
 
@@ -63,7 +63,7 @@ SceneGraph::SceneGraph(Entity *root) :
 	//Obstacles:
 
 	//1:
-	Transform* obstacle1Transform = new Transform(QQuaternion(), QVector3D(obstacle1X, -1, obstacle1Z), 2);
+	Transform* obstacle1Transform = new Transform(QQuaternion(), QVector3D(obstacle1X, 2, obstacle1Z), 2);
 	obstacle1 = new Light("obstacle1", obstacle1Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
 	Mesh* obstacle1Mesh = new Mesh(GL_TRIANGLE_STRIP);
 	obstacle1Mesh->setType(Mesh::Type::LIGHT);
@@ -73,11 +73,11 @@ SceneGraph::SceneGraph(Entity *root) :
 	m_physics->addCollider(obstacle1AABB);
 	obstacle1->addComponent(obstacle1AABB);
 	obstacle1->addComponent(obstacle1Mesh);
-	addEntity(mainDecor, obstacle1);
+	addEntity(sol, obstacle1);
 
 
 	//2:
-	Transform* obstacle2Transform = new Transform(QQuaternion(), QVector3D(obstacle2X, -1, obstacle2Z), 2);
+	Transform* obstacle2Transform = new Transform(QQuaternion(), QVector3D(obstacle2X, 2, obstacle2Z), 2);
 	obstacle2 = new Light("obstacle2", obstacle2Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
 	Mesh* obstacle2Mesh = new Mesh(GL_TRIANGLE_STRIP);
 	obstacle2Mesh->setType(Mesh::Type::LIGHT);
@@ -87,10 +87,10 @@ SceneGraph::SceneGraph(Entity *root) :
 	m_physics->addCollider(obstacle2AABB);
 	obstacle2->addComponent(obstacle2AABB);
 	obstacle2->addComponent(obstacle2Mesh);
-	addEntity(mainDecor, obstacle2);
+	addEntity(sol, obstacle2);
 
 	//3:
-	Transform* obstacle3Transform = new Transform(QQuaternion(), QVector3D(obstacle3X, -1, obstacle3Z), 2);
+	Transform* obstacle3Transform = new Transform(QQuaternion(), QVector3D(obstacle3X, 2, obstacle3Z), 2);
 	obstacle3 = new Light("obstacle3", obstacle3Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
 	Mesh* obstacle3Mesh = new Mesh(GL_TRIANGLE_STRIP);
 	obstacle3Mesh->setType(Mesh::Type::LIGHT);
@@ -100,10 +100,10 @@ SceneGraph::SceneGraph(Entity *root) :
 	m_physics->addCollider(obstacle3AABB);
 	obstacle3->addComponent(obstacle3AABB);
 	obstacle3->addComponent(obstacle3Mesh);
-	addEntity(mainDecor, obstacle3);
+	addEntity(sol, obstacle3);
 
 	//4:
-	Transform* obstacle4Transform = new Transform(QQuaternion(), QVector3D(obstacle4X, -1, obstacle4Z), 2);
+	Transform* obstacle4Transform = new Transform(QQuaternion(), QVector3D(obstacle4X, 2, obstacle4Z), 2);
 	obstacle4 = new Light("obstacle4", obstacle4Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
 	Mesh* obstacle4Mesh = new Mesh(GL_TRIANGLE_STRIP);
 	obstacle4Mesh->setType(Mesh::Type::LIGHT);
@@ -113,10 +113,10 @@ SceneGraph::SceneGraph(Entity *root) :
 	m_physics->addCollider(obstacle4AABB);
 	obstacle4->addComponent(obstacle4AABB);
 	obstacle4->addComponent(obstacle4Mesh);
-	addEntity(mainDecor, obstacle4);
+	addEntity(sol, obstacle4);
 
 	//5:
-	Transform* obstacle5Transform = new Transform(QQuaternion(), QVector3D(obstacle5X, -1, obstacle5Z), 2);
+	Transform* obstacle5Transform = new Transform(QQuaternion(), QVector3D(obstacle5X, 2, obstacle5Z), 2);
 	obstacle5 = new Light("obstacle5", obstacle5Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
 	Mesh* obstacle5Mesh = new Mesh(GL_TRIANGLE_STRIP);
 	obstacle5Mesh->setType(Mesh::Type::LIGHT);
@@ -126,7 +126,7 @@ SceneGraph::SceneGraph(Entity *root) :
 	m_physics->addCollider(obstacle5AABB);
 	obstacle5->addComponent(obstacle5AABB);
 	obstacle5->addComponent(obstacle5Mesh);
-	addEntity(mainDecor, obstacle5);
+	addEntity(sol, obstacle5);
 
 
 
@@ -185,8 +185,8 @@ Entity *SceneGraph::getRoot() {return m_root; }
 void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime)
 {
 	//On fait le scrolling:
-	transform->position += QVector3D(0.0, 0.0, scrollingSpeed * deltaTime);
-
+	transform->position += QVector3D(0.0, 0.0, scrollingSpeed*deltaTime);
+	
 	if (transform->position.z() >= 100)
 		{
 		
@@ -197,11 +197,11 @@ void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime)
 		Transform* transform5 = obstacle2->getTransform();
 
 
-		transform1->position.setZ((rand() % 3 - 1) * distanceWhenMoving);
-		transform2->position.setZ((rand() % 3 - 1) * distanceWhenMoving);
-		transform3->position.setZ((rand() % 3 - 1) * distanceWhenMoving);
-		transform4->position.setZ((rand() % 3 - 1) * distanceWhenMoving);
-		transform5->position.setZ((rand() % 3 - 1) * distanceWhenMoving);
+		transform1->position.setX((rand() % 3 - 1) * distanceWhenMoving);
+		transform2->position.setX((rand() % 3 - 1) * distanceWhenMoving);
+		transform3->position.setX((rand() % 3 - 1) * distanceWhenMoving);
+		transform4->position.setX((rand() % 3 - 1) * distanceWhenMoving);
+		transform5->position.setX((rand() % 3 - 1) * distanceWhenMoving);
 
 		transform->position = QVector3D(transform->position.x(), transform->position.y(), -100);
 		if (scrollingSpeed < maxSpeed)

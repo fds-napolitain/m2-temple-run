@@ -4,7 +4,7 @@
 #include <QVector3D>
 #include "intersectdata.hpp"
 #include "source/engine/components/physics/collider/BoundingSphere.hpp"
-#include "math.h"
+#include <cmath>
 
 class Plane {
 public:

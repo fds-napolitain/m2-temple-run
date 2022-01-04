@@ -6,7 +6,7 @@
 #define TEMPLERUN_ANIMATION_HPP
 
 
-#include "source/engine/rendering/component.hpp"
+#include "source/engine/components/component.hpp"
 #include "source/engine/transform.hpp"
 
 class Animation : public Component {

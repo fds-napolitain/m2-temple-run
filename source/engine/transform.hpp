@@ -8,7 +8,7 @@ public:
     Transform();
     Transform(QQuaternion rotate, QVector3D trans, float s);
 
-   //fields
+    //fields
     // world transform
     QMatrix4x4  matrix;
     //local transform

@@ -6,7 +6,7 @@
 #include <QVector2D>
 #include <QOpenGLTexture>
 #include "BasicIO.hpp"
-#include "component.hpp"
+#include "source/engine/components/component.hpp"
 #include "geometryengine.hpp"
 #include "../transform.hpp"
 

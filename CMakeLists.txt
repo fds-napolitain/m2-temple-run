@@ -22,7 +22,7 @@ find_package(Qt5 COMPONENTS Widgets)
 find_package(Qt5 COMPONENTS OpenGL)
 
 add_executable(TempleRun main.cpp textures/textures.qrc models/models.qrc shaders/shaders.qrc
-        source/engine/rendering/BasicIO.hpp source/engine/rendering/camera.cpp source/engine/rendering/camera.hpp source/engine/rendering/component.cpp source/engine/rendering/component.hpp
+        source/engine/rendering/BasicIO.hpp source/engine/rendering/camera.cpp source/engine/rendering/camera.hpp source/engine/components/component.cpp source/engine/components/component.hpp
         source/engine/rendering/entity.hpp source/engine/rendering/entity.cpp source/engine/rendering/geometryengine.hpp source/engine/rendering/geometryengine.cpp source/mainwidget.hpp source/mainwidget.cpp
         source/engine/rendering/mesh.cpp source/engine/rendering/mesh.hpp source/engine/rendering/scene.cpp source/engine/rendering/scene.hpp source/game/scenegraph.hpp source/game/scenegraph.cpp
         source/engine/transform.cpp source/engine/transform.hpp

@@ -5,7 +5,7 @@
 #include "source/engine/physics/ReferenceCounter.hpp"
 #include "source/engine/physics/intersectdata.hpp"
 #include "source/engine/transform.hpp"
-#include "source/engine/rendering/component.hpp"
+#include "source/engine/components/component.hpp"
 
 
 class Collider : public ReferenceCounter, public Component {

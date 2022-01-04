@@ -15,12 +15,12 @@ void PhysicSystem::update(TimeStep delta, std::vector<Entity*> entities, Player*
             Collider* collider = dynamic_cast<Collider*>(component);
 
             if(collider != nullptr){
-                //collider->transformCollider(*entity->getTransform());
+                collider->transformCollider(*entity->getTransform());
                 IntersectData isIntersectingPlayer = player->collider->intersect(*collider);
 
 
                 if(isIntersectingPlayer.isIntersect()){
-
+                    entity->getTransform()->position.setX(15.0f); //? un truc marche pas.
                     std::cout << " je collide ! " << isIntersectingPlayer.getDirection().x() << " " << isIntersectingPlayer.getDirection().y() << " " << isIntersectingPlayer.getDirection().z() << " " << " \n";
                 }
             }

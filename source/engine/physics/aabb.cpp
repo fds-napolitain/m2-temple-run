@@ -26,14 +26,20 @@ IntersectData AABB::intersectAABB(const AABB& other) {
 
 void AABB::transformCollider(const Transform &transform) {
     Transform t = transform;
-    if(oldPosition.isNull()){
+   if (oldPosition.isNull()) {
         oldPosition = t.getWorldTranslate();
     }
     QVector3D velocity (t.getWorldTranslate() - oldPosition);
     oldPosition = t.getWorldTranslate();
 
-    m_minCorner += velocity;
-    m_maxCorner += velocity;
+    //m_minCorner += velocity;
+    //m_maxCorner += velocity;
+
+    m_minCorner = QVector3D(-1, -1, -1) + oldPosition;
+    m_maxCorner = QVector3D(1, 1, 1) + oldPosition;
+
+
+   
 }
 
 //IntersectData AABB::intersectBoundingSphere(const BoundingSphere &other) {

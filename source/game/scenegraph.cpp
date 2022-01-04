@@ -60,7 +60,7 @@ SceneGraph::SceneGraph(Entity *root) :
 
 
 
-	//Obstacles:
+	//Obstacles: faudrait faire un objet entiy obstacle avec tout ça un jour.
 
 	//1:
 	Transform* obstacle1Transform = new Transform(QQuaternion(), QVector3D(obstacle1X, -1, obstacle1Z), 2);
@@ -129,8 +129,64 @@ SceneGraph::SceneGraph(Entity *root) :
 	addEntity(mainDecor, obstacle5);
 
 
+	//pièces: pareil faudrait faire un entity un jour.
+	//1:
 
+	Mesh* ringMesh = new Mesh(":/sphere.off", Mesh::OFFIO, GL_TRIANGLES);
+	ringMesh->loadTexture(":/neige.png");
+	
+	Transform* ring1Transform = new Transform(QQuaternion(), QVector3D(0.0f, 1.0f, initRingPos), 0.5f);
+	ring1 = new Light("ring1", ring1Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
+	BoundingSphere* ring1BS = new BoundingSphere(QVector3D(0.0f, 0.0f, 0.0f), 0.5f);
+	m_physics->addCollider(ring1BS);
+	ring1->addComponent(ring1BS);
+	ring1->addComponent(ringMesh);
+	addEntity(sol, ring1);
+
+
+	//2
+	Transform* ring2Transform = new Transform(QQuaternion(), QVector3D(0.0f, 1.0f+ringAboveObstacle * 2 * (tailleJump / timeJumping) / 60,initRingPos-2*initScrollingSpeed/60), 0.5f);
+	ring2 = new Light("ring2", ring2Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
+	BoundingSphere* ring2BS = new BoundingSphere(QVector3D(0.0f, 0.0f, 0.0f), 0.5f);
+	m_physics->addCollider(ring2BS);
+	ring2->addComponent(ring2BS);
+	ring2->addComponent(ringMesh);
+	addEntity(sol, ring2);
+
+
+	//3
+	Transform* ring3Transform = new Transform(QQuaternion(), QVector3D(0.0f, 1.0f+ringAboveObstacle * 4 * (tailleJump / timeJumping) / 60, initRingPos - 4*initScrollingSpeed / 60), 0.5f);
+	ring3 = new Light("ring3", ring3Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
+	BoundingSphere* ring3BS = new BoundingSphere(QVector3D(0.0f, 0.0f, 0.0f), 0.5f);
+	m_physics->addCollider(ring3BS);
+	ring3->addComponent(ring3BS);
+	ring3->addComponent(ringMesh);
+	addEntity(sol, ring3);
+	
+	//4
+	Transform* ring4Transform = new Transform(QQuaternion(), QVector3D(0.0f, 1.0f+ ringAboveObstacle * 6 * (tailleJump / timeJumping) / 60, initRingPos - 6 * initScrollingSpeed / 60), 0.5f);
+	ring4 = new Light("ring4", ring4Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
+	BoundingSphere* ring4BS = new BoundingSphere(QVector3D(0.0f, 0.0f, 0.0f), 0.5f);
+	m_physics->addCollider(ring4BS);
+	ring4->addComponent(ring4BS);
+	ring4->addComponent(ringMesh);
+	addEntity(sol, ring4);
+	
+	//5
+	Transform* ring5Transform = new Transform(QQuaternion(), QVector3D(0.0f, 1.0f + ringAboveObstacle * 8 * (tailleJump / timeJumping) / 60, initRingPos - 8 * initScrollingSpeed / 60),0.5f);
+	ring5 = new Light("ring5", ring5Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
+	BoundingSphere* ring5BS = new BoundingSphere(QVector3D(0.0f, 0.0f, 0.0f), 0.5f);
+	m_physics->addCollider(ring5BS);
+	ring5->addComponent(ring5BS);
+	ring5->addComponent(ringMesh);
+	addEntity(sol, ring5);
 }
+
+
+	
+
+	
+
 
 SceneGraph::~SceneGraph() {
 	delete m_root;
@@ -190,18 +246,14 @@ void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime)
 	if (transform->position.z() >= 100)
 		{
 		
-		Transform* transform1 = obstacle1->getTransform();
-		Transform* transform2 = obstacle2->getTransform();
-		Transform* transform3 = obstacle2->getTransform();
-		Transform* transform4 = obstacle2->getTransform();
-		Transform* transform5 = obstacle2->getTransform();
+		obstacle1->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
+		obstacle2->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
+		obstacle3->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
+		obstacle4->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
+		obstacle5->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
 
 
-		transform1->position.setZ((rand() % 3 - 1) * distanceWhenMoving);
-		transform2->position.setZ((rand() % 3 - 1) * distanceWhenMoving);
-		transform3->position.setZ((rand() % 3 - 1) * distanceWhenMoving);
-		transform4->position.setZ((rand() % 3 - 1) * distanceWhenMoving);
-		transform5->position.setZ((rand() % 3 - 1) * distanceWhenMoving);
+
 
 		transform->position = QVector3D(transform->position.x(), transform->position.y(), -100);
 		if (scrollingSpeed < maxSpeed)
@@ -338,3 +390,14 @@ void SceneGraph::MakeAnObstacle(float z) //c'est pas une vrai fonction c'est pou
 	obstacle4->addComponent(obstacle4Mesh);
 	addEntity(mainDecor, obstacle4);
 }
+
+/*void SceneGraph::MakeARing(float z) // pas une vraie fonction non plus
+{
+	Transform* ring5Transform = new Transform(QQuaternion(), QVector3D(0.0f,ringAboveObstacle*2*tailleJump/timeJumping, initRingPos), 0.5f);
+	ring5 = new Light("obstacle1", ring5Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
+	BoundingSphere* ring5BS = new BoundingSphere(QVector3D(0.0f, 0.0f, 0.0f), 0.5f);
+	m_physics->addCollider(ring5BS);
+	ring5->addComponent(ring5BS);
+	ring5->addComponent(ringMesh);
+	addEntity(sol, ring5);
+}*/

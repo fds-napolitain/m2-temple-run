@@ -37,8 +37,8 @@ int Collider::getType() const {
 	return m_type;
 }
 
-void Collider::transformCollider(const Transform &transform) {
-
+void Collider::transformCollider(const Transform &transform)
+{
 }
 
 QVector3D Collider::getCenter() const {

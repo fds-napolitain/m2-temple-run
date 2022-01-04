@@ -66,6 +66,7 @@ public:
     void mouvement(Transform* transform, TimeStep deltaTime);
     void Jump(Transform* transform, TimeStep deltaTime);
     void MakeAnObstacle(float z);
+    void MakeARing(float z);
     void addEntity(Entity* parent, Entity* entity);
     void updateTransforms(Entity* root_node, TimeStep deltaTime);
 	Entity *mainDecor;
@@ -75,6 +76,17 @@ public:
     Light *obstacle4;
     Light  *obstacle5;
     
+
+
+    float initRingPos = -1 * initScrollingSpeed;
+    float ringAboveObstacle = 1.0f; //1 v 0 f
+    Light* ring1;
+    Light* ring2;
+    Light* ring3;
+    Light* ring4;
+    Light* ring5;
+    Light* ring6;
+
     Player *player;
 
 private:

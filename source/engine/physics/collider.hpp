@@ -22,6 +22,7 @@ public:
     [[nodiscard]] IntersectData intersect(const Collider& other) const;
     virtual void transformCollider(const Transform& transform);
     [[nodiscard]] virtual QVector3D getCenter() const;
+	int getCType() override;
 
 
     float mass = 0.0;
@@ -29,6 +30,7 @@ public:
     float restitution = 0.0f;
     float restitutionMax = 0.5f; // prevent jittering
     QVector3D oldPosition;
+
 private:
     int m_type;
 };

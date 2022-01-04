@@ -71,11 +71,16 @@ std::vector<Entity *> Entity::getChildren() const {
 }
 
 void Entity::updateTransforms(TimeStep deltaTime) {
-    for(auto component : this->m_components){
-        Collider* collider = dynamic_cast<Collider*>(component);
-        if(collider != nullptr){
-            collider->transformCollider( *m_transform);
-        }
+    for (auto component : this->m_components) {
+		int ctype = component->getCType();
+		if (ctype == COLLIDER) {
+			auto collider = dynamic_cast<Collider*>(component);
+			collider->transformCollider(*m_transform);
+		} else if (ctype == ANIMATION) {
+
+		} else {
+			std::cout << "Component not recognized.\n";
+		}
     }
 }
 

@@ -15,7 +15,7 @@ class PhysicSystem {
 
 public:
     PhysicSystem() = default;
-	void update(TimeStep delta, std::vector<Entity*> entities, Player* player);
+	void update(TimeStep delta, const std::vector<Entity*>& entities, Player* player);
     void clearRigidBodies();
     void clearColliders();
     void addCollider(Collider* collider);

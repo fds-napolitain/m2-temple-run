@@ -64,8 +64,8 @@ public:
     Entity* getRoot();
     void scrolling(Transform* transform, TimeStep deltaTime);
     void mouvement(Transform* transform, TimeStep deltaTime);
-    void Jump(Transform* transform, TimeStep deltaTime);
-    void MakeAnObstacle(float z);
+    void jump(Transform* transform, TimeStep deltaTime);
+    void makeAnObstacle(float z);
     void MakeARing(float z);
     void addEntity(Entity* parent, Entity* entity);
     void updateTransforms(Entity* root_node, TimeStep deltaTime);

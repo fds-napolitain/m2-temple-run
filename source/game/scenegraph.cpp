@@ -60,7 +60,7 @@ SceneGraph::SceneGraph(Entity *root) :
 
 
 
-	//Obstacles: faudrait faire un objet entiy obstacle avec tout ça un jour.
+	//Obstacles: faudrait faire un objet entiy obstacle avec tout ï¿½a un jour.
 
 	//1:
 	Transform* obstacle1Transform = new Transform(QQuaternion(), QVector3D(obstacle1X, -1, obstacle1Z), 2);
@@ -129,7 +129,7 @@ SceneGraph::SceneGraph(Entity *root) :
 	addEntity(mainDecor, obstacle5);
 
 
-	//pièces: pareil faudrait faire un entity un jour.
+	//piï¿½ces: pareil faudrait faire un entity un jour.
 	//1:
 
 	Mesh* ringMesh = new Mesh(":/sphere.off", Mesh::OFFIO, GL_TRIANGLES);
@@ -192,22 +192,20 @@ SceneGraph::~SceneGraph() {
 	delete m_root;
 }
 
-void SceneGraph::addEntity(Entity *parent, Entity *entity)
-{
+void SceneGraph::addEntity(Entity *parent, Entity *entity) {
     entity->setParent(parent);
     m_drawnEntities.emplace_back(entity);
 }
 
 
-void SceneGraph::update(TimeStep deltaTime)
-{
+void SceneGraph::update(TimeStep deltaTime) {
 
     updateTransforms(m_root, deltaTime);
 	Transform* transform = mainDecor->getTransform();
 	// On fait  ce qui concerne le joueur
 
 	mouvement(transform,deltaTime);
-	Jump(transform, deltaTime);
+	jump(transform, deltaTime);
 	scrolling(transform, deltaTime);
 	
 
@@ -217,8 +215,7 @@ void SceneGraph::update(TimeStep deltaTime)
      m_physics->update(deltaTime, m_drawnEntities, player );
 }
 
-void SceneGraph::updateTransforms(Entity* current, TimeStep deltaTime)
-{
+void SceneGraph::updateTransforms(Entity* current, TimeStep deltaTime) {
     Transform* curTransform = current->getTransform();
 
     if (current->getParent() != nullptr) {
@@ -238,13 +235,16 @@ void SceneGraph::updateTransforms(Entity* current, TimeStep deltaTime)
 
 Entity *SceneGraph::getRoot() {return m_root; }
 
-void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime)
-{
+/**
+ *
+ * @param transform
+ * @param deltaTime
+ */
+void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime) {
 	//On fait le scrolling:
 	transform->position += QVector3D(0.0, 0.0, scrollingSpeed * deltaTime);
 
-	if (transform->position.z() >= 100)
-		{
+	if (transform->position.z() >= 100) {
 		
 		obstacle1->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
 		obstacle2->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
@@ -252,23 +252,20 @@ void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime)
 		obstacle4->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
 		obstacle5->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
 
-
-
-
 		transform->position = QVector3D(transform->position.x(), transform->position.y(), -100);
-		if (scrollingSpeed < maxSpeed)
-		{
+		if (scrollingSpeed < maxSpeed) {
 			scrollingSpeed += acceleration;
 		}
 	}
-
 }
-void SceneGraph::mouvement(Transform* transform, TimeStep deltaTime)
-{
 
-
-	if (distMoved >= distanceWhenMoving)
-	{
+/**
+ *
+ * @param transform
+ * @param deltaTime
+ */
+void SceneGraph::mouvement(Transform* transform, TimeStep deltaTime) {
+	if (distMoved >= distanceWhenMoving) {
 		isMovingLeft = false;
 		isMovingRight = false;
 
@@ -278,16 +275,13 @@ void SceneGraph::mouvement(Transform* transform, TimeStep deltaTime)
 	}
 
 	// on regarde sur quel rail est le joueur s'il n'est pas entrain de bouger.
-	if (!isMovingRight && !isMovingLeft)
-	{
-		if (transform->position.x() < 4.0f && transform->position.x() > -4.0f)
-		{
+	if (!isMovingRight && !isMovingLeft) {
+		if (transform->position.x() < 4.0f && transform->position.x() > -4.0f) {
 			joueur_rl = false;
 			joueur_rm = true;
 			joueur_rr = false;
 		}
-		if (transform->position.x() >= 4.0f)
-		{
+		if (transform->position.x() >= 4.0f) {
 			joueur_rl = true;
 			joueur_rm = false;
 			joueur_rr = false;
@@ -297,50 +291,42 @@ void SceneGraph::mouvement(Transform* transform, TimeStep deltaTime)
 			joueur_rm = false;
 			joueur_rr = true;
 		}
-
-
 		if (joueur_rl) transform->position.setX(distanceWhenMoving);
 		if (joueur_rm) transform->position.setX(0.0f);
 		if (joueur_rr) transform->position.setX(-distanceWhenMoving);
-
-
 	}
 
 
 
-	// on déplace le joueur selon son rail et son mouvement
+	// on dï¿½place le joueur selon son rail et son mouvement
 	float deplacement = (distanceWhenMoving / timeWhenMoving) * deltaTime;
 
 
-	if (isMovingLeft && !isMovingRight && !joueur_rl)
-	{
+	if (isMovingLeft && !isMovingRight && !joueur_rl) {
 		distMoved += deplacement;
 		std::cout << "moving left";
 		transform->position += QVector3D(deplacement, 0.0, 0.0);
 
 		player->isMovingLeft = true;
 		player->isMovingRight = false;
-
-
 	}
-	if (isMovingRight && !isMovingLeft && !joueur_rr)
-	{
+
+	if (isMovingRight && !isMovingLeft && !joueur_rr) {
 		distMoved += deplacement;
 		std::cout << "moving right";
 		transform->position += QVector3D(-deplacement, 0.0, 0.0);
 
 		player->isMovingLeft = false;
 		player->isMovingRight = true;
-
 	}
-
-
-
-	
-
 }
-void SceneGraph::Jump(Transform *transform, TimeStep deltaTime)
-{
+
+/**
+ *
+ * @param transform
+ * @param deltaTime
+ */
+void SceneGraph::jump(Transform *transform, TimeStep deltaTime) {
 	//On fait le saut:
 
 	if (isJumping)
@@ -376,8 +362,12 @@ void SceneGraph::Jump(Transform *transform, TimeStep deltaTime)
 
 }
 
-void SceneGraph::MakeAnObstacle(float z) //c'est pas une vrai fonction c'est pour faire des copier coller
-{ // Il faut aussi ajouter Entity* obstacleX dans le hpp 
+/**
+ *
+ * @param z
+ */
+void SceneGraph::makeAnObstacle(float z) { //c'est pas une vrai fonction c'est pour faire des copier coller
+ // Il faut aussi ajouter Entity* obstacleX dans le hpp
 	Transform* obstacle4Transform = new Transform(QQuaternion(), QVector3D(obstacle4X, -1, obstacle4Z), 2);
 	obstacle4 = new Light("obstacle4", obstacle4Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
 	Mesh* obstacle4Mesh = new Mesh(GL_TRIANGLE_STRIP);

@@ -3,6 +3,11 @@
 #include "aabb.hpp"
 #include <iostream>
 
+Collider::Collider(int type) :
+		ReferenceCounter(),
+		m_type(type)
+{}
+
 IntersectData Collider::intersect(const Collider& other) const
 {
     if(this->getType() == TYPE_SPHERE && other.getType() == TYPE_SPHERE )
@@ -28,11 +33,6 @@ IntersectData Collider::intersect(const Collider& other) const
     return IntersectData(false, QVector3D());
 }
 
-Collider::Collider(int type) :
-		ReferenceCounter(),
-		m_type(type)
-{}
-
 int Collider::getType() const {
 	return m_type;
 }
@@ -43,6 +43,10 @@ void Collider::transformCollider(const Transform &transform)
 
 QVector3D Collider::getCenter() const {
 	return QVector3D();
+}
+
+int Collider::getCType() {
+	return COLLIDER;
 }
 
 

@@ -6,7 +6,7 @@
 
 
 
-void PhysicSystem::update(TimeStep delta, std::vector<Entity*> entities, Player* player)
+void PhysicSystem::update(TimeStep delta, const std::vector<Entity*>& entities, Player* player)
 {
     for(auto entity : entities)
     {

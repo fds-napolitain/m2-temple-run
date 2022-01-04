@@ -7,7 +7,7 @@
 
 #include "source/engine/transform.hpp"
 #include "source/engine/rendering/entity.hpp"
-#include "source/engine/physics/BoundingSphere.hpp"
+#include "source/engine/components/physics/collider/BoundingSphere.hpp"
 #include "source/engine/rendering/mesh.hpp"
 
 class Player : public Entity {
@@ -23,7 +23,7 @@ public:
 	[[nodiscard]] Collider* getCollider() const;
 	void updateTransforms(TimeStep deltaTime) override;
 
-	//variable de déplacement
+	//variable de dï¿½placement
 	bool isMovingLeft = false;
 	bool isMovingRight = false;
 

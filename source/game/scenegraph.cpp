@@ -1,6 +1,10 @@
 #include "scenegraph.hpp"
-#include "source/engine/physics/aabb.hpp"
+#include "source/engine/components/physics/collider/aabb.hpp"
 
+/**
+ * Constructeur
+ * @param root
+ */
 SceneGraph::SceneGraph(Entity *root) :
 		Scene(),
 		m_root(root)
@@ -182,22 +186,27 @@ SceneGraph::SceneGraph(Entity *root) :
 	addEntity(sol, ring5);
 }
 
-
-	
-
-	
-
-
+/**
+ * Destructeur
+ */
 SceneGraph::~SceneGraph() {
 	delete m_root;
 }
 
+/**
+ * Rajoute une entité
+ * @param parent
+ * @param entity
+ */
 void SceneGraph::addEntity(Entity *parent, Entity *entity) {
     entity->setParent(parent);
     m_drawnEntities.emplace_back(entity);
 }
 
-
+/**
+ *
+ * @param deltaTime
+ */
 void SceneGraph::update(TimeStep deltaTime) {
 
     updateTransforms(m_root, deltaTime);
@@ -215,6 +224,11 @@ void SceneGraph::update(TimeStep deltaTime) {
      m_physics->update(deltaTime, m_drawnEntities, player );
 }
 
+/**
+ *
+ * @param current
+ * @param deltaTime
+ */
 void SceneGraph::updateTransforms(Entity* current, TimeStep deltaTime) {
     Transform* curTransform = current->getTransform();
 
@@ -233,7 +247,13 @@ void SceneGraph::updateTransforms(Entity* current, TimeStep deltaTime) {
     }
 }
 
-Entity *SceneGraph::getRoot() {return m_root; }
+/**
+ *
+ * @return
+ */
+Entity *SceneGraph::getRoot() {
+	return m_root;
+}
 
 /**
  *
@@ -243,15 +263,12 @@ Entity *SceneGraph::getRoot() {return m_root; }
 void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime) {
 	//On fait le scrolling:
 	transform->position += QVector3D(0.0, 0.0, scrollingSpeed * deltaTime);
-
 	if (transform->position.z() >= 100) {
-		
 		obstacle1->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
 		obstacle2->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
 		obstacle3->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
 		obstacle4->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
 		obstacle5->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
-
 		transform->position = QVector3D(transform->position.x(), transform->position.y(), -100);
 		if (scrollingSpeed < maxSpeed) {
 			scrollingSpeed += acceleration;
@@ -273,7 +290,6 @@ void SceneGraph::mouvement(Transform* transform, TimeStep deltaTime) {
 		player->isMovingRight = false;
 		distMoved = 0.0f;
 	}
-
 	// on regarde sur quel rail est le joueur s'il n'est pas entrain de bouger.
 	if (!isMovingRight && !isMovingLeft) {
 		if (transform->position.x() < 4.0f && transform->position.x() > -4.0f) {
@@ -295,13 +311,8 @@ void SceneGraph::mouvement(Transform* transform, TimeStep deltaTime) {
 		if (joueur_rm) transform->position.setX(0.0f);
 		if (joueur_rr) transform->position.setX(-distanceWhenMoving);
 	}
-
-
-
 	// on d�place le joueur selon son rail et son mouvement
 	float deplacement = (distanceWhenMoving / timeWhenMoving) * deltaTime;
-
-
 	if (isMovingLeft && !isMovingRight && !joueur_rl) {
 		distMoved += deplacement;
 		std::cout << "moving left";
@@ -310,7 +321,6 @@ void SceneGraph::mouvement(Transform* transform, TimeStep deltaTime) {
 		player->isMovingLeft = true;
 		player->isMovingRight = false;
 	}
-
 	if (isMovingRight && !isMovingLeft && !joueur_rr) {
 		distMoved += deplacement;
 		std::cout << "moving right";
@@ -328,15 +338,10 @@ void SceneGraph::mouvement(Transform* transform, TimeStep deltaTime) {
  */
 void SceneGraph::jump(Transform *transform, TimeStep deltaTime) {
 	//On fait le saut:
-
-	if (isJumping)
-	{
-		if (transform->position.y() > -tailleJump)
-		{
+	if (isJumping) {
+		if (transform->position.y() > -tailleJump) {
 			transform->position += QVector3D(0.0f, (-tailleJump / timeJumping) * deltaTime, 0.0f);
-		}
-		else
-		{
+		} else {
 			transform->position.setY(-tailleJump);
 			isJumping = false;
 			player->isJumping = false;
@@ -344,14 +349,10 @@ void SceneGraph::jump(Transform *transform, TimeStep deltaTime) {
 			player->hasJumped = true;
 		}
 	}
-	if (isFalling)
-	{
-		if (transform->position.y() < 0.0f)
-		{
+	if (isFalling) {
+		if (transform->position.y() < 0.0f) {
 			transform->position += QVector3D(0.0f, (tailleJump / timeFalling) * deltaTime, 0.0f);
-		}
-		else
-		{
+		} else {
 			transform->position.setY(0.0f);
 			isJumping = false;
 			player->isJumping = false;
@@ -359,15 +360,11 @@ void SceneGraph::jump(Transform *transform, TimeStep deltaTime) {
 			player->hasJumped = false;
 		}
 	}
-
 }
 
-/**
- *
- * @param z
- */
-void SceneGraph::makeAnObstacle(float z) { //c'est pas une vrai fonction c'est pour faire des copier coller
- // Il faut aussi ajouter Entity* obstacleX dans le hpp
+//c'est pas une vrai fonction c'est pour faire des copier coller
+void SceneGraph::makeAnObstacle(float z) {
+    // Il faut aussi ajouter Entity* obstacleX dans le hpp
 	Transform* obstacle4Transform = new Transform(QQuaternion(), QVector3D(obstacle4X, -1, obstacle4Z), 2);
 	obstacle4 = new Light("obstacle4", obstacle4Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
 	Mesh* obstacle4Mesh = new Mesh(GL_TRIANGLE_STRIP);

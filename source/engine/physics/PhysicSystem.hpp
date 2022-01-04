@@ -4,7 +4,7 @@
 
 #ifndef TEMPLERUN_PHYSICSYSTEM_HPP
 #define TEMPLERUN_PHYSICSYSTEM_HPP
-#include "collider.hpp"
+#include "source/engine/components/physics/collider.hpp"
 #include "../TimeStep.hpp"
 #include "source/engine/rendering/entity.hpp"
 #include "source/game/Player.hpp"

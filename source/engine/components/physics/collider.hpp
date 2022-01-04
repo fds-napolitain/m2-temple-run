@@ -2,13 +2,14 @@
 #define COLLIDER_H
 
 #include <QVector3D>
-#include "ReferenceCounter.hpp"
-#include "intersectdata.hpp"
+#include "source/engine/physics/ReferenceCounter.hpp"
+#include "source/engine/physics/intersectdata.hpp"
 #include "source/engine/transform.hpp"
-#include "../rendering/component.hpp"
+#include "source/engine/rendering/component.hpp"
 
 
 class Collider : public ReferenceCounter, public Component {
+
 public:
     enum
     {
@@ -33,6 +34,7 @@ public:
 
 private:
     int m_type;
+
 };
 
 #endif // COLLIDER_H

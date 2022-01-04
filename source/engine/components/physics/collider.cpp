@@ -1,6 +1,6 @@
 #include "collider.hpp"
-#include "BoundingSphere.hpp"
-#include "aabb.hpp"
+#include "source/engine/components/physics/collider/BoundingSphere.hpp"
+#include "source/engine/components/physics/collider/aabb.hpp"
 #include <iostream>
 
 Collider::Collider(int type) :

@@ -2,9 +2,9 @@
 #define AABB_H
 
 #include <QVector3D>
-#include "intersectdata.hpp"
+#include "source/engine/physics/intersectdata.hpp"
 #include "algorithm"
-#include "collider.hpp"
+#include "source/engine/components/physics/collider.hpp"
 
 #include "source/engine/transform.hpp"
 

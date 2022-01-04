@@ -1,22 +1,31 @@
 #include "scene.hpp"
 #include "Light.hpp"
 
+/**
+ * Constructeur (par défaut)
+ */
 Scene::Scene() {
 
 }
 
+/**
+ * Destructeur
+ */
 Scene::~Scene() {
 	delete m_physics;
 }
 
+/**
+ * Dessine le graphe de scene
+ * @param gEngine
+ * @param shaderProgram
+ * @param lightProgram
+ */
 void Scene::draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, QOpenGLShaderProgram& lightProgram) {
     for (auto entity : m_drawnEntities) {
-
         Light* lightEntity = dynamic_cast<Light*>(entity);
-        if(lightEntity != nullptr)
-        {
-            for(auto& component : entity->getComponents())
-            {
+        if (lightEntity != nullptr) {
+            for(auto& component : entity->getComponents()) {
                 Mesh* mesh = dynamic_cast<Mesh*>(component);
                 if(mesh != nullptr){
                     lightProgram.bind();
@@ -29,12 +38,8 @@ void Scene::draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, Q
                     shaderProgram.setUniformValue("light_position", lightEntity->getTransform()->getWorldTranslate());
                 }
             }
-        }
-        else
-        {
-            for(auto& component : entity->getComponents())
-            {
-
+        } else {
+            for (auto& component : entity->getComponents()) {
                 Mesh* mesh = dynamic_cast<Mesh*>(component);
                 if(mesh != nullptr){
                     shaderProgram.bind();
@@ -44,8 +49,5 @@ void Scene::draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, Q
                 }
             }
         }
-
-
-
 	}
 }

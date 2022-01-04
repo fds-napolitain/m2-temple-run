@@ -6,20 +6,14 @@
 
 
 
-void PhysicSystem::update(TimeStep delta, const std::vector<Entity*>& entities, Player* player)
-{
-    for(auto entity : entities)
-    {
-        for(auto component : entity->getComponents())
-        {
+void PhysicSystem::update(TimeStep delta, const std::vector<Entity*>& entities, Player* player) {
+    for (auto entity : entities) {
+        for (auto component : entity->getComponents()) {
             Collider* collider = dynamic_cast<Collider*>(component);
-
-            if(collider != nullptr){
+            if (collider != nullptr){
                 collider->transformCollider(*entity->getTransform());
                 IntersectData isIntersectingPlayer = player->collider->intersect(*collider);
-
-
-                if(isIntersectingPlayer.isIntersect()){
+                if (isIntersectingPlayer.isIntersect()) {
                     entity->getTransform()->position.setX(15.0f); //? un truc marche pas.
                     std::cout << " je collide ! " << isIntersectingPlayer.getDirection().x() << " " << isIntersectingPlayer.getDirection().y() << " " << isIntersectingPlayer.getDirection().z() << " " << " \n";
                 }

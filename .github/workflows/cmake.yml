@@ -38,3 +38,17 @@ jobs:
       # Execute tests defined by the CMake configuration.  
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest -C ${{env.BUILD_TYPE}}
+      
+    - name: Install Doxygen
+      run: sudo apt-get install doxygen -y
+      shell: bash
+
+    - name: Generate Doxygen Documentation
+      run: doxygen
+      shell: bash
+      
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@4.1.7
+      with:
+        branch: gh-pages
+        folder: Doxygen/html

@@ -160,7 +160,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a2f0c18a3a50ce676ffa14dc055d25cdb"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_vertex_data.html">VertexData</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mesh.html#a2f0c18a3a50ce676ffa14dc055d25cdb">vertextoArray</a> (<a class="el" href="struct_vertex_data.html">VertexData</a> *arr, std::vector&lt; <a class="el" href="struct_vertex_data.html">VertexData</a> &gt; &amp;vertex)</td></tr>
 <tr class="separator:a2f0c18a3a50ce676ffa14dc055d25cdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="class_mesh.html">Mesh</a> d'une entité (composant). On peut associer une texture à ce mesh. </p>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="afc0605a1b3d8c38c8739134c9ac337f2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afc0605a1b3d8c38c8739134c9ac337f2">&#9670;&nbsp;</a></span>anonymous enum</h2>
 
@@ -223,6 +225,13 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Initialise un mesh à partir d'une primitive et d'une couleur </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">primitive</td><td></td></tr>
+    <tr><td class="paramname">color</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -248,6 +257,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Destructeur </p>
 
 </div>
 </div>
@@ -296,6 +306,15 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Initialise un mesh à partir d'un chemin, d'un format, d'une primitive et d'une couleur. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td></td></tr>
+    <tr><td class="paramname">format</td><td></td></tr>
+    <tr><td class="paramname">primitive</td><td></td></tr>
+    <tr><td class="paramname">color</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -342,6 +361,16 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Initialise un mesh à partir d'un chemin, d'un chemin vers une texture, d'un format, d'une primitive et d'une couleur. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td></td></tr>
+    <tr><td class="paramname">texturePath</td><td></td></tr>
+    <tr><td class="paramname">format</td><td></td></tr>
+    <tr><td class="paramname">primitive</td><td></td></tr>
+    <tr><td class="paramname">color</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -361,6 +390,12 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Calcule les normales </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stripe</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -395,6 +430,14 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Dessine un mesh (ses vertex) </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gEngine</td><td></td></tr>
+    <tr><td class="paramname">shaderProgram</td><td></td></tr>
+    <tr><td class="paramname">format</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -531,6 +574,14 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Convertit un vector d'indices en un tableau d'indices </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arr</td><td>Tableau d'indices (retour) </td></tr>
+    <tr><td class="paramname">indices</td><td>Vector d'indices (entrée) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>arr </dd></dl>
 
 </div>
 </div>
@@ -548,6 +599,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Initialise un mesh cube. </p>
 <p>[1]</p>
 
 </div>
@@ -589,6 +641,15 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Initialise un mesh plan à partir d'une taille et d'un nombre de triangle </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nH</td><td></td></tr>
+    <tr><td class="paramname">nW</td><td></td></tr>
+    <tr><td class="paramname">boardSizeX</td><td></td></tr>
+    <tr><td class="paramname">boardSizeY</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -617,6 +678,13 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Charge un mesh à partir d'un chemin et d'un format. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>string (voir models.qrc) </td></tr>
+    <tr><td class="paramname">format</td><td>entier (voir énumérations dans <a class="el" href="_basic_i_o_8hpp.html">BasicIO.hpp</a>) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -657,6 +725,15 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Charge une texture à partir d'un chemin vers une texture et des filtres </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">texturePath</td><td></td></tr>
+    <tr><td class="paramname">minFilter</td><td></td></tr>
+    <tr><td class="paramname">maxFilter</td><td></td></tr>
+    <tr><td class="paramname">warp</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -719,6 +796,14 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Convertit un vector de vertex en un tableau de vertex </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arr</td><td>tableau de vertex </td></tr>
+    <tr><td class="paramname">vertex</td><td>vector de vertex </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>

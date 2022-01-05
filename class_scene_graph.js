@@ -6,7 +6,7 @@ var class_scene_graph =
     [ "getRoot", "class_scene_graph.html#a6bad7ed0790085b6d6a9fc88f1b167a9", null ],
     [ "jump", "class_scene_graph.html#aa74412faba34c53569ecd5ecbe9a2e6f", null ],
     [ "makeAnObstacle", "class_scene_graph.html#a9db7467248c98b9669f3d9919b3a8f20", null ],
-    [ "MakeARing", "class_scene_graph.html#a4e4921381838f09ff63562e14cbde955", null ],
+    [ "makeARing", "class_scene_graph.html#a57e2071f687d2fcaa5c8b3ae4cc3d641", null ],
     [ "mouvement", "class_scene_graph.html#a925e3f72837561679c0972418fd0c739", null ],
     [ "scrolling", "class_scene_graph.html#a7ad4b891bdf749b13c7f31fccb1617c8", null ],
     [ "update", "class_scene_graph.html#a7a222ddcf4d75c48f1f1d11dc84c569c", null ],

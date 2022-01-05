@@ -9,7 +9,7 @@ var searchData=
   ['mainwidget_2ecpp_116',['mainwidget.cpp',['../mainwidget_8cpp.html',1,'']]],
   ['mainwidget_2ehpp_117',['mainwidget.hpp',['../mainwidget_8hpp.html',1,'']]],
   ['makeanobstacle_118',['makeAnObstacle',['../class_scene_graph.html#a9db7467248c98b9669f3d9919b3a8f20',1,'SceneGraph']]],
-  ['makearing_119',['MakeARing',['../class_scene_graph.html#a4e4921381838f09ff63562e14cbde955',1,'SceneGraph']]],
+  ['makearing_119',['makeARing',['../class_scene_graph.html#a57e2071f687d2fcaa5c8b3ae4cc3d641',1,'SceneGraph']]],
   ['mass_120',['mass',['../class_collider.html#a70cd27a04029759f53d78a7b24ebb0d4',1,'Collider']]],
   ['matrix_121',['matrix',['../class_transform.html#a809d8cac915f959bce871bbd2b6cb276',1,'Transform']]],
   ['max_122',['max',['../namespaceoffio.html#a97c9787f5dfab8c59faf59bf699713f1',1,'offio']]],

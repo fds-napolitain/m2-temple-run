@@ -1,13 +1,33 @@
 #include "mesh.hpp"
 
+/**
+ * Initialise un mesh à partir d'une primitive et d'une couleur
+ * @param primitive
+ * @param color
+ */
 Mesh::Mesh(int primitive, QVector3D color) : m_primitive(primitive), m_color(color) {
 }
 
+/**
+ * Initialise un mesh à partir d'un chemin, d'un format, d'une primitive et d'une couleur.
+ * @param path
+ * @param format
+ * @param primitive
+ * @param color
+ */
 Mesh::Mesh(const std::string& path, int format, int primitive, QVector3D color) : m_primitive(primitive), m_color(color)
 {
     this->loadMesh(path, format);
 }
 
+/**
+ * Initialise un mesh à partir d'un chemin, d'un chemin vers une texture, d'un format, d'une primitive et d'une couleur.
+ * @param path
+ * @param texturePath
+ * @param format
+ * @param primitive
+ * @param color
+ */
 Mesh::Mesh(const std::string &path, const QString &texturePath, int format, int primitive, QVector3D color) :
     m_primitive(primitive),
     m_color(color)
@@ -16,11 +36,19 @@ Mesh::Mesh(const std::string &path, const QString &texturePath, int format, int 
 	loadTexture(texturePath);
 }
 
+/**
+ * Destructeur
+ */
 Mesh::~Mesh() {
 	delete m_vertexArr;
 	delete m_indicesArr;
 }
 
+/**
+ * Charge un mesh à partir d'un chemin et d'un format.
+ * @param path string (voir models.qrc)
+ * @param format entier (voir énumérations dans BasicIO.hpp)
+ */
 void Mesh::loadMesh(const std::string &path, int format){
     std::vector<QVector3D> vertices;
     std::vector<std::vector<unsigned int>> indices;
@@ -66,6 +94,13 @@ void Mesh::loadMesh(const std::string &path, int format){
     std::cout << "succesfully loaded models" << std::endl;
 }
 
+/**
+ * Initialise un mesh plan à partir d'une taille et d'un nombre de triangle
+ * @param nH
+ * @param nW
+ * @param boardSizeX
+ * @param boardSizeY
+ */
 void Mesh::initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY){
     float plan_xmax = boardSizeX;
     float plan_xmin = -boardSizeX;
@@ -120,7 +155,9 @@ void Mesh::initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY){
     computeNormals(true);
 }
 
-
+/**
+ * Initialise un mesh cube.
+ */
 void Mesh::initCubeGeometry() {
 	// For cube we would need only 8 vertices but we have to
 	// duplicate vertex for each face because texture coordinate
@@ -188,8 +225,13 @@ computeNormals(true);
 //! [1]
 }
 
+/**
+ * Convertit un vector de vertex en un tableau de vertex
+ * @param arr tableau de vertex
+ * @param vertex vector de vertex
+ * @return
+ */
 VertexData* Mesh::vertextoArray(VertexData* arr, std::vector<VertexData> &vertex){
-
     for(unsigned int i  =0; i< vertex.size(); i++){
         arr[i].position = vertex[i].position;
         arr[i].texture = vertex[i].texture;
@@ -197,15 +239,25 @@ VertexData* Mesh::vertextoArray(VertexData* arr, std::vector<VertexData> &vertex
     return arr;
 }
 
+/**
+ * Convertit un vector d'indices en un tableau d'indices
+ * @param arr Tableau d'indices (retour)
+ * @param indices Vector d'indices (entrée)
+ * @return arr
+ */
 unsigned short* Mesh::indextoArray(unsigned short* arr, std::vector<unsigned short>& indices){
-
     for(unsigned int i =0; i< indices.size(); i++){
         arr[i] = indices[i];
     }
     return arr;
 }
 
-
+/**
+ * Dessine un mesh (ses vertex)
+ * @param gEngine
+ * @param shaderProgram
+ * @param format
+ */
 void Mesh::draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, int format) {
 	if (m_texture != nullptr) {
 		m_texture->bind(3);
@@ -214,7 +266,14 @@ void Mesh::draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, in
 }
 
 
-void Mesh::loadTexture(const QString& texturePath, QOpenGLTexture::Filter minFilter, QOpenGLTexture::Filter maxFilter, QOpenGLTexture::WrapMode warp ) {
+/**
+ * Charge une texture à partir d'un chemin vers une texture et des filtres
+ * @param texturePath
+ * @param minFilter
+ * @param maxFilter
+ * @param warp
+ */
+void Mesh::loadTexture(const QString& texturePath, QOpenGLTexture::Filter minFilter, QOpenGLTexture::Filter maxFilter, QOpenGLTexture::WrapMode warp) {
 	m_texture = new QOpenGLTexture(QImage(texturePath).mirrored());
 //    m_texture->generateMipMaps();
 	m_texture->setMinificationFilter(minFilter);
@@ -222,11 +281,13 @@ void Mesh::loadTexture(const QString& texturePath, QOpenGLTexture::Filter minFil
 	m_texture->setWrapMode(warp);
 }
 
+/**
+ * Calcule les normales
+ * @param stripe
+ */
 void Mesh::computeNormals(bool stripe) {
-    if(stripe){
-
+    if (stripe) {
         for(unsigned int i = 0; i < m_indices.size(); i+=6){
-
             QVector3D n0 = QVector3D::crossProduct(m_vertexArr[m_indices[i+1]].position - m_vertexArr[m_indices[i]].position, m_vertexArr[m_indices[i+2]].position - m_vertexArr[m_indices[i]].position );
             QVector3D n1 = QVector3D::crossProduct(m_vertexArr[m_indices[i]].position - m_vertexArr[m_indices[i+1]].position, m_vertexArr[m_indices[i+2]].position - m_vertexArr[m_indices[i+1]].position );
             QVector3D n2 = QVector3D::crossProduct(m_vertexArr[m_indices[i]].position - m_vertexArr[m_indices[i+2]].position, m_vertexArr[m_indices[i+1]].position - m_vertexArr[m_indices[i+2]].position );
@@ -237,7 +298,6 @@ void Mesh::computeNormals(bool stripe) {
             m_vertexArr[m_indices[i+3]].normal = n3;
         }
     }
-
 }
 
 

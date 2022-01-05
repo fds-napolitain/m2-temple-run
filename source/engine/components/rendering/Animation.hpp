@@ -9,6 +9,9 @@
 #include "source/engine/components/component.hpp"
 #include "source/engine/transform.hpp"
 
+/**
+ * Animation, potentiellement utilisé dans une boucle update (composant).
+ */
 class Animation : public Component {
 
 private:

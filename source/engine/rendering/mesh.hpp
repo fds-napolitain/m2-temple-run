@@ -11,9 +11,11 @@
 #include "../transform.hpp"
 
 
+/**
+ * Mesh d'une entité (composant). On peut associer une texture à ce mesh.
+ */
+class Mesh : public Component {
 
-class Mesh : public Component
-{
 public:
 	enum {
 		OFFIO,

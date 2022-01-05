@@ -378,7 +378,7 @@ void SceneGraph::makeAnObstacle(float z) {
 	addEntity(mainDecor, obstacle4);
 }
 
-/*void SceneGraph::MakeARing(float z) // pas une vraie fonction non plus
+/*void SceneGraph::makeARing(float z) // pas une vraie fonction non plus
 {
 	Transform* ring5Transform = new Transform(QQuaternion(), QVector3D(0.0f,ringAboveObstacle*2*tailleJump/timeJumping, initRingPos), 0.5f);
 	ring5 = new Light("obstacle1", ring5Transform, QVector4D(1.0, 1.0, 1.0, 1.0));

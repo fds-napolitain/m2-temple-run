@@ -3,11 +3,12 @@
 
 #include "entity.hpp"
 
-class Camera : public Entity
-{
+class Camera : public Entity {
+
 public:
     explicit Camera(const std::string& name) : Entity(name)
     {}
+
 };
 
 #endif // CAMERA_H

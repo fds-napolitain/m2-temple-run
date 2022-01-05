@@ -3,11 +3,20 @@
 #include "source/engine/components/physics/collider/aabb.hpp"
 #include <iostream>
 
+/**
+ *
+ * @param type
+ */
 Collider::Collider(int type) :
 		ReferenceCounter(),
 		m_type(type)
 {}
 
+/**
+ *
+ * @param other
+ * @return
+ */
 IntersectData Collider::intersect(const Collider& other) const
 {
     if(this->getType() == TYPE_SPHERE && other.getType() == TYPE_SPHERE )
@@ -33,18 +42,34 @@ IntersectData Collider::intersect(const Collider& other) const
     return IntersectData(false, QVector3D());
 }
 
+/**
+ *
+ * @return
+ */
 int Collider::getType() const {
 	return m_type;
 }
 
+/**
+ *
+ * @param transform
+ */
 void Collider::transformCollider(const Transform &transform)
 {
 }
 
+/**
+ *
+ * @return
+ */
 QVector3D Collider::getCenter() const {
 	return QVector3D();
 }
 
+/**
+ *
+ * @return
+ */
 int Collider::getCType() {
 	return COLLIDER;
 }

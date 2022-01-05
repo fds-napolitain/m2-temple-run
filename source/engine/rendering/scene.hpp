@@ -8,8 +8,11 @@
 
 #include "source/engine/physics/PhysicSystem.hpp"
 
-class Scene
-{
+/**
+ * Classe scène, qui permet de dessiner les objets. La méthode update est virtuel : elle est implémentée différemment selon le type de scène (graphe de scene ou autre).
+ */
+class Scene {
+
 public:
     Scene();
     virtual ~Scene();

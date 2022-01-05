@@ -27,7 +27,7 @@ public:
     float distMoved = 0.0f;
 
 
-    //variables sur le déplacement
+    //variables sur le dï¿½placement
     float distanceWhenMoving = 5.0f;
     float timeWhenMoving = 0.5f;
     float initScrollingSpeed = 14.0f;
@@ -66,7 +66,7 @@ public:
     void mouvement(Transform* transform, TimeStep deltaTime);
     void jump(Transform* transform, TimeStep deltaTime);
     void makeAnObstacle(float z);
-    void MakeARing(float z);
+    void makeARing(float z);
     void addEntity(Entity* parent, Entity* entity);
     void updateTransforms(Entity* root_node, TimeStep deltaTime);
 	Entity *mainDecor;

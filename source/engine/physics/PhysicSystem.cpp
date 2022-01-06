@@ -18,7 +18,10 @@ void PhysicSystem::update(TimeStep delta, const std::vector<Entity*>& entities, 
                     transformAfterCollision->position.setX(15.0);
                     entity->setTransform(transformAfterCollision);
                     if(player->lifes > 0){
-                        player->entities[3-player->lifes]->setTransform(transformAfterCollision);
+                        int index = 3-player->lifes;
+                        Transform* test = player->entities[index]->getTransform();
+                        test->position.setX(-15.0);
+                        player->entities[index]->setTransform(test);
                         player->lifes--;
                     }
                     std::cout << " je collide ! " << isIntersectingPlayer.getDirection().x() << " " << isIntersectingPlayer.getDirection().y() << " " << isIntersectingPlayer.getDirection().z() << " " << " \n";

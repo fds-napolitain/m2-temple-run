@@ -7,6 +7,9 @@
 #include "source/engine/transform.hpp"
 #include "source/engine/components/component.hpp"
 #include "../TimeStep.hpp"
+#include <iostream>
+#include "source/engine/components/physics/collider.hpp"
+#include "source/engine/components/rendering/Animation.hpp"
 
 class Entity {
 

@@ -1,6 +1,4 @@
-#include <iostream>
 #include "entity.hpp"
-#include "source/engine/components/physics/collider.hpp"
 
 /**
  * Constructeur par nom
@@ -125,7 +123,10 @@ void Entity::updateTransforms(TimeStep deltaTime) {
 			auto collider = dynamic_cast<Collider*>(component);
 			collider->transformCollider(*m_transform);
 		} else if (ctype == ANIMATION) {
-
+			auto animation = dynamic_cast<Animation*>(component);
+			m_transform->position += animation->transform.position * deltaTime;
+			m_transform->rotate *= animation->transform.rotate * deltaTime;
+			m_transform->scale = animation->transform.scale;
 		} else {
 			//std::cout << "Component not recognized.\n";
 		}

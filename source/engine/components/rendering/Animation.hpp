@@ -14,9 +14,8 @@
  */
 class Animation : public Component {
 
-private:
-	Transform transform;
 public:
+	Transform transform;
 	explicit Animation(Transform transform);
 	~Animation() override = default;
 	int getCType() override;

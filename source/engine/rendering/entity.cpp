@@ -127,7 +127,7 @@ void Entity::updateTransforms(TimeStep deltaTime) {
 		} else if (ctype == ANIMATION) {
 
 		} else {
-			std::cout << "Component not recognized.\n";
+			//std::cout << "Component not recognized.\n";
 		}
     }
 }

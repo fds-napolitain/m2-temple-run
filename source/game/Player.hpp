@@ -15,6 +15,7 @@ class Player : public Entity {
 private:
 
 public:
+    int lifes = 3;
 	std::vector<Entity*> entities;
 	Collider *collider;
 	Player(std::string name);

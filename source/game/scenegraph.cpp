@@ -315,7 +315,7 @@ void SceneGraph::mouvement(Transform* transform, TimeStep deltaTime) {
 	float deplacement = (distanceWhenMoving / timeWhenMoving) * deltaTime;
 	if (isMovingLeft && !isMovingRight && !joueur_rl) {
 		distMoved += deplacement;
-		std::cout << "moving left";
+		std::cout << "moving left\n";
 		transform->position += QVector3D(deplacement, 0.0, 0.0);
 
 		player->isMovingLeft = true;
@@ -323,7 +323,7 @@ void SceneGraph::mouvement(Transform* transform, TimeStep deltaTime) {
 	}
 	if (isMovingRight && !isMovingLeft && !joueur_rr) {
 		distMoved += deplacement;
-		std::cout << "moving right";
+		std::cout << "moving right\n";
 		transform->position += QVector3D(-deplacement, 0.0, 0.0);
 
 		player->isMovingLeft = false;

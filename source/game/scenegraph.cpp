@@ -8,35 +8,47 @@ SceneGraph::SceneGraph(Entity *root) :
     player = new Player("player");
 	Transform* solTransform = new Transform(QQuaternion(), QVector3D(0, -4.0, 0), 1);
 	Transform* rightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 1.0, 90), QVector3D(-8, -2.0, 0), 1);
+	Transform* staticRightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 1.0, 90), QVector3D(-8, -2.0, -100), 1);
 	Transform* leftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-30, -2.0, 0), 1);
+	Transform* staticLeftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-30, -2.0, -100), 1);
 	Transform* mainDecorTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 0.0,  0), QVector3D(0, 0.0, -100), 1);
-	Transform* backgroundTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(0, 0.0, -105), 1);
+	Transform* backgroundTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(-30, 0.0, -105), 1);
 
 
 	Entity* sol = new Entity("sol", solTransform);
 	Entity* right = new Entity("right", rightTransform);
+	staticRight = new Entity("staticright", staticRightTransform);
 	Entity* left = new Entity("left", leftTransform);
+	staticLeft = new Entity("staticleft", staticLeftTransform);
 	mainDecor = new Entity("mainDecor", mainDecorTransform);
-	Entity* background = new Entity("fond", backgroundTransform);
+	background = new Entity("fond", backgroundTransform);
 
 	Mesh* solMesh = new Mesh(GL_TRIANGLE_STRIP);
 	solMesh->loadTexture(":/neige.png");
 
 	Mesh* rightMesh = new Mesh(GL_TRIANGLE_STRIP);
 	rightMesh->loadTextureHM(":/Heightmap_Rocky.png",":/grass.png",":/rock.png",":/neige.png");
+	
+	Mesh* staticRightMesh = new Mesh(GL_TRIANGLE_STRIP);
+	staticRightMesh->loadTextureHM(":/Heightmap_Rocky.png",":/neige.png",":/rock.png",":/neige.png");
 
 	Mesh* leftMesh = new Mesh(GL_TRIANGLE_STRIP);
 	leftMesh->loadTextureHM(":/Heightmap_Mountain.png",":/grass.png",":/rock.png",":/neige.png");
+	
+	Mesh* staticLeftMesh = new Mesh(GL_TRIANGLE_STRIP);
+	staticLeftMesh->loadTextureHM(":/Heightmap_Mountain.png",":/rock.png",":/rock.png",":/neige.png");
 
     Mesh* backgroundMesh = new Mesh(GL_TRIANGLE_STRIP);
 
 
 
-	solMesh->initPlaneGeometry(16,16,100,100);
+	solMesh->initPlaneGeometry(16,16,200,200);
 	rightMesh->initPlaneGeometry(16,16,100,100);
+	staticRightMesh->initPlaneGeometry(16,16,100,100);
 	leftMesh->initPlaneGeometry(16,16,100,100);
+	staticLeftMesh->initPlaneGeometry(16,16,100,100);
 	backgroundMesh->initPlaneGeometry(16, 16, 100, 100);
-	backgroundMesh->loadTexture(":/grass.png");
+	backgroundMesh->loadTextureHM(":/ciel.png", ":/ciel.png", ":/ciel.png", ":/ciel.png");
 
 
 
@@ -45,11 +57,15 @@ SceneGraph::SceneGraph(Entity *root) :
 
 	sol->addComponent(solMesh);
 	right->addComponent(rightMesh);
+	staticRight->addComponent(staticRightMesh);
 	left->addComponent(leftMesh);
+	staticLeft->addComponent(staticLeftMesh);
 
 	background->addComponent(backgroundMesh);
 
 	addEntity(m_root, mainDecor);
+	addEntity(mainDecor, staticRight);
+	addEntity(mainDecor, staticLeft);
 	addEntity(mainDecor, sol);
 	addEntity(mainDecor, right);
 	addEntity(mainDecor, left);
@@ -250,14 +266,16 @@ void SceneGraph::update(TimeStep deltaTime)
 
     updateTransforms(m_root, deltaTime);
 	Transform* transform = mainDecor->getTransform();
+	Transform* transformBackGround = background->getTransform();
 	// On fait  ce qui concerne le joueur
 
 	mouvement(transform,deltaTime);
 	Jump(transform, deltaTime);
 	scrolling(transform, deltaTime);
+	scrollingBackGround(transformBackGround, deltaTime);
 	
-
 	mainDecor->setTransform(transform);
+	background->setTransform(transformBackGround);
 
 //   updatePhysics(); <-- fait tout dans le scenegraph
      m_physics->update(deltaTime, m_drawnEntities, player );
@@ -291,13 +309,18 @@ void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime)
 
 	if (transform->position.z() >= 100)
 		{
-		
+		float WallPos = 0.0f;
+		WallPos = rand() % 50;
+
+
 		obstacle1->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
 		obstacle2->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
 		obstacle3->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
 		obstacle4->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
 		obstacle5->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
 
+		staticLeft->getTransform()->position.setZ(-WallPos);
+		staticRight->getTransform()->position.setZ(-WallPos);
 
 
 
@@ -313,6 +336,22 @@ void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime)
 	}
 
 }
+
+
+void SceneGraph::scrollingBackGround(Transform* transform, TimeStep deltaTime)
+{
+	//On fait le scrolling:
+	transform->position += QVector3D(10.5f * deltaTime, 0.0, 0.0f);
+
+	if (transform->position.x() >= 10)
+	{
+
+		transform->position = QVector3D(-30.0f, transform->position.y(), transform->position.z());
+
+	}
+
+}
+
 void SceneGraph::mouvement(Transform* transform, TimeStep deltaTime)
 {
 

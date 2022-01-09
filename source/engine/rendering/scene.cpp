@@ -39,7 +39,7 @@ void Scene::draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, Q
         }
         else // normal
         { 
-            if (entity->getName() == "right" || entity->getName() == "left") // heightmap
+            if (entity->getName() == "right" || entity->getName() == "left" || entity->getName() == "fond" || entity->getName() == "staticleft" || entity->getName() == "staticright"  ) // heightmap
             {
                 
                 for (auto& component : entity->getComponents())

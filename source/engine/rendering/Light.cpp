@@ -12,3 +12,8 @@ Light::Light(std::string name, Transform *transform, QVector4D color) :
 const QVector4D &Light::getColor() const {
     return m_color;
 }
+
+int Light::getEType()
+{
+    return LIGHT;
+}

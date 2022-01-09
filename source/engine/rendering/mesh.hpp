@@ -15,6 +15,8 @@
 class Mesh : public Component
 {
 public:
+
+
 	enum {
 		OFFIO,
 		OBJIO
@@ -37,6 +39,14 @@ public:
                             QOpenGLTexture::WrapMode warp = QOpenGLTexture::Repeat
                     );
 
+    void loadTextureHM(const QString& texturePathTexture,
+                        const QString& texturePathGround,
+                        const QString& texturePathMid,
+                        const QString& texturePathHigh, 
+                        QOpenGLTexture::Filter minFilter = QOpenGLTexture::Linear, 
+                        QOpenGLTexture::Filter maxFilter = QOpenGLTexture::Linear, 
+                        QOpenGLTexture::WrapMode warp = QOpenGLTexture::Repeat);
+
     void initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY);
 	void initCubeGeometry();
 	[[nodiscard]] std::vector<VertexData> getVertices() const {return m_vertex;}
@@ -48,6 +58,10 @@ public:
     static unsigned short* indextoArray(unsigned short* arr, std::vector<unsigned short> &indices);
     static VertexData* vertextoArray(VertexData* arr, std::vector<VertexData> &vertex);
     void computeNormals(bool stripe);
+
+    QOpenGLTexture* m_HMground = nullptr;
+    QOpenGLTexture* m_HMmid = nullptr;
+    QOpenGLTexture* m_HMhigh = nullptr;
 
 
 private:

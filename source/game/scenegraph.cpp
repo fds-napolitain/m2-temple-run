@@ -7,8 +7,8 @@ SceneGraph::SceneGraph(Entity *root) :
 {
     player = new Player("player");
 	Transform* solTransform = new Transform(QQuaternion(), QVector3D(0, -4.0, 0), 1);
-	Transform* rightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 1.0, 90), QVector3D(7, -2.0, 0), 1);
-	Transform* leftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-7, -2.0, 0), 1);
+	Transform* rightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 1.0, 90), QVector3D(14, -2.0, 0), 1);
+	Transform* leftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-28, -2.0, 0), 1);
 	Transform* mainDecorTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 0.0,  0), QVector3D(0, 0.0, -100), 1);
 	Transform* backgroundTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(0, 0.0, -105), 1);
 
@@ -23,9 +23,10 @@ SceneGraph::SceneGraph(Entity *root) :
 	solMesh->loadTexture(":/neige.png");
 
 	Mesh* rightMesh = new Mesh(GL_TRIANGLE_STRIP);
-	rightMesh->loadTexture(":/rock.png", QOpenGLTexture::LinearMipMapLinear);
+	rightMesh->loadTextureHM(":/Heightmap_Rocky.png",":/grass.png",":/rock.png",":/neige.png");
 
-	Mesh* leftMesh = new Mesh(GL_TRIANGLE_STRIP, QVector3D(1.0,0,0));
+	Mesh* leftMesh = new Mesh(GL_TRIANGLE_STRIP);
+	leftMesh->loadTextureHM(":/Heightmap_Mountain.png",":/grass.png",":/rock.png",":/neige.png");
 
     Mesh* backgroundMesh = new Mesh(GL_TRIANGLE_STRIP);
 
@@ -130,56 +131,101 @@ SceneGraph::SceneGraph(Entity *root) :
 
 
 	//pièces: pareil faudrait faire un entity un jour.
-	//1:
+	//1: // les pièces sont l'une après l'autre dans le graphe de scène en partant de la dernière (ring1), lorsque l'on collide une pièce on la sort de l'écran, lorsque la dernière pièce passe en -? on fait réaparaitre toute les pièces.
 
 	Mesh* ringMesh = new Mesh(":/sphere.off", Mesh::OFFIO, GL_TRIANGLES);
 	ringMesh->loadTexture(":/neige.png");
 	
-	Transform* ring1Transform = new Transform(QQuaternion(), QVector3D(0.0f, 1.0f, initRingPos), 0.5f);
-	ring1 = new Light("ring1", ring1Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
+	Transform* ring1Transform = new Transform(QQuaternion(), QVector3D(ringXPos, ringYPos, ringZPos), 0.5f);
+	ring1 = new Entity("ring1", ring1Transform);
 	BoundingSphere* ring1BS = new BoundingSphere(QVector3D(0.0f, 0.0f, 0.0f), 0.5f);
 	m_physics->addCollider(ring1BS);
 	ring1->addComponent(ring1BS);
 	ring1->addComponent(ringMesh);
-	addEntity(sol, ring1);
+	addEntity(mainDecor, ring1);
 
 
 	//2
-	Transform* ring2Transform = new Transform(QQuaternion(), QVector3D(0.0f, 1.0f+ringAboveObstacle * 2 * (tailleJump / timeJumping) / 60,initRingPos-2*initScrollingSpeed/60), 0.5f);
-	ring2 = new Light("ring2", ring2Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
+	Transform* ring2Transform = new Transform(QQuaternion(), QVector3D(0.0f, decalageRingPosY, decalageRingPosZ), 1.0f);
+	ring2 = new Entity("ring2", ring2Transform);
 	BoundingSphere* ring2BS = new BoundingSphere(QVector3D(0.0f, 0.0f, 0.0f), 0.5f);
 	m_physics->addCollider(ring2BS);
 	ring2->addComponent(ring2BS);
 	ring2->addComponent(ringMesh);
-	addEntity(sol, ring2);
+	addEntity(ring1, ring2);
 
 
 	//3
-	Transform* ring3Transform = new Transform(QQuaternion(), QVector3D(0.0f, 1.0f+ringAboveObstacle * 4 * (tailleJump / timeJumping) / 60, initRingPos - 4*initScrollingSpeed / 60), 0.5f);
-	ring3 = new Light("ring3", ring3Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
+	Transform* ring3Transform = new Transform(QQuaternion(), QVector3D(0.0f, decalageRingPosY * ringAboveObstacle, decalageRingPosZ), 1.0f);
+	ring3 = new Entity("ring3", ring3Transform);
 	BoundingSphere* ring3BS = new BoundingSphere(QVector3D(0.0f, 0.0f, 0.0f), 0.5f);
 	m_physics->addCollider(ring3BS);
 	ring3->addComponent(ring3BS);
 	ring3->addComponent(ringMesh);
-	addEntity(sol, ring3);
+	addEntity(ring2, ring3);
 	
 	//4
-	Transform* ring4Transform = new Transform(QQuaternion(), QVector3D(0.0f, 1.0f+ ringAboveObstacle * 6 * (tailleJump / timeJumping) / 60, initRingPos - 6 * initScrollingSpeed / 60), 0.5f);
-	ring4 = new Light("ring4", ring4Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
+	Transform* ring4Transform = new Transform(QQuaternion(), QVector3D(0.0f, decalageRingPosY * ringAboveObstacle, decalageRingPosZ), 1.0f);
+	ring4 = new Entity("ring4", ring4Transform);
 	BoundingSphere* ring4BS = new BoundingSphere(QVector3D(0.0f, 0.0f, 0.0f), 0.5f);
 	m_physics->addCollider(ring4BS);
 	ring4->addComponent(ring4BS);
 	ring4->addComponent(ringMesh);
-	addEntity(sol, ring4);
+	addEntity(ring3, ring4);
 	
 	//5
-	Transform* ring5Transform = new Transform(QQuaternion(), QVector3D(0.0f, 1.0f + ringAboveObstacle * 8 * (tailleJump / timeJumping) / 60, initRingPos - 8 * initScrollingSpeed / 60),0.5f);
-	ring5 = new Light("ring5", ring5Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
+	Transform* ring5Transform = new Transform(QQuaternion(), QVector3D(0.0f, -1*decalageRingPosY * ringAboveObstacle, decalageRingPosZ), 1.0f);
+	ring5 = new Entity("ring5", ring5Transform);
 	BoundingSphere* ring5BS = new BoundingSphere(QVector3D(0.0f, 0.0f, 0.0f), 0.5f);
 	m_physics->addCollider(ring5BS);
 	ring5->addComponent(ring5BS);
 	ring5->addComponent(ringMesh);
-	addEntity(sol, ring5);
+	addEntity(ring4, ring5);
+
+	//6
+	Transform* ring6Transform = new Transform(QQuaternion(), QVector3D(0.0f, -1 * decalageRingPosY * ringAboveObstacle, decalageRingPosZ), 1.0f);
+	ring6 = new Entity("ring6", ring6Transform);
+	BoundingSphere* ring6BS = new BoundingSphere(QVector3D(0.0f, 0.0f, 0.0f), 0.5f);
+	m_physics->addCollider(ring6BS);
+	ring6->addComponent(ring6BS);
+	ring6->addComponent(ringMesh);
+	addEntity(ring5, ring6);
+
+	//7
+	Transform* ring7Transform = new Transform(QQuaternion(), QVector3D(0.0f, -1 * decalageRingPosY * ringAboveObstacle, decalageRingPosZ), 1.0f);
+	ring7 = new Entity("ring7", ring7Transform);
+	BoundingSphere* ring7BS = new BoundingSphere(QVector3D(0.0f, 0.0f, 0.0f), 0.5f);
+	m_physics->addCollider(ring7BS);
+	ring7->addComponent(ring7BS);
+	ring7->addComponent(ringMesh);
+	addEntity(ring6, ring7);
+
+	//8
+	Transform* ring8Transform = new Transform(QQuaternion(), QVector3D(0.0f, -1 * decalageRingPosY * ringAboveObstacle, decalageRingPosZ), 1.0f);
+	ring8 = new Entity("ring8", ring8Transform);
+	BoundingSphere* ring8BS = new BoundingSphere(QVector3D(0.0f, 0.0f, 0.0f), 0.5f);
+	m_physics->addCollider(ring8BS);
+	ring8->addComponent(ring8BS);
+	ring8->addComponent(ringMesh);
+	addEntity(ring7, ring8);
+
+
+	//9
+	Transform* ring9Transform = new Transform(QQuaternion(), QVector3D(0.0f, -1 * decalageRingPosY * ringAboveObstacle, decalageRingPosZ), 1.0f);
+	ring9 = new Entity("ring9", ring9Transform);
+	BoundingSphere* ring9BS = new BoundingSphere(QVector3D(0.0f, 0.0f, 0.0f), 0.5f);
+	m_physics->addCollider(ring9BS);
+	ring9->addComponent(ring9BS);
+	ring9->addComponent(ringMesh);
+	addEntity(ring8, ring9);
+
+	Transform* ring10Transform = new Transform(QQuaternion(), QVector3D(0.0f, -1 * decalageRingPosY * ringAboveObstacle, decalageRingPosZ), 1.0f);
+	ring10 = new Entity("ring10", ring10Transform);
+	BoundingSphere* ring10BS = new BoundingSphere(QVector3D(0.0f, 0.0f, 0.0f), 0.5f);
+	m_physics->addCollider(ring10BS);
+	ring10->addComponent(ring10BS);
+	ring10->addComponent(ringMesh);
+	addEntity(ring9, ring10);
 }
 
 
@@ -260,6 +306,10 @@ void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime)
 		{
 			scrollingSpeed += acceleration;
 		}
+	}
+	if (ring1->getTransform()->position.z() > 0.0f)
+	{
+		ring1->getTransform()->position.setZ(ringZPos);
 	}
 
 }
@@ -393,11 +443,11 @@ void SceneGraph::MakeAnObstacle(float z) //c'est pas une vrai fonction c'est pou
 
 /*void SceneGraph::MakeARing(float z) // pas une vraie fonction non plus
 {
-	Transform* ring5Transform = new Transform(QQuaternion(), QVector3D(0.0f,ringAboveObstacle*2*tailleJump/timeJumping, initRingPos), 0.5f);
-	ring5 = new Light("obstacle1", ring5Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
-	BoundingSphere* ring5BS = new BoundingSphere(QVector3D(0.0f, 0.0f, 0.0f), 0.5f);
-	m_physics->addCollider(ring5BS);
-	ring5->addComponent(ring5BS);
-	ring5->addComponent(ringMesh);
-	addEntity(sol, ring5);
+	Transform* ring10Transform = new Transform(QQuaternion(), QVector3D(0.0f, 1.0f + ringAboveObstacle * 8 * (tailleJump / timeJumping) / 60, initRingPos - 8 * initScrollingSpeed / 60),0.5f);
+	ring10 = new Light("ring10", ring10Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
+	BoundingSphere* ring10BS = new BoundingSphere(QVector3D(0.0f, 0.0f, 0.0f), 0.5f);
+	m_physics->addCollider(ring10BS);
+	ring10->addComponent(ring10BS);
+	ring10->addComponent(ringMesh);
+	addEntity(sol, ring10);
 }*/

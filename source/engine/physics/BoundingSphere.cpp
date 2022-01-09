@@ -21,7 +21,8 @@ IntersectData BoundingSphere::intersectBoundingSphere(const BoundingSphere& othe
 
 void BoundingSphere::transformCollider(const Transform& transform){
     // peut etre faire plus générale avec transform.applyToPoint(m_center) et m_radius = transform.scale ;
-    m_center = transform.position; //m
+    Transform t = transform;
+    m_center = t.getWorldTranslate(); //m
 }
 
 QVector3D BoundingSphere::getCenter() const {

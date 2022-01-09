@@ -20,7 +20,7 @@ void PhysicSystem::update(TimeStep delta, std::vector<Entity*> entities, Player*
 
 
                 if(isIntersectingPlayer.isIntersect()){
-                    entity->getTransform()->position.setX(15.0f); //? un truc marche pas.
+                    entity->getTransform()->position.setX(15.0f); 
                     std::cout << " je collide ! " << isIntersectingPlayer.getDirection().x() << " " << isIntersectingPlayer.getDirection().y() << " " << isIntersectingPlayer.getDirection().z() << " " << " \n";
                 }
             }

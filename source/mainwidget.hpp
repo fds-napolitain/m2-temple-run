@@ -98,6 +98,8 @@ protected:
     void initScene();
     std::vector<VertexData> sphere;
 
+    
+
 private:
 	TargetFPS fps;
     QElapsedTimer currentTime;
@@ -105,8 +107,11 @@ private:
     TimeStep timeStep;
 	QOpenGLShaderProgram program;
 	QOpenGLShaderProgram lightProgram;
+	QOpenGLShaderProgram HMProgram;
     GeometryEngine *geometries;
     Scene* scene;
+
+    
 
     QMatrix4x4 projection;
 

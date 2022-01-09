@@ -140,22 +140,22 @@ void MainWidget::keyPressEvent(QKeyEvent *event)
     {
         switch (event->key()) {
                 case Qt::Key_Z: /* haut */
-                    projection.translate(QVector3D(0.0, -1.0, 0.0) * timeStep);
+                    projection.translate(QVector3D(0.0, 0.0, 10.0) * timeStep);
                     break;
                 case Qt::Key_Q: /* gauche */;
-                    projection.translate(QVector3D(-1.0, 0.0, 0.0) * timeStep);
+                    projection.translate(QVector3D(10.0, 0.0, 0.0) * timeStep);
                     break;
                 case Qt::Key_D: /*droite */
-                    projection.translate(QVector3D(1.0, 0.0, 0.0) * timeStep);
+                    projection.translate(QVector3D(-10.0, 0.0, 0.0) * timeStep);
                   break;
                 case Qt::Key_S: /* bas */
-                    projection.translate(QVector3D(0.0, 1.0, 0.0) * timeStep);
+                    projection.translate(QVector3D(0.0,0.0, -10.0) * timeStep);
                     break;
                 case Qt::Key_A: /* descendre */
-                    projection.translate(QVector3D(0.0, 0.0, 5.0) * timeStep);;
+                    projection.translate(QVector3D(0.0, 0.0, -50.0) * timeStep);;
                     break;
                 case Qt::Key_E: /* monter */
-                    projection.translate(QVector3D(0.0, 0.0, -5.0) * timeStep);
+                    projection.translate(QVector3D(0.0, 0.0, 50.0) * timeStep);
                     break;
 		        case Qt::Key_Left:
                     if (!sceneGraph->joueur_rl)
@@ -263,6 +263,22 @@ void MainWidget::initShaders()
     if (!lightProgram.link())
         close();
 
+    // Compile vertex shader
+    if (!HMProgram.addShaderFromSourceFile(QOpenGLShader::Vertex, ":/vshaderHM.glsl"))
+        close();
+
+    // Compile fragment shader
+    if (!HMProgram.addShaderFromSourceFile(QOpenGLShader::Fragment, ":/fshaderHM.glsl"))
+        close();
+
+    // Link shader pipeline
+    if (!HMProgram.link())
+        close();
+
+    // Bind shader pipeline for use
+    if (!HMProgram.bind())
+        close();
+
 
 
 
@@ -341,15 +357,21 @@ void MainWidget::paintGL()
   // std::cout << g->getIndices().size() << " "  << g->getVertices().size() << std::endl;
 
    //gScene->update()
+    
 
-
+    
     program.bind();
     program.setUniformValue("texture", 3);
     program.setUniformValue("mvp_matrix", projection * matrix);
+    HMProgram.bind();   
+    HMProgram.setUniformValue("texture", 3);
+    HMProgram.setUniformValue("mvp_matrix", projection * matrix);
+    HMProgram.setUniformValue("groundH", 0);
+    HMProgram.setUniformValue("midH", 1);
+    HMProgram.setUniformValue("topH", 2);
     lightProgram.bind();
     lightProgram.setUniformValue("mvp_matrix", projection * matrix);
-
-    scene->draw(geometries, program, lightProgram);
+    scene->draw(geometries, program, lightProgram,HMProgram);
     scene->update(timeStep);
     // Draw cube geometry
 	timer->start(fps.getTimePerFrame());

@@ -77,8 +77,6 @@ void Mesh::initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY){
     float xStep=(plan_xmax-plan_xmin)/(float)(nW-1);
     float yStep=(plan_ymax-plan_ymin)/(float)(nH-1);
 
-//########################################################### PLANE HEIGHT MAP #######################################""
-
     unsigned int vertexNumber = nH*nW;
     m_vertex.reserve(vertexNumber);
     for(int i=0; i<nH; i++){
@@ -208,8 +206,18 @@ unsigned short* Mesh::indextoArray(unsigned short* arr, std::vector<unsigned sho
 
 void Mesh::draw(GeometryEngine* gEngine, QOpenGLShaderProgram& shaderProgram, int format) {
 	if (m_texture != nullptr) {
+        
 		m_texture->bind(3);
+        
 	}
+    if (m_HMground != nullptr)
+    {   
+        m_texture->bind(3);
+        m_HMground->bind(0);
+        m_HMmid->bind(1); //si m_texture est une HM utilise la texture comme HM et ces trois texture comme fragColor.
+        m_HMhigh->bind(2);
+        
+    }
 	gEngine->drawGeometry(&shaderProgram, m_vertexArr, m_indicesArr, m_vertex.size(), m_indices.size(), format, m_color);
 }
 
@@ -220,6 +228,36 @@ void Mesh::loadTexture(const QString& texturePath, QOpenGLTexture::Filter minFil
 	m_texture->setMinificationFilter(minFilter);
 	m_texture->setMagnificationFilter(maxFilter);
 	m_texture->setWrapMode(warp);
+}
+
+void Mesh::loadTextureHM(const QString& texturePathTexture, const QString& texturePathGround, const QString& texturePathMid, const QString& texturePathHigh, QOpenGLTexture::Filter minFilter, QOpenGLTexture::Filter maxFilter, QOpenGLTexture::WrapMode warp) 
+{
+   
+    m_texture = new QOpenGLTexture(QImage(texturePathTexture).mirrored());
+    //    m_texture->generateMipMaps();
+    m_texture->setMinificationFilter(minFilter);
+    m_texture->setMagnificationFilter(maxFilter);
+    m_texture->setWrapMode(warp);
+
+    m_HMground = new QOpenGLTexture(QImage(texturePathGround).mirrored());
+    //    m_texture->generateMipMaps();
+    m_HMground->setMinificationFilter(minFilter);
+    m_HMground->setMagnificationFilter(maxFilter);
+    m_HMground->setWrapMode(warp);
+
+    m_HMmid = new QOpenGLTexture(QImage(texturePathMid).mirrored());
+    //    m_texture->generateMipMaps();
+    m_HMmid->setMinificationFilter(minFilter);
+    m_HMmid->setMagnificationFilter(maxFilter);
+    m_HMmid->setWrapMode(warp);
+
+    m_HMhigh= new QOpenGLTexture(QImage(texturePathHigh).mirrored());
+    //    m_texture->generateMipMaps();
+    m_HMhigh->setMinificationFilter(minFilter);
+    m_HMhigh->setMagnificationFilter(maxFilter);
+    m_HMhigh->setWrapMode(warp);
+
+
 }
 
 void Mesh::computeNormals(bool stripe) {

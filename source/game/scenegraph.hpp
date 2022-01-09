@@ -78,14 +78,26 @@ public:
     
 
 
-    float initRingPos = -1 * initScrollingSpeed;
+    
     float ringAboveObstacle = 1.0f; //1 v 0 f
-    Light* ring1;
-    Light* ring2;
-    Light* ring3;
-    Light* ring4;
-    Light* ring5;
-    Light* ring6;
+    float ringXPos = 0.0f;
+    float ringYPos = 0.0f;
+    float ringZPos = -1.5 * initScrollingSpeed;
+
+    float decalageRingPosY = tailleJump / 20 ;
+    float decalageRingPosZ = initScrollingSpeed / 2;
+
+    Entity* ring1;
+    Entity* ring2;
+    Entity* ring3;
+    Entity* ring4;
+    Entity* ring5;
+    Entity* ring6;
+    Entity* ring7;
+    Entity* ring8;
+    Entity* ring9;
+    Entity* ring10;
+
 
     Player *player;
 

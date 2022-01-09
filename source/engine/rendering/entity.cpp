@@ -79,4 +79,6 @@ void Entity::updateTransforms(TimeStep deltaTime) {
     }
 }
 
-
+int Entity::getEType() {
+    return NORMAL;
+}

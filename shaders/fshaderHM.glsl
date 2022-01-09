@@ -30,10 +30,10 @@ void main()
 {
     float h = 0.0f;
     h = height(texture,v_texcoord);
-    if (h < 0.3f)
+    if (h < 0.4f)
     {
         gl_FragColor = texture2D(groundH,v_texcoord);
-    }else if (h < 0.6f){
+    }else if (h < 0.7f){
         gl_FragColor = texture2D(midH,v_texcoord);
     } else{
         gl_FragColor = texture2D(topH,v_texcoord);

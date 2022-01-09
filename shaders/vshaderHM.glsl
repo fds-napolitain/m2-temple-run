@@ -33,11 +33,11 @@ float height(sampler2D HM, vec2 atexcoord)
 void main()
 {
 
-    curPos = vec3(transform *  vec4(a_position.x, a_position.y, a_position.z , 1.0))+vec3(height(texture,a_texcoord)*10.0f,0.0f,0.0f);
+    curPos = vec3(transform *  vec4(a_position.x, a_position.y, a_position.z , 1.0))+vec3(height(texture,a_texcoord)*25.0f,0.0f,0.0f);
     gl_Position = mvp_matrix * vec4(curPos, 1.0);
     v_texcoord = a_texcoord;
     v_color = a_color;
-    v_normal = vec3( transform* vec4(a_normal,1.0));
+    v_normal = vec3(transform* vec4(a_normal,1.0))+vec3(height(texture,a_texcoord)*25.0f,0.0f,0.0f);
     //v_normal = a_normal;
 
 }

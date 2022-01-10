@@ -52,6 +52,29 @@ void Player::updateTransforms(TimeStep deltaTime) {
 	Transform* animationMid = entities[1]->getTransform();
 	Transform* animationTop = entities[2]->getTransform();
 
+	if (PointDeVie == 3.0f)
+	{
+		animationBase->position = QVector3D(0, 0, 0);
+		animationMid->position = QVector3D(0, 1.3, 0);
+		animationTop->position = QVector3D(0, 2.3, 0);
+
+
+	}
+
+	if (PointDeVie == 2.0f)
+	{
+		animationBase->position = QVector3D(100, 0, 0);
+		animationMid->position = QVector3D(0, 0, 0);
+		animationTop->position = QVector3D(0, 1, 0);
+	}
+
+	if (PointDeVie == 1.0f)
+	{
+		animationBase->position = QVector3D(100, 0, 0);
+		animationMid->position = QVector3D(100, 0, 0);
+		animationTop->position = QVector3D(0, 0, 0);
+	}
+
 	if (!isMovingLeft && !isMovingRight)
 	{
 

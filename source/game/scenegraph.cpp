@@ -13,7 +13,8 @@ SceneGraph::SceneGraph(Entity *root) :
 	Transform* staticLeftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-30, -2.0, -100), 1);
 	Transform* mainDecorTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 0.0,  0), QVector3D(0, 0.0, -100), 1);
 	Transform* backgroundTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(-30, 0.0, -105), 1);
-
+	Transform* soleilTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(0.0, 100.0f, 5), 5);
+	
 
 	Entity* sol = new Entity("sol", solTransform);
 	Entity* right = new Entity("right", rightTransform);
@@ -22,6 +23,8 @@ SceneGraph::SceneGraph(Entity *root) :
 	staticLeft = new Entity("staticleft", staticLeftTransform);
 	mainDecor = new Entity("mainDecor", mainDecorTransform);
 	background = new Entity("fond", backgroundTransform);
+	soleil = new Light("soleil", soleilTransform, QVector4D(5.0, 5.0, 5.0, 1.0));
+
 
 	Mesh* solMesh = new Mesh(GL_TRIANGLE_STRIP);
 	solMesh->loadTexture(":/neige.png");
@@ -36,11 +39,11 @@ SceneGraph::SceneGraph(Entity *root) :
 	leftMesh->loadTextureHM(":/Heightmap_Mountain.png",":/grass.png",":/rock.png",":/neige.png");
 	
 	Mesh* staticLeftMesh = new Mesh(GL_TRIANGLE_STRIP);
-	staticLeftMesh->loadTextureHM(":/Heightmap_Mountain.png",":/rock.png",":/rock.png",":/neige.png");
+	staticLeftMesh->loadTextureHM(":/Heightmap_Rocky.png",":/rock.png",":/rock.png",":/neige.png");
 
     Mesh* backgroundMesh = new Mesh(GL_TRIANGLE_STRIP);
 
-
+	Mesh* soleilMesh = new Mesh(":/sphere.off", Mesh::OFFIO, GL_TRIANGLES);
 
 	solMesh->initPlaneGeometry(16,16,200,200);
 	rightMesh->initPlaneGeometry(16,16,100,100);
@@ -49,7 +52,7 @@ SceneGraph::SceneGraph(Entity *root) :
 	staticLeftMesh->initPlaneGeometry(16,16,100,100);
 	backgroundMesh->initPlaneGeometry(16, 16, 100, 100);
 	backgroundMesh->loadTextureHM(":/ciel.png", ":/ciel.png", ":/ciel.png", ":/ciel.png");
-
+	
 
 
 	m_physics->addCollider(player->getCollider());
@@ -60,6 +63,7 @@ SceneGraph::SceneGraph(Entity *root) :
 	staticRight->addComponent(staticRightMesh);
 	left->addComponent(leftMesh);
 	staticLeft->addComponent(staticLeftMesh);
+	soleil->addComponent(soleilMesh);
 
 	background->addComponent(backgroundMesh);
 
@@ -74,6 +78,7 @@ SceneGraph::SceneGraph(Entity *root) :
 	addEntity(player, player->getEntities()[1]);
 	addEntity(player, player->getEntities()[2]);
 	addEntity(m_root, background);
+	addEntity(mainDecor, soleil);
 
 
 
@@ -81,7 +86,7 @@ SceneGraph::SceneGraph(Entity *root) :
 
 	//1:
 	Transform* obstacle1Transform = new Transform(QQuaternion(), QVector3D(obstacle1X, -1, obstacle1Z), 2);
-	obstacle1 = new Light("obstacle1", obstacle1Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
+	obstacle1 = new Light("obstacle", obstacle1Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
 	Mesh* obstacle1Mesh = new Mesh(GL_TRIANGLE_STRIP);
 	obstacle1Mesh->setType(Mesh::Type::LIGHT);
 	obstacle1Mesh->initCubeGeometry();
@@ -95,7 +100,7 @@ SceneGraph::SceneGraph(Entity *root) :
 
 	//2:
 	Transform* obstacle2Transform = new Transform(QQuaternion(), QVector3D(obstacle2X, -1, obstacle2Z), 2);
-	obstacle2 = new Light("obstacle2", obstacle2Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
+	obstacle2 = new Light("obstacle", obstacle2Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
 	Mesh* obstacle2Mesh = new Mesh(GL_TRIANGLE_STRIP);
 	obstacle2Mesh->setType(Mesh::Type::LIGHT);
 	obstacle2Mesh->initCubeGeometry();
@@ -108,7 +113,7 @@ SceneGraph::SceneGraph(Entity *root) :
 
 	//3:
 	Transform* obstacle3Transform = new Transform(QQuaternion(), QVector3D(obstacle3X, -1, obstacle3Z), 2);
-	obstacle3 = new Light("obstacle3", obstacle3Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
+	obstacle3 = new Light("obstacle", obstacle3Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
 	Mesh* obstacle3Mesh = new Mesh(GL_TRIANGLE_STRIP);
 	obstacle3Mesh->setType(Mesh::Type::LIGHT);
 	obstacle3Mesh->initCubeGeometry();
@@ -121,7 +126,7 @@ SceneGraph::SceneGraph(Entity *root) :
 
 	//4:
 	Transform* obstacle4Transform = new Transform(QQuaternion(), QVector3D(obstacle4X, -1, obstacle4Z), 2);
-	obstacle4 = new Light("obstacle4", obstacle4Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
+	obstacle4 = new Light("obstacle", obstacle4Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
 	Mesh* obstacle4Mesh = new Mesh(GL_TRIANGLE_STRIP);
 	obstacle4Mesh->setType(Mesh::Type::LIGHT);
 	obstacle4Mesh->initCubeGeometry();
@@ -134,7 +139,7 @@ SceneGraph::SceneGraph(Entity *root) :
 
 	//5:
 	Transform* obstacle5Transform = new Transform(QQuaternion(), QVector3D(obstacle5X, -1, obstacle5Z), 2);
-	obstacle5 = new Light("obstacle5", obstacle5Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
+	obstacle5 = new Light("obstacle", obstacle5Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
 	Mesh* obstacle5Mesh = new Mesh(GL_TRIANGLE_STRIP);
 	obstacle5Mesh->setType(Mesh::Type::LIGHT);
 	obstacle5Mesh->initCubeGeometry();
@@ -263,19 +268,26 @@ void SceneGraph::addEntity(Entity *parent, Entity *entity)
 
 void SceneGraph::update(TimeStep deltaTime)
 {
-
+	if (player->justLostPDV) // Si le joueur vient de perdre un point de vie, reset la vitesse.
+	{
+		scrollingSpeed = initScrollingSpeed;
+		player->justLostPDV = false;
+	}
     updateTransforms(m_root, deltaTime);
 	Transform* transform = mainDecor->getTransform();
 	Transform* transformBackGround = background->getTransform();
+	Transform* transformY= soleil->getTransform();
 	// On fait  ce qui concerne le joueur
 
 	mouvement(transform,deltaTime);
 	Jump(transform, deltaTime);
 	scrolling(transform, deltaTime);
+	transformY->position += QVector3D(0.0f, -initScrollingSpeed * deltaTime,0.0f);
 	scrollingBackGround(transformBackGround, deltaTime);
 	
 	mainDecor->setTransform(transform);
 	background->setTransform(transformBackGround);
+	soleil->setTransform(transformY);
 
 //   updatePhysics(); <-- fait tout dans le scenegraph
      m_physics->update(deltaTime, m_drawnEntities, player );
@@ -310,7 +322,7 @@ void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime)
 	if (transform->position.z() >= 100)
 		{
 		float WallPos = 0.0f;
-		WallPos = rand() % 50;
+		WallPos = (rand() % 10)*10;
 
 
 		obstacle1->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
@@ -333,6 +345,10 @@ void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime)
 	if (ring1->getTransform()->position.z() > 0.0f)
 	{
 		ring1->getTransform()->position.setZ(ringZPos);
+	}
+	if (soleil->getTransform()->position.y() < -10.0f)
+	{
+		soleil->getTransform()->position.setY(100.0f);
 	}
 
 }

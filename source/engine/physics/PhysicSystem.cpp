@@ -9,7 +9,8 @@
 void PhysicSystem::update(TimeStep delta, std::vector<Entity*> entities, Player* player)
 {
     for(auto entity : entities)
-    {
+    {   //on regarde si l'entité à tester est bien sur le rail du joueur et proche en z.
+            
         for(auto component : entity->getComponents())
         {
             Collider* collider = dynamic_cast<Collider*>(component);
@@ -20,7 +21,16 @@ void PhysicSystem::update(TimeStep delta, std::vector<Entity*> entities, Player*
 
 
                 if(isIntersectingPlayer.isIntersect()){
-                    entity->getTransform()->position.setX(15.0f); 
+                    entity->getTransform()->position.setX(15.0f);
+                    if (entity->getName() == "obstacle")
+                    {
+                        if (player->PointDeVie >= 1)
+                        {
+                            player->PointDeVie -= 1;
+                            player->justLostPDV=true;
+                        }
+                        
+                    }
                     std::cout << " je collide ! " << isIntersectingPlayer.getDirection().x() << " " << isIntersectingPlayer.getDirection().y() << " " << isIntersectingPlayer.getDirection().z() << " " << " \n";
                 }
             }

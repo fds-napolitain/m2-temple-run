@@ -31,6 +31,10 @@ public:
 	bool isJumping = false;
 	bool hasJumped = false;
 
+	float PointDeVie = 3.0f;
+	bool justLostPDV = false;
+	
+
 
 
 

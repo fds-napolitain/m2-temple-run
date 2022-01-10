@@ -30,10 +30,10 @@ public:
     //variables sur le déplacement
     float distanceWhenMoving = 5.0f;
     float timeWhenMoving = 0.5f;
-    float initScrollingSpeed = 14.0f;
+    float initScrollingSpeed = 18.0f;
     float scrollingSpeed = initScrollingSpeed;
-    float acceleration = 1.0f;
-    float maxSpeed = 24.0f;
+    float acceleration = 18.0f;
+    float maxSpeed = 220.0f;
 
     //variable du saut
     bool isJumping = false;
@@ -80,6 +80,8 @@ public:
     Light *obstacle3;
     Light *obstacle4;
     Light  *obstacle5;
+
+    Light* soleil;
     
 
 

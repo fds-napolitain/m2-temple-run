@@ -8,8 +8,8 @@
  * Initialise une animation à partir d'une transform
  * @param transform qui sera combineWith() à chaque update sur la transform position de l'objet entité courant.
  */
-Animation::Animation(Transform transform) {
-	this->transform = transform;
+Animation::Animation(Transform* transform) {
+	this->transform = *transform;
 }
 
 /**

@@ -124,9 +124,10 @@ void Entity::updateTransforms(TimeStep deltaTime) {
 			collider->transformCollider(*m_transform);
 		} else if (ctype == ANIMATION) {
 			auto animation = dynamic_cast<Animation*>(component);
+			std::cout << animation->transform.rotate.scalar() << "\n";
+			m_transform->rotate *= animation->transform.rotate;
 			m_transform->position += animation->transform.position * deltaTime;
-			m_transform->rotate *= animation->transform.rotate * deltaTime;
-			m_transform->scale = animation->transform.scale;
+			m_transform->scale *= animation->transform.scale;
 		} else {
 			//std::cout << "Component not recognized.\n";
 		}

@@ -26,6 +26,16 @@ Player::Player(std::string name) : Entity(std::move(name)) {
 	Mesh* sphere = new Mesh(":/sphere.off", Mesh::OFFIO, GL_TRIANGLES);
 	sphere->loadTexture(":/neige.png");
 
+	Transform* playerBaseAnimationTransform = new Transform(QQuaternion::fromAxisAndAngle(-1.0, 0.0, 0.0, 90), QVector3D(0, 0, 0), 1);
+	Transform* playerMidAnimationTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(0, 0, 0), 1);
+	Transform* playerTopAnimationTransform = new Transform(QQuaternion::fromAxisAndAngle(-1.0, 0.0, 0.0, 45), QVector3D(0, 0, 0), 1);
+	Animation* playerBaseAnimation = new Animation(playerBaseAnimationTransform);
+	Animation* playerMidAnimation = new Animation(playerMidAnimationTransform);
+	Animation* playerTopAnimation = new Animation(playerTopAnimationTransform);
+	playerBase->addComponent(playerBaseAnimation);
+	playerMid->addComponent(playerMidAnimation);
+	playerTop->addComponent(playerTopAnimation);
+
 //    playerBase->addComponent(collider);
 	playerBase->addComponent(sphere);
 	playerMid->addComponent(sphere);
@@ -52,38 +62,18 @@ void Player::updateTransforms(TimeStep deltaTime) {
 	Transform* animationMid = entities[1]->getTransform();
 	Transform* animationTop = entities[2]->getTransform();
 
-	if (!isMovingLeft && !isMovingRight)
-	{
-
-		animationBase->rotate *= QQuaternion::fromAxisAndAngle(-1.0, 0.0, 0.0, 90 * deltaTime);
-		animationMid->rotate *= QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90 * deltaTime);
-		animationTop->rotate *= QQuaternion::fromAxisAndAngle(-1.0, 0.0, 0.0, 45 * deltaTime);
-
-	}
-
 	if (isMovingLeft)
 	{
-		
-		animationBase->rotate *= QQuaternion::fromAxisAndAngle(-1.0, 0.0, 0.0, 90 * deltaTime);
-		animationMid->rotate *= QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90 * deltaTime);
-		animationTop->rotate *= QQuaternion::fromAxisAndAngle(-1.0, 0.0, 0.0, 45 * deltaTime);
-
 		animationBase->rotate *= QQuaternion::fromAxisAndAngle(0.0, -1.0, 0.0, 160 * deltaTime);
 		animationMid->rotate *= QQuaternion::fromAxisAndAngle(0.0, -1.0, 0.0, 160 * deltaTime);
 		animationTop->rotate *= QQuaternion::fromAxisAndAngle(0.0, -1.0, 0.0, 120 * deltaTime);
-		
 	}
 
 	if (isMovingRight)
 	{
-		animationBase->rotate *= QQuaternion::fromAxisAndAngle(-1.0, 0.0, 0.0, 90 * deltaTime);
-		animationMid->rotate *= QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90 * deltaTime);
-		animationTop->rotate *= QQuaternion::fromAxisAndAngle(-1.0, 0.0, 0.0, 45 * deltaTime);
-
 		animationBase->rotate *= QQuaternion::fromAxisAndAngle(0.0, 1.0, 0.0, 160 * deltaTime);
 		animationMid->rotate *= QQuaternion::fromAxisAndAngle(0.0, 1.0, 0.0, 160 * deltaTime);
 		animationTop->rotate *= QQuaternion::fromAxisAndAngle(0.0, 1.0, 0.0, 120 * deltaTime);
-		
 	}
 
 	if (isJumping)

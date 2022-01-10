@@ -31,6 +31,14 @@ void PhysicSystem::update(TimeStep delta, std::vector<Entity*> entities, Player*
                         }
                         
                     }
+                    if (entity->getName() == "meteorite")
+                    {
+                        if (player->PointDeVie <= 3)
+                        {
+                            player->PointDeVie += 1;
+                        }
+                    }
+
                     std::cout << " je collide ! " << isIntersectingPlayer.getDirection().x() << " " << isIntersectingPlayer.getDirection().y() << " " << isIntersectingPlayer.getDirection().z() << " " << " \n";
                 }
             }

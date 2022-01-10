@@ -75,6 +75,7 @@ public:
     Entity  *background;
     Entity* staticLeft;
     Entity* staticRight;
+    Entity* meteorite;
     Light *obstacle1;
     Light *obstacle2;
     Light *obstacle3;

@@ -13,7 +13,8 @@ SceneGraph::SceneGraph(Entity *root) :
 	Transform* staticLeftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-30, -2.0, -100), 1);
 	Transform* mainDecorTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 0.0,  0), QVector3D(0, 0.0, -100), 1);
 	Transform* backgroundTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(-30, 0.0, -105), 1);
-	Transform* soleilTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(0.0, 100.0f, 5), 5);
+	Transform* soleilTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(0.0, 100.0f, 10), 5);
+	Transform* meteoriteTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(0.0, 100.0f, -2.5*scrollingSpeed), 5);
 	
 
 	Entity* sol = new Entity("sol", solTransform);
@@ -23,6 +24,7 @@ SceneGraph::SceneGraph(Entity *root) :
 	staticLeft = new Entity("staticleft", staticLeftTransform);
 	mainDecor = new Entity("mainDecor", mainDecorTransform);
 	background = new Entity("fond", backgroundTransform);
+	meteorite = new Entity("meteorite", meteoriteTransform);
 	soleil = new Light("soleil", soleilTransform, QVector4D(5.0, 5.0, 5.0, 1.0));
 
 
@@ -44,7 +46,8 @@ SceneGraph::SceneGraph(Entity *root) :
     Mesh* backgroundMesh = new Mesh(GL_TRIANGLE_STRIP);
 
 	Mesh* soleilMesh = new Mesh(":/sphere.off", Mesh::OFFIO, GL_TRIANGLES);
-
+	Mesh* meteoriteMesh = new Mesh(":/sphere.off", Mesh::OFFIO, GL_TRIANGLES);
+	
 	solMesh->initPlaneGeometry(16,16,200,200);
 	rightMesh->initPlaneGeometry(16,16,100,100);
 	staticRightMesh->initPlaneGeometry(16,16,100,100);
@@ -52,11 +55,14 @@ SceneGraph::SceneGraph(Entity *root) :
 	staticLeftMesh->initPlaneGeometry(16,16,100,100);
 	backgroundMesh->initPlaneGeometry(16, 16, 100, 100);
 	backgroundMesh->loadTextureHM(":/ciel.png", ":/ciel.png", ":/ciel.png", ":/ciel.png");
-	
+	meteoriteMesh->loadTexture(":/neige.png");
+
+
+	BoundingSphere* meteoriteBS = new BoundingSphere(QVector3D(0.0f, 0.0f, 0.0f), 5.0f);
 
 
 	m_physics->addCollider(player->getCollider());
-
+	m_physics->addCollider(meteoriteBS);
 
 	sol->addComponent(solMesh);
 	right->addComponent(rightMesh);
@@ -64,8 +70,12 @@ SceneGraph::SceneGraph(Entity *root) :
 	left->addComponent(leftMesh);
 	staticLeft->addComponent(staticLeftMesh);
 	soleil->addComponent(soleilMesh);
+	meteorite->addComponent(meteoriteMesh);
 
 	background->addComponent(backgroundMesh);
+
+	
+	meteorite->addComponent(meteoriteBS);
 
 	addEntity(m_root, mainDecor);
 	addEntity(mainDecor, staticRight);
@@ -78,7 +88,8 @@ SceneGraph::SceneGraph(Entity *root) :
 	addEntity(player, player->getEntities()[1]);
 	addEntity(player, player->getEntities()[2]);
 	addEntity(m_root, background);
-	addEntity(mainDecor, soleil);
+	addEntity(m_root, soleil);
+	addEntity(mainDecor, meteorite);
 
 
 
@@ -277,12 +288,22 @@ void SceneGraph::update(TimeStep deltaTime)
 	Transform* transform = mainDecor->getTransform();
 	Transform* transformBackGround = background->getTransform();
 	Transform* transformY= soleil->getTransform();
+	Transform* transformMeteorite = meteorite->getTransform();
 	// On fait  ce qui concerne le joueur
 
 	mouvement(transform,deltaTime);
 	Jump(transform, deltaTime);
 	scrolling(transform, deltaTime);
 	transformY->position += QVector3D(0.0f, -initScrollingSpeed * deltaTime,0.0f);
+	if (transformMeteorite->position.y() >= 0)
+	{
+		if (player->PointDeVie < 2)
+		{
+			transformMeteorite->position += QVector3D(0.0, -scrollingSpeed * 1.25*deltaTime, 0.0f);
+		}
+		
+	}
+	
 	scrollingBackGround(transformBackGround, deltaTime);
 	
 	mainDecor->setTransform(transform);
@@ -323,16 +344,19 @@ void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime)
 		{
 		float WallPos = 0.0f;
 		WallPos = (rand() % 10)*10;
-
+		float spawnMeteorite = -(rand() % 4 + 1.5) * initScrollingSpeed;
 
 		obstacle1->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
 		obstacle2->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
 		obstacle3->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
 		obstacle4->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
 		obstacle5->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
+		meteorite->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
 
 		staticLeft->getTransform()->position.setZ(-WallPos);
 		staticRight->getTransform()->position.setZ(-WallPos);
+		meteorite->getTransform()->position.setY(100.0f);
+		meteorite->getTransform()->position.setZ(spawnMeteorite);
 
 
 
@@ -350,6 +374,7 @@ void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime)
 	{
 		soleil->getTransform()->position.setY(100.0f);
 	}
+
 
 }
 

@@ -364,6 +364,11 @@ void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime)
 		if (scrollingSpeed < maxSpeed)
 		{
 			scrollingSpeed += acceleration;
+			timeWhenMoving = 0.5 * ((maxSpeed - scrollingSpeed) / maxSpeed);
+			if (timeWhenMoving == 0.0f)
+			{
+				timeWhenMoving += 0.1f;
+			}
 		}
 	}
 	if (ring1->getTransform()->position.z() > 0.0f)

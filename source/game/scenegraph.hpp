@@ -34,6 +34,7 @@ public:
     float scrollingSpeed = initScrollingSpeed;
     float acceleration = 18.0f;
     float maxSpeed = 220.0f;
+    float tempSpeed = 0.0f; //permet de freeze le jeu pour pouvoir faire la démo.
 
     //variable du saut
     bool isJumping = false;

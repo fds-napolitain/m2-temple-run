@@ -157,6 +157,18 @@ void MainWidget::keyPressEvent(QKeyEvent *event)
                 case Qt::Key_E: /* monter */
                     projection.translate(QVector3D(0.0, 0.0, 50.0) * timeStep);
                     break;
+                case Qt::Key_X: /* pause */
+                    if (sceneGraph->tempSpeed == 0.0f)
+                    {
+                        sceneGraph->tempSpeed = sceneGraph->scrollingSpeed;
+                        sceneGraph->scrollingSpeed = 0.0f;
+                    }
+                    else
+                    {
+                        sceneGraph->scrollingSpeed = sceneGraph->tempSpeed;
+                        sceneGraph->tempSpeed = 0.0f;
+                    }
+                    break;
 		        case Qt::Key_Left:
                     if (!sceneGraph->joueur_rl)
                     {

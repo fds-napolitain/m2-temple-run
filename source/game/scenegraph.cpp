@@ -18,7 +18,7 @@ SceneGraph::SceneGraph(Entity *root) :
 	Transform* staticLeftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-30, -2.0, -290), 1);
 	Transform* movingLeftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-30, -2.0, -480), 1);
 	Transform* mainDecorTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 0.0,  0), QVector3D(0, 0.0, -100), 1);
-	Transform* backgroundTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(-30, 0.0, -105), 1);
+	Transform* backgroundTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(-30, 0.0, -200), 1);
 	Transform* soleilTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(0.0, 100.0f, 20), 5);
 	Transform* meteoriteTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(0.0, 100.0f, -2.5*scrollingSpeed), 5);
 

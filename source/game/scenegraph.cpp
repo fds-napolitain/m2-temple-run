@@ -11,14 +11,14 @@ SceneGraph::SceneGraph(Entity *root) :
 {
     player = new Player("player"); //ps: les static bougent, faut changer le nom
 	Transform* solTransform = new Transform(QQuaternion(), QVector3D(0, -4.0, 0), 1);
-	Transform* rightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 1.0, 90), QVector3D(-8, -2.0, -100), 1);
-	Transform* staticRightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 1.0, 90), QVector3D(-8, -2.0, -290), 1);
-	Transform* movingRightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 1.0, 90), QVector3D(-8, -2.0, -480), 1);
+	Transform* rightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 1.0, 90), QVector3D(-4, -2.0, -100), 1);
+	Transform* staticRightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 1.0, 90), QVector3D(-4, -2.0, -290), 1);
+	Transform* movingRightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 1.0, 90), QVector3D(-4, -2.0, -480), 1);
 	Transform* leftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-30, -2.0,-100), 1);
 	Transform* staticLeftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-30, -2.0, -290), 1);
 	Transform* movingLeftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-30, -2.0, -480), 1);
 	Transform* mainDecorTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 0.0,  0), QVector3D(0, 0.0, -100), 1);
-	Transform* backgroundTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(-30, 0.0, -105), 1);
+	Transform* backgroundTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(-30, 0.0, -200), 1);
 	Transform* soleilTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(0.0, 100.0f, 20), 5);
 	Transform* meteoriteTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(0.0, 100.0f, -2.5*scrollingSpeed), 5);
 
@@ -392,7 +392,17 @@ void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime) {
 		obstacle4->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
 		obstacle5->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
 		meteorite->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
-
+		ring1->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
+		ring1->getTransform()->position.setZ((rand()%5+0.5) *initScrollingSpeed );
+		ring2->getTransform()->position.setX(0.0f);
+		ring3->getTransform()->position.setX(0.0f);
+		ring4->getTransform()->position.setX(0.0f);
+		ring5->getTransform()->position.setX(0.0f);
+		ring6->getTransform()->position.setX(0.0f);
+		ring7->getTransform()->position.setX(0.0f);
+		ring8->getTransform()->position.setX(0.0f);
+		ring9->getTransform()->position.setX(0.0f);
+		ring10->getTransform()->position.setX(0.0f);
 
 		
 		meteorite->getTransform()->position.setY(100.0f);
@@ -425,7 +435,7 @@ void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime) {
 		float WallPos = 0.0f;
 		WallPos = ((rand() % 100)-50);
 		float WallPosY = 0.0f;
-		WallPosY = ((rand() % 200) - 100);
+		WallPosY = ((rand() % 160) - 80);
 
 		staticLeft->getTransform()->position.setZ(left->getTransform()->position.z() - 150 + WallPos);
 		staticRight->getTransform()->position.setZ(left->getTransform()->position.z() - 150 + WallPos);
@@ -437,7 +447,7 @@ void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime) {
 		float WallPos = 0.0f;
 		WallPos = ((rand() % 100) - 50);
 		float WallPosY = 0.0f;
-		WallPosY = ((rand() % 200) - 100);
+		WallPosY = ((rand() % 160) - 80);
 
 		movingLeft->getTransform()->position.setZ(staticLeft->getTransform()->position.z() -150 + WallPos);
 		movingRight->getTransform()->position.setZ(staticLeft->getTransform()->position.z() -150 + WallPos);
@@ -449,7 +459,7 @@ void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime) {
 		float WallPos = 0.0f;
 		WallPos = ((rand() % 100) - 50);
 		float WallPosY = 0.0f;
-		WallPosY = ((rand() % 200) - 100);
+		WallPosY = ((rand() % 160) - 80);
 		
 
 		left->getTransform()->position.setZ(movingLeft->getTransform()->position.z() - 150 +WallPos);

@@ -14,7 +14,7 @@ void PhysicSystem::update(TimeStep delta, const std::vector<Entity*>& entities, 
                 collider->transformCollider(*entity->getTransform());
                 IntersectData isIntersectingPlayer = player->collider->intersect(*collider);
                 if (isIntersectingPlayer.isIntersect()) {
-                    entity->getTransform()->position.setX(15.0f);
+                    entity->getTransform()->position.setX(30.0f);
                     if (entity->getName() == "obstacle") {
                         if (player->PointDeVie >= 0) {
                             player->PointDeVie -= 1;

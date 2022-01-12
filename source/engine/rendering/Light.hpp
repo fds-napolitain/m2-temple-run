@@ -9,11 +9,12 @@
 #include "entity.hpp"
 #include <QVector4D>
 
-class Light : public Entity{
+class Light : public Entity {
+
 public:
     Light(std::string name, Transform* transformation, QVector4D color);
-
     const QVector4D &getColor() const;
+    int getEType() override;
 
 private:
     QVector4D m_color;

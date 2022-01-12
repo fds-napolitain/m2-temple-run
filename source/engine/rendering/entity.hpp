@@ -27,6 +27,7 @@ public:
     void setTransform(Transform* transform);
     void removeChild(Entity* child);
 	virtual void updateTransforms(TimeStep deltaTime);
+    virtual int getEType();
     
 
 private:
@@ -35,6 +36,13 @@ private:
     Entity* m_parent;
     std::vector<Entity*> m_children;
     std::vector<Component*> m_components;
+
 };
+
+enum EntityType {
+        NORMAL,
+        LIGHT,
+        HEIGHTMAP,
+    };
 
 #endif // ENTITY_H

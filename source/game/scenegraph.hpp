@@ -30,10 +30,11 @@ public:
     //variables sur le dï¿½placement
     float distanceWhenMoving = 5.0f;
     float timeWhenMoving = 0.5f;
-    float initScrollingSpeed = 14.0f;
+    float initScrollingSpeed = 18.0f;
     float scrollingSpeed = initScrollingSpeed;
-    float acceleration = 1.0f;
-    float maxSpeed = 24.0f;
+    float acceleration = 18.0f;
+    float maxSpeed = 220.0f;
+    float tempSpeed = 0.0f; //permet de freeze le jeu pour pouvoir faire la démo.
 
     //variable du saut
     bool isJumping = false;
@@ -63,29 +64,53 @@ public:
 
     Entity* getRoot();
     void scrolling(Transform* transform, TimeStep deltaTime);
+    void scrollingBackGround(Transform* transform, TimeStep deltaTime);
     void mouvement(Transform* transform, TimeStep deltaTime);
     void jump(Transform* transform, TimeStep deltaTime);
     void makeAnObstacle(float z);
     void makeARing(float z);
     void addEntity(Entity* parent, Entity* entity);
     void updateTransforms(Entity* root_node, TimeStep deltaTime);
+
 	Entity *mainDecor;
+    Entity  *background;
+    Entity* left;
+    Entity* right;
+    Entity* staticLeft;
+    Entity* movingLeft;
+    Entity* staticRight;
+    Entity* movingRight;
+    Entity* meteorite;
     Light *obstacle1;
     Light *obstacle2;
     Light *obstacle3;
     Light *obstacle4;
     Light  *obstacle5;
+
+    Light* soleil;
     
 
 
-    float initRingPos = -1 * initScrollingSpeed;
-    float ringAboveObstacle = 1.0f; //1 v 0 f
-    Light* ring1;
-    Light* ring2;
-    Light* ring3;
-    Light* ring4;
-    Light* ring5;
-    Light* ring6;
+    
+    float ringAboveObstacle = 0.0f; //1 v 0 f
+    float ringXPos = 0.0f;
+    float ringYPos = 0.0f;
+    float ringZPos = -1.5 * initScrollingSpeed;
+
+    float decalageRingPosY = tailleJump / 20 ;
+    float decalageRingPosZ = initScrollingSpeed / 2;
+
+    Entity* ring1;
+    Entity* ring2;
+    Entity* ring3;
+    Entity* ring4;
+    Entity* ring5;
+    Entity* ring6;
+    Entity* ring7;
+    Entity* ring8;
+    Entity* ring9;
+    Entity* ring10;
+
 
     Player *player;
 

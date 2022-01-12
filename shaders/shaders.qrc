@@ -4,5 +4,7 @@
         <file>fshader.glsl</file>
         <file>flight.glsl</file>
         <file>vlight.glsl</file>
+        <file>fshaderHM.glsl</file>
+        <file>vshaderHM.glsl</file>
     </qresource>
 </RCC>

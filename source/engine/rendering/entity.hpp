@@ -11,6 +11,15 @@
 #include "source/engine/components/physics/collider.hpp"
 #include "source/engine/components/rendering/Animation.hpp"
 
+/**
+ * Classe entité :
+ * - nom
+ * - transform
+ * - composants
+ * - fils
+ * - pere
+ * - update() est la mise a jour de l'entité, avec identifications des composants et association des comportements en conséquences.
+ */
 class Entity {
 
 public:

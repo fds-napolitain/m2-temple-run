@@ -6,9 +6,11 @@
 #include "Player.hpp"
 #include <QTime>
 
-
-class SceneGraph : public Scene
-{
+/**
+ * Graphe de scène:
+ * - définition du graphe de scène. Update() est la gameloop
+ */
+class SceneGraph : public Scene {
 public:
     SceneGraph(Entity *root);
     ~SceneGraph() override;
@@ -32,9 +34,9 @@ public:
     float timeWhenMoving = 0.5f;
     float initScrollingSpeed = 18.0f;
     float scrollingSpeed = initScrollingSpeed;
-    float acceleration = 18.0f;
+    float acceleration = 5.0f;
     float maxSpeed = 220.0f;
-    float tempSpeed = 0.0f; //permet de freeze le jeu pour pouvoir faire la d�mo.
+    float tempSpeed = 0.0f; //permet de freeze le jeu pour pouvoir faire la d�mo.
 
     //variable du saut
     bool isJumping = false;

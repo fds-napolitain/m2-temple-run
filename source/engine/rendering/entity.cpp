@@ -54,7 +54,7 @@ std::string Entity::getName() const {
 	return m_name;
 }
 
-const Entity *Entity::getParent() const {
+Entity *Entity::getParent() const {
 	return m_parent;
 }
 

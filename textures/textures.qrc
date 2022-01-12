@@ -9,5 +9,7 @@
         <file>snowrocks.png</file>
         <file>neige.png</file>
         <file>ciel.png</file>
+        <file>Rock_1_Emissive.jpg</file>
+        <file>Rock_1_Base_Color.jpg</file>
     </qresource>
 </RCC>

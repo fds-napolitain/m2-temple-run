@@ -23,13 +23,15 @@ Mesh::~Mesh() {
 
 void Mesh::loadMesh(const std::string &path, int format){
     std::vector<QVector3D> vertices;
+    std::vector<QVector2D> texture;
+    std::vector<QVector3D> normals;
     std::vector<std::vector<unsigned int>> indices;
     switch (format){
         case OFFIO:
             offio::open(path, vertices, indices);
             break;
         case OBJIO:
-            objio::open(path, vertices, indices);
+            objio::open(path, vertices, texture, normals, indices );
             break;
     }
 
@@ -43,10 +45,9 @@ void Mesh::loadMesh(const std::string &path, int format){
 		VertexData temp;
 		if (path == ":/sphere.off") {
 			m_normals.push_back(vertices[i] - QVector3D());
-            Transform::printV3D(m_normals[i]);
 			temp = {vertices[i], QVector2D(asin(m_normals[i].x()) / 3.1415 + 0.5, asin(m_normals[i].y()) / 3.1415 + 0.5), QVector3D(vertices[i] - QVector3D())};
 		} else {
-			temp = {vertices[i], QVector2D()};
+			temp = {vertices[i], texture[i], normals[i]};
 		}
         m_vertex[i]     = temp;
         m_vertexArr[i]  = temp;

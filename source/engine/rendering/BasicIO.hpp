@@ -334,9 +334,11 @@ namespace objio{
 
 
 
-    template< class point_t , class int_type_t > bool open(
+    template< class point_t , class texture_t , class normal_t, class int_type_t > bool open(
             const std::string & filename,
             std::vector<point_t> & vertices,
+            std::vector<texture_t> & texture,
+            std::vector<normal_t> & normals,
             std::vector< std::vector< int_type_t > > & faces,
             bool convertToTriangles = true,
             bool randomize = false,
@@ -349,7 +351,7 @@ namespace objio{
             std::cout << filename << " cannot be opened" << std::endl;
             return false;
         }
-
+        std::vector< texture_t > thandles;
         vertices.clear();
         faces.clear();
 
@@ -369,15 +371,32 @@ namespace objio{
                 {
                     vertices.push_back(point_t( lineElements[1].toDouble() , lineElements[2].toDouble() , lineElements[3].toDouble() ));
                 }
-                    // face
+                if ( elementType == QString("vt") )
+                {
+
+                     thandles.push_back(texture_t( lineElements[1].toDouble() , lineElements[2].toDouble() ));
+                }
+                if ( elementType == QString("vn") )
+                {
+                    normals.push_back(normal_t( lineElements[1].toDouble() , lineElements[2].toDouble(), lineElements[3].toDouble() ));
+                }
+                // face
                 else if ( elementType == QString("f") )
                 {
+                    texture.resize(vertices.size());
                     std::vector< int_type_t > vhandles;
                     for( int i = 1 ; i < lineElements.size() ; ++i )
                     {
                         QStringList faceElements = lineElements[i].split("/", Qt::SkipEmptyParts);
-                        if( !faceElements.empty() )
-                            vhandles.push_back( (int_type_t)( (abs(faceElements[0].toInt()) - 1) ) );
+                        if( !faceElements.empty() ){
+
+                            auto element0 = abs( faceElements[0].toInt() -1);
+                            auto element1 = abs( faceElements[1].toInt() -1);
+                            vhandles.push_back( (int_type_t)(  element0 ));
+                            texture.resize(vertices.size());
+                            texture[element0] = thandles[element1];
+                        }
+
                     }
 
                     if (vhandles.size()>3)

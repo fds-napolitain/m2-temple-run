@@ -27,14 +27,14 @@ public:
     float distMoved = 0.0f;
 
 
-    //variables sur le déplacement
+    //variables sur le dï¿½placement
     float distanceWhenMoving = 5.0f;
     float timeWhenMoving = 0.5f;
     float initScrollingSpeed = 18.0f;
     float scrollingSpeed = initScrollingSpeed;
     float acceleration = 18.0f;
     float maxSpeed = 220.0f;
-    float tempSpeed = 0.0f; //permet de freeze le jeu pour pouvoir faire la démo.
+    float tempSpeed = 0.0f; //permet de freeze le jeu pour pouvoir faire la dï¿½mo.
 
     //variable du saut
     bool isJumping = false;
@@ -81,7 +81,7 @@ public:
     Entity* staticRight;
     Entity* movingRight;
     Entity* meteorite;
-    Light *obstacle1;
+    Entity *obstacle1;
     Light *obstacle2;
     Light *obstacle3;
     Light *obstacle4;

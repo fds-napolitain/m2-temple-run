@@ -52,7 +52,7 @@ vec4 dirLight(){
 
     // diffuse lighting
     vec3 normal = normalize(v_normal);
-    vec3 lightDirection = normalize(vec3(1.0, 1.0 , 0.0));
+    vec3 lightDirection = normalize(vec3(0.0, 1.0 , -1.0));
     float diffuse = max(dot(normal, lightDirection), 0.0);
 
     // specular lighting

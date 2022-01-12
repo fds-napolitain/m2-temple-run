@@ -58,6 +58,7 @@ public:
     static unsigned short* indextoArray(unsigned short* arr, std::vector<unsigned short> &indices);
     static VertexData* vertextoArray(VertexData* arr, std::vector<VertexData> &vertex);
     void computeNormals(bool stripe);
+    void setAllNormals(const QVector3D normal);
 
     QOpenGLTexture* m_HMground = nullptr;
     QOpenGLTexture* m_HMmid = nullptr;

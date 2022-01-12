@@ -61,7 +61,7 @@ SceneGraph::SceneGraph(Entity *root) :
 	solMesh->initPlaneGeometry(16,16,200,200);
 	rightMesh->initPlaneGeometry(16,16,100,100);
 	staticRightMesh->initPlaneGeometry(16,16,100,100);
-	movingRightMesh->initPlaneGeometry(16,16,100,100);
+	movingRightMesh->initPlaneGeometry(256,256,100,100);
 	leftMesh->initPlaneGeometry(16,16,100,100);
 	staticLeftMesh->initPlaneGeometry(16,16,100,100);
 	movingLeftMesh->initPlaneGeometry(16,16,100,100);
@@ -109,15 +109,15 @@ SceneGraph::SceneGraph(Entity *root) :
 
 
 
-	//Obstacles: faudrait faire un objet entiy obstacle avec tout ça un jour.
+	//Obstacles: faudrait faire un objet entiy obstacle avec tout ï¿½a un jour.
 
 	//1:
-	Transform* obstacle1Transform = new Transform(QQuaternion(), QVector3D(obstacle1X, -1, obstacle1Z), 2);
-	obstacle1 = new Light("obstacle", obstacle1Transform, QVector4D(1.0, 1.0, 1.0, 1.0));
-	Mesh* obstacle1Mesh = new Mesh(GL_TRIANGLE_STRIP);
+	Transform* obstacle1Transform = new Transform(QQuaternion(), QVector3D(obstacle1X, -1, obstacle1Z), 0.2);
+	obstacle1 = new Entity("obstacle", obstacle1Transform);
+	Mesh* obstacle1Mesh = new Mesh("../models/Rock.obj", Mesh::OBJIO, GL_TRIANGLES);
 	obstacle1Mesh->setType(Mesh::Type::LIGHT);
-	obstacle1Mesh->initCubeGeometry();
-	obstacle1Mesh->loadTexture(":/grass.png");
+    //	obstacle1Mesh->initCubeGeometry();
+	obstacle1Mesh->loadTexture(":/Rock_1_Emissive.jpg");
 	AABB* obstacle1AABB = new AABB(QVector3D(-1 + obstacle1X, -1, obstacle1Z - 1), QVector3D(1 + obstacle1X, 1, obstacle1Z + 1));
 	m_physics->addCollider(obstacle1AABB);
 	obstacle1->addComponent(obstacle1AABB);
@@ -178,8 +178,8 @@ SceneGraph::SceneGraph(Entity *root) :
 	addEntity(mainDecor, obstacle5);
 
 
-	//pièces: pareil faudrait faire un entity un jour.
-	//1: // les pièces sont l'une après l'autre dans le graphe de scène en partant de la dernière (ring1), lorsque l'on collide une pièce on la sort de l'écran, lorsque la dernière pièce passe en -? on fait réaparaitre toute les pièces.
+	//piï¿½ces: pareil faudrait faire un entity un jour.
+	//1: // les piï¿½ces sont l'une aprï¿½s l'autre dans le graphe de scï¿½ne en partant de la derniï¿½re (ring1), lorsque l'on collide une piï¿½ce on la sort de l'ï¿½cran, lorsque la derniï¿½re piï¿½ce passe en -? on fait rï¿½aparaitre toute les piï¿½ces.
 
 	Mesh* ringMesh = new Mesh(":/sphere.off", Mesh::OFFIO, GL_TRIANGLES);
 	ringMesh->loadTexture(":/neige.png");
@@ -485,7 +485,7 @@ void SceneGraph::mouvement(Transform* transform, TimeStep deltaTime)
 
 
 
-	// on déplace le joueur selon son rail et son mouvement
+	// on dï¿½place le joueur selon son rail et son mouvement
 	float deplacement = (distanceWhenMoving / timeWhenMoving) * deltaTime;
 
 

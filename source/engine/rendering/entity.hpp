@@ -15,7 +15,7 @@ public:
     Entity(std::string name, Transform* transform);
     virtual ~Entity();
     [[nodiscard]] std::string getName() const;
-    [[nodiscard]] const Entity* getParent() const;
+    [[nodiscard]] Entity* getParent() const;
     [[nodiscard]] std::vector<Component*> getComponents() const;
     [[nodiscard]] Transform* getTransform() const;
     [[nodiscard]] std::vector<Entity*> getChildren() const;

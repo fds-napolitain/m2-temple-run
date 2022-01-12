@@ -5,6 +5,7 @@
 #include "source/engine/rendering/Light.hpp"
 #include "Player.hpp"
 #include <QTime>
+#include "source/engine/components/physics/collider/aabb.hpp"
 
 /**
  * Graphe de scène:
@@ -73,6 +74,7 @@ public:
     void makeARing(float z);
     void addEntity(Entity* parent, Entity* entity);
     void updateTransforms(Entity* root_node, TimeStep deltaTime);
+	void updateScore(Entity* scoreX, int value);
 
 	Entity *mainDecor;
     Entity  *background;
@@ -97,7 +99,7 @@ public:
     float ringAboveObstacle = 0.0f; //1 v 0 f
     float ringXPos = 0.0f;
     float ringYPos = 0.0f;
-    float ringZPos = -1.5 * initScrollingSpeed;
+    float ringZPos = -1.5f * initScrollingSpeed;
 
     float decalageRingPosY = tailleJump / 20 ;
     float decalageRingPosZ = initScrollingSpeed / 2;
@@ -112,6 +114,21 @@ public:
     Entity* ring8;
     Entity* ring9;
     Entity* ring10;
+
+	Light* score1;
+	Light* score2;
+	Light* score3;
+	Light* score4;
+	Mesh* score0Mesh;
+	Mesh* score1Mesh;
+	Mesh* score2Mesh;
+	Mesh* score3Mesh;
+	Mesh* score4Mesh;
+	Mesh* score5Mesh;
+	Mesh* score6Mesh;
+	Mesh* score7Mesh;
+	Mesh* score8Mesh;
+	Mesh* score9Mesh;
 
 
     Player *player;

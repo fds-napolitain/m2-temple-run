@@ -26,6 +26,9 @@ void PhysicSystem::update(TimeStep delta, const std::vector<Entity*>& entities, 
                             player->PointDeVie += 1;
                         }
                     }
+					if (entity->getName() == "ring") {
+						player->score++;
+					}
                     std::cout << " je collide ! " << isIntersectingPlayer.getDirection().x() << " " << isIntersectingPlayer.getDirection().y() << " " << isIntersectingPlayer.getDirection().z() << " " << " \n";
                 }
             }

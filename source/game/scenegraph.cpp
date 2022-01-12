@@ -1,5 +1,4 @@
 #include "scenegraph.hpp"
-#include "source/engine/components/physics/collider/aabb.hpp"
 
 /**
  * Constructeur
@@ -278,6 +277,33 @@ SceneGraph::SceneGraph(Entity *root) :
 	ring10->addComponent(ring10BS);
 	ring10->addComponent(ringMesh);
 	addEntity(ring9, ring10);
+
+	// score
+	score0Mesh = new Mesh(":/0.off", Mesh::OFFIO, GL_TRIANGLES);
+	score1Mesh = new Mesh(":/1.off", Mesh::OFFIO, GL_TRIANGLES);
+	score2Mesh = new Mesh(":/2.off", Mesh::OFFIO, GL_TRIANGLES);
+	score3Mesh = new Mesh(":/3.off", Mesh::OFFIO, GL_TRIANGLES);
+	score4Mesh = new Mesh(":/4.off", Mesh::OFFIO, GL_TRIANGLES);
+	score5Mesh = new Mesh(":/5.off", Mesh::OFFIO, GL_TRIANGLES);
+	score6Mesh = new Mesh(":/6.off", Mesh::OFFIO, GL_TRIANGLES);
+	score7Mesh = new Mesh(":/7.off", Mesh::OFFIO, GL_TRIANGLES);
+	score8Mesh = new Mesh(":/8.off", Mesh::OFFIO, GL_TRIANGLES);
+	score9Mesh = new Mesh(":/9.off", Mesh::OFFIO, GL_TRIANGLES);
+
+	float scoreScale = 0.12f;
+	Transform* score1Transform = new Transform(QQuaternion(), QVector3D(5,3,0), scoreScale);
+	score1 = new Light("score1", score1Transform, QVector4D(5.0, 5.0, 5.0, 1.0));
+	score1->addComponent(score0Mesh);
+	Transform* score2Transform = new Transform(QQuaternion(), QVector3D(4.5,3,0), scoreScale);
+	score2 = new Light("score2", score2Transform, QVector4D(5.0, 5.0, 5.0, 1.0));
+	score2->addComponent(score0Mesh);
+	Transform* score3Transform = new Transform(QQuaternion(), QVector3D(4,3,0), scoreScale);
+	score3 = new Light("score3", score3Transform, QVector4D(5.0, 5.0, 5.0, 1.0));
+	score3->addComponent(score0Mesh);
+	Transform* score4Transform = new Transform(QQuaternion(), QVector3D(3.5,3,0), scoreScale);
+	score4 = new Light("score4", score4Transform, QVector4D(5.0, 5.0, 5.0, 1.0));
+	score4->addComponent(score0Mesh);
+	addEntity(m_root, score1);
 }
 
 /**
@@ -298,7 +324,7 @@ void SceneGraph::addEntity(Entity *parent, Entity *entity) {
 }
 
 /**
- *
+ * Update
  * @param deltaTime
  */
 void SceneGraph::update(TimeStep deltaTime) {
@@ -328,6 +354,19 @@ void SceneGraph::update(TimeStep deltaTime) {
 		mainDecor->setTransform(transform);
 		background->setTransform(transformBackGround);
 		soleil->setTransform(transformY);
+		updateScore(score1, player->score);
+		if (player->score >= 10) {
+			updateScore(score2, player->score / 10);
+			addEntity(m_root, score2);
+		}
+		if (player->score >= 100) {
+			updateScore(score3, player->score / 100);
+			addEntity(m_root, score3);
+		}
+		if (player->score >= 1000) {
+			updateScore(score4, player->score / 1000);
+			addEntity(m_root, score4);
+		}
 
 
 		//   updatePhysics(); <-- fait tout dans le scenegraph
@@ -437,6 +476,11 @@ void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime) {
 	}
 }
 
+/**
+ * Scrolling du background (ciel)
+ * @param transform
+ * @param deltaTime
+ */
 void SceneGraph::scrollingBackGround(Transform* transform, TimeStep deltaTime)
 {
 	//On fait le scrolling:
@@ -453,7 +497,7 @@ void SceneGraph::scrollingBackGround(Transform* transform, TimeStep deltaTime)
 
 
 /**
- *
+ * Mouvement du joueur sur les 3 rails
  * @param transform
  * @param deltaTime
  */
@@ -508,7 +552,7 @@ void SceneGraph::mouvement(Transform* transform, TimeStep deltaTime) {
 	}
 }
 /**
- *
+ * Le joueur saute.
  * @param transform
  * @param deltaTime
  */
@@ -534,6 +578,52 @@ void SceneGraph::jump(Transform *transform, TimeStep deltaTime) {
 			player->isJumping = false;
 			isFalling = false;
 			player->hasJumped = false;
+		}
+	}
+}
+
+/**
+ * Met a jour le score de manière générique (n'importe quel chiffre).
+ * @param scoreXMesh Numéro du chiffre
+ * @param value Nouvelle valeur
+ */
+void SceneGraph::updateScore(Entity* scoreX, int value) {
+	auto components = scoreX->getComponents();
+	for (const auto &component: components) {
+		if (component->getCType() == 3) {
+			Mesh* mesh = dynamic_cast<Mesh*>(component);
+			switch (value) {
+				case 0:
+					*mesh = *score0Mesh;
+					break;
+				case 1:
+					*mesh = *score1Mesh;
+					break;
+				case 2:
+					mesh = score2Mesh;
+					break;
+				case 3:
+					mesh = score3Mesh;
+					break;
+				case 4:
+					mesh = score4Mesh;
+					break;
+				case 5:
+					mesh = score5Mesh;
+					break;
+				case 6:
+					mesh = score6Mesh;
+					break;
+				case 7:
+					mesh = score7Mesh;
+					break;
+				case 8:
+					mesh = score8Mesh;
+					break;
+				case 9:
+					mesh = score9Mesh;
+					break;
+			}
 		}
 	}
 }

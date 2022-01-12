@@ -32,6 +32,7 @@ public:
 	bool hasJumped = false;
 
 	float PointDeVie = 3.0f;
+	float score = 0;
 	bool justLostPDV = false;
 	
 

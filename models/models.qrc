@@ -2,5 +2,15 @@
     <qresource prefix="/">
         <file>sphere.obj</file>
         <file>sphere.off</file>
+        <file>0.off</file>
+        <file>1.off</file>
+        <file>2.off</file>
+        <file>3.off</file>
+        <file>4.off</file>
+        <file>5.off</file>
+        <file>6.off</file>
+        <file>7.off</file>
+        <file>8.off</file>
+        <file>9.off</file>
     </qresource>
 </RCC>

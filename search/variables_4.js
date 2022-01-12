@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['friction_428',['friction',['../class_collider.html#a7ce346daf02f46c86dcb15f6f77cf6cb',1,'Collider']]]
+  ['entities_460',['entities',['../class_player.html#a789df48ae282c96bdf6538352ca7c1df',1,'Player']]]
 ];

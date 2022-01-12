@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hasjumped_429',['hasJumped',['../class_player.html#a4e2646dc457e0f606422a17bf6395564',1,'Player']]]
+  ['friction_461',['friction',['../class_collider.html#a7ce346daf02f46c86dcb15f6f77cf6cb',1,'Collider']]]
 ];

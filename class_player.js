@@ -11,5 +11,6 @@ var class_player =
     [ "isJumping", "class_player.html#aab294bec9f8fed91bb7d599e37bfd5f6", null ],
     [ "isMovingLeft", "class_player.html#a17d02a838b283674ff1dcea435ec41c3", null ],
     [ "isMovingRight", "class_player.html#a5b702451c74d2e7607e4830d18eec10d", null ],
-    [ "lifes", "class_player.html#ae8588884ccc8675aa3d49073cb7faef5", null ]
+    [ "justLostPDV", "class_player.html#aa788a1859bdc3d45bfdbbf8eb14ee749", null ],
+    [ "PointDeVie", "class_player.html#a61a75136d157ce4debfc4976e29e68e1", null ]
 ];

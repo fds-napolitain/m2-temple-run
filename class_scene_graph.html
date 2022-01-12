@@ -113,6 +113,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6bad7ed0790085b6d6a9fc88f1b167a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ad4b891bdf749b13c7f31fccb1617c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a7ad4b891bdf749b13c7f31fccb1617c8">scrolling</a> (<a class="el" href="class_transform.html">Transform</a> *transform, <a class="el" href="class_time_step.html">TimeStep</a> deltaTime)</td></tr>
 <tr class="separator:a7ad4b891bdf749b13c7f31fccb1617c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2c16ac863d15d87c2fabe833e5d93c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#af2c16ac863d15d87c2fabe833e5d93c9">scrollingBackGround</a> (<a class="el" href="class_transform.html">Transform</a> *transform, <a class="el" href="class_time_step.html">TimeStep</a> deltaTime)</td></tr>
+<tr class="separator:af2c16ac863d15d87c2fabe833e5d93c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a925e3f72837561679c0972418fd0c739"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a925e3f72837561679c0972418fd0c739">mouvement</a> (<a class="el" href="class_transform.html">Transform</a> *transform, <a class="el" href="class_time_step.html">TimeStep</a> deltaTime)</td></tr>
 <tr class="separator:a925e3f72837561679c0972418fd0c739"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa74412faba34c53569ecd5ecbe9a2e6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#aa74412faba34c53569ecd5ecbe9a2e6f">jump</a> (<a class="el" href="class_transform.html">Transform</a> *transform, <a class="el" href="class_time_step.html">TimeStep</a> deltaTime)</td></tr>
@@ -130,8 +132,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad10176d75a9cc0da56626f682d083507 inherit pub_methods_class_scene"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b8cec2e32546713915f8c6303c951f1 inherit pub_methods_class_scene"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a3b8cec2e32546713915f8c6303c951f1">~Scene</a> ()</td></tr>
 <tr class="separator:a3b8cec2e32546713915f8c6303c951f1 inherit pub_methods_class_scene"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe4ed85bb0ab7b0f2212339486aad1ea inherit pub_methods_class_scene"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#afe4ed85bb0ab7b0f2212339486aad1ea">draw</a> (<a class="el" href="class_geometry_engine.html">GeometryEngine</a> *gEngine, QOpenGLShaderProgram &amp;shaderProgram, QOpenGLShaderProgram &amp;lightProgram)</td></tr>
-<tr class="separator:afe4ed85bb0ab7b0f2212339486aad1ea inherit pub_methods_class_scene"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1ca28de7d1db3421d306cfac4518e21 inherit pub_methods_class_scene"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#af1ca28de7d1db3421d306cfac4518e21">draw</a> (<a class="el" href="class_geometry_engine.html">GeometryEngine</a> *gEngine, QOpenGLShaderProgram &amp;shaderProgram, QOpenGLShaderProgram &amp;lightProgram, QOpenGLShaderProgram &amp;HMProgram)</td></tr>
+<tr class="separator:af1ca28de7d1db3421d306cfac4518e21 inherit pub_methods_class_scene"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -151,14 +153,16 @@ Public Attributes</h2></td></tr>
 <tr class="separator:addd9baeca47ac074b21c6807d8acd4ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07a8b2c8f91883560023d1d1bc26a5ac"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a07a8b2c8f91883560023d1d1bc26a5ac">timeWhenMoving</a> = 0.5f</td></tr>
 <tr class="separator:a07a8b2c8f91883560023d1d1bc26a5ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21b41c752f98075f11ae82531f476448"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a21b41c752f98075f11ae82531f476448">initScrollingSpeed</a> = 14.0f</td></tr>
+<tr class="memitem:a21b41c752f98075f11ae82531f476448"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a21b41c752f98075f11ae82531f476448">initScrollingSpeed</a> = 18.0f</td></tr>
 <tr class="separator:a21b41c752f98075f11ae82531f476448"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a148b4741233ce3efed764b334090fc05"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a148b4741233ce3efed764b334090fc05">scrollingSpeed</a> = <a class="el" href="class_scene_graph.html#a21b41c752f98075f11ae82531f476448">initScrollingSpeed</a></td></tr>
 <tr class="separator:a148b4741233ce3efed764b334090fc05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab510394f1e55fab2713d235b0b7258f7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#ab510394f1e55fab2713d235b0b7258f7">acceleration</a> = 1.0f</td></tr>
+<tr class="memitem:ab510394f1e55fab2713d235b0b7258f7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#ab510394f1e55fab2713d235b0b7258f7">acceleration</a> = 18.0f</td></tr>
 <tr class="separator:ab510394f1e55fab2713d235b0b7258f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07ec2878b696b705fa520fe14a90487e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a07ec2878b696b705fa520fe14a90487e">maxSpeed</a> = 24.0f</td></tr>
+<tr class="memitem:a07ec2878b696b705fa520fe14a90487e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a07ec2878b696b705fa520fe14a90487e">maxSpeed</a> = 220.0f</td></tr>
 <tr class="separator:a07ec2878b696b705fa520fe14a90487e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba54b7ac39495f39ed514f16decf0cf3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#aba54b7ac39495f39ed514f16decf0cf3">tempSpeed</a> = 0.0f</td></tr>
+<tr class="separator:aba54b7ac39495f39ed514f16decf0cf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32dd051afba0354e9b3e3815853f34a6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a32dd051afba0354e9b3e3815853f34a6">isJumping</a> = false</td></tr>
 <tr class="separator:a32dd051afba0354e9b3e3815853f34a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4990636a3acbf125eff550bce2251eac"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a4990636a3acbf125eff550bce2251eac">isFalling</a> = false</td></tr>
@@ -191,6 +195,22 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a7cfed7133b2d1890a218e68b3dfc1880"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff00d6cadfd633c0be7c1133ed0ded5f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#aff00d6cadfd633c0be7c1133ed0ded5f">mainDecor</a></td></tr>
 <tr class="separator:aff00d6cadfd633c0be7c1133ed0ded5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66e3b857ed4f016d025d018db289a0b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a66e3b857ed4f016d025d018db289a0b1">background</a></td></tr>
+<tr class="separator:a66e3b857ed4f016d025d018db289a0b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd3ec3ad1ef6439bd0a061e808e27be6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#acd3ec3ad1ef6439bd0a061e808e27be6">left</a></td></tr>
+<tr class="separator:acd3ec3ad1ef6439bd0a061e808e27be6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84cca42debee437ad970c1a13e07100b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a84cca42debee437ad970c1a13e07100b">right</a></td></tr>
+<tr class="separator:a84cca42debee437ad970c1a13e07100b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e051af4cfc69015e9b4741f9a1e2948"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a3e051af4cfc69015e9b4741f9a1e2948">staticLeft</a></td></tr>
+<tr class="separator:a3e051af4cfc69015e9b4741f9a1e2948"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbfc3cf14e60571c75f935a0f19b24fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#abbfc3cf14e60571c75f935a0f19b24fa">movingLeft</a></td></tr>
+<tr class="separator:abbfc3cf14e60571c75f935a0f19b24fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9ad5e591afe4e8b713ebe86b7d02f49"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#aa9ad5e591afe4e8b713ebe86b7d02f49">staticRight</a></td></tr>
+<tr class="separator:aa9ad5e591afe4e8b713ebe86b7d02f49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69d2db6961cba6bef0a6a5958ad5723f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a69d2db6961cba6bef0a6a5958ad5723f">movingRight</a></td></tr>
+<tr class="separator:a69d2db6961cba6bef0a6a5958ad5723f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f57f20e8d6d450c20a552729df0e1a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a9f57f20e8d6d450c20a552729df0e1a9">meteorite</a></td></tr>
+<tr class="separator:a9f57f20e8d6d450c20a552729df0e1a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af93bd8357f437f34ce21793204f17028"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_light.html">Light</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#af93bd8357f437f34ce21793204f17028">obstacle1</a></td></tr>
 <tr class="separator:af93bd8357f437f34ce21793204f17028"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7bfbd1e25bf306ec80891dfa91d1b48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_light.html">Light</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#aa7bfbd1e25bf306ec80891dfa91d1b48">obstacle2</a></td></tr>
@@ -201,22 +221,40 @@ Public Attributes</h2></td></tr>
 <tr class="separator:af036dddfc4fd274c8a429cf317dedcc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af843e01c09c3d11531d9a572b5d74518"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_light.html">Light</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#af843e01c09c3d11531d9a572b5d74518">obstacle5</a></td></tr>
 <tr class="separator:af843e01c09c3d11531d9a572b5d74518"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a158391335ab2a92d247d6a784e3a7a03"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a158391335ab2a92d247d6a784e3a7a03">initRingPos</a> = -1 * <a class="el" href="class_scene_graph.html#a21b41c752f98075f11ae82531f476448">initScrollingSpeed</a></td></tr>
-<tr class="separator:a158391335ab2a92d247d6a784e3a7a03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af282bc9b45395b72f3a7d6d592cac4d3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#af282bc9b45395b72f3a7d6d592cac4d3">ringAboveObstacle</a> = 1.0f</td></tr>
+<tr class="memitem:a41e1d49018160d3148c3ca55c0e927e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_light.html">Light</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a41e1d49018160d3148c3ca55c0e927e5">soleil</a></td></tr>
+<tr class="separator:a41e1d49018160d3148c3ca55c0e927e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af282bc9b45395b72f3a7d6d592cac4d3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#af282bc9b45395b72f3a7d6d592cac4d3">ringAboveObstacle</a> = 0.0f</td></tr>
 <tr class="separator:af282bc9b45395b72f3a7d6d592cac4d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a293c164b6aad2bf5edcab91b5a480f64"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_light.html">Light</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a293c164b6aad2bf5edcab91b5a480f64">ring1</a></td></tr>
-<tr class="separator:a293c164b6aad2bf5edcab91b5a480f64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a255d5a0ed0265dac7a9fa49be80c4524"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_light.html">Light</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a255d5a0ed0265dac7a9fa49be80c4524">ring2</a></td></tr>
-<tr class="separator:a255d5a0ed0265dac7a9fa49be80c4524"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac23478f62624c87418e5eeeb5becf6c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_light.html">Light</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#ac23478f62624c87418e5eeeb5becf6c1">ring3</a></td></tr>
-<tr class="separator:ac23478f62624c87418e5eeeb5becf6c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab979c8da4ef02f584dde1963fc14c712"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_light.html">Light</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#ab979c8da4ef02f584dde1963fc14c712">ring4</a></td></tr>
-<tr class="separator:ab979c8da4ef02f584dde1963fc14c712"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad937862f9f9be89ec07beebf626488e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_light.html">Light</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#ad937862f9f9be89ec07beebf626488e7">ring5</a></td></tr>
-<tr class="separator:ad937862f9f9be89ec07beebf626488e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7597257cc5f20718d601eef077b7d0f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_light.html">Light</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a7597257cc5f20718d601eef077b7d0f5">ring6</a></td></tr>
-<tr class="separator:a7597257cc5f20718d601eef077b7d0f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a417ea4b085058d51740e33b2ba0660c2"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a417ea4b085058d51740e33b2ba0660c2">ringXPos</a> = 0.0f</td></tr>
+<tr class="separator:a417ea4b085058d51740e33b2ba0660c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adff443b60a4b85ec8660459edb04f569"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#adff443b60a4b85ec8660459edb04f569">ringYPos</a> = 0.0f</td></tr>
+<tr class="separator:adff443b60a4b85ec8660459edb04f569"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ee74a8c0bb37cc92fd536edd6d18e1d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a9ee74a8c0bb37cc92fd536edd6d18e1d">ringZPos</a> = -1.5 * <a class="el" href="class_scene_graph.html#a21b41c752f98075f11ae82531f476448">initScrollingSpeed</a></td></tr>
+<tr class="separator:a9ee74a8c0bb37cc92fd536edd6d18e1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b72beacd12e058b1fc219965349372e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a3b72beacd12e058b1fc219965349372e">decalageRingPosY</a> = <a class="el" href="class_scene_graph.html#ae7b708d03583cec44bf08e96cd44a70f">tailleJump</a> / 20</td></tr>
+<tr class="separator:a3b72beacd12e058b1fc219965349372e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae80ee689624524cef4d012902747eb4"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#aae80ee689624524cef4d012902747eb4">decalageRingPosZ</a> = <a class="el" href="class_scene_graph.html#a21b41c752f98075f11ae82531f476448">initScrollingSpeed</a> / 2</td></tr>
+<tr class="separator:aae80ee689624524cef4d012902747eb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4fc8aca1351d248c67dc205cd955fbb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#ab4fc8aca1351d248c67dc205cd955fbb">ring1</a></td></tr>
+<tr class="separator:ab4fc8aca1351d248c67dc205cd955fbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76ba92e965437f711a898bcbd3e684ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a76ba92e965437f711a898bcbd3e684ed">ring2</a></td></tr>
+<tr class="separator:a76ba92e965437f711a898bcbd3e684ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3fac69df149b2faeca78af37c4acbfe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#af3fac69df149b2faeca78af37c4acbfe">ring3</a></td></tr>
+<tr class="separator:af3fac69df149b2faeca78af37c4acbfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a888178f91b36bce1720d094d22432878"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a888178f91b36bce1720d094d22432878">ring4</a></td></tr>
+<tr class="separator:a888178f91b36bce1720d094d22432878"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8125f3c458299d763b9252881e971976"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a8125f3c458299d763b9252881e971976">ring5</a></td></tr>
+<tr class="separator:a8125f3c458299d763b9252881e971976"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35e2f9306c093d23ba2ce61ce5da2f39"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a35e2f9306c093d23ba2ce61ce5da2f39">ring6</a></td></tr>
+<tr class="separator:a35e2f9306c093d23ba2ce61ce5da2f39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade5bd27084705ca7c2a86f781c3b8a64"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#ade5bd27084705ca7c2a86f781c3b8a64">ring7</a></td></tr>
+<tr class="separator:ade5bd27084705ca7c2a86f781c3b8a64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45635fc1615e6efc80c8fdcb0ece9eaf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a45635fc1615e6efc80c8fdcb0ece9eaf">ring8</a></td></tr>
+<tr class="separator:a45635fc1615e6efc80c8fdcb0ece9eaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a1f57b6e4910cf9d0fd2d8edb9ade8c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a8a1f57b6e4910cf9d0fd2d8edb9ade8c">ring9</a></td></tr>
+<tr class="separator:a8a1f57b6e4910cf9d0fd2d8edb9ade8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5b9a4b3da572fe6ca3a575ac6ca7c53"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#af5b9a4b3da572fe6ca3a575ac6ca7c53">ring10</a></td></tr>
+<tr class="separator:af5b9a4b3da572fe6ca3a575ac6ca7c53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac13d0792668f6bb907a9693d06e95867"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_player.html">Player</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#ac13d0792668f6bb907a9693d06e95867">player</a></td></tr>
 <tr class="separator:ac13d0792668f6bb907a9693d06e95867"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_class_scene"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_scene')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_scene.html">Scene</a></td></tr>
@@ -473,6 +511,34 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="af2c16ac863d15d87c2fabe833e5d93c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2c16ac863d15d87c2fabe833e5d93c9">&#9670;&nbsp;</a></span>scrollingBackGround()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SceneGraph::scrollingBackGround </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_transform.html">Transform</a> *&#160;</td>
+          <td class="paramname"><em>transform</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_time_step.html">TimeStep</a>&#160;</td>
+          <td class="paramname"><em>deltaTime</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a7a222ddcf4d75c48f1f1d11dc84c569c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7a222ddcf4d75c48f1f1d11dc84c569c">&#9670;&nbsp;</a></span>update()</h2>
 
@@ -550,7 +616,49 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float SceneGraph::acceleration = 1.0f</td>
+          <td class="memname">float SceneGraph::acceleration = 18.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a66e3b857ed4f016d025d018db289a0b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66e3b857ed4f016d025d018db289a0b1">&#9670;&nbsp;</a></span>background</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_entity.html">Entity</a>* SceneGraph::background</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3b72beacd12e058b1fc219965349372e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b72beacd12e058b1fc219965349372e">&#9670;&nbsp;</a></span>decalageRingPosY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SceneGraph::decalageRingPosY = <a class="el" href="class_scene_graph.html#ae7b708d03583cec44bf08e96cd44a70f">tailleJump</a> / 20</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aae80ee689624524cef4d012902747eb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae80ee689624524cef4d012902747eb4">&#9670;&nbsp;</a></span>decalageRingPosZ</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SceneGraph::decalageRingPosZ = <a class="el" href="class_scene_graph.html#a21b41c752f98075f11ae82531f476448">initScrollingSpeed</a> / 2</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -585,20 +693,6 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a158391335ab2a92d247d6a784e3a7a03"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a158391335ab2a92d247d6a784e3a7a03">&#9670;&nbsp;</a></span>initRingPos</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float SceneGraph::initRingPos = -1 * <a class="el" href="class_scene_graph.html#a21b41c752f98075f11ae82531f476448">initScrollingSpeed</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a21b41c752f98075f11ae82531f476448"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a21b41c752f98075f11ae82531f476448">&#9670;&nbsp;</a></span>initScrollingSpeed</h2>
 
@@ -606,7 +700,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float SceneGraph::initScrollingSpeed = 14.0f</td>
+          <td class="memname">float SceneGraph::initScrollingSpeed = 18.0f</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -711,6 +805,20 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="acd3ec3ad1ef6439bd0a061e808e27be6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd3ec3ad1ef6439bd0a061e808e27be6">&#9670;&nbsp;</a></span>left</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_entity.html">Entity</a>* SceneGraph::left</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aff00d6cadfd633c0be7c1133ed0ded5f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aff00d6cadfd633c0be7c1133ed0ded5f">&#9670;&nbsp;</a></span>mainDecor</h2>
 
@@ -732,7 +840,49 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float SceneGraph::maxSpeed = 24.0f</td>
+          <td class="memname">float SceneGraph::maxSpeed = 220.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9f57f20e8d6d450c20a552729df0e1a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f57f20e8d6d450c20a552729df0e1a9">&#9670;&nbsp;</a></span>meteorite</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_entity.html">Entity</a>* SceneGraph::meteorite</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abbfc3cf14e60571c75f935a0f19b24fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbfc3cf14e60571c75f935a0f19b24fa">&#9670;&nbsp;</a></span>movingLeft</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_entity.html">Entity</a>* SceneGraph::movingLeft</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a69d2db6961cba6bef0a6a5958ad5723f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69d2db6961cba6bef0a6a5958ad5723f">&#9670;&nbsp;</a></span>movingRight</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_entity.html">Entity</a>* SceneGraph::movingRight</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -963,84 +1113,154 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a293c164b6aad2bf5edcab91b5a480f64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a293c164b6aad2bf5edcab91b5a480f64">&#9670;&nbsp;</a></span>ring1</h2>
+<a id="a84cca42debee437ad970c1a13e07100b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84cca42debee437ad970c1a13e07100b">&#9670;&nbsp;</a></span>right</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_light.html">Light</a>* SceneGraph::ring1</td>
+          <td class="memname"><a class="el" href="class_entity.html">Entity</a>* SceneGraph::right</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a255d5a0ed0265dac7a9fa49be80c4524"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a255d5a0ed0265dac7a9fa49be80c4524">&#9670;&nbsp;</a></span>ring2</h2>
+<a id="ab4fc8aca1351d248c67dc205cd955fbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4fc8aca1351d248c67dc205cd955fbb">&#9670;&nbsp;</a></span>ring1</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_light.html">Light</a>* SceneGraph::ring2</td>
+          <td class="memname"><a class="el" href="class_entity.html">Entity</a>* SceneGraph::ring1</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="ac23478f62624c87418e5eeeb5becf6c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac23478f62624c87418e5eeeb5becf6c1">&#9670;&nbsp;</a></span>ring3</h2>
+<a id="af5b9a4b3da572fe6ca3a575ac6ca7c53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5b9a4b3da572fe6ca3a575ac6ca7c53">&#9670;&nbsp;</a></span>ring10</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_light.html">Light</a>* SceneGraph::ring3</td>
+          <td class="memname"><a class="el" href="class_entity.html">Entity</a>* SceneGraph::ring10</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="ab979c8da4ef02f584dde1963fc14c712"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab979c8da4ef02f584dde1963fc14c712">&#9670;&nbsp;</a></span>ring4</h2>
+<a id="a76ba92e965437f711a898bcbd3e684ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76ba92e965437f711a898bcbd3e684ed">&#9670;&nbsp;</a></span>ring2</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_light.html">Light</a>* SceneGraph::ring4</td>
+          <td class="memname"><a class="el" href="class_entity.html">Entity</a>* SceneGraph::ring2</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="ad937862f9f9be89ec07beebf626488e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad937862f9f9be89ec07beebf626488e7">&#9670;&nbsp;</a></span>ring5</h2>
+<a id="af3fac69df149b2faeca78af37c4acbfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3fac69df149b2faeca78af37c4acbfe">&#9670;&nbsp;</a></span>ring3</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_light.html">Light</a>* SceneGraph::ring5</td>
+          <td class="memname"><a class="el" href="class_entity.html">Entity</a>* SceneGraph::ring3</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a7597257cc5f20718d601eef077b7d0f5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7597257cc5f20718d601eef077b7d0f5">&#9670;&nbsp;</a></span>ring6</h2>
+<a id="a888178f91b36bce1720d094d22432878"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a888178f91b36bce1720d094d22432878">&#9670;&nbsp;</a></span>ring4</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_light.html">Light</a>* SceneGraph::ring6</td>
+          <td class="memname"><a class="el" href="class_entity.html">Entity</a>* SceneGraph::ring4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8125f3c458299d763b9252881e971976"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8125f3c458299d763b9252881e971976">&#9670;&nbsp;</a></span>ring5</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_entity.html">Entity</a>* SceneGraph::ring5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a35e2f9306c093d23ba2ce61ce5da2f39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35e2f9306c093d23ba2ce61ce5da2f39">&#9670;&nbsp;</a></span>ring6</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_entity.html">Entity</a>* SceneGraph::ring6</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ade5bd27084705ca7c2a86f781c3b8a64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade5bd27084705ca7c2a86f781c3b8a64">&#9670;&nbsp;</a></span>ring7</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_entity.html">Entity</a>* SceneGraph::ring7</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a45635fc1615e6efc80c8fdcb0ece9eaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45635fc1615e6efc80c8fdcb0ece9eaf">&#9670;&nbsp;</a></span>ring8</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_entity.html">Entity</a>* SceneGraph::ring8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8a1f57b6e4910cf9d0fd2d8edb9ade8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a1f57b6e4910cf9d0fd2d8edb9ade8c">&#9670;&nbsp;</a></span>ring9</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_entity.html">Entity</a>* SceneGraph::ring9</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1054,7 +1274,49 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float SceneGraph::ringAboveObstacle = 1.0f</td>
+          <td class="memname">float SceneGraph::ringAboveObstacle = 0.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a417ea4b085058d51740e33b2ba0660c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a417ea4b085058d51740e33b2ba0660c2">&#9670;&nbsp;</a></span>ringXPos</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SceneGraph::ringXPos = 0.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adff443b60a4b85ec8660459edb04f569"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adff443b60a4b85ec8660459edb04f569">&#9670;&nbsp;</a></span>ringYPos</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SceneGraph::ringYPos = 0.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9ee74a8c0bb37cc92fd536edd6d18e1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ee74a8c0bb37cc92fd536edd6d18e1d">&#9670;&nbsp;</a></span>ringZPos</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SceneGraph::ringZPos = -1.5 * <a class="el" href="class_scene_graph.html#a21b41c752f98075f11ae82531f476448">initScrollingSpeed</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1075,6 +1337,48 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a41e1d49018160d3148c3ca55c0e927e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41e1d49018160d3148c3ca55c0e927e5">&#9670;&nbsp;</a></span>soleil</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_light.html">Light</a>* SceneGraph::soleil</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3e051af4cfc69015e9b4741f9a1e2948"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e051af4cfc69015e9b4741f9a1e2948">&#9670;&nbsp;</a></span>staticLeft</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_entity.html">Entity</a>* SceneGraph::staticLeft</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa9ad5e591afe4e8b713ebe86b7d02f49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9ad5e591afe4e8b713ebe86b7d02f49">&#9670;&nbsp;</a></span>staticRight</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_entity.html">Entity</a>* SceneGraph::staticRight</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ae7b708d03583cec44bf08e96cd44a70f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae7b708d03583cec44bf08e96cd44a70f">&#9670;&nbsp;</a></span>tailleJump</h2>
 
@@ -1083,6 +1387,20 @@ Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">float SceneGraph::tailleJump = 10.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aba54b7ac39495f39ed514f16decf0cf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba54b7ac39495f39ed514f16decf0cf3">&#9670;&nbsp;</a></span>tempSpeed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SceneGraph::tempSpeed = 0.0f</td>
         </tr>
       </table>
 </div><div class="memdoc">

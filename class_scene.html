@@ -107,8 +107,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad10176d75a9cc0da56626f682d083507"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b8cec2e32546713915f8c6303c951f1"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a3b8cec2e32546713915f8c6303c951f1">~Scene</a> ()</td></tr>
 <tr class="separator:a3b8cec2e32546713915f8c6303c951f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe4ed85bb0ab7b0f2212339486aad1ea"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#afe4ed85bb0ab7b0f2212339486aad1ea">draw</a> (<a class="el" href="class_geometry_engine.html">GeometryEngine</a> *gEngine, QOpenGLShaderProgram &amp;shaderProgram, QOpenGLShaderProgram &amp;lightProgram)</td></tr>
-<tr class="separator:afe4ed85bb0ab7b0f2212339486aad1ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1ca28de7d1db3421d306cfac4518e21"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#af1ca28de7d1db3421d306cfac4518e21">draw</a> (<a class="el" href="class_geometry_engine.html">GeometryEngine</a> *gEngine, QOpenGLShaderProgram &amp;shaderProgram, QOpenGLShaderProgram &amp;lightProgram, QOpenGLShaderProgram &amp;HMProgram)</td></tr>
+<tr class="separator:af1ca28de7d1db3421d306cfac4518e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab46461de866084d13ad89ae4d4c0fa41"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#ab46461de866084d13ad89ae4d4c0fa41">update</a> (<a class="el" href="class_time_step.html">TimeStep</a> timeStep)</td></tr>
 <tr class="separator:ab46461de866084d13ad89ae4d4c0fa41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -169,14 +169,11 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="afe4ed85bb0ab7b0f2212339486aad1ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe4ed85bb0ab7b0f2212339486aad1ea">&#9670;&nbsp;</a></span>draw()</h2>
+<a id="af1ca28de7d1db3421d306cfac4518e21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1ca28de7d1db3421d306cfac4518e21">&#9670;&nbsp;</a></span>draw()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void Scene::draw </td>
@@ -194,7 +191,13 @@ Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">QOpenGLShaderProgram &amp;&#160;</td>
-          <td class="paramname"><em>lightProgram</em>&#160;</td>
+          <td class="paramname"><em>lightProgram</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QOpenGLShaderProgram &amp;&#160;</td>
+          <td class="paramname"><em>HMProgram</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -202,11 +205,6 @@ Public Attributes</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Dessine le graphe de scene </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

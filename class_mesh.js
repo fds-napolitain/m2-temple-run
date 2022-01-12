@@ -20,5 +20,9 @@ var class_mesh =
     [ "initPlaneGeometry", "class_mesh.html#a078c186b0c21576ffa0c5f581b08f83a", null ],
     [ "loadMesh", "class_mesh.html#acec8ddbf65660822c92d429a6bd8e7e9", null ],
     [ "loadTexture", "class_mesh.html#a40108dab673f10b373c70030dbf96bd7", null ],
-    [ "setType", "class_mesh.html#a6a5869823e614b76eb7f7e90e809f8b6", null ]
+    [ "loadTextureHM", "class_mesh.html#ad67d8e8849bf74138b450bc7832d9611", null ],
+    [ "setType", "class_mesh.html#a6a5869823e614b76eb7f7e90e809f8b6", null ],
+    [ "m_HMground", "class_mesh.html#af89ccd02d242fd9ba9907fe1f143be6f", null ],
+    [ "m_HMhigh", "class_mesh.html#a56be08fcdeab0e23a37cd11bf4e8d9a4", null ],
+    [ "m_HMmid", "class_mesh.html#a1dce13a8bd88fd5edfdf4add3c3123f9", null ]
 ];

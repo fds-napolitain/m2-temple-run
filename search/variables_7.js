@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['joueur_5frl_436',['joueur_rl',['../class_scene_graph.html#a8d35d0934b544e7503e8857ef4214a8d',1,'SceneGraph']]],
-  ['joueur_5frm_437',['joueur_rm',['../class_scene_graph.html#af3833d92758c9a3b37005b3037aa33b3',1,'SceneGraph']]],
-  ['joueur_5frr_438',['joueur_rr',['../class_scene_graph.html#a7ee795add4846cd607402cd55186225b',1,'SceneGraph']]]
+  ['initscrollingspeed_463',['initScrollingSpeed',['../class_scene_graph.html#a21b41c752f98075f11ae82531f476448',1,'SceneGraph']]],
+  ['isfalling_464',['isFalling',['../class_scene_graph.html#a4990636a3acbf125eff550bce2251eac',1,'SceneGraph']]],
+  ['isjumping_465',['isJumping',['../class_player.html#aab294bec9f8fed91bb7d599e37bfd5f6',1,'Player::isJumping()'],['../class_scene_graph.html#a32dd051afba0354e9b3e3815853f34a6',1,'SceneGraph::isJumping()']]],
+  ['ismovingleft_466',['isMovingLeft',['../class_player.html#a17d02a838b283674ff1dcea435ec41c3',1,'Player::isMovingLeft()'],['../class_scene_graph.html#aef173d82ad0fd3a650e5f6cba767e595',1,'SceneGraph::isMovingLeft()']]],
+  ['ismovingright_467',['isMovingRight',['../class_player.html#a5b702451c74d2e7607e4830d18eec10d',1,'Player::isMovingRight()'],['../class_scene_graph.html#ad9e41c040a51c49866b560e1528c7661',1,'SceneGraph::isMovingRight()']]]
 ];

@@ -6,9 +6,7 @@ var dir_78a1faf1144f473fbaca3996ef18d254 =
       [ "Camera", "class_camera.html", "class_camera" ]
     ] ],
     [ "entity.cpp", "entity_8cpp.html", null ],
-    [ "entity.hpp", "entity_8hpp.html", [
-      [ "Entity", "class_entity.html", "class_entity" ]
-    ] ],
+    [ "entity.hpp", "entity_8hpp.html", "entity_8hpp" ],
     [ "geometryengine.cpp", "geometryengine_8cpp.html", null ],
     [ "geometryengine.hpp", "geometryengine_8hpp.html", [
       [ "VertexData", "struct_vertex_data.html", "struct_vertex_data" ],

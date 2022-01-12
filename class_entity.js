@@ -6,6 +6,7 @@ var class_entity =
     [ "addComponent", "class_entity.html#a70a722ddce08d51de0605965597bc69e", null ],
     [ "getChildren", "class_entity.html#a507b166a88fde8951a8e866bf8398b25", null ],
     [ "getComponents", "class_entity.html#aef79f57ca6aa7823aa679f6f1f774354", null ],
+    [ "getEType", "class_entity.html#aaee9b36f9321e0453323368d0a56b731", null ],
     [ "getName", "class_entity.html#a403f69eb888da7c5a690b79c658cdf47", null ],
     [ "getParent", "class_entity.html#a112d8405932b8718b4b5c4b4bcde5b41", null ],
     [ "getTransform", "class_entity.html#ab29dfced383a3621ce1c33e51d2f8a35", null ],

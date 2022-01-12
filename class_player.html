@@ -138,11 +138,11 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5a07bb6e7325911899162250b4b90503 inherit pub_methods_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45d5a3b92478ad8b4fb305b9b3e08c7a inherit pub_methods_class_entity"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a45d5a3b92478ad8b4fb305b9b3e08c7a">removeChild</a> (<a class="el" href="class_entity.html">Entity</a> *child)</td></tr>
 <tr class="separator:a45d5a3b92478ad8b4fb305b9b3e08c7a inherit pub_methods_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaee9b36f9321e0453323368d0a56b731 inherit pub_methods_class_entity"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#aaee9b36f9321e0453323368d0a56b731">getEType</a> ()</td></tr>
+<tr class="separator:aaee9b36f9321e0453323368d0a56b731 inherit pub_methods_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ae8588884ccc8675aa3d49073cb7faef5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#ae8588884ccc8675aa3d49073cb7faef5">lifes</a> = 3</td></tr>
-<tr class="separator:ae8588884ccc8675aa3d49073cb7faef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a789df48ae282c96bdf6538352ca7c1df"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_entity.html">Entity</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a789df48ae282c96bdf6538352ca7c1df">entities</a></td></tr>
 <tr class="separator:a789df48ae282c96bdf6538352ca7c1df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec19b4df3a8d16ba3d05d14b07f20ee0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_collider.html">Collider</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#aec19b4df3a8d16ba3d05d14b07f20ee0">collider</a></td></tr>
@@ -155,6 +155,10 @@ Public Attributes</h2></td></tr>
 <tr class="separator:aab294bec9f8fed91bb7d599e37bfd5f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e2646dc457e0f606422a17bf6395564"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a4e2646dc457e0f606422a17bf6395564">hasJumped</a> = false</td></tr>
 <tr class="separator:a4e2646dc457e0f606422a17bf6395564"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61a75136d157ce4debfc4976e29e68e1"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a61a75136d157ce4debfc4976e29e68e1">PointDeVie</a> = 3.0f</td></tr>
+<tr class="separator:a61a75136d157ce4debfc4976e29e68e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa788a1859bdc3d45bfdbbf8eb14ee749"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#aa788a1859bdc3d45bfdbbf8eb14ee749">justLostPDV</a> = false</td></tr>
+<tr class="separator:aa788a1859bdc3d45bfdbbf8eb14ee749"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af5aaea393030f959d568c806ca9100ca"></a>
@@ -354,14 +358,28 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ae8588884ccc8675aa3d49073cb7faef5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8588884ccc8675aa3d49073cb7faef5">&#9670;&nbsp;</a></span>lifes</h2>
+<a id="aa788a1859bdc3d45bfdbbf8eb14ee749"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa788a1859bdc3d45bfdbbf8eb14ee749">&#9670;&nbsp;</a></span>justLostPDV</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Player::lifes = 3</td>
+          <td class="memname">bool Player::justLostPDV = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a61a75136d157ce4debfc4976e29e68e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61a75136d157ce4debfc4976e29e68e1">&#9670;&nbsp;</a></span>PointDeVie</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Player::PointDeVie = 3.0f</td>
         </tr>
       </table>
 </div><div class="memdoc">

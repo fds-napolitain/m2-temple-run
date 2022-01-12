@@ -96,21 +96,23 @@ $(document).ready(function(){initNavTree('_light_8hpp_source.html',''); initResi
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="entity_8hpp.html">entity.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;QVector4D&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_light.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_light.html">Light</a> : <span class="keyword">public</span> <a class="code" href="class_entity.html">Entity</a>{</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="class_light.html#a7692363fb8c8a2c987f0c682a53defa6">Light</a>(std::string name, <a class="code" href="class_transform.html">Transform</a>* transformation, QVector4D color);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_light.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_light.html">Light</a> : <span class="keyword">public</span> <a class="code" href="class_entity.html">Entity</a> {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="class_light.html#a7692363fb8c8a2c987f0c682a53defa6">Light</a>(std::string name, <a class="code" href="class_transform.html">Transform</a>* transformation, QVector4D color);</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">const</span> QVector4D &amp;<a class="code" href="class_light.html#a97ad6a4af5507a19f226792f167f7a58">getColor</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    QVector4D m_color;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;};</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_light.html#ac4b6afcc4dbe1cef5091bc31dfdf6b89">getEType</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    QVector4D m_color;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;};</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif //TEMPLERUN_LIGHT_HPP</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#endif //TEMPLERUN_LIGHT_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aclass_light_html_ac4b6afcc4dbe1cef5091bc31dfdf6b89"><div class="ttname"><a href="class_light.html#ac4b6afcc4dbe1cef5091bc31dfdf6b89">Light::getEType</a></div><div class="ttdeci">int getEType() override</div><div class="ttdef"><b>Definition:</b> Light.cpp:26</div></div>
 <div class="ttc" id="aclass_light_html_a7692363fb8c8a2c987f0c682a53defa6"><div class="ttname"><a href="class_light.html#a7692363fb8c8a2c987f0c682a53defa6">Light::Light</a></div><div class="ttdeci">Light(std::string name, Transform *transformation, QVector4D color)</div><div class="ttdef"><b>Definition:</b> Light.cpp:13</div></div>
 <div class="ttc" id="aclass_light_html_a97ad6a4af5507a19f226792f167f7a58"><div class="ttname"><a href="class_light.html#a97ad6a4af5507a19f226792f167f7a58">Light::getColor</a></div><div class="ttdeci">const QVector4D &amp; getColor() const</div><div class="ttdef"><b>Definition:</b> Light.cpp:22</div></div>
 <div class="ttc" id="aentity_8hpp_html"><div class="ttname"><a href="entity_8hpp.html">entity.hpp</a></div></div>

@@ -11,12 +11,12 @@ SceneGraph::SceneGraph(Entity *root) :
 {
     player = new Player("player"); //ps: les static bougent, faut changer le nom
 	Transform* solTransform = new Transform(QQuaternion(), QVector3D(0, -4.0, 0), 1);
-	Transform* rightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 1.0, 90), QVector3D(-8, -2.0, 0), 1);
-	Transform* staticRightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 1.0, 90), QVector3D(-8, -2.0, -100), 1);
-	Transform* movingRightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(4, -2.0, -50), 1);
-	Transform* leftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-30, -2.0, 0), 1);
-	Transform* staticLeftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-30, -2.0, -100), 1);
-	Transform* movingLeftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-30, -2.0, -50), 1);
+	Transform* rightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 1.0, 90), QVector3D(-8, -2.0, -100), 1);
+	Transform* staticRightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 1.0, 90), QVector3D(-8, -2.0, -290), 1);
+	Transform* movingRightTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 1.0, 90), QVector3D(-8, -2.0, -480), 1);
+	Transform* leftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-30, -2.0,-100), 1);
+	Transform* staticLeftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-30, -2.0, -290), 1);
+	Transform* movingLeftTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, -1.0, 90), QVector3D(-30, -2.0, -480), 1);
 	Transform* mainDecorTransform = new Transform(QQuaternion::fromAxisAndAngle(0.0, 0.0, 0.0,  0), QVector3D(0, 0.0, -100), 1);
 	Transform* backgroundTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(-30, 0.0, -105), 1);
 	Transform* soleilTransform = new Transform(QQuaternion::fromAxisAndAngle(1.0, 0.0, 0.0, 90), QVector3D(0.0, 100.0f, 20), 5);
@@ -26,10 +26,10 @@ SceneGraph::SceneGraph(Entity *root) :
 	Entity* sol = new Entity("sol", solTransform);
 	right = new Entity("right", rightTransform);
 	staticRight = new Entity("staticright", staticRightTransform);
-	movingRight = new Entity("right", staticRightTransform);
+	movingRight = new Entity("right", movingRightTransform);
 	left = new Entity("left", leftTransform);
 	staticLeft = new Entity("staticleft", staticLeftTransform);
-	movingLeft = new Entity("left", staticLeftTransform);
+	movingLeft = new Entity("left", movingLeftTransform);
 	mainDecor = new Entity("mainDecor", mainDecorTransform);
 	background = new Entity("fond", backgroundTransform);
 	meteorite = new Entity("meteorite", meteoriteTransform);
@@ -63,13 +63,13 @@ SceneGraph::SceneGraph(Entity *root) :
 	Mesh* meteoriteMesh = new Mesh(":/sphere.off", Mesh::OFFIO, GL_TRIANGLES);
 
 	solMesh->initPlaneGeometry(16,16,200,200);
-	rightMesh->initPlaneGeometry(16,16,100,100);
-	staticRightMesh->initPlaneGeometry(16,16,100,100);
-	movingRightMesh->initPlaneGeometry(16,16,100,100);
-	leftMesh->initPlaneGeometry(16,16,100,100);
-	staticLeftMesh->initPlaneGeometry(16,16,100,100);
-	movingLeftMesh->initPlaneGeometry(16,16,100,100);
-	backgroundMesh->initPlaneGeometry(16, 16, 100, 100);
+	rightMesh->initPlaneGeometry(100, 100,100,100);
+	staticRightMesh->initPlaneGeometry(100, 100,100,100);
+	movingRightMesh->initPlaneGeometry(100, 100,100,100);
+	leftMesh->initPlaneGeometry(100, 100,100,100);
+	staticLeftMesh->initPlaneGeometry(100, 100,100,100);
+	movingLeftMesh->initPlaneGeometry(100, 100,100,100);
+	backgroundMesh->initPlaneGeometry(100, 100, 100, 100);
 	backgroundMesh->loadTextureHM(":/ciel.png", ":/ciel.png", ":/ciel.png", ":/ciel.png");
 	meteoriteMesh->loadTexture(":/neige.png");
 
@@ -96,13 +96,13 @@ SceneGraph::SceneGraph(Entity *root) :
 	meteorite->addComponent(meteoriteBS);
 
 	addEntity(m_root, mainDecor);
-	addEntity(mainDecor, staticRight);
-	addEntity(mainDecor, movingRight);
-	addEntity(mainDecor, staticLeft);
-	addEntity(mainDecor, movingLeft);
+	addEntity(m_root, staticRight);
+	addEntity(m_root, movingRight);
+	addEntity(m_root, staticLeft);
+	addEntity(m_root, movingLeft);
 	addEntity(mainDecor, sol);
-	addEntity(mainDecor, right);
-	addEntity(mainDecor, left);
+	addEntity(m_root, right);
+	addEntity(m_root, left);
 	addEntity(m_root, player);
 	addEntity(player, player->getEntities()[0]);
 	addEntity(player, player->getEntities()[1]);
@@ -374,6 +374,12 @@ Entity *SceneGraph::getRoot() {
 void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime) {
 	//On fait le scrolling:
 	transform->position += QVector3D(0.0, 0.0, scrollingSpeed * deltaTime);
+	left->getTransform()->position += QVector3D(0.0, 0.0, scrollingSpeed * deltaTime);
+	movingLeft->getTransform()->position += QVector3D(0.0, 0.0, scrollingSpeed * deltaTime);
+	staticLeft->getTransform()->position += QVector3D(0.0, 0.0, scrollingSpeed * deltaTime);
+	right->getTransform()->position += QVector3D(0.0, 0.0, scrollingSpeed * deltaTime);
+	movingRight->getTransform()->position += QVector3D(0.0, 0.0, scrollingSpeed * deltaTime);
+	staticRight->getTransform()->position += QVector3D(0.0, 0.0, scrollingSpeed * deltaTime);
 
 	if (transform->position.z() >= 100)
 	{
@@ -388,19 +394,13 @@ void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime) {
 		meteorite->getTransform()->position.setX((rand() % 3 - 1) * distanceWhenMoving);
 
 
-		left->getTransform()->position.setZ(transform->position.z()- left->getTransform()->position.z());
-		staticLeft->getTransform()->position.setZ(transform->position.z()- staticLeft->getTransform()->position.z());
-		movingLeft->getTransform()->position.setZ(transform->position.z()- movingLeft->getTransform()->position.z());
-		staticRight->getTransform()->position.setZ(transform->position.z()- staticRight->getTransform()->position.z());
-		right->getTransform()->position.setZ(transform->position.z()- right->getTransform()->position.z());
-		movingRight->getTransform()->position.setZ(transform->position.z()- movingRight->getTransform()->position.z());
-
+		
 		meteorite->getTransform()->position.setY(100.0f);
 		meteorite->getTransform()->position.setZ(spawnMeteorite);
 
 
 
-		transform->position = QVector3D(transform->position.x(), transform->position.y(), -100);
+		transform->position = QVector3D(transform->position.x(), transform->position.y(), -150);
 		if (scrollingSpeed < maxSpeed)
 		{
 			scrollingSpeed += acceleration;
@@ -419,22 +419,48 @@ void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime) {
 	{
 		soleil->getTransform()->position.setY(100.0f);
 	}
-	if (staticLeft->getTransform()->position.z() >= 100)
+	
+	if (staticLeft->getTransform()->position.z()>= 100 && movingLeft->getTransform()->position.z() >= 0)
 	{
 		float WallPos = 0.0f;
-		WallPos = ((rand() % 16)-8) * 5;
+		WallPos = ((rand() % 100)-50);
+		float WallPosY = 0.0f;
+		WallPosY = ((rand() % 200) - 100);
 
-		staticLeft->getTransform()->position.setZ(left->getTransform()->position.z()+WallPos);
-		staticRight->getTransform()->position.setZ(right->getTransform()->position.z() + WallPos);
+		staticLeft->getTransform()->position.setZ(left->getTransform()->position.z() - 150 + WallPos);
+		staticRight->getTransform()->position.setZ(left->getTransform()->position.z() - 150 + WallPos);
+		staticLeft->getTransform()->position.setY(WallPosY);
+		staticRight->getTransform()->position.setY(WallPosY);
 	}
-	if (movingLeft->getTransform()->position.z() >= 100)
+	if (movingLeft->getTransform()->position.z()>= 100 && left->getTransform()->position.z() >=0)
 	{
 		float WallPos = 0.0f;
-		WallPos = ((rand() % 20) - 10) * 5;
+		WallPos = ((rand() % 100) - 50);
+		float WallPosY = 0.0f;
+		WallPosY = ((rand() % 200) - 100);
 
-		movingLeft->getTransform()->position.setZ(staticLeft->getTransform()->position.z() + WallPos);
-		movingRight->getTransform()->position.setZ(staticRight->getTransform()->position.z() + WallPos);
+		movingLeft->getTransform()->position.setZ(staticLeft->getTransform()->position.z() -150 + WallPos);
+		movingRight->getTransform()->position.setZ(staticLeft->getTransform()->position.z() -150 + WallPos);
+		movingLeft->getTransform()->position.setY(WallPosY);
+		movingRight->getTransform()->position.setY(WallPosY);
 	}
+	if (left->getTransform()->position.z()>= 100 && staticLeft->getTransform()->position.z() >= 0)
+	{
+		float WallPos = 0.0f;
+		WallPos = ((rand() % 100) - 50);
+		float WallPosY = 0.0f;
+		WallPosY = ((rand() % 200) - 100);
+		
+
+		left->getTransform()->position.setZ(movingLeft->getTransform()->position.z() - 150 +WallPos);
+		right->getTransform()->position.setZ(movingLeft->getTransform()->position.z() - 150 + WallPos);
+		left->getTransform()->position.setY(WallPosY);
+		right->getTransform()->position.setY(WallPosY);
+	}
+
+	
+
+
 }
 
 void SceneGraph::scrollingBackGround(Transform* transform, TimeStep deltaTime)
@@ -494,6 +520,12 @@ void SceneGraph::mouvement(Transform* transform, TimeStep deltaTime) {
 		distMoved += deplacement;
 		std::cout << "moving left";
 		transform->position += QVector3D(deplacement, 0.0, 0.0);
+		left->getTransform()->position += QVector3D(deplacement, 0.0, 0.0);
+		movingLeft->getTransform()->position += QVector3D(deplacement, 0.0, 0.0);
+		staticLeft->getTransform()->position += QVector3D(deplacement, 0.0, 0.0);
+		right->getTransform()->position += QVector3D(deplacement, 0.0, 0.0);
+		movingRight->getTransform()->position += QVector3D(deplacement, 0.0, 0.0);
+		staticRight->getTransform()->position += QVector3D(deplacement, 0.0, 0.0);
 
 		player->isMovingLeft = true;
 		player->isMovingRight = false;
@@ -502,7 +534,12 @@ void SceneGraph::mouvement(Transform* transform, TimeStep deltaTime) {
 		distMoved += deplacement;
 		std::cout << "moving right";
 		transform->position += QVector3D(-deplacement, 0.0, 0.0);
-
+		left->getTransform()->position += QVector3D(-deplacement, 0.0, 0.0);
+		movingLeft->getTransform()->position += QVector3D(-deplacement, 0.0, 0.0);
+		staticLeft->getTransform()->position += QVector3D(-deplacement, 0.0, 0.0);
+		right->getTransform()->position += QVector3D(-deplacement, 0.0, 0.0);
+		movingRight->getTransform()->position += QVector3D(-deplacement, 0.0, 0.0);
+		staticRight->getTransform()->position += QVector3D(-deplacement, 0.0, 0.0);
 		player->isMovingLeft = false;
 		player->isMovingRight = true;
 	}
@@ -517,6 +554,12 @@ void SceneGraph::jump(Transform *transform, TimeStep deltaTime) {
 	if (isJumping) {
 		if (transform->position.y() > -tailleJump) {
 			transform->position += QVector3D(0.0f, (-tailleJump / timeJumping) * deltaTime, 0.0f);
+			left->getTransform()->position += QVector3D(0.0f, (-tailleJump / timeJumping) * deltaTime, 0.0f);
+			movingLeft->getTransform()->position += QVector3D(0.0f, (-tailleJump / timeJumping) * deltaTime, 0.0f);
+			staticLeft->getTransform()->position += QVector3D(0.0f, (-tailleJump / timeJumping) * deltaTime, 0.0f);
+			right->getTransform()->position += QVector3D(0.0f, (-tailleJump / timeJumping) * deltaTime, 0.0f);
+			movingRight->getTransform()->position += QVector3D(0.0f, (-tailleJump / timeJumping) * deltaTime, 0.0f);
+			staticRight->getTransform()->position += QVector3D(0.0f, (-tailleJump / timeJumping) * deltaTime, 0.0f);
 		} else {
 			transform->position.setY(-tailleJump);
 			isJumping = false;
@@ -528,6 +571,12 @@ void SceneGraph::jump(Transform *transform, TimeStep deltaTime) {
 	if (isFalling) {
 		if (transform->position.y() < 0.0f) {
 			transform->position += QVector3D(0.0f, (tailleJump / timeFalling) * deltaTime, 0.0f);
+			left->getTransform()->position += QVector3D(0.0f, (tailleJump / timeFalling) * deltaTime, 0.0f);
+			movingLeft->getTransform()->position += QVector3D(0.0f, (tailleJump / timeFalling) * deltaTime, 0.0f);
+			staticLeft->getTransform()->position += QVector3D(0.0f, (tailleJump / timeFalling) * deltaTime, 0.0f);
+			right->getTransform()->position += QVector3D(0.0f, (tailleJump / timeFalling) * deltaTime, 0.0f);
+			movingRight->getTransform()->position += QVector3D(0.0f, (tailleJump / timeFalling) * deltaTime, 0.0f);
+			staticRight->getTransform()->position += QVector3D(0.0f, (tailleJump / timeFalling) * deltaTime, 0.0f);
 		} else {
 			transform->position.setY(0.0f);
 			isJumping = false;

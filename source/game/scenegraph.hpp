@@ -34,7 +34,7 @@ public:
     float timeWhenMoving = 0.5f;
     float initScrollingSpeed = 18.0f;
     float scrollingSpeed = initScrollingSpeed;
-    float acceleration = 5.0f;
+    float acceleration = 3.0f;
     float maxSpeed = 220.0f;
     float tempSpeed = 0.0f; //permet de freeze le jeu pour pouvoir faire la d�mo.
 

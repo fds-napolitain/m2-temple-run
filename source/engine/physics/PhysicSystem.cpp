@@ -24,7 +24,7 @@ void PhysicSystem::update(TimeStep delta, std::vector<Entity*> entities, Player*
                     entity->getTransform()->position.setX(15.0f);
                     if (entity->getName() == "obstacle")
                     {
-                        if (player->PointDeVie >= 1)
+                        if (player->PointDeVie >= 0)
                         {
                             player->PointDeVie -= 1;
                             player->justLostPDV=true;

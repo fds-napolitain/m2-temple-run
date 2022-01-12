@@ -74,8 +74,12 @@ public:
 
 	Entity *mainDecor;
     Entity  *background;
+    Entity* left;
+    Entity* right;
     Entity* staticLeft;
+    Entity* movingLeft;
     Entity* staticRight;
+    Entity* movingRight;
     Entity* meteorite;
     Light *obstacle1;
     Light *obstacle2;
@@ -88,7 +92,7 @@ public:
 
 
     
-    float ringAboveObstacle = 1.0f; //1 v 0 f
+    float ringAboveObstacle = 0.0f; //1 v 0 f
     float ringXPos = 0.0f;
     float ringYPos = 0.0f;
     float ringZPos = -1.5 * initScrollingSpeed;

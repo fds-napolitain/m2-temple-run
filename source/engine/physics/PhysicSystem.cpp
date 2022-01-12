@@ -26,8 +26,10 @@ void PhysicSystem::update(TimeStep delta, const std::vector<Entity*>& entities, 
                             player->PointDeVie += 1;
                         }
                     }
-					if (entity->getName() == "ring") {
+					if (entity->getName() == "ring1" || entity->getName() == "ring2" || entity->getName() == "ring3" || entity->getName() == "ring4" || entity->getName() == "ring5" ||
+							entity->getName() == "ring6" || entity->getName() == "ring7" || entity->getName() == "ring8" || entity->getName() == "ring9") {
 						player->score++;
+						std::cout << " je gagne des points " << player->score << " !\n";
 					}
                     std::cout << " je collide ! " << isIntersectingPlayer.getDirection().x() << " " << isIntersectingPlayer.getDirection().y() << " " << isIntersectingPlayer.getDirection().z() << " " << " \n";
                 }

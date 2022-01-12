@@ -594,10 +594,10 @@ void SceneGraph::updateScore(Entity* scoreX, int value) {
 			Mesh* mesh = dynamic_cast<Mesh*>(component);
 			switch (value) {
 				case 0:
-					*mesh = *score0Mesh;
+					mesh = score0Mesh;
 					break;
 				case 1:
-					*mesh = *score1Mesh;
+					mesh = score1Mesh;
 					break;
 				case 2:
 					mesh = score2Mesh;

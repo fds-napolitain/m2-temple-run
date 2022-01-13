@@ -1,5 +1,5 @@
 #include "scene.hpp"
-#include "Light.hpp"
+#include "source/engine/entity/Light.hpp"
 
 /**
  * Constructeur (par défaut)

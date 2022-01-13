@@ -2,8 +2,8 @@
 #define COLLIDER_H
 
 #include <QVector3D>
-#include "source/engine/physics/ReferenceCounter.hpp"
-#include "source/engine/physics/intersectdata.hpp"
+#include "source/engine/utilities/ReferenceCounter.hpp"
+#include "source/engine/system/physics/intersectdata.hpp"
 #include "source/engine/transform.hpp"
 #include "source/engine/components/component.hpp"
 

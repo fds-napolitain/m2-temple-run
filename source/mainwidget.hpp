@@ -51,9 +51,9 @@
 #ifndef MAINWIDGET_H
 #define MAINWIDGET_H
 
-#include "source/engine/rendering/geometryengine.hpp"
+#include "source/engine/system/rendering/geometryengine.hpp"
 #include "source/game/scenegraph.hpp"
-#include "source/engine/rendering/mesh.hpp"
+#include "source/engine/components/rendering/mesh.hpp"
 #include "source/engine/TimeStep.hpp"
 #include "source/engine/TargetFPS.hpp"
 #include <QOpenGLWidget>
@@ -63,13 +63,13 @@
 #include <QVector2D>
 #include <QOpenGLShaderProgram>
 #include <QOpenGLTexture>
-#include "source/engine/rendering/scene.hpp"
+#include "source/engine/system/rendering/scene.hpp"
 #include <QElapsedTimer>
 #include <QTimer>
 #include <QMouseEvent>
 #include <QElapsedTimer>
 #include <cmath>
-#include"source/engine/rendering/BasicIO.hpp"
+#include"source/engine/utilities/BasicIO.hpp"
 
 class GeometryEngine;
 

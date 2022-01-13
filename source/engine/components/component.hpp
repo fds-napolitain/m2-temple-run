@@ -20,6 +20,7 @@ enum CType {
 	NONE,
 	COLLIDER,
 	ANIMATION,
+	MESH,
 };
 
 #endif // COMPONENT_H

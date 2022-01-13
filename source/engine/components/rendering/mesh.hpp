@@ -5,10 +5,10 @@
 #include <QVector3D>
 #include <QVector2D>
 #include <QOpenGLTexture>
-#include "BasicIO.hpp"
+#include "source/engine/utilities/BasicIO.hpp"
 #include "source/engine/components/component.hpp"
-#include "geometryengine.hpp"
-#include "../transform.hpp"
+#include "source/engine/system/rendering/geometryengine.hpp"
+#include "source/engine/transform.hpp"
 
 
 /**
@@ -60,8 +60,9 @@ public:
     static unsigned short* indextoArray(unsigned short* arr, std::vector<unsigned short> &indices);
     static VertexData* vertextoArray(VertexData* arr, std::vector<VertexData> &vertex);
     void computeNormals(bool stripe);
+	int getCType() override;
 
-    QOpenGLTexture* m_HMground = nullptr;
+	QOpenGLTexture* m_HMground = nullptr;
     QOpenGLTexture* m_HMmid = nullptr;
     QOpenGLTexture* m_HMhigh = nullptr;
 

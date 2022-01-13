@@ -6,9 +6,9 @@
 #define TEMPLERUN_PLAYER_HPP
 
 #include "source/engine/transform.hpp"
-#include "source/engine/rendering/entity.hpp"
+#include "source/engine/entity/entity.hpp"
 #include "source/engine/components/physics/collider/BoundingSphere.hpp"
-#include "source/engine/rendering/mesh.hpp"
+#include "source/engine/components/rendering/mesh.hpp"
 
 class Player : public Entity {
 
@@ -32,6 +32,7 @@ public:
 	bool hasJumped = false;
 
 	float PointDeVie = 3.0f;
+	float score = 0;
 	bool justLostPDV = false;
 	
 

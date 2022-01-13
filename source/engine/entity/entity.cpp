@@ -133,6 +133,25 @@ void Entity::updateTransforms(TimeStep deltaTime) {
     }
 }
 
+/**
+ * Type d'entité.
+ * @return
+ */
 int Entity::getEType() {
     return NORMAL;
+}
+
+/**
+ * Set un mesh et le remplace si nécessaire.
+ * @param mesh
+ */
+void Entity::setMesh(Mesh* mesh) {
+	int i = 0;
+	for (const auto &component: m_components) {
+		if (component->getCType() == 3) { // mesh
+			m_components[i] = mesh;
+			return;
+		}
+		i++;
+	}
 }

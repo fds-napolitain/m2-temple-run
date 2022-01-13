@@ -5,8 +5,8 @@
 #ifndef TEMPLERUN_PHYSICSYSTEM_HPP
 #define TEMPLERUN_PHYSICSYSTEM_HPP
 #include "source/engine/components/physics/collider.hpp"
-#include "../TimeStep.hpp"
-#include "source/engine/rendering/entity.hpp"
+#include "source/engine/TimeStep.hpp"
+#include "source/engine/entity/entity.hpp"
 #include "source/game/Player.hpp"
 #include <vector>
 #include <iostream>

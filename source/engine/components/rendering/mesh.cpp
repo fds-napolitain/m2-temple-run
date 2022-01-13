@@ -336,4 +336,12 @@ void Mesh::computeNormals(bool stripe) {
     }
 }
 
+/**
+ * Retourne le type : Mesh
+ * @return
+ */
+int Mesh::getCType() {
+	return MESH;
+}
+
 

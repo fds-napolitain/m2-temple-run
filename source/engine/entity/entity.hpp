@@ -6,10 +6,11 @@
 #include <vector>
 #include "source/engine/transform.hpp"
 #include "source/engine/components/component.hpp"
-#include "../TimeStep.hpp"
+#include "source/engine/TimeStep.hpp"
 #include <iostream>
 #include "source/engine/components/physics/collider.hpp"
 #include "source/engine/components/rendering/Animation.hpp"
+#include "source/engine/components/rendering/mesh.hpp"
 
 /**
  * Classe entité :
@@ -37,6 +38,7 @@ public:
     void removeChild(Entity* child);
 	virtual void updateTransforms(TimeStep deltaTime);
     virtual int getEType();
+	void setMesh(Mesh* mesh);
     
 
 private:

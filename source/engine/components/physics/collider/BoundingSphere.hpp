@@ -2,7 +2,7 @@
 #define BOUNDINGSPHERE_H
 
 #include <QVector3D>
-#include "source/engine/physics/intersectdata.hpp"
+#include "source/engine/system/physics/intersectdata.hpp"
 #include "source/engine/components/physics/collider.hpp"
 #include "aabb.hpp"
 

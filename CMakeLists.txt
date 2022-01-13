@@ -22,15 +22,15 @@ find_package(Qt5 COMPONENTS Widgets)
 find_package(Qt5 COMPONENTS OpenGL)
 
 add_executable(TempleRun main.cpp textures/textures.qrc models/models.qrc shaders/shaders.qrc
-        source/engine/rendering/BasicIO.hpp source/engine/rendering/camera.cpp source/engine/rendering/camera.hpp source/engine/components/component.cpp source/engine/components/component.hpp
-        source/engine/rendering/entity.hpp source/engine/rendering/entity.cpp source/engine/rendering/geometryengine.hpp source/engine/rendering/geometryengine.cpp source/mainwidget.hpp source/mainwidget.cpp
-        source/engine/rendering/mesh.cpp source/engine/rendering/mesh.hpp source/engine/rendering/scene.cpp source/engine/rendering/scene.hpp source/game/scenegraph.hpp source/game/scenegraph.cpp
+        source/engine/utilities/BasicIO.hpp source/engine/entity/camera.cpp source/engine/entity/camera.hpp source/engine/components/component.cpp source/engine/components/component.hpp
+        source/engine/entity/entity.hpp source/engine/entity/entity.cpp source/engine/system/rendering/geometryengine.hpp source/engine/system/rendering/geometryengine.cpp source/mainwidget.hpp source/mainwidget.cpp
+        source/engine/components/rendering/mesh.cpp source/engine/components/rendering/mesh.hpp source/engine/system/rendering/scene.cpp source/engine/system/rendering/scene.hpp source/game/scenegraph.hpp source/game/scenegraph.cpp
         source/engine/transform.cpp source/engine/transform.hpp
         source/engine/components/physics/collider/aabb.cpp source/engine/components/physics/collider/aabb.hpp source/engine/components/physics/collider/BoundingSphere.cpp source/engine/components/physics/collider/BoundingSphere.hpp source/engine/components/physics/collider.cpp
-        source/engine/components/physics/collider.hpp source/engine/physics/intersectdata.cpp source/engine/physics/intersectdata.hpp
-        source/engine/physics/plane.cpp source/engine/physics/plane.hpp source/engine/physics/ReferenceCounter.hpp
+        source/engine/components/physics/collider.hpp source/engine/system/physics/intersectdata.cpp source/engine/system/physics/intersectdata.hpp
+        source/engine/system/physics/plane.cpp source/engine/system/physics/plane.hpp source/engine/utilities/ReferenceCounter.hpp
         source/engine/TimeStep.hpp source/engine/TargetFPS.cpp source/engine/TargetFPS.hpp
-        source/engine/physics/PhysicSystem.cpp source/engine/physics/PhysicSystem.hpp source/game/Player.cpp source/game/Player.hpp source/engine/rendering/Light.cpp source/engine/rendering/Light.hpp source/engine/components/rendering/Animation.cpp source/engine/components/rendering/Animation.hpp)
+        source/engine/system/physics/PhysicSystem.cpp source/engine/system/physics/PhysicSystem.hpp source/game/Player.cpp source/game/Player.hpp source/engine/entity/Light.cpp source/engine/entity/Light.hpp source/engine/components/rendering/Animation.cpp source/engine/components/rendering/Animation.hpp)
 
 set_target_properties(TempleRun PROPERTIES
         WIN32_EXECUTABLE TRUE

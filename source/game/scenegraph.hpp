@@ -1,8 +1,8 @@
 #ifndef SCENEGRAPH_H
 #define SCENEGRAPH_H
 
-#include "source/engine/rendering/scene.hpp"
-#include "source/engine/rendering/Light.hpp"
+#include "source/engine/system/rendering/scene.hpp"
+#include "source/engine/entity/Light.hpp"
 #include "Player.hpp"
 #include <QTime>
 #include "source/engine/components/physics/collider/aabb.hpp"

@@ -1,12 +1,12 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-#include "entity.hpp"
-#include "mesh.hpp"
-#include "geometryengine.hpp"
+#include "source/engine/entity/entity.hpp"
+#include "source/engine/components/rendering/mesh.hpp"
+#include "source/engine/system/rendering/geometryengine.hpp"
 #include "source/engine/TimeStep.hpp"
 
-#include "source/engine/physics/PhysicSystem.hpp"
+#include "source/engine/system/physics/PhysicSystem.hpp"
 
 /**
  * Classe scène, qui permet de dessiner les objets. La méthode update est virtuel : elle est implémentée différemment selon le type de scène (graphe de scene ou autre).

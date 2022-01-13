@@ -5,7 +5,12 @@
 #include "PhysicSystem.hpp"
 
 
-
+/**
+ * Update les colliders, test les collision, traite les collision.
+ * @param delta DeltraTime
+ * @param entities liste d'entités
+ * @param Player Le joueur
+ */
 void PhysicSystem::update(TimeStep delta, const std::vector<Entity*>& entities, Player* player) {
     for (auto entity : entities) {
         for (auto component : entity->getComponents()) {

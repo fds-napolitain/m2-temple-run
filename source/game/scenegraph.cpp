@@ -354,17 +354,17 @@ void SceneGraph::update(TimeStep deltaTime) {
 		mainDecor->setTransform(transform);
 		background->setTransform(transformBackGround);
 		soleil->setTransform(transformY);
-		updateScore(score1, player->score);
+		updateScore(score1, (int) player->score % 10);
 		if (player->score >= 10) {
-			updateScore(score2, player->score / 10);
+			updateScore(score2, ((int) player->score / 10) % 100);
 			addEntity(m_root, score2);
 		}
 		if (player->score >= 100) {
-			updateScore(score3, player->score / 100);
+			updateScore(score3, ((int) player->score / 100) % 1000);
 			addEntity(m_root, score3);
 		}
 		if (player->score >= 1000) {
-			updateScore(score4, player->score / 1000);
+			updateScore(score4, ((int) player->score / 1000 % 10000));
 			addEntity(m_root, score4);
 		}
 

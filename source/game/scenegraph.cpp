@@ -59,6 +59,7 @@ SceneGraph::SceneGraph(Entity *root) :
 	Mesh* meteoriteMesh = new Mesh(":/sphere.off", Mesh::OFFIO, GL_TRIANGLES);
 	
 	solMesh->initPlaneGeometry(16,16,200,200);
+    solMesh->setAllNormals(QVector3D(0.0, 1.0,0.0));
 	rightMesh->initPlaneGeometry(16,16,100,100);
 	staticRightMesh->initPlaneGeometry(16,16,100,100);
 	movingRightMesh->initPlaneGeometry(256,256,100,100);

@@ -69,7 +69,7 @@ private:
     int m_primitive;
     std::vector<VertexData> m_vertex;
     std::vector<unsigned short> m_indices;
-	std::vector<QVector3D> m_normals;
+	std::vector<QVector3D> m_normals; // helper real normal are in m_vertex.normal
     VertexData* m_vertexArr;
     unsigned short* m_indicesArr;
     QVector3D m_color;

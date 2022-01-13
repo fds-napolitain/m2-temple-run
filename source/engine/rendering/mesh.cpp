@@ -67,6 +67,15 @@ void Mesh::loadMesh(const std::string &path, int format){
     std::cout << "succesfully loaded models" << std::endl;
 }
 
+void Mesh::setAllNormals(const QVector3D normal) {
+    for(auto v : m_vertex){
+        v.normal = normal;
+    }
+    for(auto i=0; i < m_vertex.size(); i++){
+        m_vertexArr[i].normal = normal;
+    }
+}
+
 void Mesh::initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY){
     float plan_xmax = boardSizeX;
     float plan_xmin = -boardSizeX;

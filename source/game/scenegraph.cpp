@@ -293,6 +293,17 @@ SceneGraph::SceneGraph(Entity *root) :
 	ring10->addComponent(ringMesh);
 	addEntity(ring9, ring10);
 
+	ring1->setTag("ring");
+	ring2->setTag("ring");
+	ring3->setTag("ring");
+	ring4->setTag("ring");
+	ring5->setTag("ring");
+	ring6->setTag("ring");
+	ring7->setTag("ring");
+	ring8->setTag("ring");
+	ring9->setTag("ring");
+	ring10->setTag("ring");
+
 	// score
 	score0Mesh = new Mesh(":/0.off", Mesh::OFFIO, GL_TRIANGLES);
 	score1Mesh = new Mesh(":/1.off", Mesh::OFFIO, GL_TRIANGLES);

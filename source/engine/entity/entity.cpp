@@ -1,5 +1,7 @@
 #include "entity.hpp"
 
+#include <utility>
+
 /**
  * Constructeur par nom
  * @param name
@@ -154,4 +156,20 @@ void Entity::setMesh(Mesh* mesh) {
 		}
 		i++;
 	}
+}
+
+/**
+ * Set le tag (nom partagé)
+ * @param tagName
+ */
+void Entity::setTag(std::string tagName) {
+	m_tag = std::move(tagName);
+}
+
+/**
+ * Retourne le tag
+ * @return
+ */
+std::string Entity::getTag() {
+	return m_tag;
 }

@@ -39,6 +39,8 @@ public:
 	virtual void updateTransforms(TimeStep deltaTime);
     virtual int getEType();
 	void setMesh(Mesh* mesh);
+	void setTag(std::string tagName);
+	std::string getTag();
     
 
 private:
@@ -47,6 +49,7 @@ private:
     Entity* m_parent;
     std::vector<Entity*> m_children;
     std::vector<Component*> m_components;
+	std::string m_tag;
 
 };
 

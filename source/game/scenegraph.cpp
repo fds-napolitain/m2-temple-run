@@ -195,7 +195,7 @@ SceneGraph::SceneGraph(Entity *root) :
 
 
 	//2
-	Transform* ring2Transform = new Transform(QQuaternion(), QVector3D(0.0f, decalageRingPosY, decalageRingPosZ), 1.0f);
+	Transform* ring2Transform = new Transform(QQuaternion(), QVector3D(0.0f, decalageRingPosY*ringAboveObstacle, decalageRingPosZ), 1.0f);
 	ring2 = new Entity("ring2", ring2Transform);
 	BoundingSphere* ring2BS = new BoundingSphere(QVector3D(0.0f, 0.0f, 0.0f), 0.5f);
 	m_physics->addCollider(ring2BS);
@@ -417,12 +417,19 @@ void SceneGraph::scrolling(Transform* transform, TimeStep deltaTime)
 	if (movingLeft->getTransform()->position.z() >= 100)
 	{
 		float WallPos = 0.0f;
-		WallPos = ((rand() % 20) - 10) * 5;
+		WallPos = ((rand() % 16) - 8) * 5;
 
 		movingLeft->getTransform()->position.setZ(staticLeft->getTransform()->position.z() + WallPos);
 		movingRight->getTransform()->position.setZ(staticRight->getTransform()->position.z() + WallPos);
 	}
+	/*
+	if (left->getTransform()->position.z() >= 100)
+	{
 
+
+		left->getTransform()->position.setZ(movingLeft->getTransform()->position.z());
+		right->getTransform()->position.setZ(movingRight->getTransform()->position.z());
+	}*/
 
 }
 

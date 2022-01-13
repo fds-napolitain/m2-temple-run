@@ -94,7 +94,7 @@ public:
     
     float ringAboveObstacle = 0.0f; //1 v 0 f
     float ringXPos = 0.0f;
-    float ringYPos = 0.0f;
+    float ringYPos = -1.0f;
     float ringZPos = -1.5 * initScrollingSpeed;
 
     float decalageRingPosY = tailleJump / 20 ;

@@ -28,10 +28,11 @@ var searchData=
   ['getroot_73',['getRoot',['../class_scene_graph.html#a6bad7ed0790085b6d6a9fc88f1b167a9',1,'SceneGraph']]],
   ['getseconds_74',['getSeconds',['../class_time_step.html#aa083237c51545826071cb17c060703c2',1,'TimeStep']]],
   ['getswapinterval_75',['getSwapInterval',['../class_target_f_p_s.html#a658c0dfc3971a9e474c245ba78ae9463',1,'TargetFPS']]],
-  ['gettimeperframe_76',['getTimePerFrame',['../class_target_f_p_s.html#a3cf018650f4bada8f55658e6fc40ecfd',1,'TargetFPS']]],
-  ['gettmilliseconds_77',['getTMilliSeconds',['../class_time_step.html#a5ee77005fa5e69a119f77ca4e8a33cc6',1,'TimeStep']]],
-  ['gettransform_78',['getTransform',['../class_entity.html#ab29dfced383a3621ce1c33e51d2f8a35',1,'Entity']]],
-  ['gettype_79',['getType',['../class_collider.html#a96a81e3bc298cfbc568e2b04d38b816b',1,'Collider::getType()'],['../class_mesh.html#a314b564c77dbd3123c4f4ba212210fed',1,'Mesh::getType()']]],
-  ['getvertices_80',['getVertices',['../class_mesh.html#af0319580db217a6642620fa65d318217',1,'Mesh']]],
-  ['getworldtranslate_81',['getWorldTranslate',['../class_transform.html#abb3ec53931782d0d0b906a6c77fa86a4',1,'Transform']]]
+  ['gettag_76',['getTag',['../class_entity.html#a8dba2f5c5964cf267774eec7b5d4b31f',1,'Entity']]],
+  ['gettimeperframe_77',['getTimePerFrame',['../class_target_f_p_s.html#a3cf018650f4bada8f55658e6fc40ecfd',1,'TargetFPS']]],
+  ['gettmilliseconds_78',['getTMilliSeconds',['../class_time_step.html#a5ee77005fa5e69a119f77ca4e8a33cc6',1,'TimeStep']]],
+  ['gettransform_79',['getTransform',['../class_entity.html#ab29dfced383a3621ce1c33e51d2f8a35',1,'Entity']]],
+  ['gettype_80',['getType',['../class_collider.html#a96a81e3bc298cfbc568e2b04d38b816b',1,'Collider::getType()'],['../class_mesh.html#a314b564c77dbd3123c4f4ba212210fed',1,'Mesh::getType()']]],
+  ['getvertices_81',['getVertices',['../class_mesh.html#af0319580db217a6642620fa65d318217',1,'Mesh']]],
+  ['getworldtranslate_82',['getWorldTranslate',['../class_transform.html#abb3ec53931782d0d0b906a6c77fa86a4',1,'Transform']]]
 ];

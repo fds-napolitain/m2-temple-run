@@ -5,7 +5,7 @@ var searchData=
   ['camera_2ehpp_22',['camera.hpp',['../camera_8hpp.html',1,'']]],
   ['clearcolliders_23',['clearColliders',['../class_physic_system.html#aa8286bd85cfa18019259e767a531dc57',1,'PhysicSystem']]],
   ['clearrigidbodies_24',['clearRigidBodies',['../class_physic_system.html#ac12cc6eb2c21535008f17bb2183034fa',1,'PhysicSystem']]],
-  ['collider_25',['Collider',['../class_collider.html',1,'Collider'],['../class_collider.html#a3fed523e82fb51e73bf97c7690163afe',1,'Collider::Collider()'],['../class_player.html#aec19b4df3a8d16ba3d05d14b07f20ee0',1,'Player::collider()'],['../component_8hpp.html#a080485ea030cab858ae9170bf31dba58ac9df2ffb1989b7486f0d321baf6f9b21',1,'COLLIDER():&#160;component.hpp']]],
+  ['collider_25',['Collider',['../class_collider.html',1,'Collider'],['../class_player.html#aec19b4df3a8d16ba3d05d14b07f20ee0',1,'Player::collider()'],['../class_collider.html#a3fed523e82fb51e73bf97c7690163afe',1,'Collider::Collider()'],['../component_8hpp.html#a080485ea030cab858ae9170bf31dba58ac9df2ffb1989b7486f0d321baf6f9b21',1,'COLLIDER():&#160;component.hpp']]],
   ['collider_2ecpp_26',['collider.cpp',['../collider_8cpp.html',1,'']]],
   ['collider_2ehpp_27',['collider.hpp',['../collider_8hpp.html',1,'']]],
   ['combinewith_28',['combineWith',['../class_transform.html#a28df333df4986eb09bfc2992c8c1f3f5',1,'Transform']]],

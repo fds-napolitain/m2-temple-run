@@ -12,5 +12,6 @@ var class_player =
     [ "isMovingLeft", "class_player.html#a17d02a838b283674ff1dcea435ec41c3", null ],
     [ "isMovingRight", "class_player.html#a5b702451c74d2e7607e4830d18eec10d", null ],
     [ "justLostPDV", "class_player.html#aa788a1859bdc3d45bfdbbf8eb14ee749", null ],
-    [ "PointDeVie", "class_player.html#a61a75136d157ce4debfc4976e29e68e1", null ]
+    [ "PointDeVie", "class_player.html#a61a75136d157ce4debfc4976e29e68e1", null ],
+    [ "score", "class_player.html#aef5032df427b2e15b74477dabc045385", null ]
 ];

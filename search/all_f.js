@@ -7,7 +7,7 @@ var searchData=
   ['plane_173',['Plane',['../class_plane.html',1,'Plane'],['../class_plane.html#ace88ce319e5ba495c924ecf6fbde7868',1,'Plane::Plane()']]],
   ['plane_2ecpp_174',['plane.cpp',['../plane_8cpp.html',1,'']]],
   ['plane_2ehpp_175',['plane.hpp',['../plane_8hpp.html',1,'']]],
-  ['player_176',['Player',['../class_player.html',1,'Player'],['../class_player.html#af5aaea393030f959d568c806ca9100ca',1,'Player::Player()'],['../class_scene_graph.html#ac13d0792668f6bb907a9693d06e95867',1,'SceneGraph::player()']]],
+  ['player_176',['Player',['../class_player.html',1,'Player'],['../class_scene_graph.html#ac13d0792668f6bb907a9693d06e95867',1,'SceneGraph::player()'],['../class_player.html#af5aaea393030f959d568c806ca9100ca',1,'Player::Player()']]],
   ['player_2ecpp_177',['Player.cpp',['../_player_8cpp.html',1,'']]],
   ['player_2ehpp_178',['Player.hpp',['../_player_8hpp.html',1,'']]],
   ['pointdevie_179',['PointDeVie',['../class_player.html#a61a75136d157ce4debfc4976e29e68e1',1,'Player']]],

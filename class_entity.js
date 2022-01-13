@@ -11,6 +11,7 @@ var class_entity =
     [ "getParent", "class_entity.html#a112d8405932b8718b4b5c4b4bcde5b41", null ],
     [ "getTransform", "class_entity.html#ab29dfced383a3621ce1c33e51d2f8a35", null ],
     [ "removeChild", "class_entity.html#a45d5a3b92478ad8b4fb305b9b3e08c7a", null ],
+    [ "setMesh", "class_entity.html#a1260b4189b7f109c8aeb9ba578897619", null ],
     [ "setParent", "class_entity.html#a77e62e660f8aa7e2194d416f540feefb", null ],
     [ "setTransform", "class_entity.html#a5a07bb6e7325911899162250b4b90503", null ],
     [ "updateTransforms", "class_entity.html#a339a6c58108061d2fbc77d8889b7b95d", null ]

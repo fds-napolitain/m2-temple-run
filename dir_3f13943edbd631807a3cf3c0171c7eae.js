@@ -1,4 +1,4 @@
-var dir_f80cc28244f46dea7ef63ba2e8cbeef7 =
+var dir_3f13943edbd631807a3cf3c0171c7eae =
 [
     [ "intersectdata.cpp", "intersectdata_8cpp.html", null ],
     [ "intersectdata.hpp", "intersectdata_8hpp.html", [
@@ -11,8 +11,5 @@ var dir_f80cc28244f46dea7ef63ba2e8cbeef7 =
     [ "plane.cpp", "plane_8cpp.html", null ],
     [ "plane.hpp", "plane_8hpp.html", [
       [ "Plane", "class_plane.html", "class_plane" ]
-    ] ],
-    [ "ReferenceCounter.hpp", "_reference_counter_8hpp.html", [
-      [ "ReferenceCounter", "class_reference_counter.html", "class_reference_counter" ]
     ] ]
 ];

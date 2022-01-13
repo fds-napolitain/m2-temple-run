@@ -12,6 +12,7 @@ var class_mesh =
     [ "Mesh", "class_mesh.html#ac91cfff70e89c32a3e390142aa7bb0f6", null ],
     [ "computeNormals", "class_mesh.html#a461877b3c471d3488c660af09ca9d5b2", null ],
     [ "draw", "class_mesh.html#a0900d056a4b16f0d71146191713445df", null ],
+    [ "getCType", "class_mesh.html#a88d40faaee45b3f36853c475748472e1", null ],
     [ "getIndices", "class_mesh.html#a2cc5fdb119f09a3f0ec114b67fdf7e80", null ],
     [ "getPrimitive", "class_mesh.html#a75c468aef08fd4b73db34e244f1adc21", null ],
     [ "getType", "class_mesh.html#a314b564c77dbd3123c4f4ba212210fed", null ],

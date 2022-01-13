@@ -132,6 +132,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a339a6c58108061d2fbc77d8889b7b95d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaee9b36f9321e0453323368d0a56b731"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#aaee9b36f9321e0453323368d0a56b731">getEType</a> ()</td></tr>
 <tr class="separator:aaee9b36f9321e0453323368d0a56b731"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1260b4189b7f109c8aeb9ba578897619"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a1260b4189b7f109c8aeb9ba578897619">setMesh</a> (<a class="el" href="class_mesh.html">Mesh</a> *mesh)</td></tr>
+<tr class="separator:a1260b4189b7f109c8aeb9ba578897619"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Classe entité :</p><ul>
@@ -311,6 +313,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Type d'entité. </p><dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 <p>Reimplemented in <a class="el" href="class_light.html#ac4b6afcc4dbe1cef5091bc31dfdf6b89">Light</a>.</p>
 
@@ -388,6 +391,30 @@ Public Member Functions</h2></td></tr>
 <p>Supprime un enfant entity attaché à this </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">child</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1260b4189b7f109c8aeb9ba578897619"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1260b4189b7f109c8aeb9ba578897619">&#9670;&nbsp;</a></span>setMesh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Entity::setMesh </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_mesh.html">Mesh</a> *&#160;</td>
+          <td class="paramname"><em>mesh</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set un mesh et le remplace si nécessaire. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mesh</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -477,8 +504,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>source/engine/rendering/<a class="el" href="entity_8hpp_source.html">entity.hpp</a></li>
-<li>source/engine/rendering/<a class="el" href="entity_8cpp.html">entity.cpp</a></li>
+<li>source/engine/entity/<a class="el" href="entity_8hpp_source.html">entity.hpp</a></li>
+<li>source/engine/entity/<a class="el" href="entity_8cpp.html">entity.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

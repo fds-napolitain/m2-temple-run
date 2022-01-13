@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Temple Run: source/engine/rendering/mesh.hpp Source File</title>
+<title>Temple Run: source/engine/components/rendering/mesh.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -92,10 +92,10 @@ $(document).ready(function(){initNavTree('mesh_8hpp_source.html',''); initResiza
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;QVector3D&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;QVector2D&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;QOpenGLTexture&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_basic_i_o_8hpp.html">BasicIO.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_basic_i_o_8hpp.html">source/engine/utilities/BasicIO.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="component_8hpp.html">source/engine/components/component.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="geometryengine_8hpp.html">geometryengine.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;../transform.hpp&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="geometryengine_8hpp.html">source/engine/system/rendering/geometryengine.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="transform_8hpp.html">source/engine/transform.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_mesh.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_mesh.html">Mesh</a> : <span class="keyword">public</span> <a class="code" href="class_component.html">Component</a> {</div>
@@ -144,37 +144,38 @@ $(document).ready(function(){initNavTree('mesh_8hpp_source.html',''); initResiza
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>* <a class="code" href="class_mesh.html#a4d7dabbb352c7020230afa0ba87986d4">indextoArray</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>* arr, std::vector&lt;unsigned short&gt; &amp;indices);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">static</span> <a class="code" href="struct_vertex_data.html">VertexData</a>* <a class="code" href="class_mesh.html#a2f0c18a3a50ce676ffa14dc055d25cdb">vertextoArray</a>(<a class="code" href="struct_vertex_data.html">VertexData</a>* arr, std::vector&lt;VertexData&gt; &amp;vertex);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_mesh.html#a461877b3c471d3488c660af09ca9d5b2">computeNormals</a>(<span class="keywordtype">bool</span> stripe);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="class_mesh.html#af89ccd02d242fd9ba9907fe1f143be6f">   64</a></span>&#160;    QOpenGLTexture* <a class="code" href="class_mesh.html#af89ccd02d242fd9ba9907fe1f143be6f">m_HMground</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="class_mesh.html#a1dce13a8bd88fd5edfdf4add3c3123f9">   65</a></span>&#160;    QOpenGLTexture* <a class="code" href="class_mesh.html#a1dce13a8bd88fd5edfdf4add3c3123f9">m_HMmid</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="class_mesh.html#a56be08fcdeab0e23a37cd11bf4e8d9a4">   66</a></span>&#160;    QOpenGLTexture* <a class="code" href="class_mesh.html#a56be08fcdeab0e23a37cd11bf4e8d9a4">m_HMhigh</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_mesh.html#a88d40faaee45b3f36853c475748472e1">getCType</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="class_mesh.html#af89ccd02d242fd9ba9907fe1f143be6f">   65</a></span>&#160;    QOpenGLTexture* <a class="code" href="class_mesh.html#af89ccd02d242fd9ba9907fe1f143be6f">m_HMground</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="class_mesh.html#a1dce13a8bd88fd5edfdf4add3c3123f9">   66</a></span>&#160;    QOpenGLTexture* <a class="code" href="class_mesh.html#a1dce13a8bd88fd5edfdf4add3c3123f9">m_HMmid</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_mesh.html#a56be08fcdeab0e23a37cd11bf4e8d9a4">   67</a></span>&#160;    QOpenGLTexture* <a class="code" href="class_mesh.html#a56be08fcdeab0e23a37cd11bf4e8d9a4">m_HMhigh</a> = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">int</span> m_primitive;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    std::vector&lt;VertexData&gt; m_vertex;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    std::vector&lt;unsigned short&gt; m_indices;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    std::vector&lt;QVector3D&gt; m_normals;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="struct_vertex_data.html">VertexData</a>* m_vertexArr;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>* m_indicesArr;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    QVector3D m_color;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="class_mesh.html#aa6d0ac6c0ea8f06b8194aeb29f4a4648">Type</a> m_type;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    QOpenGLTexture* m_texture = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;};</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#endif // MESH_H</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">int</span> m_primitive;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    std::vector&lt;VertexData&gt; m_vertex;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    std::vector&lt;unsigned short&gt; m_indices;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    std::vector&lt;QVector3D&gt; m_normals;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="struct_vertex_data.html">VertexData</a>* m_vertexArr;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>* m_indicesArr;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    QVector3D m_color;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <a class="code" href="class_mesh.html#aa6d0ac6c0ea8f06b8194aeb29f4a4648">Type</a> m_type;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    QOpenGLTexture* m_texture = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;};</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#endif // MESH_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclass_geometry_engine_html"><div class="ttname"><a href="class_geometry_engine.html">GeometryEngine</a></div><div class="ttdef"><b>Definition:</b> geometryengine.hpp:70</div></div>
-<div class="ttc" id="aclass_mesh_html_af89ccd02d242fd9ba9907fe1f143be6f"><div class="ttname"><a href="class_mesh.html#af89ccd02d242fd9ba9907fe1f143be6f">Mesh::m_HMground</a></div><div class="ttdeci">QOpenGLTexture * m_HMground</div><div class="ttdef"><b>Definition:</b> mesh.hpp:64</div></div>
-<div class="ttc" id="aclass_mesh_html_a1dce13a8bd88fd5edfdf4add3c3123f9"><div class="ttname"><a href="class_mesh.html#a1dce13a8bd88fd5edfdf4add3c3123f9">Mesh::m_HMmid</a></div><div class="ttdeci">QOpenGLTexture * m_HMmid</div><div class="ttdef"><b>Definition:</b> mesh.hpp:65</div></div>
+<div class="ttc" id="aclass_mesh_html_af89ccd02d242fd9ba9907fe1f143be6f"><div class="ttname"><a href="class_mesh.html#af89ccd02d242fd9ba9907fe1f143be6f">Mesh::m_HMground</a></div><div class="ttdeci">QOpenGLTexture * m_HMground</div><div class="ttdef"><b>Definition:</b> mesh.hpp:65</div></div>
+<div class="ttc" id="aclass_mesh_html_a1dce13a8bd88fd5edfdf4add3c3123f9"><div class="ttname"><a href="class_mesh.html#a1dce13a8bd88fd5edfdf4add3c3123f9">Mesh::m_HMmid</a></div><div class="ttdeci">QOpenGLTexture * m_HMmid</div><div class="ttdef"><b>Definition:</b> mesh.hpp:66</div></div>
 <div class="ttc" id="aclass_mesh_html_af0319580db217a6642620fa65d318217"><div class="ttname"><a href="class_mesh.html#af0319580db217a6642620fa65d318217">Mesh::getVertices</a></div><div class="ttdeci">std::vector&lt; VertexData &gt; getVertices() const</div><div class="ttdef"><b>Definition:</b> mesh.hpp:54</div></div>
 <div class="ttc" id="aclass_mesh_html_a314b564c77dbd3123c4f4ba212210fed"><div class="ttname"><a href="class_mesh.html#a314b564c77dbd3123c4f4ba212210fed">Mesh::getType</a></div><div class="ttdeci">Type getType() const</div><div class="ttdef"><b>Definition:</b> mesh.hpp:58</div></div>
 <div class="ttc" id="aclass_mesh_html_aa6d0ac6c0ea8f06b8194aeb29f4a4648"><div class="ttname"><a href="class_mesh.html#aa6d0ac6c0ea8f06b8194aeb29f4a4648">Mesh::Type</a></div><div class="ttdeci">Type</div><div class="ttdef"><b>Definition:</b> mesh.hpp:27</div></div>
 <div class="ttc" id="aclass_mesh_html_a6a5869823e614b76eb7f7e90e809f8b6"><div class="ttname"><a href="class_mesh.html#a6a5869823e614b76eb7f7e90e809f8b6">Mesh::setType</a></div><div class="ttdeci">void setType(Type type)</div><div class="ttdef"><b>Definition:</b> mesh.hpp:59</div></div>
 <div class="ttc" id="aclass_mesh_html_a4d7dabbb352c7020230afa0ba87986d4"><div class="ttname"><a href="class_mesh.html#a4d7dabbb352c7020230afa0ba87986d4">Mesh::indextoArray</a></div><div class="ttdeci">static unsigned short * indextoArray(unsigned short *arr, std::vector&lt; unsigned short &gt; &amp;indices)</div><div class="ttdef"><b>Definition:</b> mesh.cpp:246</div></div>
-<div class="ttc" id="aclass_mesh_html_a56be08fcdeab0e23a37cd11bf4e8d9a4"><div class="ttname"><a href="class_mesh.html#a56be08fcdeab0e23a37cd11bf4e8d9a4">Mesh::m_HMhigh</a></div><div class="ttdeci">QOpenGLTexture * m_HMhigh</div><div class="ttdef"><b>Definition:</b> mesh.hpp:66</div></div>
+<div class="ttc" id="aclass_mesh_html_a56be08fcdeab0e23a37cd11bf4e8d9a4"><div class="ttname"><a href="class_mesh.html#a56be08fcdeab0e23a37cd11bf4e8d9a4">Mesh::m_HMhigh</a></div><div class="ttdeci">QOpenGLTexture * m_HMhigh</div><div class="ttdef"><b>Definition:</b> mesh.hpp:67</div></div>
 <div class="ttc" id="aclass_component_html"><div class="ttname"><a href="class_component.html">Component</a></div><div class="ttdef"><b>Definition:</b> component.hpp:7</div></div>
 <div class="ttc" id="aclass_mesh_html"><div class="ttname"><a href="class_mesh.html">Mesh</a></div><div class="ttdef"><b>Definition:</b> mesh.hpp:17</div></div>
 <div class="ttc" id="aclass_mesh_html_afc0605a1b3d8c38c8739134c9ac337f2a25bf985117b052a733a5e18d31aa11ec"><div class="ttname"><a href="class_mesh.html#afc0605a1b3d8c38c8739134c9ac337f2a25bf985117b052a733a5e18d31aa11ec">Mesh::OBJIO</a></div><div class="ttdeci">@ OBJIO</div><div class="ttdef"><b>Definition:</b> mesh.hpp:24</div></div>
@@ -190,7 +191,9 @@ $(document).ready(function(){initNavTree('mesh_8hpp_source.html',''); initResiza
 <div class="ttc" id="aclass_mesh_html_a40108dab673f10b373c70030dbf96bd7"><div class="ttname"><a href="class_mesh.html#a40108dab673f10b373c70030dbf96bd7">Mesh::loadTexture</a></div><div class="ttdeci">void loadTexture(const QString &amp;texturePath, QOpenGLTexture::Filter minFilter=QOpenGLTexture::Linear, QOpenGLTexture::Filter maxFilter=QOpenGLTexture::Linear, QOpenGLTexture::WrapMode warp=QOpenGLTexture::Repeat)</div><div class="ttdef"><b>Definition:</b> mesh.cpp:282</div></div>
 <div class="ttc" id="aclass_mesh_html_a7f7d0ce1b627229a1dd81b9ee170c9fb"><div class="ttname"><a href="class_mesh.html#a7f7d0ce1b627229a1dd81b9ee170c9fb">Mesh::initCubeGeometry</a></div><div class="ttdeci">void initCubeGeometry()</div><div class="ttdef"><b>Definition:</b> mesh.cpp:159</div></div>
 <div class="ttc" id="aclass_mesh_html_aa6d0ac6c0ea8f06b8194aeb29f4a4648a2bda44aa3f08c9571096b4c93d50ccb7"><div class="ttname"><a href="class_mesh.html#aa6d0ac6c0ea8f06b8194aeb29f4a4648a2bda44aa3f08c9571096b4c93d50ccb7">Mesh::DEFAULT</a></div><div class="ttdeci">@ DEFAULT</div><div class="ttdef"><b>Definition:</b> mesh.hpp:28</div></div>
+<div class="ttc" id="atransform_8hpp_html"><div class="ttname"><a href="transform_8hpp.html">transform.hpp</a></div></div>
 <div class="ttc" id="aclass_mesh_html_a078c186b0c21576ffa0c5f581b08f83a"><div class="ttname"><a href="class_mesh.html#a078c186b0c21576ffa0c5f581b08f83a">Mesh::initPlaneGeometry</a></div><div class="ttdeci">void initPlaneGeometry(int nH, int nW, int boardSizeX, int boardSizeY)</div><div class="ttdef"><b>Definition:</b> mesh.cpp:104</div></div>
+<div class="ttc" id="aclass_mesh_html_a88d40faaee45b3f36853c475748472e1"><div class="ttname"><a href="class_mesh.html#a88d40faaee45b3f36853c475748472e1">Mesh::getCType</a></div><div class="ttdeci">int getCType() override</div><div class="ttdef"><b>Definition:</b> mesh.cpp:343</div></div>
 <div class="ttc" id="aclass_mesh_html_a75c468aef08fd4b73db34e244f1adc21"><div class="ttname"><a href="class_mesh.html#a75c468aef08fd4b73db34e244f1adc21">Mesh::getPrimitive</a></div><div class="ttdeci">int getPrimitive() const</div><div class="ttdef"><b>Definition:</b> mesh.hpp:57</div></div>
 <div class="ttc" id="aclass_mesh_html_a7188b0009975f3eaeeba1b170a8c83e4"><div class="ttname"><a href="class_mesh.html#a7188b0009975f3eaeeba1b170a8c83e4">Mesh::~Mesh</a></div><div class="ttdeci">~Mesh() override</div><div class="ttdef"><b>Definition:</b> mesh.cpp:42</div></div>
 <div class="ttc" id="aclass_mesh_html_aa1d452aab2b634cd7a369f2bdbf955ca"><div class="ttname"><a href="class_mesh.html#aa1d452aab2b634cd7a369f2bdbf955ca">Mesh::Mesh</a></div><div class="ttdeci">Mesh(int primitive=0, QVector3D color=QVector3D(1.0, 1.0, 1.0))</div><div class="ttdef"><b>Definition:</b> mesh.cpp:8</div></div>
@@ -200,7 +203,7 @@ $(document).ready(function(){initNavTree('mesh_8hpp_source.html',''); initResiza
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_d0a5d1df428c70fd6ddfa0ebbbe0c313.html">engine</a></li><li class="navelem"><a class="el" href="dir_78a1faf1144f473fbaca3996ef18d254.html">rendering</a></li><li class="navelem"><a class="el" href="mesh_8hpp.html">mesh.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_d0a5d1df428c70fd6ddfa0ebbbe0c313.html">engine</a></li><li class="navelem"><a class="el" href="dir_84dfe8b82c223619c9296aaed8593728.html">components</a></li><li class="navelem"><a class="el" href="dir_abd4cc0ba3b7d8970e74adb959745ec0.html">rendering</a></li><li class="navelem"><a class="el" href="mesh_8hpp.html">mesh.hpp</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>

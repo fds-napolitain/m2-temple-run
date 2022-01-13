@@ -159,7 +159,7 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a21b41c752f98075f11ae82531f476448"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a148b4741233ce3efed764b334090fc05"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a148b4741233ce3efed764b334090fc05">scrollingSpeed</a> = <a class="el" href="class_scene_graph.html#a21b41c752f98075f11ae82531f476448">initScrollingSpeed</a></td></tr>
 <tr class="separator:a148b4741233ce3efed764b334090fc05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab510394f1e55fab2713d235b0b7258f7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#ab510394f1e55fab2713d235b0b7258f7">acceleration</a> = 3.0f</td></tr>
+<tr class="memitem:ab510394f1e55fab2713d235b0b7258f7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#ab510394f1e55fab2713d235b0b7258f7">acceleration</a> = 5.0f</td></tr>
 <tr class="separator:ab510394f1e55fab2713d235b0b7258f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07ec2878b696b705fa520fe14a90487e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_graph.html#a07ec2878b696b705fa520fe14a90487e">maxSpeed</a> = 220.0f</td></tr>
 <tr class="separator:a07ec2878b696b705fa520fe14a90487e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -535,7 +535,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Fait le (les) défillement de la scène sur Z (et X,Y). Fait les réinitialisations des objets qui dépassent le champ de vision du joueur. (Il faudrait séparer en deux fonctions: Scrolling et Reset) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">transform</td><td></td></tr>
     <tr><td class="paramname">deltaTime</td><td></td></tr>
@@ -603,7 +603,8 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Update </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Update Contient la gamingLoop: -Si (pdv&gt;0): loop -Update le GdS -Gérer les mouvements -Scrolling -Reset des entités en dehors du jeu -Le score -La physique</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">deltaTime</td><td></td></tr>
   </table>
@@ -674,7 +675,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Update les transform via le Graphe de scène. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">current</td><td></td></tr>
     <tr><td class="paramname">deltaTime</td><td></td></tr>
@@ -692,7 +693,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float SceneGraph::acceleration = 3.0f</td>
+          <td class="memname">float SceneGraph::acceleration = 5.0f</td>
         </tr>
       </table>
 </div><div class="memdoc">

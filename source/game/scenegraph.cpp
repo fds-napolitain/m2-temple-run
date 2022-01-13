@@ -589,42 +589,37 @@ void SceneGraph::jump(Transform *transform, TimeStep deltaTime) {
  */
 void SceneGraph::updateScore(Entity* scoreX, int value) {
 	auto components = scoreX->getComponents();
-	for (const auto &component: components) {
-		if (component->getCType() == 3) {
-			Mesh* mesh = dynamic_cast<Mesh*>(component);
-			switch (value) {
-				case 0:
-					mesh = score0Mesh;
-					break;
-				case 1:
-					mesh = score1Mesh;
-					break;
-				case 2:
-					mesh = score2Mesh;
-					break;
-				case 3:
-					mesh = score3Mesh;
-					break;
-				case 4:
-					mesh = score4Mesh;
-					break;
-				case 5:
-					mesh = score5Mesh;
-					break;
-				case 6:
-					mesh = score6Mesh;
-					break;
-				case 7:
-					mesh = score7Mesh;
-					break;
-				case 8:
-					mesh = score8Mesh;
-					break;
-				case 9:
-					mesh = score9Mesh;
-					break;
-			}
-		}
+	switch (value) {
+		case 0:
+			scoreX->setMesh(score0Mesh);
+			break;
+		case 1:
+			scoreX->setMesh(score1Mesh);
+			break;
+		case 2:
+			scoreX->setMesh(score2Mesh);
+			break;
+		case 3:
+			scoreX->setMesh(score3Mesh);
+			break;
+		case 4:
+			scoreX->setMesh(score4Mesh);
+			break;
+		case 5:
+			scoreX->setMesh(score5Mesh);
+			break;
+		case 6:
+			scoreX->setMesh(score6Mesh);
+			break;
+		case 7:
+			scoreX->setMesh(score7Mesh);
+			break;
+		case 8:
+			scoreX->setMesh(score8Mesh);
+			break;
+		case 9:
+			scoreX->setMesh(score9Mesh);
+			break;
 	}
 }
 

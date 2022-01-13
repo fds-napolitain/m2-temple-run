@@ -66,7 +66,7 @@ SceneGraph::SceneGraph(Entity *root) :
 	Mesh* meteoriteMesh = new Mesh(":/sphere.off", Mesh::OFFIO, GL_TRIANGLES);
 
 	//On initialise la géométrie.
-	solMesh->initPlaneGeometry(16,16,200,200);
+	solMesh->initPlaneGeometry(50,50,400,400);
 	rightMesh->initPlaneGeometry(100, 100,100,100);
 	staticRightMesh->initPlaneGeometry(100, 100,100,100);
 	movingRightMesh->initPlaneGeometry(100, 100,100,100);
